@@ -31,7 +31,7 @@ export default function Departments() {
                     {/* Right Image - Flushed to the right edge */}
                     <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[500px] xl:h-[600px] rounded-tl-2xl rounded-bl-2xl overflow-hidden order-1 lg:order-2 shadow-sm">
                         <Image
-                            src="/Landing-page/departments/laboratories_in_uae 2.png"
+                            src="/Landing-page/departments/lab_specialist_high_res1.png"
                             alt="Lab specialist using microscope"
                             fill
                             className="object-cover object-center"

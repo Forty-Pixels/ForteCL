@@ -14,7 +14,7 @@ const newsItems: NewsItem[] = [
     },
     {
         title: 'What Are Vitamins and Why Does Monitoring Them Matter?',
-        image: '/Landing-page/news/image-2.png',
+        image: '/Landing-page/news/vitamin_monitoring_high_res.png',
     },
     {
         title: 'What Is the Pre-Marital Screening Package?',
