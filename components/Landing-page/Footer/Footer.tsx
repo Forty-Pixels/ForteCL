@@ -11,7 +11,7 @@ export default function Footer() {
                     <div className="flex flex-col space-y-6">
                         <div className="relative w-48 h-12 -ml-2">
                             <Image
-                                src="/fortecl-logo.png"
+                                src="/fortecl-logo1.png"
                                 alt="Forte Clinical Laboratory"
                                 fill
                                 className="object-contain object-left brightness-0 invert"

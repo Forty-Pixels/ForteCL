@@ -38,7 +38,7 @@ export default function Hero() {
                 <div className="flex-shrink-0 z-30">
                     <Link href="/">
                         <Image
-                            src="/fortecl-logo.png"
+                            src="/fortecl-logo1.png"
                             alt="Forte Clinical Laboratory"
                             width={160}
                             height={50}
@@ -114,7 +114,7 @@ export default function Hero() {
                 <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-8 py-6 z-50">
                     <Link href="/" onClick={() => setIsMenuOpen(false)}>
                         <Image
-                            src="/fortecl-logo.png"
+                            src="/fortecl-logo1.png"
                             alt="Logo"
                             width={160}
                             height={50}
