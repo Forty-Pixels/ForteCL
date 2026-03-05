@@ -18,10 +18,11 @@ export default function Hero() {
 
     const navLinks = [
         { name: 'Home', href: '/', active: true },
-        { name: 'Our Tests', href: '/our-tests' },
-        { name: 'Corporate', href: '/corporate' },
-        { name: 'Resources', href: '/resources' },
+        { name: 'Lab Tests', href: '/lab-tests' },
+        { name: 'Packages', href: '/packages' },
+        { name: 'Departments', href: '/departments' },
         { name: 'About', href: '/about' },
+        { name: 'Contact', href: '/contact' },
     ];
 
     return (
@@ -48,9 +49,9 @@ export default function Hero() {
                     </Link>
                 </div>
 
-                {/* Center: Nav Links (Desktop Only) */}
+                {/* Center: Nav Links (Desktop Only - Excluding Contact to avoid redundancy with button) */}
                 <div className="hidden lg:flex items-center space-x-8">
-                    {navLinks.map((link) => (
+                    {navLinks.slice(0, 5).map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
