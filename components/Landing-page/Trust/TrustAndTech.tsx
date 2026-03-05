@@ -13,7 +13,7 @@ export default function TrustAndTech() {
             {/* Background Image - Absolute and Full Bleed */}
             <div className="absolute inset-0 z-0 h-full w-full">
                 <Image
-                    src="/Landing-page/trust/bg.png"
+                    src="/Landing-page/trust/bg-v3.png"
                     alt="Lab Technicians Working"
                     fill
                     className="object-cover object-center"
