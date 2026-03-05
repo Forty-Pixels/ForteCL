@@ -1,0 +1,46 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function Departments() {
+    return (
+        <section className="bg-white py-16 md:py-24 lg:py-32">
+            <div className="w-full pl-4 sm:pl-6 lg:pl-16 xl:pl-24 pr-0">
+                <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-12 lg:gap-8 items-center">
+
+                    {/* Left Content - 60% Width */}
+                    <div className="flex flex-col items-start order-2 lg:order-1 max-w-7xl mx-auto lg:mx-0 w-full pr-4 sm:pr-8">
+                        <span className="text-[#2DD4BF] font-semibold text-sm xl:text-base tracking-wider mb-4">
+                            Departments
+                        </span>
+                        <h2 className="text-2xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold text-[#202020] mb-6 leading-[1.2] lg:leading-[1.1] max-w-full">
+                            Specialized Departments <br className="hidden lg:block" />
+                            Exceptional Diagnostics
+                        </h2>
+                        <p className="text-gray-600 text-sm md:text-base lg:text-lg mb-10 leading-relaxed lg:max-w-[85%] pr-4">
+                            Forte Clinical Laboratory features specialized departments catering to the full spectrum of diagnostic needs. Equipped with the latest technology and staffed by experienced professionals, each department operates in tandem  delivering precise, timely results for optimal health management
+                        </p>
+
+                        <Link
+                            href="/departments"
+                            className="bg-[#2DD4BF] hover:bg-teal-300 text-white px-8 py-3.5 rounded-lg font-medium transition-colors text-center text-sm md:text-base"
+                        >
+                            View All Departments
+                        </Link>
+                    </div>
+
+                    {/* Right Image - Flushed to the right edge */}
+                    <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[500px] xl:h-[600px] rounded-tl-2xl rounded-bl-2xl overflow-hidden order-1 lg:order-2 shadow-sm">
+                        <Image
+                            src="/Landing-page/departments/laboratories_in_uae 2.png"
+                            alt="Lab specialist using microscope"
+                            fill
+                            className="object-cover object-center"
+                            priority
+                        />
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    );
+}
