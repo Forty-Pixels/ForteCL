@@ -1,15 +1,15 @@
 import Image from 'next/image';
 
 const logos = [
-    { src: '/Landing-page/trust/bio-rad.png', alt: 'Bio-Rad EQAS' },
-    { src: '/Landing-page/trust/siemens.png', alt: 'Siemens' },
-    { src: '/Landing-page/trust/gold-logo.png', alt: 'Joint Commission International' },
-    { src: '/Landing-page/trust/tech-med.png', alt: 'TechMed' },
+    { src: '/Landing-page/trust/bio-rad1.png', alt: 'Bio-Rad EQAS' },
+    { src: '/Landing-page/trust/siemens1.png', alt: 'Siemens' },
+    { src: '/Landing-page/trust/tech-med1.png', alt: 'TechMed' },
+    { src: '/Landing-page/trust/gold-logo1.png', alt: 'Joint Commission International' },
 ];
 
 export default function TrustAndTech() {
     return (
-        <section className="relative w-full min-h-screen lg:h-screen overflow-hidden flex items-center md:items-end pb-12 md:pb-24">
+        <section className="relative w-full min-h-screen flex items-center lg:items-end pt-24 pb-12 md:pb-24 overflow-hidden">
             {/* Background Image - Absolute and Full Bleed */}
             <div className="absolute inset-0 z-0 h-full w-full">
                 <Image
@@ -43,19 +43,14 @@ export default function TrustAndTech() {
                         </p>
 
                         {/* Logo Grid */}
-                        <div className="w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[450px] mx-auto lg:mx-0">
-                            <div className="flex gap-4 sm:gap-6 lg:gap-8 mb-4 sm:mb-6 lg:mb-8">
-                                {logos.slice(0, 3).map((logo, index) => (
-                                    <div key={index} className={`relative flex-1 h-14 sm:h-16 lg:h-18 transition-transform hover:scale-105 ${index === 2 ? 'lg:-ml-4' : ''}`}>
+                        <div className="grid grid-cols-2 gap-4 w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] mx-auto lg:mx-0">
+                            {logos.map((logo, index) => (
+                                <div key={index} className="bg-white rounded-[24px] p-4 flex items-center justify-center h-14 sm:h-16 lg:h-18 transition-transform hover:scale-105 shadow-sm">
+                                    <div className="relative w-full h-full">
                                         <Image src={logo.src} alt={logo.alt} fill className="object-contain" priority />
                                     </div>
-                                ))}
-                            </div>
-                            <div className="flex justify-start">
-                                <div className="relative w-1/3 h-14 sm:h-16 lg:h-18 transition-transform hover:scale-105">
-                                    <Image src={logos[3].src} alt={logos[3].alt} fill className="object-contain" priority />
                                 </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
