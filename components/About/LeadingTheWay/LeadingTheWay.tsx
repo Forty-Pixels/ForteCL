@@ -9,16 +9,27 @@ export default function LeadingTheWay() {
                     {/* Left Content */}
                     <div className="flex flex-col items-start order-2 lg:order-1 max-w-7xl mx-auto lg:mx-0 w-full pr-4 sm:pr-8">
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-[#202020] mb-8 leading-[1.2] lg:leading-[1.1] max-w-xl">
-                            Leading the Way in <br />
-                            Diagnostic Excellence
+                            Diagnostics That Go <br />
+                            Beyond the Result
                         </h2>
 
                         <div className="space-y-6 text-gray-600 text-sm md:text-base lg:text-lg mb-10 leading-relaxed lg:max-w-[90%] pr-4">
                             <p>
-                                At Forte Clinical Laboratory, we pride ourselves on delivering top-tier diagnostic services from our 5,000 sq.ft agship facility in Al Garhoud, Dubai. With a commitment to accuracy, efficiency, and patient-centered care, we utilise advanced medical technology and a team of highly skilled professionals to provide comprehensive testing solutions from routine blood panels to complex genomics all under one roof.
+                                Forte Clinical Laboratory was built with a clear purpose: to raise the standard
+                                of diagnostic care in Dubai. Our young, dynamic team of pathologists, consultants
+                                and microbiologists is dedicated to delivering precise, timely results — from the
+                                most routine test to the most complex genomic workup.
                             </p>
                             <p>
-                                Whether you are seeking routine or specialized lab tests, our range of services ensures precise results for informed health decisions. Our dedication to excellence combined with a compassionate approach makes us the trusted choice for medical professionals and residents across Dubai.
+                                Every report released from Forte is reviewed and authorised by a reputed
+                                pathologist or consultant. Our 24/7 cloud-based system allows direct interaction
+                                between patients, doctors and our clinical team — so results are not just
+                                delivered, they are understood.
+                            </p>
+                            <p>
+                                We are JCI accredited, ISO 9001-2015 certified and Bio-Rad recognised — a
+                                reflection of our commitment to international quality standards in everything
+                                we do.
                             </p>
                         </div>
 

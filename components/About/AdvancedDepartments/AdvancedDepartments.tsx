@@ -21,20 +21,23 @@ export default function AdvancedDepartments() {
                     {/* Right Content */}
                     <div className="flex flex-col items-start max-w-7xl mx-auto lg:mx-0 w-full pl-4 sm:pl-8 lg:pl-16">
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.2rem] font-bold text-[#202020] mb-8 leading-[1.2] lg:leading-[1.1] max-w-2xl">
-                            Advanced Diagnostic <br />
-                            Departments Delivering <br />
-                            Precision Testing
+                            Specialised Departments. <br />
+                            Collaborative Expertise.
                         </h2>
 
                         <p className="text-gray-600 text-sm md:text-base lg:text-lg mb-10 leading-relaxed lg:max-w-[90%]">
-                            Our highly specialised departments set us apart in diagnostics across Dubai. From advanced haematology and biochemistry to microbiology, molecular diagnostics and pathology — each department is equipped with the latest technology and staffed by highly experienced professionals working collaboratively to handle everything from routine tests to the most complex diagnostic challenges.
+                            Forte&apos;s departments span the full range of modern diagnostics — Haematology,
+                            Biochemistry, Microbiology, Immunology, Molecular Diagnostics, Oncology, Genetic
+                            Screening, Prenatal Testing and more. Each operates with dedicated technology and
+                            specialist staff, working in coordination to handle both routine and highly complex
+                            cases with equal rigour.
                         </p>
 
                         <Link
                             href="/departments"
                             className="bg-[#2DD4BF] hover:bg-teal-300 text-white px-8 py-3.5 rounded-lg font-medium transition-colors text-center text-sm md:text-base"
                         >
-                            View All Departments
+                            View Our Departments →
                         </Link>
                     </div>
 

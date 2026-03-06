@@ -10,11 +10,11 @@ export default function MissionVision() {
                 {/* Header Content */}
                 <div className="text-center max-w-4xl mx-auto mb-16 md:mb-24">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
-                        Empowering Your Health Journey <br />
-                        with Precision & Innovation
+                        What Drives Us
                     </h2>
                     <p className="text-white/90 text-sm md:text-base lg:text-lg leading-relaxed max-w-4xl mx-auto">
-                        At Forte Clinical Laboratory, we are driven by a passion for accuracy, efficiency and innovation. We prioritise your health by providing cutting-edge diagnostic services with unmatched precision and care.
+                        We operate on three core principles — Promptness, Accuracy and Reliability. They shape
+                        how we collect samples, how we process tests and how we report results.
                     </p>
                 </div>
 
@@ -31,7 +31,8 @@ export default function MissionVision() {
                         </div>
                         <h3 className="text-xl font-bold uppercase tracking-wider">Mission</h3>
                         <p className="text-white/80 text-sm md:text-base leading-relaxed">
-                            To provide reliable, precise and timely diagnostic services in Dubai, empowering individuals to take proactive steps towards a healthier life.
+                            To deliver precise, reliable and timely diagnostic services that empower patients
+                            and healthcare providers to make better, faster health decisions.
                         </p>
                     </div>
 
@@ -47,7 +48,8 @@ export default function MissionVision() {
                         </div>
                         <h3 className="text-xl font-bold uppercase tracking-wider">Vision</h3>
                         <p className="text-white/80 text-sm md:text-base leading-relaxed">
-                            To be Dubai&apos;s most trusted diagnostic laboratory — pioneering advancements in healthcare testing and setting the highest standards in patient satisfaction.
+                            To be Dubai&apos;s most trusted diagnostic facility — setting the benchmark for
+                            laboratory excellence and patient-first care.
                         </p>
                     </div>
 
@@ -62,7 +64,7 @@ export default function MissionVision() {
                         </div>
                         <h3 className="text-xl font-bold uppercase tracking-wider">Values</h3>
                         <p className="text-white/80 text-sm md:text-base leading-relaxed">
-                            Integrity, innovation, empathy, quality, and a patient-first approach in every service we provide.
+                            Accuracy in every result. Integrity in every interaction. Innovation in every process.
                         </p>
                     </div>
                 </div>
