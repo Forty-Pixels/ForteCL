@@ -13,11 +13,11 @@ export default function Departments() {
                             Departments
                         </span>
                         <h2 className="text-2xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold text-[#202020] mb-6 leading-[1.2] lg:leading-[1.1] max-w-full">
-                            Specialized Departments <br className="hidden lg:block" />
-                            Exceptional Diagnostics
+                            Every Discipline. <br className="hidden lg:block" />
+                            Under One Roof.
                         </h2>
                         <p className="text-gray-600 text-sm md:text-base lg:text-lg mb-10 leading-relaxed lg:max-w-[85%] pr-4">
-                            Forte Clinical Laboratory features specialized departments catering to the full spectrum of diagnostic needs. Equipped with the latest technology and staffed by experienced professionals, each department operates in tandem  delivering precise, timely results for optimal health management
+                            Our specialised departments cover the full spectrum of diagnostic medicine — from haematology and biochemistry to molecular diagnostics, oncology, genetic screening and beyond. Each department runs on automated, evidence-based systems designed to minimise error and maximise accuracy, with every result reviewed by qualified professionals before it reaches you.
                         </p>
 
                         <Link

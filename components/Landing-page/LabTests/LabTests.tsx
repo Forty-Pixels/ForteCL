@@ -4,18 +4,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const tests = [
-    { name: 'Lipid Profile', image: '/Landing-page/tests/test-1.png' },
-    { name: 'Thyroid Profile', image: '/Landing-page/tests/test-2.png' },
-    { name: 'Liver Function', image: '/Landing-page/tests/test-3.png' },
-    { name: 'Kidney Function', image: '/Landing-page/tests/test-4.png' },
-    { name: 'Complete Blood Count (CBC)', image: '/Landing-page/tests/test-5.png' },
-    { name: 'Urine Analysis', image: '/Landing-page/tests/test-6.png' },
-    { name: 'Electrolytes', image: '/Landing-page/tests/test-7.png' },
     { name: 'Diabetes Care', image: '/Landing-page/tests/test-8.png' },
-    { name: 'STD Testing', image: '/Landing-page/tests/test-9.png' },
-    { name: 'Allergy Panel', image: '/Landing-page/tests/test-10.png' },
-    { name: 'Pre-Marital Screening', image: '/Landing-page/tests/test-11.png' },
-    { name: 'Cancer Markers', image: '/Landing-page/tests/test-12.png' },
+    { name: 'Liver Tests', image: '/Landing-page/tests/test-3.png' },
+    { name: 'Kidney Tests', image: '/Landing-page/tests/test-4.png' },
+    { name: 'Thyroid Tests', image: '/Landing-page/tests/test-2.png' },
+    { name: 'Lipid Profile', image: '/Landing-page/tests/test-1.png' },
+    { name: 'Complete Blood Count (CBC)', image: '/Landing-page/tests/test-5.png' },
+    { name: 'Electrolytes Panel', image: '/Landing-page/tests/test-7.png' },
+    { name: 'Mineral Panel', image: '/Landing-page/tests/test-mineral.png' },
+    { name: 'HIV Test', image: '/Landing-page/tests/test-hiv.png' },
+    { name: 'Fertility (Female)', image: '/Landing-page/tests/test-fertility.png' },
+    { name: 'Hormone Panel (Men)', image: '/Landing-page/tests/test-hormone.png' },
+    { name: 'Vitamin B12', image: '/Landing-page/tests/test-vitamin-b12.png' },
 ];
 
 // Triple the tests to simulate infinity
@@ -73,13 +73,10 @@ export default function LabTests() {
                             Lab Tests
                         </span>
                         <h2 className="text-white text-4xl md:text-5xl lg:text-[2.8rem] font-bold mb-8 leading-[1.15]">
-                            Redefining Diagnostics<br className="hidden lg:block" /> with World Class Lab<br className="hidden lg:block" /> Test Services
+                            4,500+ Specialised Tests.<br className="hidden lg:block" /> One Location.
                         </h2>
-                        <p className="text-gray-300 text-sm md:text-base mb-6 leading-relaxed opacity-90 max-w-lg">
-                            From routine blood tests and hormone panels to advanced diagnostic screenings, Forte Clinical Laboratory offers a comprehensive range of tests tailored to individual and clinical needs — including home sample collection in Dubai, STD testing, and pre-marital screening packages.
-                        </p>
                         <p className="text-gray-300 text-sm md:text-base mb-10 leading-relaxed opacity-90 max-w-lg">
-                            Experience precision in diagnostics with CBC, lipid profiles, glucose monitoring, genetic analysis and more. All performed with the latest technology medical science has to offer
+                            From everyday blood work to molecular diagnostics and genetic screening, Forte Clinical Laboratory processes over 10,000 parameters daily with the capacity to handle 4,500+ special tests under one roof. Our in-house pathologists, consultants and microbiologists review and authorise every report — so you get results you can act on.
                         </p>
 
                         <Link href="/tests" className="bg-[#2DD4BF] hover:bg-teal-300 text-white px-8 py-3.5 rounded-md font-medium transition-colors text-center w-full sm:w-auto">

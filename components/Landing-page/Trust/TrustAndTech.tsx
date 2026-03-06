@@ -33,13 +33,13 @@ export default function TrustAndTech() {
                     {/* Content Area */}
                     <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-12 text-white">
                         <span className="text-white font-medium text-xs tracking-[0.2em] mb-4 uppercase">
-                            Cutting-Edge Diagnostics
+                            Precision & Accreditation
                         </span>
                         <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold mb-6 leading-[1.1] max-w-xl">
-                            Powered by the Future of Lab Technology
+                            Built on International Standards of Quality
                         </h2>
                         <p className="text-white/90 text-sm md:text-base mb-10 leading-relaxed max-w-lg opacity-90">
-                            Experience the pinnacle of accuracy with our advanced laboratory technology, delivering reliable results across every diagnostic discipline. From home sample collection to complex genomic testing, we set the standard in health monitoring with unmatched quality in every test we perform
+                            Forte Clinical Laboratory is ISO 9001-2015 certified across Biochemistry, Haematology, Microbiology, Immunology, Serology and Clinical Pathology. We are JCI accredited, Bio-Rad certified for clinical chemistry and haematology quality, and partner with Siemens — a global pioneer in healthcare technology — to ensure our processes meet the highest international benchmarks.
                         </p>
 
                         {/* Logo Grid */}
