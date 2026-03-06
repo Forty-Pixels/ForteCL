@@ -2,34 +2,44 @@ import Image from 'next/image';
 
 const departments = [
     {
-        title: "Hematology & Immunology",
-        description: "Complete blood analysis, coagulation studies and immunological profiling using advanced cell counters and flow cytometry platforms.",
+        title: "Haematology",
+        description: "Full blood analysis, coagulation and cell morphology studies — supporting diagnosis of anaemia, clotting disorders and blood-based conditions.",
         image: "/Departments/grid/hematology.png"
     },
     {
         title: "Biochemistry & Endocrinology",
-        description: "Comprehensive metabolic panels, hormone assays and chemistry screening on high-throughput automated analysers.",
+        description: "Metabolic panels, organ function tests and hormone assays — from liver and kidney profiles to thyroid and fertility screening.",
         image: "/Departments/grid/biochemistry.png"
     },
     {
         title: "Microbiology & Serology",
-        description: "Culture and sensitivity testing, viral serology and infectious disease diagnostics with rapid and confirmatory methods.",
+        description: "Culture, sensitivity and infectious disease testing — covering bacterial, viral and parasitic conditions with rapid turnaround.",
         image: "/Departments/grid/microbiology.png"
     },
     {
         title: "Molecular Diagnostics",
-        description: "PCR-based testing, genetic mutation analysis and next-generation sequencing for oncology and hereditary workups.",
+        description: "RT-PCR, HPV, STI panels and advanced pathogen identification using the latest nucleic acid testing platforms.",
         image: "/Departments/grid/molecular.png"
     },
     {
-        title: "Histopathology & Cytopathology",
-        description: "Biopsy analysis, fine needle aspiration cytology and tissue-based diagnostics reviewed by consultant pathologists.",
-        image: "/Departments/grid/histopathology.png"
+        title: "Immunology & Allergy",
+        description: "Allergen panels, autoimmune markers and immune function testing across a broad range of environmental and food triggers.",
+        image: "/Departments/grid/hematology.png"
     },
     {
-        title: "Genetic & Metabolic Disorders",
-        description: "Newborn screening, chromosomal karyotyping and rare metabolic disorder identification for precise clinical guidance.",
+        title: "Oncology & Tumour Markers",
+        description: "Cancer screening and tumour marker panels supporting early detection and ongoing monitoring across multiple cancer types.",
+        image: "/Departments/grid/molecular.png"
+    },
+    {
+        title: "Genetic & Prenatal Screening",
+        description: "NIPT, newborn screening and genetic disorder panels — delivered with clinical accuracy and handled with sensitivity.",
         image: "/Departments/grid/genetics.png"
+    },
+    {
+        title: "Pathology",
+        description: "Tissue-based diagnostics, cytology and histopathology reviewed by experienced consultant pathologists.",
+        image: "/Departments/grid/histopathology.png"
     }
 ];
 
