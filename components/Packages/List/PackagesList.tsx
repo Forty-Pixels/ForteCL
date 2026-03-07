@@ -104,14 +104,26 @@ const packages = [
         image: "/Packages/list/cbc.png",
         testsTotal: 20,
         subTests: [
-            { title: "Red blood cells count", explanation: "Checks oxygen transport capacity" },
-            { title: "Hemoglobin (Hb)", explanation: "Essential protein for oxygen delivery" },
-            { title: "Hematocrit", explanation: "Proportion of red blood cells in your blood" },
-            { title: "MCV / MCH / MCHC", explanation: "Red cell size and hemoglobin concentration" },
-            { title: "Platelet count", explanation: "Essential for blood clotting" },
-            { title: "White blood cells count", explanation: "Measures overall immune response" },
-            { title: "Differential Count", explanation: "Neutrophils, Lymphocytes, Eosinophils, Monocytes, Basophils" },
-            { title: "Absolute Counts", explanation: "Specific counts for all white blood cell subtypes" }
+            { title: "Red blood cells count", explanation: "Measurement of red blood cells" },
+            { title: "Hemoglobin (Hb)", explanation: "Protein in red blood cells that carries oxygen" },
+            { title: "Hematocrit", explanation: "Proportion of red blood cells in blood" },
+            { title: "MCV", explanation: "Mean corpuscular volume" },
+            { title: "MCH", explanation: "Mean corpuscular hemoglobin" },
+            { title: "MCHC", explanation: "Mean corpuscular hemoglobin concentration" },
+            { title: "MPV", explanation: "Mean platelet volume" },
+            { title: "RDW", explanation: "Red cell distribution width" },
+            { title: "Platelet count", explanation: "Measurement of platelets for clotting" },
+            { title: "White blood cells count", explanation: "Measurement of white blood cells for immunity" },
+            { title: "Neutrophils", explanation: "Type of white blood cell" },
+            { title: "Lymphocytes", explanation: "Type of white blood cell" },
+            { title: "Eosinophils", explanation: "Type of white blood cell" },
+            { title: "Monocytes", explanation: "Type of white blood cell" },
+            { title: "Basophils", explanation: "Type of white blood cell" },
+            { title: "Absolute neutrophil count", explanation: "Absolute count of neutrophils" },
+            { title: "Absolute lymphocyte count", explanation: "Absolute count of lymphocytes" },
+            { title: "Absolute monocyte count", explanation: "Absolute count of monocytes" },
+            { title: "Absolute eosinophil count", explanation: "Absolute count of eosinophils" },
+            { title: "Absolute basophil count", explanation: "Absolute count of basophils" }
         ]
     },
     {
@@ -172,6 +184,7 @@ const packages = [
         title: "Vitamin B12 — AED 136",
         description: "Ensure your energy and overall health with a Vitamin B12 test at Forte Clinical Laboratory, Dubai. This vital test measures levels critical for red blood cell formation and neurological function. Trust our expertise for reliable testing and guidance.",
         image: "/Packages/list/vitaminb12.png",
+        testsTotal: 1,
         subTests: [
             { title: "Vitamin B12", explanation: "Essential for energy and nerve health" }
         ]
@@ -181,6 +194,7 @@ const packages = [
         title: "Alcohol Tests",
         description: "Trust Forte Clinical Laboratory in Dubai, UAE, with our top-notch medical staff and advanced technology for Alcohol and Drug Abuse Lab Testing. Our tests are designed to provide dependable results for your peace of mind and accurate diagnosis.",
         image: "/Packages/list/alcohol.png",
+        testsTotal: 2,
         subTests: [
             { title: "Drug Abuse Test", explanation: "Screening for common substances" },
             { title: "Alcohol Screening", explanation: "Accurate detection for medical assessment" }
@@ -191,11 +205,13 @@ const packages = [
         title: "Allery Tests",
         description: "Forte Clinical Laboratory in Dubai stands out with specialized tests aiding in precise allergy diagnosis. Suspect an allergy? Our state-of-the-art technology and expert staff deliver dependable results for your well-being.",
         image: "/Packages/list/biochemistry.png", // Reuse biochemistry temporarily if needed, but I'll generate new one if quota allows later
+        testsTotal: 6,
         subTests: [
-            { title: "Allergy Test Panel – Food", explanation: "Screening for standard food allergens" },
-            { title: "Allergy Test Panel – Inhalation", explanation: "Screening for environmental allergens" },
-            { title: "Folate / IgE", explanation: "Specific markers for allergic responsiveness" },
-            { title: "Food Intolerance", explanation: "Comprehensive 220 parameter test" },
+            { title: "Allergy Test Pannel – Food", explanation: "Screening for standard food allergens" },
+            { title: "Allergy Test Pannel – Inhalation", explanation: "Screening for environmental allergens" },
+            { title: "Folate", explanation: "Folate level assessment" },
+            { title: "IgE", explanation: "Immunoglobulin E test for allergic reactions" },
+            { title: "Food Intolerance Test with 220 Parametes", explanation: "Comprehensive 220 parameter test" },
             { title: "Food Print", explanation: "Tailored food profile analysis" }
         ]
     },
@@ -204,6 +220,7 @@ const packages = [
         title: "Anemia Tests",
         description: "Experience excellence at Forte Clinical Laboratory, recognized as the leading lab in Dubai, UAE. If you’re concerned about anemia, our specialized tests support accurate diagnosis with top-tier technology.",
         image: "/Packages/list/cbc.png", // CBC is very related to anemia
+        testsTotal: 3,
         subTests: [
             { title: "Complete Blood Count (CBC)", explanation: "Overall screening for blood cells" },
             { title: "Hemoglobin Test (Hb)", explanation: "Direct measurement of oxygen-carrying protein" },
@@ -215,10 +232,14 @@ const packages = [
         title: "Cancer Tests",
         description: "At Forte Clinical Laboratory, we elevate your cancer testing experience with exceptional staff and cutting-edge technology in oncology tests. Specialized tests are designed to aid in precise diagnosis.",
         image: "/Packages/list/biochemistry.png",
+        testsTotal: 6,
         subTests: [
-            { title: "CEA / AFP", explanation: "Common tumor markers for screening" },
-            { title: "CA 19-9 / PSA", explanation: "Specialized markers for organ-specific screening" },
-            { title: "CA-125 / CgA", explanation: "Additional oncology markers for comprehensive check" }
+            { title: "Carcinoembryonic Antigen (CEA) Testing", explanation: "Common tumor marker for screening" },
+            { title: "AFP (Alpha-Fetoprotein) Testing", explanation: "Specific marker used in cancer screening" },
+            { title: "Cancer Antigen 19-9 (CA 19-9)", explanation: "Specialized oncology marker" },
+            { title: "Prostate Specific Antigen (PSA) Testing", explanation: "Marker for prostate health screening" },
+            { title: "Cancer Antigen 125 (CA-125) Testing", explanation: "Specialized marker for specific organ screening" },
+            { title: "Chromaganin A Test (CgA)", explanation: "Additional oncology marker for comprehensive check" }
         ]
     },
     {
@@ -226,6 +247,7 @@ const packages = [
         title: "Arthritis Tests",
         description: "Experiencing bone pain, knee pain, or joint stiffness? Forte Clinical Laboratory offers comprehensive arthritis diagnosis services with experienced rheumatologists and state-of-the-art technology.",
         image: "/Packages/list/biochemistry.png",
+        testsTotal: 3,
         subTests: [
             { title: "C – Reactive Protein (CRP)", explanation: "Sensitive marker of systemic inflammation" },
             { title: "Rheumatoid Factor (RF)", explanation: "Key marker for autoimmune arthritis" },
@@ -239,11 +261,18 @@ const packages = [
         image: "/Packages/list/hormonal.png",
         testsTotal: 12,
         subTests: [
-            { title: "Lipid Profile / TSH", explanation: "Checks for heart health and thyroid markers" },
-            { title: "FT3 / FT4", explanation: "Free thyroid hormone levels assessment" },
-            { title: "FBS / HbA1c", explanation: "Metabolic and glucose monitoring" },
-            { title: "FSH / LH / Prolactin", explanation: "Core reproductive hormone assessment" },
-            { title: "Testosterone / E2 / Progesterone", explanation: "Specialized hormonal balance screening" }
+            { title: "Lipid Profile", explanation: "Checks cholesterol and triglycerides" },
+            { title: "Thyroid Stimulating Hormone (TSH)", explanation: "Checks thyroid gland function" },
+            { title: "Free Triiodothyronine (FT3)", explanation: "Measurement of free T3 hormone level" },
+            { title: "Free Thyroxine (FT4)", explanation: "Measurement of free T4 hormone level" },
+            { title: "Fasting Blood Sugar", explanation: "Baseline blood glucose measurement" },
+            { title: "Hba1c", explanation: "Average blood sugar over past 3 months" },
+            { title: "Follicle Stimulating Hormone (FSH)", explanation: "Evaluation of reproductive health" },
+            { title: "Luteinising Hormone (LH)", explanation: "Hormone affecting reproductive system" },
+            { title: "Prolactin", explanation: "Hormone related to reproductive health" },
+            { title: "Testosterone", explanation: "Checks androgen levels in the body" },
+            { title: "Estradiol (E2)", explanation: "Measures main form of estrogen" },
+            { title: "Progesterone", explanation: "Hormone crucial for menstrual cycle" }
         ]
     },
     {
@@ -251,6 +280,7 @@ const packages = [
         title: "Food handler medical screening",
         description: "Food Handlers medical screenings are essential for food hygiene certification. Forte Clinical Laboratory makes it easy for you to get certified as a responsible service provider in Dubai, UAE.",
         image: "/Packages/list/biochemistry.png",
+        testsTotal: 2,
         subTests: [
             { title: "Food Handlers Medicals 1 & 2", explanation: "Standard health checks for food safety certification" }
         ]
@@ -310,7 +340,7 @@ export default function PackagesList() {
                                 {/* Accordion List */}
                                 <div className="mt-8 border-t border-gray-100 pt-8">
                                     <h4 className="text-xl font-bold text-[#1F2937] mb-8 uppercase tracking-wide text-sm opacity-60">
-                                        Tests {pkg.testsTotal ? `(${pkg.testsTotal} total)` : ''}
+                                        Tests
                                     </h4>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
