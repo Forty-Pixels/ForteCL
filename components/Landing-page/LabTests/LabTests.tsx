@@ -2,6 +2,7 @@
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Reveal from '@/components/Animation/Reveal';
 
 const tests = [
     { name: 'Diabetes Care', image: '/Landing-page/tests/test-8.png' },
@@ -48,7 +49,7 @@ export default function LabTests() {
 
     const handleScroll = () => {
         if (!scrollRef.current) return;
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        const { scrollLeft } = scrollRef.current;
         const cardWidth = 360 + 24;
         const totalTestsWidth = cardWidth * tests.length;
 
@@ -69,23 +70,31 @@ export default function LabTests() {
 
                     {/* Left Content */}
                     <div className="w-full lg:w-[60%] flex flex-col items-start pt-4 lg:pr-12">
-                        <span className="text-[#2DD4BF] font-semibold text-sm tracking-widest mb-4 uppercase">
-                            Lab Tests
-                        </span>
-                        <h2 className="text-white text-4xl md:text-5xl lg:text-[2.8rem] font-bold mb-8 leading-[1.15]">
-                            4,500+ Specialised Tests.<br className="hidden lg:block" /> One Location.
-                        </h2>
-                        <p className="text-gray-300 text-sm md:text-base mb-10 leading-relaxed opacity-90 max-w-lg">
-                            From everyday blood work to molecular diagnostics and genetic screening, Forte Clinical Laboratory processes over 10,000 parameters daily with the capacity to handle 4,500+ special tests under one roof. Our in-house pathologists, consultants and microbiologists review and authorise every report — so you get results you can act on.
-                        </p>
+                        <Reveal delayMs={70}>
+                            <span className="text-[#2DD4BF] font-semibold text-sm tracking-widest mb-4 uppercase block">
+                                Lab Tests
+                            </span>
+                        </Reveal>
+                        <Reveal delayMs={140}>
+                            <h2 className="text-white text-4xl md:text-5xl lg:text-[2.8rem] font-bold mb-8 leading-[1.15]">
+                                4,500+ Specialised Tests.<br className="hidden lg:block" /> One Location.
+                            </h2>
+                        </Reveal>
+                        <Reveal delayMs={210}>
+                            <p className="text-gray-300 text-sm md:text-base mb-10 leading-relaxed opacity-90 max-w-lg">
+                                From everyday blood work to molecular diagnostics and genetic screening, Forte Clinical Laboratory processes over 10,000 parameters daily with the capacity to handle 4,500+ special tests under one roof. Our in-house pathologists, consultants and microbiologists review and authorise every report — so you get results you can act on.
+                            </p>
+                        </Reveal>
 
-                        <Link href="/tests" className="bg-[#2DD4BF] hover:bg-teal-300 text-white px-8 py-3.5 rounded-md font-medium transition-colors text-center w-full sm:w-auto">
-                            View All Tests
-                        </Link>
+                        <Reveal delayMs={280}>
+                            <Link href="/tests" className="bg-[#2DD4BF] hover:bg-teal-300 text-white px-8 py-3.5 rounded-md font-medium transition-colors text-center w-full sm:w-auto">
+                                View All Tests
+                            </Link>
+                        </Reveal>
                     </div>
 
                     {/* Right Content - Carousel */}
-                    <div className="w-full lg:w-[40%] mt-12 lg:mt-0 relative">
+                    <Reveal delayMs={180} className="w-full lg:w-[40%] mt-12 lg:mt-0 relative">
                         <div
                             ref={scrollRef}
                             onScroll={handleScroll}
@@ -131,7 +140,7 @@ export default function LabTests() {
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                             </button>
                         </div>
-                    </div>
+                    </Reveal>
 
                 </div>
             </div>

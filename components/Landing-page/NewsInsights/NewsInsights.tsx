@@ -1,6 +1,7 @@
 'use client';
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Reveal from '@/components/Animation/Reveal';
 
 interface NewsItem {
     title: string;
@@ -85,71 +86,79 @@ export default function NewsInsights() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
                 {/* Header */}
-                <span className="text-white/90 font-medium text-sm tracking-wider mb-4 uppercase inline-block">
-                    News & Insights
-                </span>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Stay Informed. Stay Ahead
-                </h2>
-                <p className="text-white/90 text-sm md:text-base max-w-2xl mx-auto mb-16 leading-relaxed">
-                    Explore the latest health tips, diagnostic breakthroughs and wellness guidance from our expert team.
-                    Our articles keep you educated and empowered to make better health decisions.
-                </p>
+                <Reveal delayMs={70}>
+                    <span className="text-white/90 font-medium text-sm tracking-wider mb-4 uppercase inline-block">
+                        News & Insights
+                    </span>
+                </Reveal>
+                <Reveal delayMs={140}>
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                        Stay Informed. Stay Ahead
+                    </h2>
+                </Reveal>
+                <Reveal delayMs={210}>
+                    <p className="text-white/90 text-sm md:text-base max-w-2xl mx-auto mb-16 leading-relaxed">
+                        Explore the latest health tips, diagnostic breakthroughs and wellness guidance from our expert team.
+                        Our articles keep you educated and empowered to make better health decisions.
+                    </p>
+                </Reveal>
 
                 {/* Carousel Wrapper with space for arrows */}
-                <div className="relative group px-10 sm:px-16 lg:px-0">
+                <Reveal delayMs={280}>
+                    <div className="relative group px-10 sm:px-16 lg:px-0">
 
-                    {/* Left Arrow */}
-                    <button
-                        onClick={() => scroll('left')}
-                        className="absolute left-0 lg:-left-16 top-[40%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
-                        aria-label="Previous articles"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                        </svg>
-                    </button>
+                        {/* Left Arrow */}
+                        <button
+                            onClick={() => scroll('left')}
+                            className="absolute left-0 lg:-left-16 top-[40%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
+                            aria-label="Previous articles"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                            </svg>
+                        </button>
 
-                    {/* Scrollable Track */}
-                    <div
-                        ref={scrollContainerRef}
-                        onScroll={handleScroll}
-                        className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide w-full"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
-                        {infiniteNewsItems.map((item, index) => (
-                            <div
-                                key={index}
-                                className="w-full min-w-full sm:min-w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start flex flex-col pt-1"
-                            >
-                                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-6 bg-white/10">
-                                    <Image
-                                        src={item.image}
-                                        alt={item.title}
-                                        fill
-                                        className="object-cover transform transition-transform duration-500 hover:scale-110"
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                    />
+                        {/* Scrollable Track */}
+                        <div
+                            ref={scrollContainerRef}
+                            onScroll={handleScroll}
+                            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide w-full"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                        >
+                            {infiniteNewsItems.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="w-full min-w-full sm:min-w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start flex flex-col pt-1"
+                                >
+                                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-6 bg-white/10">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            fill
+                                            className="object-cover transform transition-transform duration-500 hover:scale-110"
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        />
+                                    </div>
+                                    <h3 className="text-white font-medium text-lg leading-snug px-2 text-center">
+                                        {item.title}
+                                    </h3>
                                 </div>
-                                <h3 className="text-white font-medium text-lg leading-snug px-2 text-center">
-                                    {item.title}
-                                </h3>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
+
+                        {/* Right Arrow */}
+                        <button
+                            onClick={() => scroll('right')}
+                            className="absolute right-0 lg:-right-16 top-[40%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
+                            aria-label="Next articles"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+
                     </div>
-
-                    {/* Right Arrow */}
-                    <button
-                        onClick={() => scroll('right')}
-                        className="absolute right-0 lg:-right-16 top-[40%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
-                        aria-label="Next articles"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                        </svg>
-                    </button>
-
-                </div>
+                </Reveal>
             </div>
 
             {/* Global CSS to hide scrollbar explicitly for webkit browsers */}
