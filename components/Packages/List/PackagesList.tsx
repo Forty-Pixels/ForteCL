@@ -22,7 +22,7 @@ const packages = [
     {
         id: 'liver',
         title: "Liver Profile — AED 99",
-        description: "From assessing liver function test to imaging studies, these tests offer valuable insights into the health and functionality of your liver. Check for signs of inflammation or damage, ensuring optimal liver function for your overall well-being. Experience the gold standard in liver health assessments with our range of tests, including liver function tests and advanced imaging studies with Forte Clinical Laboratory, Dubai. Results Time: Within 24-48 Hours | Fasting Required: 8-10 Hours | Sample Type: Blood sample",
+        description: "From assessing liver function test to imaging studies, these tests offer valuable insights into the health and functionality of your liver. Check for signs of inflammation or damage, ensuring optimal liver function for your overall well-being. Experience the gold standard in liver health assessments with our range of tests, including liver function tests and advanced imaging studies with Forte Clinical Laboratory, Dubai. Sample Type: Blood sample",
         image: "/Packages/list/liver.png",
         testsTotal: 9,
         subTests: [
