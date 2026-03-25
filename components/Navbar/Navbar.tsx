@@ -45,6 +45,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
     };
 
     return (
+        <>
         <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 ${isScrolled ? 'bg-[#061414]/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4 sm:py-6'}`}>
             <nav className="relative flex items-center justify-between px-4 sm:px-8 max-w-7xl mx-auto w-full">
                 {/* Left: Logo */}
@@ -112,10 +113,11 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 </button>
             </div>
         </nav>
+        </header>
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 z-[60] lg:hidden transition-all duration-500 ease-in-out ${isMenuOpen
+                className={`fixed inset-0 z-[110] lg:hidden transition-all duration-500 ease-in-out ${isMenuOpen
                     ? 'opacity-100 pointer-events-auto'
                     : 'opacity-0 pointer-events-none'
                     }`}
@@ -180,6 +182,6 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     </div>
                 </div>
             </div>
-        </header>
+        </>
     );
 }
