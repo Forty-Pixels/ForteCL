@@ -10,6 +10,7 @@ interface NavbarProps {
 
 export default function Navbar({ currentPage }: NavbarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     // Lock scroll when menu is open
     useEffect(() => {
@@ -19,6 +20,15 @@ export default function Navbar({ currentPage }: NavbarProps) {
             document.body.style.overflow = 'unset';
         }
     }, [isMenuOpen]);
+
+    // Handle scroll to add background to navbar
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const navLinks = [
         { name: 'Home', href: '/' },
@@ -35,12 +45,13 @@ export default function Navbar({ currentPage }: NavbarProps) {
     };
 
     return (
-        <nav className="relative z-50 flex items-center justify-between px-4 sm:px-8 py-6 max-w-7xl mx-auto w-full">
-            {/* Left: Logo */}
-            <div className="flex-shrink-0 z-50">
-                <Link href="/">
-                    <Image
-                        src="/fortecl-logo1.png"
+        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 ${isScrolled ? 'bg-[#061414]/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4 sm:py-6'}`}>
+            <nav className="relative flex items-center justify-between px-4 sm:px-8 max-w-7xl mx-auto w-full">
+                {/* Left: Logo */}
+                <div className="flex-shrink-0 z-50">
+                    <Link href="/">
+                        <Image
+                            src="/fortecl-logo1.png"
                         alt="Forte Clinical Laboratory"
                         width={160}
                         height={50}
@@ -100,6 +111,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     )}
                 </button>
             </div>
+        </nav>
 
             {/* Mobile Menu Overlay */}
             <div
@@ -168,6 +180,6 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     </div>
                 </div>
             </div>
-        </nav>
+        </header>
     );
 }

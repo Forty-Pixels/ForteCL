@@ -14,7 +14,7 @@ export default function ContactHero() {
             <Navbar currentPage="Contact" />
 
             {/* Hero Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 -mt-20 sm:-mt-24 w-full mx-auto max-w-7xl">
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 w-full mx-auto max-w-7xl">
                 <h1 className="text-white font-bold tracking-tight text-3xl sm:text-4xl lg:text-6xl max-w-5xl text-center mb-8 leading-[1.2]">
                     Get in Touch. <br />
                     We're Here to Help.

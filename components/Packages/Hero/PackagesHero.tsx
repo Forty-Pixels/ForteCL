@@ -13,7 +13,7 @@ export default function PackagesHero() {
             <Navbar currentPage="Packages" />
 
             {/* Hero Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 -mt-20 sm:-mt-24 w-full mx-auto max-w-7xl">
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 w-full mx-auto max-w-7xl">
                 <h1 className="text-white font-bold tracking-tight text-4xl sm:text-5xl lg:text-6xl max-w-xs sm:max-w-2xl lg:max-w-4xl text-center mb-4 sm:mb-6 leading-tight sm:leading-tight lg:leading-tight">
                     Health Screening Packages <br className="hidden md:block" />
                     Designed for You

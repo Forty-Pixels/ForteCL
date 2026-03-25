@@ -14,7 +14,7 @@ export default function Hero() {
 
             <Navbar currentPage="Home" />
 
-            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 -mt-20 sm:-mt-24 w-full mx-auto max-w-7xl">
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 w-full mx-auto max-w-7xl">
                 <Reveal delayMs={60}>
                     <span className="text-white font-light text-xs sm:text-sm tracking-widest mb-4 sm:mb-6 text-center px-4 block">
                         DHA Approved Diagnostic Laboratory & Home Testing
