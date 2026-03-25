@@ -14,24 +14,48 @@ const newsItems: NewsItem[] = [
         image: '/Landing-page/news/image-1.png',
     },
     {
-        title: 'What Are Vitamins and Why Does Monitoring Them Matter?',
-        image: '/Landing-page/news/vitamin_monitoring_high_res.png',
+        title: 'Vitamins & Monitoring',
+        image: '/Landing-page/news/image-2.png',
     },
     {
-        title: 'What Is the Pre-Marital Screening Package?',
+        title: 'Pre-Marital Screening',
         image: '/Landing-page/news/image-3.png',
     },
     {
-        title: 'The Role of Genomic Testing in Preventive Care',
+        title: 'Genomic Testing Role',
         image: '/Landing-page/news/image-4.png',
     },
     {
-        title: 'Understanding Your Lab Results Dashboard',
+        title: 'Lab Results Dashboard',
         image: '/Landing-page/news/image-5.png',
     },
     {
-        title: 'Behind the Scenes: How We Ensure Test Accuracy',
+        title: 'Ensuring Test Accuracy',
         image: '/Landing-page/news/image-6.png',
+    },
+    {
+        title: 'Cardiac Risk Assessment',
+        image: '/Landing-page/news/new-item-2.png', 
+    },
+    {
+        title: 'Routine Blood Panels',
+        image: '/Landing-page/tests/test-1.png', 
+    },
+    {
+        title: 'Thyroid Health Guide',
+        image: '/Landing-page/news/new-item-4.png', 
+    },
+    {
+        title: 'Allergy Testing Process',
+        image: '/Landing-page/news/new-item-1.png', 
+    },
+    {
+        title: 'Metabolic Health Stats',
+        image: '/Landing-page/news/new-item-3.png', 
+    },
+    {
+        title: 'Pediatric Wellness',
+        image: '/Landing-page/tests/test-2.png',
     },
 ];
 
@@ -58,7 +82,7 @@ export default function NewsInsights() {
         const totalItemsWidth = (cardWidth + gap) * newsItems.length;
 
         // If too far left, jump to middle
-        if (scrollLeft < totalItemsWidth - (cardWidth + gap) * 2) {
+        if (scrollLeft < totalItemsWidth / 2) {
             container.scrollLeft += totalItemsWidth;
         }
         // If too far right, jump to middle
@@ -70,14 +94,11 @@ export default function NewsInsights() {
     const scroll = (direction: 'left' | 'right') => {
         if (scrollContainerRef.current) {
             const container = scrollContainerRef.current;
-            // Scroll by exactly one card width
-            const scrollAmount = (container.children[0] as HTMLElement).offsetWidth + 24;
-
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
+            // Scroll by one full view width (adjust for gaps)
+            const viewWidth = container.clientWidth;
+            const scrollAmount = direction === 'left' ? -viewWidth : viewWidth;
+            
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
     };
 
@@ -110,7 +131,7 @@ export default function NewsInsights() {
                         {/* Left Arrow */}
                         <button
                             onClick={() => scroll('left')}
-                            className="absolute left-0 lg:-left-16 top-[40%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
+                            className="absolute left-0 lg:-left-20 top-[35%] sm:top-[38%] lg:top-[33%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
                             aria-label="Previous articles"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
@@ -122,24 +143,25 @@ export default function NewsInsights() {
                         <div
                             ref={scrollContainerRef}
                             onScroll={handleScroll}
-                            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide w-full"
+                            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide w-full scroll-smooth"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
                             {infiniteNewsItems.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="w-full min-w-full sm:min-w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] lg:min-w-[calc(33.333%-16px)] flex-shrink-0 snap-start flex flex-col pt-1"
+                                    className="w-[calc(100%-24px)] min-w-[calc(100%-24px)] sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(16.666%-20px)] lg:min-w-[calc(16.666%-20px)] flex-shrink-0 flex flex-col pt-1 snap-start"
                                 >
-                                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-6 bg-white/10">
+                                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-4 bg-[#061414]/20 group-hover:shadow-xl transition-all border border-white/5">
                                         <Image
                                             src={item.image}
                                             alt={item.title}
                                             fill
                                             className="object-cover transform transition-transform duration-500 hover:scale-110"
-                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                            unoptimized
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 16vw"
                                         />
                                     </div>
-                                    <h3 className="text-white font-medium text-lg leading-snug px-2 text-center">
+                                    <h3 className="text-white font-medium text-sm md:text-base leading-snug px-1 text-center">
                                         {item.title}
                                     </h3>
                                 </div>
@@ -149,7 +171,7 @@ export default function NewsInsights() {
                         {/* Right Arrow */}
                         <button
                             onClick={() => scroll('right')}
-                            className="absolute right-0 lg:-right-16 top-[40%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
+                            className="absolute right-0 lg:-right-20 top-[35%] sm:top-[38%] lg:top-[33%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
                             aria-label="Next articles"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
