@@ -26,12 +26,12 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
                         <ul className="space-y-4 text-gray-400 text-sm">
-                            <li><Link href="/" className="hover:text-[#2DD4BF] transition-colors">Home</Link></li>
-                            <li><Link href="/lab-tests" className="hover:text-[#2DD4BF] transition-colors">Lab Tests</Link></li>
-                            <li><Link href="/packages" className="hover:text-[#2DD4BF] transition-colors">Packages</Link></li>
-                            <li><Link href="/departments" className="hover:text-[#2DD4BF] transition-colors">Departments</Link></li>
-                            <li><Link href="/about" className="hover:text-[#2DD4BF] transition-colors">About</Link></li>
-                            <li><Link href="/contact" className="hover:text-[#2DD4BF] transition-colors">Contact</Link></li>
+                            <li><Link href="/" className="hover:text-[#307984] transition-colors">Home</Link></li>
+                            <li><Link href="/lab-tests" className="hover:text-[#307984] transition-colors">Lab Tests</Link></li>
+                            <li><Link href="/packages" className="hover:text-[#307984] transition-colors">Packages</Link></li>
+                            <li><Link href="/departments" className="hover:text-[#307984] transition-colors">Departments</Link></li>
+                            <li><Link href="/about" className="hover:text-[#307984] transition-colors">About</Link></li>
+                            <li><Link href="/contact" className="hover:text-[#307984] transition-colors">Contact</Link></li>
                         </ul>
                     </div>
 
@@ -77,9 +77,9 @@ export default function Footer() {
                             <input
                                 type="email"
                                 placeholder="Enter Your Email Address"
-                                className="bg-[#1a1a1a] border border-gray-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#2DD4BF] w-full"
+                                className="bg-[#1a1a1a] border border-gray-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#307984] w-full"
                             />
-                            <button className="bg-[#2DD4BF] hover:bg-teal-300 text-white px-6 py-3 rounded-lg font-medium transition-colors text-sm whitespace-nowrap">
+                            <button className="bg-[#307984] hover:bg-[#307984]/90 text-white px-6 py-3 rounded-lg font-medium transition-colors text-sm whitespace-nowrap">
                                 Sign Up
                             </button>
                         </div>

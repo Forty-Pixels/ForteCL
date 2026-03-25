@@ -39,13 +39,13 @@ export default function Hero() {
                     <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full sm:w-auto px-4">
                         <Link
                             href="/book-test"
-                            className="bg-[#2DD4BF] hover:bg-teal-300 text-white rounded-md px-6 sm:px-8 py-3.5 sm:py-3 font-medium transition-colors w-full sm:w-auto text-center"
+                            className="bg-[#307984] hover:bg-[#307984]/90 text-white rounded-md px-6 sm:px-8 py-3.5 sm:py-3 font-medium transition-colors w-full sm:w-auto text-center"
                         >
                             Book a Test
                         </Link>
                         <Link
                             href="/reports"
-                            className="border-2 border-[#2DD4BF] hover:bg-[#2DD4BF]/10 text-white rounded-md px-6 sm:px-8 py-3.5 sm:py-3 font-medium transition-colors w-full sm:w-auto text-center backdrop-blur-sm"
+                            className="border-2 border-[#307984] hover:bg-[#307984]/10 text-white rounded-md px-6 sm:px-8 py-3.5 sm:py-3 font-medium transition-colors w-full sm:w-auto text-center backdrop-blur-sm"
                         >
                             Check Reports Online
                         </Link>

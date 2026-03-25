@@ -9,7 +9,7 @@ export default function Departments() {
                 <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-12 lg:gap-8 items-center">
                     <div className="flex flex-col items-start order-2 lg:order-1 max-w-7xl mx-auto lg:mx-0 w-full pr-4 sm:pr-8">
                         <Reveal delayMs={70}>
-                            <span className="text-[#2DD4BF] font-semibold text-sm xl:text-base tracking-wider mb-4 block">
+                            <span className="text-[#307984] font-semibold text-sm xl:text-base tracking-wider mb-4 block">
                                 Departments
                             </span>
                         </Reveal>
@@ -28,7 +28,7 @@ export default function Departments() {
                         <Reveal delayMs={280}>
                             <Link
                                 href="/departments"
-                                className="bg-[#2DD4BF] hover:bg-teal-300 text-white px-8 py-3.5 rounded-lg font-medium transition-colors text-center text-sm md:text-base"
+                                className="bg-[#307984] hover:bg-[#307984]/90 text-white px-8 py-3.5 rounded-lg font-medium transition-colors text-center text-sm md:text-base"
                             >
                                 View All Departments
                             </Link>

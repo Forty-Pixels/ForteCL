@@ -29,7 +29,7 @@ export default function ContactContent() {
                                 {/* Address */}
                                 <li className="flex items-start space-x-4">
                                     <div className="mt-1 flex-shrink-0">
-                                        <svg className="w-6 h-6 text-[#2DD4BF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                        <svg className="w-6 h-6 text-[#307984]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
@@ -40,7 +40,7 @@ export default function ContactContent() {
                                 {/* Phone - Refined with Waves */}
                                 <li className="flex items-center space-x-4">
                                     <div className="flex-shrink-0">
-                                        <svg className="w-6 h-6 text-[#2DD4BF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                        <svg className="w-6 h-6 text-[#307984]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                             {/* Phone Receiver */}
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                                             {/* Arcs/Waves */}
@@ -53,7 +53,7 @@ export default function ContactContent() {
                                 {/* Hours */}
                                 <li className="flex items-center space-x-4">
                                     <div className="flex-shrink-0">
-                                        <svg className="w-6 h-6 text-[#2DD4BF]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                        <svg className="w-6 h-6 text-[#307984]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                     </div>
@@ -119,7 +119,7 @@ export default function ContactContent() {
 
                             <button
                                 type="submit"
-                                className="w-full md:w-auto bg-[#2DD4BF] hover:bg-teal-300 text-white font-semibold py-3 px-10 rounded-lg transition-colors"
+                                className="w-full md:w-auto bg-[#307984] hover:bg-[#307984]/90 text-white font-semibold py-3 px-10 rounded-lg transition-colors"
                             >
                                 Submit Inquiry
                             </button>

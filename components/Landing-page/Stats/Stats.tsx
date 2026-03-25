@@ -134,8 +134,8 @@ export default function Stats() {
                     {stats.map((stat, index) => (
                         <Reveal key={stat.label} delayMs={90 + index * 80}>
                             <div className="flex flex-col items-start justify-start">
-                                <div className="text-[#2DD4BF] mb-4">{stat.icon}</div>
-                                <h3 className="text-3xl md:text-4xl font-bold text-[#2DD4BF] mb-2 font-poppins">
+                                <div className="text-[#307984] mb-4">{stat.icon}</div>
+                                <h3 className="text-3xl md:text-4xl font-bold text-[#307984] mb-2 font-poppins">
                                     {typeof stat.target === 'number' ? (
                                         <CountText target={stat.target} suffix={stat.suffix} shouldStart={isVisible} />
                                     ) : (

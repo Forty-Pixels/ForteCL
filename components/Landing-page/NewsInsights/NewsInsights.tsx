@@ -103,7 +103,7 @@ export default function NewsInsights() {
     };
 
     return (
-        <section className="py-20 md:py-32 bg-gradient-to-br from-[#307984] to-[#42AFBF]">
+        <section className="py-20 md:py-32 bg-gradient-to-br from-[#307984] to-[#3C8E9B]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
                 {/* Header */}

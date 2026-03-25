@@ -52,7 +52,7 @@ export default function LabTests() {
                     {/* Left Content */}
                     <div className="w-full lg:w-[45%] flex flex-col items-start pt-4 lg:pr-8">
                         <Reveal delayMs={70}>
-                            <span className="text-[#2DD4BF] font-semibold text-sm tracking-widest mb-4 uppercase block">
+                            <span className="text-[#307984] font-semibold text-sm tracking-widest mb-4 uppercase block">
                                 Lab Tests
                             </span>
                         </Reveal>
@@ -68,7 +68,7 @@ export default function LabTests() {
                         </Reveal>
 
                         <Reveal delayMs={280}>
-                            <Link href="/tests" className="bg-[#2DD4BF] hover:bg-teal-300 text-[#111] px-8 py-3.5 rounded-md font-bold transition-colors text-center w-full sm:w-auto">
+                            <Link href="/tests" className="bg-[#307984] hover:bg-[#307984]/90 text-white px-8 py-3.5 rounded-md font-bold transition-colors text-center w-full sm:w-auto">
                                 View All Tests
                             </Link>
                         </Reveal>

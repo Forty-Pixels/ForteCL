@@ -68,7 +68,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className={`${isActive(link.name) ? 'text-[#2DD4BF]' : 'text-white hover:text-[#2DD4BF]'} font-medium transition-colors`}
+                        className={`${isActive(link.name) ? 'text-[#307984]' : 'text-white hover:text-[#307984]'} font-medium transition-colors`}
                     >
                         {link.name}
                     </Link>
@@ -77,7 +77,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
             {/* Right: Contact Button & Mobile Menu Toggle */}
             <div className="flex items-center gap-4 z-50">
-                <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#2DD4BF] text-white px-6 py-2.5 rounded-full font-medium transition-transform hover:scale-105">
+                <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#307984] text-white px-6 py-2.5 rounded-full font-medium transition-transform hover:scale-105">
                     <svg
                         className="w-4 h-4 mr-2"
                         fill="none"
@@ -98,7 +98,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 {/* Hamburger Icon for Mobile */}
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="lg:hidden text-white p-2 focus:outline-none transition-colors hover:text-[#2DD4BF]"
+                    className="lg:hidden text-white p-2 focus:outline-none transition-colors hover:text-[#307984]"
                     aria-label="Toggle mobile menu"
                 >
                     {isMenuOpen ? (
@@ -138,7 +138,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     </Link>
                     <button
                         onClick={() => setIsMenuOpen(false)}
-                        className="text-white p-2 hover:text-[#2DD4BF] transition-colors"
+                        className="text-white p-2 hover:text-[#307984] transition-colors"
                         aria-label="Close menu"
                     >
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,8 +159,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                 <Link
                                     href={link.href}
                                     onClick={() => setIsMenuOpen(false)}
-                                    className={`text-4xl sm:text-5xl font-bold tracking-tight ${isActive(link.name) ? 'text-[#2DD4BF]' : 'text-white'
-                                        } hover:text-[#2DD4BF] transition-colors flex items-center group`}
+                                    className={`text-4xl sm:text-5xl font-bold tracking-tight ${isActive(link.name) ? 'text-[#307984]' : 'text-white'
+                                        } hover:text-[#307984] transition-colors flex items-center group`}
                                 >
                                     {link.name}
                                     <span className="ml-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-2xl">→</span>
@@ -174,9 +174,9 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         <Link
                             href="/contact"
                             onClick={() => setIsMenuOpen(false)}
-                            className="inline-flex items-center text-white/60 text-lg hover:text-[#2DD4BF] transition-colors"
+                            className="inline-flex items-center text-white/60 text-lg hover:text-[#307984] transition-colors"
                         >
-                            <span className="w-12 h-[1px] bg-[#2DD4BF] mr-4"></span>
+                            <span className="w-12 h-[1px] bg-[#307984] mr-4"></span>
                             Need assistance? Contact our team
                         </Link>
                     </div>

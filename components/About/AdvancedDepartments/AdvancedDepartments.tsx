@@ -35,7 +35,7 @@ export default function AdvancedDepartments() {
 
                         <Link
                             href="/departments"
-                            className="bg-[#2DD4BF] hover:bg-teal-300 text-white px-8 py-3.5 rounded-lg font-medium transition-colors text-center text-sm md:text-base"
+                            className="bg-[#307984] hover:bg-[#307984]/90 text-white px-8 py-3.5 rounded-lg font-medium transition-colors text-center text-sm md:text-base"
                         >
                             View Our Departments →
                         </Link>

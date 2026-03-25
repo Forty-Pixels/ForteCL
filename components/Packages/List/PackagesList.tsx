@@ -350,10 +350,10 @@ export default function PackagesList() {
                                                     onClick={() => toggleTest(pkg.id, testIndex)}
                                                     className="w-full flex items-center text-left transition-colors group"
                                                 >
-                                                    <span className={`font-medium text-xl mr-3 shrink-0 transition-colors text-[#2DD4BF]`}>
+                                                    <span className={`font-medium text-xl mr-3 shrink-0 transition-colors text-[#307984]`}>
                                                         {openTests[pkg.id] === testIndex ? '−' : '+'}
                                                     </span>
-                                                    <span className="text-[#2DD4BF] text-base sm:text-lg font-medium group-hover:text-teal-500 transition-colors">
+                                                    <span className="text-[#307984] text-base sm:text-lg font-medium group-hover:text-[#307984]/80 transition-colors">
                                                         {subTest.title}
                                                     </span>
                                                 </button>
