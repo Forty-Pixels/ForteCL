@@ -30,7 +30,7 @@ export default function TrustAndTech() {
 
                     <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-12 text-white">
                         <Reveal delayMs={70}>
-                            <span className="text-white font-medium text-xs tracking-[0.2em] mb-4 uppercase block">
+                            <span className="text-[#f88c29] font-medium text-xs tracking-[0.2em] mb-4 uppercase block">
                                 Precision & Accreditation
                             </span>
                         </Reveal>

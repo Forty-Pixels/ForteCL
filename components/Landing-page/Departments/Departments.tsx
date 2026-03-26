@@ -9,7 +9,7 @@ export default function Departments() {
                 <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-12 lg:gap-8 items-center">
                     <div className="flex flex-col items-start order-2 lg:order-1 max-w-7xl mx-auto lg:mx-0 w-full pr-4 sm:pr-8">
                         <Reveal delayMs={70}>
-                            <span className="text-[#307984] font-semibold text-sm xl:text-base tracking-wider mb-4 block">
+                            <span className="text-[#f88c29] font-semibold text-sm xl:text-base tracking-wider mb-4 block">
                                 Departments
                             </span>
                         </Reveal>

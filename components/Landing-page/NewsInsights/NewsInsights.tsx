@@ -108,7 +108,7 @@ export default function NewsInsights() {
 
                 {/* Header */}
                 <Reveal delayMs={70}>
-                    <span className="text-white/90 font-medium text-sm tracking-wider mb-4 uppercase inline-block">
+                    <span className="text-[#f88c29] font-medium text-sm tracking-wider mb-4 uppercase inline-block">
                         News & Insights
                     </span>
                 </Reveal>

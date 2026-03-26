@@ -52,7 +52,7 @@ export default function LabTests() {
                     {/* Left Content */}
                     <div className="w-full lg:w-[45%] flex flex-col items-start pt-4 lg:pr-8">
                         <Reveal delayMs={70}>
-                            <span className="text-[#307984] font-semibold text-sm tracking-widest mb-4 uppercase block">
+                            <span className="text-[#f88c29] font-semibold text-sm tracking-widest mb-4 uppercase block">
                                 Lab Tests
                             </span>
                         </Reveal>

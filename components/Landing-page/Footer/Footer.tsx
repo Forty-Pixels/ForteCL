@@ -11,10 +11,10 @@ export default function Footer() {
                     <div className="flex flex-col space-y-6">
                         <div className="relative w-48 h-12 -ml-2">
                             <Image
-                                src="/fortecl-logo1.png"
+                                src="/fortecl-logo3.png"
                                 alt="Forte Clinical Laboratory"
                                 fill
-                                className="object-contain object-left brightness-0 invert"
+                                className="object-contain object-left"
                             />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -26,13 +26,13 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
                         <ul className="space-y-4 text-gray-400 text-sm">
-                            <li><Link href="/" className="hover:text-[#307984] transition-colors">Home</Link></li>
-                            <li><Link href="/lab-tests" className="hover:text-[#307984] transition-colors">Lab Tests</Link></li>
-                            <li><Link href="/packages" className="hover:text-[#307984] transition-colors">Packages</Link></li>
-                            <li><Link href="/departments" className="hover:text-[#307984] transition-colors">Departments</Link></li>
-                            <li><Link href="/lab-test-service-dubai" className="hover:text-[#307984] transition-colors">Lab Test Service In Dubai</Link></li>
-                            <li><Link href="/about" className="hover:text-[#307984] transition-colors">About</Link></li>
-                            <li><Link href="/contact" className="hover:text-[#307984] transition-colors">Contact</Link></li>
+                            <li><Link href="/" className="hover:text-[#f88c29] transition-colors">Home</Link></li>
+                            <li><Link href="/lab-tests" className="hover:text-[#f88c29] transition-colors">Lab Tests</Link></li>
+                            <li><Link href="/packages" className="hover:text-[#f88c29] transition-colors">Packages</Link></li>
+                            <li><Link href="/departments" className="hover:text-[#f88c29] transition-colors">Departments</Link></li>
+                            <li><Link href="/lab-test-service-dubai" className="hover:text-[#f88c29] transition-colors">Lab Test Service In Dubai</Link></li>
+                            <li><Link href="/about" className="hover:text-[#f88c29] transition-colors">About</Link></li>
+                            <li><Link href="/contact" className="hover:text-[#f88c29] transition-colors">Contact</Link></li>
                         </ul>
                     </div>
 

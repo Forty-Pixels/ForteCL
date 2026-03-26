@@ -46,13 +46,13 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
     return (
         <>
-        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 ${isScrolled ? 'bg-[#061414]/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4 sm:py-6'}`}>
+        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 bg-white ${isScrolled ? 'shadow-lg py-2' : 'py-4 sm:py-6'}`}>
             <nav className="relative flex items-center justify-between px-4 sm:px-8 max-w-7xl mx-auto w-full">
                 {/* Left: Logo */}
                 <div className="flex-shrink-0 z-50">
                     <Link href="/">
                         <Image
-                            src="/fortecl-logo1.png"
+                            src="/fortecl-logo3.png"
                         alt="Forte Clinical Laboratory"
                         width={160}
                         height={50}
@@ -68,7 +68,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className={`${isActive(link.name) ? 'text-[#307984]' : 'text-white hover:text-[#307984]'} font-medium transition-colors`}
+                        className={`${isActive(link.name) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors`}
                     >
                         {link.name}
                     </Link>
@@ -98,7 +98,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 {/* Hamburger Icon for Mobile */}
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="lg:hidden text-white p-2 focus:outline-none transition-colors hover:text-[#307984]"
+                    className="lg:hidden text-gray-800 p-2 focus:outline-none transition-colors hover:text-[#f88c29]"
                     aria-label="Toggle mobile menu"
                 >
                     {isMenuOpen ? (
@@ -129,7 +129,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-8 py-6 z-50">
                     <Link href="/" onClick={() => setIsMenuOpen(false)}>
                         <Image
-                            src="/fortecl-logo1.png"
+                            src="/fortecl-logo3.png"
                             alt="Logo"
                             width={160}
                             height={50}
@@ -138,7 +138,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     </Link>
                     <button
                         onClick={() => setIsMenuOpen(false)}
-                        className="text-white p-2 hover:text-[#307984] transition-colors"
+                        className="text-white p-2 hover:text-[#f88c29] transition-colors"
                         aria-label="Close menu"
                     >
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -159,8 +159,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                 <Link
                                     href={link.href}
                                     onClick={() => setIsMenuOpen(false)}
-                                    className={`text-4xl sm:text-5xl font-bold tracking-tight ${isActive(link.name) ? 'text-[#307984]' : 'text-white'
-                                        } hover:text-[#307984] transition-colors flex items-center group`}
+                                    className={`text-4xl sm:text-5xl font-bold tracking-tight ${isActive(link.name) ? 'text-[#f88c29]' : 'text-white'
+                                        } hover:text-[#f88c29] transition-colors flex items-center group`}
                                 >
                                     {link.name}
                                     <span className="ml-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-2xl">→</span>
@@ -174,7 +174,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         <Link
                             href="/contact"
                             onClick={() => setIsMenuOpen(false)}
-                            className="inline-flex items-center text-white/60 text-lg hover:text-[#307984] transition-colors"
+                            className="inline-flex items-center text-white/60 text-lg hover:text-[#f88c29] transition-colors"
                         >
                             <span className="w-12 h-[1px] bg-[#307984] mr-4"></span>
                             Need assistance? Contact our team
