@@ -46,7 +46,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
     return (
         <>
-        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 bg-white ${isScrolled ? 'shadow-lg py-2' : 'py-4 sm:py-6'}`}>
+        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 bg-white ${isScrolled ? 'shadow-lg py-2' : 'py-3 sm:py-4'}`}>
             <nav className="relative flex items-center justify-between px-4 sm:px-8 max-w-7xl mx-auto w-full">
                 {/* Left: Logo */}
                 <div className="flex-shrink-0 z-50">
@@ -54,9 +54,9 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         <Image
                             src="/fortecl-logo3.png"
                         alt="Forte Clinical Laboratory"
-                        width={160}
-                        height={50}
-                        className="object-contain cursor-pointer sm:w-[180px] sm:h-[60px]"
+                        width={140}
+                        height={40}
+                        className="object-contain cursor-pointer sm:w-[150px] sm:h-[50px]"
                         priority
                     />
                 </Link>
@@ -68,7 +68,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className={`${isActive(link.name) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors`}
+                        className={`text-sm ${isActive(link.name) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors`}
                     >
                         {link.name}
                     </Link>
@@ -77,7 +77,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
             {/* Right: Contact Button & Mobile Menu Toggle */}
             <div className="flex items-center gap-4 z-50">
-                <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#307984] text-white px-6 py-2.5 rounded-full font-medium transition-transform hover:scale-105">
+                <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#307984] text-white px-5 py-2 rounded-full text-sm font-medium transition-transform hover:scale-105">
                     <svg
                         className="w-4 h-4 mr-2"
                         fill="none"
@@ -131,9 +131,9 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         <Image
                             src="/fortecl-logo3.png"
                             alt="Logo"
-                            width={160}
-                            height={50}
-                            className="object-contain"
+                            width={140}
+                            height={40}
+                            className="object-contain sm:w-[150px] sm:h-[50px]"
                         />
                     </Link>
                     <button
@@ -159,11 +159,11 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                 <Link
                                     href={link.href}
                                     onClick={() => setIsMenuOpen(false)}
-                                    className={`text-4xl sm:text-5xl font-bold tracking-tight ${isActive(link.name) ? 'text-[#f88c29]' : 'text-white'
+                                    className={`text-3xl sm:text-4xl font-bold tracking-tight ${isActive(link.name) ? 'text-[#f88c29]' : 'text-white'
                                         } hover:text-[#f88c29] transition-colors flex items-center group`}
                                 >
                                     {link.name}
-                                    <span className="ml-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-2xl">→</span>
+                                    <span className="ml-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-xl">→</span>
                                 </Link>
                             </div>
                         ))}
@@ -174,7 +174,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         <Link
                             href="/contact"
                             onClick={() => setIsMenuOpen(false)}
-                            className="inline-flex items-center text-white/60 text-lg hover:text-[#f88c29] transition-colors"
+                            className="inline-flex items-center text-white/60 text-base hover:text-[#f88c29] transition-colors"
                         >
                             <span className="w-12 h-[1px] bg-[#307984] mr-4"></span>
                             Need assistance? Contact our team

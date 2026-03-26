@@ -103,22 +103,22 @@ export default function NewsInsights() {
     };
 
     return (
-        <section className="py-20 md:py-32 bg-gradient-to-br from-[#307984] to-[#3C8E9B]">
+        <section className="py-16 md:py-20 bg-gradient-to-br from-[#307984] to-[#3C8E9B]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
                 {/* Header */}
                 <Reveal delayMs={70}>
-                    <span className="text-[#f88c29] font-medium text-sm tracking-wider mb-4 uppercase inline-block">
+                    <span className="text-[#f88c29] font-medium text-xs tracking-wider mb-3 uppercase inline-block">
                         News & Insights
                     </span>
                 </Reveal>
                 <Reveal delayMs={140}>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
                         Stay Informed. Stay Ahead
                     </h2>
                 </Reveal>
                 <Reveal delayMs={210}>
-                    <p className="text-white/90 text-sm md:text-base max-w-2xl mx-auto mb-16 leading-relaxed">
+                    <p className="text-white/90 text-xs md:text-sm max-w-2xl mx-auto mb-12 leading-relaxed">
                         Explore the latest health tips, diagnostic breakthroughs and wellness guidance from our expert team.
                         Our articles keep you educated and empowered to make better health decisions.
                     </p>
@@ -161,7 +161,7 @@ export default function NewsInsights() {
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 16vw"
                                         />
                                     </div>
-                                    <h3 className="text-white font-medium text-sm md:text-base leading-snug px-1 text-center">
+                                    <h3 className="text-white font-medium text-xs md:text-sm leading-snug px-1 text-center">
                                         {item.title}
                                     </h3>
                                 </div>

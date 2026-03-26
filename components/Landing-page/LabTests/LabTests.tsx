@@ -45,30 +45,30 @@ export default function LabTests() {
     };
 
     return (
-        <section className="bg-[#111111] py-24 overflow-hidden">
+        <section className="bg-[#111111] py-16 lg:py-20 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16">
+                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-12">
 
                     {/* Left Content */}
-                    <div className="w-full lg:w-[45%] flex flex-col items-start pt-4 lg:pr-8">
+                    <div className="w-full lg:w-[45%] flex flex-col items-start pt-2 lg:pr-6">
                         <Reveal delayMs={70}>
-                            <span className="text-[#f88c29] font-semibold text-sm tracking-widest mb-4 uppercase block">
+                            <span className="text-[#f88c29] font-semibold text-xs tracking-widest mb-3 uppercase block">
                                 Lab Tests
                             </span>
                         </Reveal>
                         <Reveal delayMs={140}>
-                            <h2 className="text-white text-4xl md:text-5xl lg:text-[2.8rem] font-bold mb-8 leading-[1.15]">
+                            <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-[1.15]">
                                 4,500+ Specialised Tests.<br className="hidden lg:block" /> One Location.
                             </h2>
                         </Reveal>
                         <Reveal delayMs={210}>
-                            <p className="text-gray-300 text-sm md:text-base mb-10 leading-relaxed opacity-90">
+                            <p className="text-gray-300 text-xs md:text-sm mb-8 leading-relaxed opacity-90">
                                 From everyday blood work to molecular diagnostics and genetic screening, Forte Clinical Laboratory processes over 10,000 parameters daily with the capacity to handle 4,500+ special tests under one roof. Our in-house pathologists, consultants and microbiologists review and authorise every report — so you get results you can act on.
                             </p>
                         </Reveal>
 
                         <Reveal delayMs={280}>
-                            <Link href="/tests" className="bg-[#307984] hover:bg-[#307984]/90 text-white px-8 py-3.5 rounded-md font-bold transition-colors text-center w-full sm:w-auto">
+                            <Link href="/tests" className="bg-[#307984] hover:bg-[#307984]/90 text-white px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto">
                                 View All Tests
                             </Link>
                         </Reveal>
@@ -99,8 +99,8 @@ export default function LabTests() {
                                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                                            <div className="absolute inset-0 p-4 flex flex-col justify-end">
-                                                <h3 className="text-white font-bold text-sm md:text-[0.95rem] leading-tight">
+                                            <div className="absolute inset-0 p-3 flex flex-col justify-end">
+                                                <h3 className="text-white font-bold text-xs md:text-sm leading-tight">
                                                     {test.name}
                                                 </h3>
                                             </div>
@@ -111,7 +111,7 @@ export default function LabTests() {
                         </div>
 
                         {/* Navigation Arrows DOWN (Under the images) */}
-                        <div className="flex gap-4 mt-6 justify-start">
+                        <div className="flex gap-4 mt-5 justify-end">
                             <button
                                 onClick={scrollLeft}
                                 className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
