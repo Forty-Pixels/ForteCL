@@ -58,7 +58,7 @@ export default function InsurancePartners() {
                     {/* Navigation Buttons */}
                     <button 
                         onClick={() => scroll('left')}
-                        className="absolute -left-4 sm:-left-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-gray-400 hover:text-[#307984] hover:border-[#307984] hover:shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                        className="absolute -left-2 sm:-left-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-[#307984]/20 flex items-center justify-center text-[#307984] hover:bg-[#307984] hover:text-white transition-all duration-300"
                         aria-label="Previous partners"
                     >
                         <ChevronLeftIcon className="w-5 h-5" />
@@ -66,7 +66,7 @@ export default function InsurancePartners() {
                     
                     <button 
                         onClick={() => scroll('right')}
-                        className="absolute -right-4 sm:-right-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 flex items-center justify-center text-gray-400 hover:text-[#307984] hover:border-[#307984] hover:shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                        className="absolute -right-2 sm:-right-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-[#307984]/20 flex items-center justify-center text-[#307984] hover:bg-[#307984] hover:text-white transition-all duration-300"
                         aria-label="Next partners"
                     >
                         <ChevronRightIcon className="w-5 h-5" />
