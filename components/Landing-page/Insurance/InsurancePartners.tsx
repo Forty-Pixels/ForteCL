@@ -1,9 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
 import Image from 'next/image';
 import Reveal from '@/components/Animation/Reveal';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 const partners = [
     { name: 'Emarat Takaful', image: '/Landing-page/insurance/partner-1.webp' },
@@ -33,55 +31,31 @@ const partners = [
 ];
 
 export default function InsurancePartners() {
-    const scrollRef = useRef<HTMLDivElement>(null);
-
-    const scroll = (direction: 'left' | 'right') => {
-        if (scrollRef.current) {
-            const { current } = scrollRef;
-            const scrollAmount = direction === 'left' ? -current.clientWidth : current.clientWidth;
-            current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-    };
+    // Duplicate the partners array twice to ensure a seamless infinite loop on all screen sizes
+    const marqueeItems = [...partners, ...partners];
 
     return (
-        <section className="bg-white py-16 md:py-20 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative group">
-                <div className="mb-12 text-center">
+        <section className="bg-white py-12 md:py-16 overflow-hidden">
+            <div className="max-w-[1440px] mx-auto">
+                <div className="mb-10 text-center px-4">
                     <Reveal delayMs={70}>
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
-                            Insurance Partners
+                        <h2 className="text-xl md:text-3xl font-bold text-gray-900">
+                            Our Insurance Partners
                         </h2>
                     </Reveal>
                 </div>
 
-                <div className="relative">
-                    {/* Navigation Buttons */}
-                    <button 
-                        onClick={() => scroll('left')}
-                        className="absolute -left-2 sm:-left-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-[#307984]/20 flex items-center justify-center text-[#307984] hover:bg-[#307984] hover:text-white transition-all duration-300"
-                        aria-label="Previous partners"
-                    >
-                        <ChevronLeftIcon className="w-5 h-5" />
-                    </button>
-                    
-                    <button 
-                        onClick={() => scroll('right')}
-                        className="absolute -right-2 sm:-right-8 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-[#307984]/20 flex items-center justify-center text-[#307984] hover:bg-[#307984] hover:text-white transition-all duration-300"
-                        aria-label="Next partners"
-                    >
-                        <ChevronRightIcon className="w-5 h-5" />
-                    </button>
+                <div className="relative w-full overflow-hidden">
+                    {/* Gradient Overlays for smooth edges */}
+                    <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-                    {/* Logos Container */}
-                    <div 
-                        ref={scrollRef}
-                        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-8 items-center py-4 px-2"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
-                        {partners.map((partner, index) => (
+                    {/* Marquee Container */}
+                    <div className="flex w-fit animate-marquee hover:pause-marquee gap-20 md:gap-32 items-center py-10">
+                        {marqueeItems.map((partner, index) => (
                             <div 
-                                key={index} 
-                                className="flex-shrink-0 w-32 md:w-40 lg:w-44 h-16 relative snap-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                                key={`${partner.name}-${index}`} 
+                                className="flex-shrink-0 w-44 md:w-56 lg:w-72 h-16 md:h-24 relative transition-all duration-300 transform hover:scale-110"
                             >
                                 <Image
                                     src={partner.image}
@@ -94,10 +68,18 @@ export default function InsurancePartners() {
                     </div>
                 </div>
             </div>
+
             <style dangerouslySetInnerHTML={{
                 __html: `
-                .hide-scrollbar::-webkit-scrollbar {
-                    display: none;
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .animate-marquee {
+                    animation: marquee 55s linear infinite;
+                }
+                .hover\\:pause-marquee:hover {
+                    animation-play-state: paused;
                 }
             `}} />
         </section>
