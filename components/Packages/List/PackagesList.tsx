@@ -300,15 +300,15 @@ export default function PackagesList() {
     };
 
     return (
-        <section className="py-20 bg-white">
+        <section className="py-16 bg-white">
             <div className="max-w-7xl mx-auto px-4">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16 text-[#1F2937]">Our Health Packages</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12 text-[#1F2937]">Our Health Packages</h2>
 
-                <div className="space-y-32">
+                <div className="space-y-24">
                     {packages.map((pkg, index) => (
                         <div
                             key={pkg.id}
-                            className={`flex flex-col lg:flex-row items-start gap-12 lg:gap-20 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
+                            className={`flex flex-col lg:flex-row items-start gap-8 lg:gap-16 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
                         >
                             {/* Image Container */}
                             <div className="w-full lg:w-5/12 lg:sticky lg:top-32 h-fit">
@@ -324,43 +324,43 @@ export default function PackagesList() {
 
                             {/* Content Container */}
                             <div className="w-full lg:w-7/12">
-                                <h3 className="text-2xl sm:text-3xl font-bold text-[#3B82F6] mb-4">
+                                <h3 className="text-xl sm:text-2xl font-bold text-[#3B82F6] mb-3">
                                     {pkg.title}
                                 </h3>
                                 {pkg.id === 'liver' && (
-                                    <div className="flex gap-4 mb-4 text-sm font-medium text-gray-500 uppercase tracking-wide">
+                                    <div className="flex gap-4 mb-3 text-xs font-medium text-gray-500 uppercase tracking-wide">
                                         <span>Results: 24-48h</span>
                                         <span>Fasting: 8-10h</span>
                                     </div>
                                 )}
-                                <p className="text-gray-600 text-lg mb-10 leading-relaxed">
+                                <p className="text-gray-600 text-base mb-8 leading-relaxed">
                                     {pkg.description}
                                 </p>
 
                                 {/* Accordion List */}
-                                <div className="mt-8 border-t border-gray-100 pt-8">
-                                    <h4 className="text-xl font-bold text-[#1F2937] mb-8 uppercase tracking-wide text-sm opacity-60">
+                                <div className="mt-6 border-t border-gray-100 pt-6">
+                                    <h4 className="text-lg font-bold text-[#1F2937] mb-6 uppercase tracking-wide text-xs opacity-60">
                                         Tests
                                     </h4>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
                                         {pkg.subTests.map((subTest, testIndex) => (
-                                            <div key={testIndex} className="border-b border-gray-100 last:border-0 md:last:border-b py-3">
+                                            <div key={testIndex} className="border-b border-gray-100 last:border-0 md:last:border-b py-2">
                                                 <button
                                                     onClick={() => toggleTest(pkg.id, testIndex)}
                                                     className="w-full flex items-center text-left transition-colors group"
                                                 >
-                                                    <span className={`font-medium text-xl mr-3 shrink-0 transition-colors text-[#2DD4BF]`}>
+                                                    <span className={`font-medium text-lg mr-3 shrink-0 transition-colors text-[#307984]`}>
                                                         {openTests[pkg.id] === testIndex ? '−' : '+'}
                                                     </span>
-                                                    <span className="text-[#2DD4BF] text-base sm:text-lg font-medium group-hover:text-teal-500 transition-colors">
+                                                    <span className="text-[#307984] text-sm sm:text-base font-medium group-hover:text-[#307984]/80 transition-colors">
                                                         {subTest.title}
                                                     </span>
                                                 </button>
 
                                                 {openTests[pkg.id] === testIndex && (
-                                                    <div className="mt-3 pl-8 pr-4 animate-in fade-in slide-in-from-top-2 duration-300">
-                                                        <p className="text-gray-600 text-sm sm:text-base leading-relaxed italic">
+                                                    <div className="mt-2 pl-8 pr-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                                                        <p className="text-gray-600 text-xs sm:text-sm leading-relaxed italic">
                                                             {subTest.explanation}
                                                         </p>
                                                     </div>

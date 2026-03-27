@@ -13,13 +13,13 @@ export default function PackagesHero() {
             <Navbar currentPage="Packages" />
 
             {/* Hero Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 -mt-20 sm:-mt-24 w-full mx-auto max-w-7xl">
-                <h1 className="text-white font-bold tracking-tight text-4xl sm:text-5xl lg:text-6xl max-w-xs sm:max-w-2xl lg:max-w-4xl text-center mb-4 sm:mb-6 leading-tight sm:leading-tight lg:leading-tight">
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 w-full mx-auto max-w-7xl">
+                <h1 className="text-white font-bold tracking-tight text-3xl sm:text-4xl lg:text-5xl max-w-xs sm:max-w-xl lg:max-w-3xl text-center mb-4 sm:mb-5 leading-tight sm:leading-tight lg:leading-tight">
                     Health Screening Packages <br className="hidden md:block" />
                     Designed for You
                 </h1>
 
-                <p className="text-white text-center max-w-xs sm:max-w-xl lg:max-w-4xl text-sm sm:text-base lg:text-lg mb-8 sm:mb-10 leading-relaxed opacity-90 px-4 sm:px-0">
+                <p className="text-white text-center max-w-xs sm:max-w-lg lg:max-w-3xl text-xs sm:text-sm lg:text-base mb-8 sm:mb-10 leading-relaxed opacity-90 px-4 sm:px-0">
                     Comprehensive health checkup packages tailored for individuals, families and corporate
                     giving you a full diagnostic picture in one convenient visit or home collection
                 </p>

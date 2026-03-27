@@ -10,7 +10,7 @@ const logos = [
 
 export default function TrustAndTech() {
     return (
-        <section className="relative w-full min-h-screen flex items-center lg:items-end pt-24 pb-12 md:pb-24 overflow-hidden">
+        <section className="relative w-full min-h-screen flex items-center lg:items-end pt-16 pb-8 md:pb-16 overflow-hidden">
             <div className="absolute inset-0 z-0 h-full w-full">
                 <Image
                     src="/Landing-page/trust/bg-v3.png"
@@ -30,17 +30,17 @@ export default function TrustAndTech() {
 
                     <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-12 text-white">
                         <Reveal delayMs={70}>
-                            <span className="text-white font-medium text-xs tracking-[0.2em] mb-4 uppercase block">
+                            <span className="text-[#f88c29] font-medium text-[0.65rem] tracking-[0.2em] mb-3 uppercase block">
                                 Precision & Accreditation
                             </span>
                         </Reveal>
                         <Reveal delayMs={140}>
-                            <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl xl:text-5xl font-bold mb-6 leading-[1.1] max-w-xl">
+                            <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-bold mb-5 leading-[1.1] max-w-xl">
                                 Built on International Standards of Quality
                             </h2>
                         </Reveal>
                         <Reveal delayMs={210}>
-                            <p className="text-white/90 text-sm md:text-base mb-10 leading-relaxed max-w-lg opacity-90">
+                            <p className="text-white/90 text-xs md:text-sm mb-8 leading-relaxed max-w-lg opacity-90">
                                 Forte Clinical Laboratory is ISO 9001-2015 certified across Biochemistry, Haematology, Microbiology, Immunology, Serology and Clinical Pathology. We are JCI accredited, Bio-Rad certified for clinical chemistry and haematology quality, and partner with Siemens — a global pioneer in healthcare technology — to ensure our processes meet the highest international benchmarks.
                             </p>
                         </Reveal>
@@ -48,7 +48,7 @@ export default function TrustAndTech() {
                         <Reveal delayMs={290} className="w-full">
                             <div className="grid grid-cols-2 gap-4 w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] mx-auto lg:mx-0">
                                 {logos.map((logo, index) => (
-                                    <div key={index} className="bg-white rounded-[24px] p-4 flex items-center justify-center h-14 sm:h-16 lg:h-18 transition-transform hover:scale-105 shadow-sm">
+                                    <div key={index} className="bg-white rounded-[24px] p-4 flex items-center justify-center h-12 sm:h-14 lg:h-16 transition-transform hover:scale-105 shadow-sm">
                                         <div className="relative w-full h-full">
                                             <Image src={logo.src} alt={logo.alt} fill className="object-contain" priority />
                                         </div>
