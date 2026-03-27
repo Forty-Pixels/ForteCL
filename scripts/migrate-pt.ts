@@ -1,6 +1,6 @@
 import { createClient } from '@sanity/client';
 import dotenv from 'dotenv';
-import { labTests } from '../data/labTestsData.ts';
+import { labTests } from '../data/labTestsData';
 
 dotenv.config({ path: '.env.local' });
 
