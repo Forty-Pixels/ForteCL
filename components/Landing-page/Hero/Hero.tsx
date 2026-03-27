@@ -6,10 +6,16 @@ import Reveal from '@/components/Animation/Reveal';
 
 export default function Hero() {
     return (
-        <section
-            className="relative h-screen min-h-[600px] w-full bg-black bg-cover bg-center"
-            style={{ backgroundImage: 'url("/Landing-page/hero-image.png")' }}
-        >
+        <section className="relative h-screen min-h-[600px] w-full overflow-hidden bg-black">
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+            >
+                <source src="/Landing-page/hero-video.mp4" type="video/mp4" />
+            </video>
             <div className="absolute inset-0 bg-black/55"></div>
 
             <Navbar currentPage="Home" />
@@ -38,16 +44,18 @@ export default function Hero() {
                 <Reveal delayMs={280}>
                     <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full sm:w-auto px-4">
                         <Link
-                            href="/book-test"
+                            href="https://wa.me/97142729302"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="bg-[#307984] hover:bg-[#307984]/90 text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-colors w-full sm:w-auto text-center"
                         >
                             Book a Test
                         </Link>
                         <Link
-                            href="/reports"
+                            href="/lab-tests"
                             className="border-2 border-[#307984] hover:bg-[#307984]/10 text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-colors w-full sm:w-auto text-center backdrop-blur-sm"
                         >
-                            Check Reports Online
+                            Explore Lab Tests
                         </Link>
                     </div>
                 </Reveal>

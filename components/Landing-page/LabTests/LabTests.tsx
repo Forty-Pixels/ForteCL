@@ -68,8 +68,8 @@ export default function LabTests() {
                         </Reveal>
 
                         <Reveal delayMs={280}>
-                            <Link href="/tests" className="bg-[#307984] hover:bg-[#307984]/90 text-white px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto">
-                                View All Tests
+                            <Link href="/lab-tests" className="bg-[#307984] hover:bg-[#307984]/90 text-white px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto">
+                                Explore Lab Tests
                             </Link>
                         </Reveal>
                     </div>

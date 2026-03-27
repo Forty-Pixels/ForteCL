@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from 'next/font/google';
 import "./globals.css";
+import FloatingContact from "@/components/FloatingContact/FloatingContact";
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         {children}
+        <FloatingContact />
       </body>
     </html>
   );

@@ -49,3 +49,10 @@ body {
     transition: none;
   }
 }
+
+html.menu-open .floating-contact-wrap {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  display: none !important;
+}

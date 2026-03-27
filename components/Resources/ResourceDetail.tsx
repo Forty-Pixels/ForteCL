@@ -158,7 +158,9 @@ export default function ResourceDetail({ post, relatedPosts }: ResourceDetailPro
                                     
                                     <div className="pt-2">
                                         <Link 
-                                            href="/lab-tests"
+                                            href="https://wa.me/97142729302"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className="block w-full text-center bg-[#307984] hover:bg-[#307984]/90 text-white rounded-xl py-4 font-bold text-sm transition-all shadow-md active:scale-95"
                                         >
                                             Book a Test

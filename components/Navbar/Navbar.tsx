@@ -16,8 +16,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
+            document.documentElement.classList.add('menu-open');
         } else {
             document.body.style.overflow = 'unset';
+            document.documentElement.classList.remove('menu-open');
         }
     }, [isMenuOpen]);
 
@@ -117,7 +119,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 z-[110] lg:hidden transition-all duration-500 ease-in-out ${isMenuOpen
+                className={`fixed inset-0 z-[200] lg:hidden transition-all duration-500 ease-in-out ${isMenuOpen
                     ? 'opacity-100 pointer-events-auto'
                     : 'opacity-0 pointer-events-none'
                     }`}
