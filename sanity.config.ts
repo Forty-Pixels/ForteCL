@@ -1,0 +1,21 @@
+import { defineConfig } from 'sanity';
+import { structureTool } from 'sanity/structure';
+import labTest from './sanity/schemas/labTest';
+import packageSchema from './sanity/schemas/package';
+import diseaseCategory from './sanity/schemas/diseaseCategory';
+import department from './sanity/schemas/department';
+
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
+
+export default defineConfig({
+  basePath: '/studio',
+  name: 'ForteCL_Studio',
+  title: 'ForteCL Content Manager',
+  projectId,
+  dataset,
+  plugins: [structureTool()],
+  schema: {
+    types: [labTest, packageSchema, diseaseCategory, department],
+  },
+});
