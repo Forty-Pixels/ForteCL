@@ -49,3 +49,34 @@ export const allPackagesQuery = `*[_type == "package"] | order(_createdAt asc) {
   testsTotal,
   subTests
 }`;
+
+// ─── Resources & Health Insights ────────────────────────
+
+/** Fetch all resource posts (listing page) */
+export const allResourcesQuery = `*[_type == "post"] | order(publishedAt desc) {
+  "slug": slug.current,
+  title,
+  author,
+  "category": category->title,
+  publishedAt,
+  excerpt,
+  "image": mainImage.asset->url
+}`;
+
+/** Fetch a single resource post by slug (detail page) */
+export const resourceBySlugQuery = `*[_type == "post" && slug.current == $slug][0] {
+  "slug": slug.current,
+  title,
+  author,
+  "category": category->title,
+  publishedAt,
+  excerpt,
+  "image": mainImage.asset->url,
+  body
+}`;
+
+/** Fetch all resource slugs (for generateStaticParams) */
+export const allResourceSlugsQuery = `*[_type == "post"] { "slug": slug.current }`;
+
+/** Fetch distinct resource categories */
+export const distinctResourceCategoriesQuery = `*[_type == "resourceCategory"] | order(title asc).title`;

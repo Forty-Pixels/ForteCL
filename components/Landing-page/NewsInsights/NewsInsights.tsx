@@ -1,65 +1,11 @@
 'use client';
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
+import { resourcePosts } from '@/data/resourcesData';
 
-interface NewsItem {
-    title: string;
-    image: string;
-}
-
-const newsItems: NewsItem[] = [
-    {
-        title: 'What Is a Respiratory Virus?',
-        image: '/Landing-page/news/image-1.png',
-    },
-    {
-        title: 'Vitamins & Monitoring',
-        image: '/Landing-page/news/image-2.png',
-    },
-    {
-        title: 'Pre-Marital Screening',
-        image: '/Landing-page/news/image-3.png',
-    },
-    {
-        title: 'Genomic Testing Role',
-        image: '/Landing-page/news/image-4.png',
-    },
-    {
-        title: 'Lab Results Dashboard',
-        image: '/Landing-page/news/image-5.png',
-    },
-    {
-        title: 'Ensuring Test Accuracy',
-        image: '/Landing-page/news/image-6.png',
-    },
-    {
-        title: 'Cardiac Risk Assessment',
-        image: '/Landing-page/news/new-item-2.png', 
-    },
-    {
-        title: 'Routine Blood Panels',
-        image: '/Landing-page/tests/test-1.png', 
-    },
-    {
-        title: 'Thyroid Health Guide',
-        image: '/Landing-page/news/new-item-4.png', 
-    },
-    {
-        title: 'Allergy Testing Process',
-        image: '/Landing-page/news/new-item-1.png', 
-    },
-    {
-        title: 'Metabolic Health Stats',
-        image: '/Landing-page/news/new-item-3.png', 
-    },
-    {
-        title: 'Pediatric Wellness',
-        image: '/Landing-page/tests/test-2.png',
-    },
-];
-
-const infiniteNewsItems = [...newsItems, ...newsItems, ...newsItems];
+const infiniteNewsItems = [...resourcePosts, ...resourcePosts, ...resourcePosts];
 
 export default function NewsInsights() {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -68,7 +14,7 @@ export default function NewsInsights() {
     useEffect(() => {
         if (scrollContainerRef.current) {
             const container = scrollContainerRef.current;
-            const singleSetWidth = (container.children[0] as HTMLElement).offsetWidth * newsItems.length + (24 * newsItems.length);
+            const singleSetWidth = (container.children[0] as HTMLElement).offsetWidth * resourcePosts.length + (24 * resourcePosts.length);
             container.scrollLeft = singleSetWidth;
         }
     }, []);
@@ -79,7 +25,7 @@ export default function NewsInsights() {
         const { scrollLeft } = container;
         const cardWidth = (container.children[0] as HTMLElement).offsetWidth;
         const gap = 24;
-        const totalItemsWidth = (cardWidth + gap) * newsItems.length;
+        const totalItemsWidth = (cardWidth + gap) * resourcePosts.length;
 
         // If too far left, jump to middle
         if (scrollLeft < totalItemsWidth / 2) {
@@ -147,24 +93,25 @@ export default function NewsInsights() {
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
                             {infiniteNewsItems.map((item, index) => (
-                                <div
+                                <Link
                                     key={index}
-                                    className="w-[calc(100%-24px)] min-w-[calc(100%-24px)] sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(16.666%-20px)] lg:min-w-[calc(16.666%-20px)] flex-shrink-0 flex flex-col pt-1 snap-start"
+                                    href={`/resources/${item.slug}`}
+                                    className="w-[calc(100%-24px)] min-w-[calc(100%-24px)] sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(16.666%-20px)] lg:min-w-[calc(16.666%-20px)] flex-shrink-0 flex flex-col pt-1 snap-start group/card"
                                 >
-                                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-4 bg-[#061414]/20 group-hover:shadow-xl transition-all border border-white/5">
+                                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-4 bg-[#061414]/20 group-hover/card:shadow-xl transition-all border border-white/5">
                                         <Image
                                             src={item.image}
                                             alt={item.title}
                                             fill
-                                            className="object-cover transform transition-transform duration-500 hover:scale-110"
+                                            className="object-cover transform transition-transform duration-500 group-hover/card:scale-110"
                                             unoptimized
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 16vw"
                                         />
                                     </div>
-                                    <h3 className="text-white font-medium text-xs md:text-sm leading-snug px-1 text-center">
+                                    <h3 className="text-white font-medium text-xs md:text-sm leading-snug px-1 text-center group-hover/card:text-[#f88c29] transition-colors">
                                         {item.title}
                                     </h3>
-                                </div>
+                                </Link>
                             ))}
                         </div>
 

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface NavbarProps {
-    currentPage?: 'Home' | 'Lab Tests' | 'Packages' | 'Departments' | 'About' | 'Contact';
+    currentPage?: 'Home' | 'Lab Tests' | 'Packages' | 'Departments' | 'Resources' | 'About' | 'Contact';
 }
 
 export default function Navbar({ currentPage }: NavbarProps) {
@@ -35,6 +35,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
         { name: 'Lab Tests', href: '/lab-tests' },
         { name: 'Packages', href: '/packages' },
         { name: 'Departments', href: '/departments' },
+        { name: 'Resources', href: '/resources' },
         { name: 'About', href: '/about' },
         { name: 'Contact', href: '/contact' },
     ];
@@ -62,9 +63,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 </Link>
             </div>
 
-            {/* Center: Nav Links (Desktop Only) */}
             <div className="hidden lg:flex items-center space-x-8">
-                {navLinks.slice(0, 5).map((link) => (
+                {navLinks.slice(0, 6).map((link) => (
                     <Link
                         key={link.name}
                         href={link.href}
