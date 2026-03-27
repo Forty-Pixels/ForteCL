@@ -47,11 +47,11 @@ const ptComponents: PortableTextComponents = {
 export default function TestDetailContent({ test, allTests }: Props) {
     // 1. Priority: Explicitly chosen related tests from Sanity
     // 2. Fallback: Automatic category match if no explicit tests chosen
-    let related = test.relatedTests || [];
+    let related = (test.relatedTests || []).filter(t => t && t.slug);
     
     if (related.length === 0) {
         related = (allTests || [])
-            .filter(t => t.slug !== test.slug && (t.diseaseFilter === test.diseaseFilter || t.department === test.department))
+            .filter(t => t && t.slug && t.slug !== test.slug && (t.diseaseFilter === test.diseaseFilter || t.department === test.department))
             .slice(0, 10);
     }
 
