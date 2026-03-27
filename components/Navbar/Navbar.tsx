@@ -126,7 +126,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 <div className="absolute inset-0 bg-[#061414]/98 backdrop-blur-2xl"></div>
 
                 {/* Close Button & Logo Area */}
-                <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-8 py-6 z-50">
+                <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-8 py-6 z-50 bg-white shadow-sm">
                     <Link href="/" onClick={() => setIsMenuOpen(false)}>
                         <Image
                             src="/fortecl-logo3.png"
@@ -138,7 +138,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     </Link>
                     <button
                         onClick={() => setIsMenuOpen(false)}
-                        className="text-white p-2 hover:text-[#f88c29] transition-colors"
+                        className="text-gray-800 p-2 hover:text-[#f88c29] transition-colors"
                         aria-label="Close menu"
                     >
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
