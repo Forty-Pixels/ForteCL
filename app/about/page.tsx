@@ -1,7 +1,8 @@
 import AboutHero from '@/components/About/Hero/AboutHero';
 import LeadingTheWay from '@/components/About/LeadingTheWay/LeadingTheWay';
 import MissionVision from '@/components/About/MissionVision/MissionVision';
-import AdvancedDepartments from '@/components/About/AdvancedDepartments/AdvancedDepartments';
+import Facilities from '@/components/About/Facilities/Facilities';
+import QualityPolicy from '@/components/About/QualityPolicy/QualityPolicy';
 import Footer from '@/components/Landing-page/Footer/Footer';
 
 export default function AboutPage() {
@@ -9,8 +10,9 @@ export default function AboutPage() {
         <main className="min-h-screen bg-black">
             <AboutHero />
             <LeadingTheWay />
+            <Facilities />
             <MissionVision />
-            <AdvancedDepartments />
+            <QualityPolicy />
             <Footer />
         </main>
     );

@@ -17,9 +17,8 @@ export default function AboutHero() {
                 </h1>
 
                 <p className="text-white text-center max-w-3xl text-xs sm:text-sm lg:text-base mb-8 leading-relaxed opacity-90 px-4">
-                    Founded on the principles of preventive medicine, Forte Clinical Laboratory brings together
-                    cutting-edge automated technology, evidence-based practices and expert clinical knowledge —
-                    all in a single 5,000 sq.ft facility in Al Garhoud, Dubai.
+                    Forte Clinical Laboratory LLC is a state-of-the-art 5,000 sq. ft. diagnostic facility 
+                    founded with a deep commitment to delivering high-quality healthcare services in the heart of Dubai.
                 </p>
             </div>
         </section>
