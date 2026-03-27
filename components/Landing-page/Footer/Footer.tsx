@@ -9,7 +9,7 @@ export default function Footer() {
 
                     {/* Brand Section */}
                     <div className="flex flex-col space-y-4">
-                        <div className="relative w-40 h-10 -ml-2">
+                        <div className="relative w-44 h-10">
                             <Image
                                 src="/fortecl-logo2.png"
                                 alt="Forte Clinical Laboratory"
