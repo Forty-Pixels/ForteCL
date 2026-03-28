@@ -45,15 +45,15 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                     </Reveal>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                     {packages.map((pkg, index) => {
                         const { cleanTitle, price } = parsePrice(pkg.title);
 
                         return (
                             <Reveal key={pkg.id} delayMs={index * 100} className="h-full">
-                                <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 flex flex-col h-full group">
+                                <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 flex flex-col h-full group">
                                     {/* Image Section */}
-                                    <div className="relative h-64 sm:h-72 overflow-hidden">
+                                    <div className="relative h-44 sm:h-52 overflow-hidden">
                                         {pkg.image ? (
                                             <Image
                                                 src={urlFor(pkg.image).url()}
@@ -67,32 +67,32 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                             </div>
                                         )}
                                         {/* Gradient Overlay for soft transition */}
-                                        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/40 to-transparent shadow-[inset_0_-40px_40px_-40px_rgba(255,255,255,1)]"></div>
+                                        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/40 to-transparent shadow-[inset_0_-30px_30px_-30px_rgba(255,255,255,1)]"></div>
                                     </div>
 
                                     {/* Content Section */}
-                                    <div className="px-8 pb-10 flex-grow flex flex-col items-center text-center -mt-8 relative z-10">
-                                        <h3 className="text-2xl sm:text-3xl font-bold text-[#1F2937] mb-2 leading-tight">
+                                    <div className="px-6 pb-6 flex-grow flex flex-col items-center text-center -mt-6 relative z-10">
+                                        <h3 className="text-lg sm:text-xl font-bold text-[#1F2937] mb-1.5 leading-tight">
                                             {cleanTitle}
                                         </h3>
                                         
                                         {price && (
-                                            <div className="mb-4">
-                                                <span className="text-[#307984] text-3xl font-black tracking-tight">{price}</span>
+                                            <div className="mb-3">
+                                                <span className="text-[#307984] text-xl font-black tracking-tight">{price}</span>
                                             </div>
                                         )}
 
-                                        <p className="text-gray-500 text-sm sm:text-base mb-8 leading-relaxed italic opacity-85 line-clamp-3">
+                                        <p className="text-gray-500 text-xs sm:text-sm mb-5 leading-relaxed italic opacity-85 line-clamp-3">
                                             {pkg.description}
                                         </p>
 
-                                        <div className="mt-auto w-full flex flex-col items-center gap-6">
+                                        <div className="mt-auto w-full flex flex-col items-center gap-4">
                                             {/* WhatsApp CTA */}
                                             <a
                                                 href={`https://wa.me/97142729302?text=Hi, I would like to book the ${cleanTitle}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="bg-[#307984] hover:bg-[#1f5a63] text-white px-10 py-4 rounded-full text-base font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-1 block w-full sm:w-auto min-w-[200px]"
+                                                className="bg-[#307984] hover:bg-[#1f5a63] text-white px-8 py-3 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-1 block w-full sm:w-auto min-w-[180px]"
                                             >
                                                 Book Now
                                             </a>
