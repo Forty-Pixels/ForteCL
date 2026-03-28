@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
 import { 
     BeakerIcon, 
@@ -12,23 +13,23 @@ import {
 } from '@heroicons/react/24/outline';
 
 const departments = [
-    { name: 'Haematology', icon: BeakerIcon },
-    { name: 'Biochemistry & Endocrinology', icon: CircleStackIcon },
-    { name: 'Microbiology & Serology', icon: SparklesIcon },
-    { name: 'Molecular Diagnostics', icon: CpuChipIcon },
-    { name: 'Immunology & Allergy', icon: ShieldCheckIcon },
-    { name: 'Oncology & Tumour Markers', icon: ChartBarIcon },
-    { name: 'Genetic & Prenatal Screening', icon: VariableIcon },
-    { name: 'Pathology', icon: AcademicCapIcon },
+    { name: 'Hematology Department', icon: BeakerIcon, id: 'hematology' },
+    { name: 'Microbiology', icon: SparklesIcon, id: 'microbiology' },
+    { name: 'Immunology Department', icon: ShieldCheckIcon, id: 'immunology' },
+    { name: 'Serology Department', icon: ChartBarIcon, id: 'serology' },
+    { name: 'Clinical Biochemistry Department', icon: CircleStackIcon, id: 'biochemistry' },
+    { name: 'Pathology / Histopathology Department', icon: AcademicCapIcon, id: 'pathology' },
+    { name: 'Molecular Biology / Genetics', icon: CpuChipIcon, id: 'molecular' },
+    { name: 'Histopathology & Cytopathology', icon: VariableIcon, id: 'cytopathology' },
 ];
 
 export default function Departments() {
     return (
-        <section className="bg-white py-12 md:py-16 overflow-hidden border-b border-gray-50">
+        <section className="bg-white py-12 md:py-16 overflow-hidden border-b border-gray-50" id="departments">
             <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
                 <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-10 lg:gap-14 items-center">
                     
-                    {/* Image Column - Wider/Shorter */}
+                    {/* Image Column */}
                     <Reveal delayMs={170} className="relative order-2 lg:order-1">
                         <div className="relative aspect-[16/9] lg:aspect-[3/2] w-full rounded-2xl overflow-hidden shadow-lg group">
                             <Image
@@ -40,7 +41,7 @@ export default function Departments() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                         </div>
-                        {/* More Compact DHA badge */}
+                        {/* Compact DHA badge */}
                         <div className="absolute -bottom-4 -right-2 bg-[#307984] p-4 md:p-5 rounded-xl shadow-lg z-10 border-2 border-white">
                             <div className="text-white text-lg md:text-xl font-black leading-none mb-0.5">DHA</div>
                             <div className="text-white/80 text-[7px] font-bold uppercase tracking-widest leading-none">Approved</div>
@@ -51,14 +52,14 @@ export default function Departments() {
                     <div className="flex flex-col items-start order-1 lg:order-2">
                         <Reveal delayMs={70}>
                             <span className="text-[#f88c29] font-semibold text-[10px] sm:text-xs tracking-wider mb-2 block">
-                                Departments
+                                OUR SPECIALIZATIONS
                             </span>
                         </Reveal>
                         
                         <Reveal delayMs={140}>
                             <h2 className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#202020] mb-4 leading-tight max-w-full">
-                                Every Discipline. <br className="hidden lg:block" />
-                                Under One Roof.
+                                Dedicated Departments. <br className="hidden lg:block" />
+                                Expert Care.
                             </h2>
                         </Reveal>
                         
@@ -68,18 +69,21 @@ export default function Departments() {
                             </p>
                         </Reveal>
 
-                        {/* Department Grid - Very Compact */}
+                        {/* Department Grid */}
                         <div className="grid grid-cols-2 gap-2.5 w-full">
                             {departments.map((dept, i) => (
                                 <Reveal key={dept.name} delayMs={250 + (i * 50)}>
-                                    <div className="group flex items-center gap-2.5 bg-[#f8fafc] p-2.5 rounded-lg border border-gray-100 hover:bg-white hover:shadow-md hover:border-[#307984]/20 transition-all duration-300 cursor-default">
+                                    <Link 
+                                        href={`/departments#${dept.id}`}
+                                        className="group flex items-center gap-2.5 bg-[#f8fafc] p-2.5 rounded-lg border border-gray-100 hover:bg-white hover:shadow-md hover:border-[#307984]/20 transition-all duration-300"
+                                    >
                                         <div className="flex-shrink-0 w-8 h-8 rounded bg-white border border-gray-100 flex items-center justify-center group-hover:bg-[#307984] group-hover:border-[#307984] transition-all duration-300 shadow-sm">
                                             <dept.icon className="w-4 h-4 text-[#307984] group-hover:text-white transition-colors" />
                                         </div>
                                         <span className="text-[10px] md:text-xs font-bold text-gray-700 transition-colors group-hover:text-[#307984]">
                                             {dept.name}
                                         </span>
-                                    </div>
+                                    </Link>
                                 </Reveal>
                             ))}
                         </div>
