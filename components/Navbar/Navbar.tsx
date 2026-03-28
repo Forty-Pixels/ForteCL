@@ -16,9 +16,11 @@ export default function Navbar({ currentPage }: NavbarProps) {
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
             document.documentElement.classList.add('menu-open');
         } else {
-            document.body.style.overflow = 'unset';
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
             document.documentElement.classList.remove('menu-open');
         }
     }, [isMenuOpen]);

@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar/Navbar';
 export default function AboutHero() {
     return (
         <section
-            className="relative h-screen min-h-[600px] w-full bg-black bg-cover bg-center"
+            className="relative h-screen min-h-[600px] w-full bg-black bg-cover bg-center overflow-hidden"
             style={{ backgroundImage: 'url("/About/hero/bg-image.png")' }}
         >
             <Navbar currentPage="About" />
