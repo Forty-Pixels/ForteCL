@@ -1,104 +1,214 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity';
+import Reveal from '@/components/Animation/Reveal';
+import { Dialog, Transition, TransitionChild, DialogPanel, DialogTitle } from '@headlessui/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface PackagesListProps {
     initialPackages: any[];
 }
 
 export default function PackagesList({ initialPackages }: PackagesListProps) {
-    const [openTests, setOpenTests] = useState<{ [key: string]: number | null }>({
-        diabetes: 0,
-    });
-
-    const toggleTest = (pkgId: string, index: number) => {
-        setOpenTests(prev => ({
-            ...prev,
-            [pkgId]: prev[pkgId] === index ? null : index
-        }));
-    };
+    const [selectedPackage, setSelectedPackage] = useState<any>(null);
 
     const packages = initialPackages || [];
 
+    // Helper to parse price from title
+    const parsePrice = (title: string) => {
+        const match = title.match(/(?:—\s*)?(AED\s*\d+)/i);
+        if (match) {
+            return {
+                cleanTitle: title.replace(match[0], '').trim(),
+                price: match[1]
+            };
+        }
+        return { cleanTitle: title, price: null };
+    };
+
     return (
-        <section className="py-16 bg-white">
-            <div className="max-w-7xl mx-auto px-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12 text-[#1F2937]">Our Health Packages</h2>
+        <section className="py-20 bg-[#fcfcfc] overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                    <Reveal delayMs={100}>
+                        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F2937] mb-4">
+                            Premium Health Packages
+                        </h2>
+                    </Reveal>
+                    <Reveal delayMs={200}>
+                        <p className="text-gray-500 max-w-2xl mx-auto text-sm sm:text-base">
+                            Comprehensive diagnostic screens designed for your peace of mind, 
+                            tailored to different health needs and age groups.
+                        </p>
+                    </Reveal>
+                </div>
 
-                <div className="space-y-24">
-                    {packages.map((pkg, index) => (
-                        <div
-                            key={pkg.id}
-                            className={`flex flex-col lg:flex-row items-start gap-8 lg:gap-16 ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
-                        >
-                            {/* Image Container */}
-                            <div className="w-full lg:w-5/12 lg:sticky lg:top-32 h-fit">
-                                <div className="relative aspect-[4/3] rounded-t-[18px] rounded-bl-[16px] overflow-hidden shadow-2xl">
-                                    {pkg.image ? (
-                                        <Image
-                                            src={urlFor(pkg.image).url()}
-                                            alt={pkg.title}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                            No Image
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                    {packages.map((pkg, index) => {
+                        const { cleanTitle, price } = parsePrice(pkg.title);
 
-                            {/* Content Container */}
-                            <div className="w-full lg:w-7/12">
-                                <h3 className="text-xl sm:text-2xl font-bold text-[#3B82F6] mb-3">
-                                    {pkg.title}
-                                </h3>
-                                
-                                <p className="text-gray-600 text-base mb-8 leading-relaxed">
-                                    {pkg.description}
-                                </p>
-
-                                {/* Accordion List */}
-                                <div className="mt-6 border-t border-gray-100 pt-6">
-                                    <h4 className="text-lg font-bold text-[#1F2937] mb-6 uppercase tracking-wide text-xs opacity-60">
-                                        Tests ({pkg.testsTotal || 0})
-                                    </h4>
-
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
-                                        {(pkg.subTests || []).map((subTest: any, testIndex: number) => (
-                                            <div key={testIndex} className="border-b border-gray-100 last:border-0 md:last:border-b py-2">
-                                                <button
-                                                    onClick={() => toggleTest(pkg.id, testIndex)}
-                                                    className="w-full flex items-center text-left transition-colors group"
-                                                >
-                                                    <span className={`font-medium text-lg mr-3 shrink-0 transition-colors text-[#307984]`}>
-                                                        {openTests[pkg.id] === testIndex ? '−' : '+'}
-                                                    </span>
-                                                    <span className="text-[#307984] text-sm sm:text-base font-medium group-hover:text-[#307984]/80 transition-colors">
-                                                        {subTest.title}
-                                                    </span>
-                                                </button>
-
-                                                {openTests[pkg.id] === testIndex && (
-                                                    <div className="mt-2 pl-8 pr-4 animate-in fade-in slide-in-from-top-2 duration-300">
-                                                        <p className="text-gray-600 text-xs sm:text-sm leading-relaxed italic">
-                                                            {subTest.explanation}
-                                                        </p>
-                                                    </div>
-                                                )}
+                        return (
+                            <Reveal key={pkg.id} delayMs={index * 100} className="h-full">
+                                <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 flex flex-col h-full group">
+                                    {/* Image Section */}
+                                    <div className="relative h-64 sm:h-72 overflow-hidden">
+                                        {pkg.image ? (
+                                            <Image
+                                                src={urlFor(pkg.image).url()}
+                                                alt={pkg.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full bg-gray-50 flex items-center justify-center text-gray-300">
+                                                No Image Available
                                             </div>
-                                        ))}
+                                        )}
+                                        {/* Gradient Overlay for soft transition */}
+                                        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/40 to-transparent shadow-[inset_0_-40px_40px_-40px_rgba(255,255,255,1)]"></div>
                                     </div>
 
+                                    {/* Content Section */}
+                                    <div className="px-8 pb-10 flex-grow flex flex-col items-center text-center -mt-8 relative z-10">
+                                        <h3 className="text-2xl sm:text-3xl font-bold text-[#1F2937] mb-2 leading-tight">
+                                            {cleanTitle}
+                                        </h3>
+                                        
+                                        {price && (
+                                            <div className="mb-4">
+                                                <span className="text-[#307984] text-3xl font-black tracking-tight">{price}</span>
+                                            </div>
+                                        )}
+
+                                        <p className="text-gray-500 text-sm sm:text-base mb-8 leading-relaxed italic opacity-85 line-clamp-3">
+                                            {pkg.description}
+                                        </p>
+
+                                        <div className="mt-auto w-full flex flex-col items-center gap-6">
+                                            {/* WhatsApp CTA */}
+                                            <a
+                                                href={`https://wa.me/97142729302?text=Hi, I would like to book the ${cleanTitle}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="bg-[#307984] hover:bg-[#1f5a63] text-white px-10 py-4 rounded-full text-base font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-1 block w-full sm:w-auto min-w-[200px]"
+                                            >
+                                                Book Now
+                                            </a>
+
+                                            {/* Tests Included Toggle - NOW OPENS MODAL */}
+                                            <button
+                                                onClick={() => setSelectedPackage(pkg)}
+                                                className="text-[#307984] group/btn font-bold text-sm flex items-center gap-2 hover:opacity-80 transition-all"
+                                            >
+                                                <span className="text-lg transition-transform group-hover/btn:scale-125">+</span>
+                                                <span className="border-b border-transparent group-hover/btn:border-[#307984]">Tests Included ({pkg.testsTotal || pkg.subTests?.length || 0})</span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    ))}
+                            </Reveal>
+                        );
+                    })}
                 </div>
             </div>
+
+            {/* TEST DETAILS MODAL */}
+            <AnimatePresence>
+                {selectedPackage && (
+                <Transition show={!!selectedPackage} as={Fragment}>
+                    <Dialog as="div" className="relative z-[200]" onClose={() => setSelectedPackage(null)}>
+                        <TransitionChild
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                        >
+                            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+                        </TransitionChild>
+
+                        <div className="fixed inset-0 overflow-y-auto">
+                            <div className="flex min-h-full items-center justify-center p-4 text-center">
+                                <TransitionChild
+                                    as={Fragment}
+                                    enter="ease-out duration-300"
+                                    enterFrom="opacity-0 scale-95 translate-y-4"
+                                    enterTo="opacity-100 scale-100 translate-y-0"
+                                    leave="ease-in duration-200"
+                                    leaveFrom="opacity-100 scale-100 translate-y-0"
+                                    leaveTo="opacity-0 scale-95 translate-y-4"
+                                >
+                                    <DialogPanel className="w-full max-w-2xl transform overflow-hidden rounded-[2.5rem] bg-white p-8 text-left align-middle shadow-2xl transition-all">
+                                        <div className="flex items-center justify-between mb-8">
+                                            <div>
+                                                <DialogTitle as="h3" className="text-2xl font-bold text-[#1F2937]">
+                                                    {parsePrice(selectedPackage.title).cleanTitle}
+                                                </DialogTitle>
+                                                <div className="text-[#307984] font-bold mt-1">Included Tests ({selectedPackage.testsTotal || selectedPackage.subTests?.length || 0})</div>
+                                            </div>
+                                            <button
+                                                onClick={() => setSelectedPackage(null)}
+                                                className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
+                                            >
+                                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                            </button>
+                                        </div>
+
+                                        <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                                            {(selectedPackage.subTests || []).map((test: any, i: number) => (
+                                                <motion.div 
+                                                    initial={{ opacity: 0, x: -10 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: i * 0.05 }}
+                                                    key={i} 
+                                                    className="p-5 rounded-2xl bg-[#307984]/5 border border-[#307984]/10 group hover:bg-[#307984]/10 transition-colors"
+                                                >
+                                                    <div className="font-bold text-[#307984] mb-2">{test.title}</div>
+                                                    {test.explanation && (
+                                                        <p className="text-gray-500 text-sm leading-relaxed italic">
+                                                            {test.explanation}
+                                                        </p>
+                                                    )}
+                                                </motion.div>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-10">
+                                            <button
+                                                onClick={() => setSelectedPackage(null)}
+                                                className="w-full bg-[#307984] text-white py-4 rounded-full font-bold hover:bg-[#1f5a63] transition-colors"
+                                            >
+                                                Back to Packages
+                                            </button>
+                                        </div>
+                                    </DialogPanel>
+                                </TransitionChild>
+                            </div>
+                        </div>
+                    </Dialog>
+                </Transition>
+                )}
+            </AnimatePresence>
+
+            <style dangerouslySetInnerHTML={{ __html: `
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: #30798440;
+                    border-radius: 10px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #30798480;
+                }
+            `}} />
         </section>
     );
 }
