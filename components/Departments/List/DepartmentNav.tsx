@@ -38,7 +38,7 @@ export default function DepartmentNav() {
     };
 
     return (
-        <nav className="sticky top-[72px] lg:top-[80px] z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm overflow-x-auto scrollbar-hide py-1">
+        <nav className="bg-white border-b border-gray-100 shadow-sm overflow-x-auto scrollbar-hide py-1">
             <div className="max-w-7xl mx-auto px-4 flex items-center justify-start lg:justify-center gap-2 sm:gap-4 h-14 min-w-max">
                 {DEPARTMENTS_DATA.map((dept) => (
                     <button

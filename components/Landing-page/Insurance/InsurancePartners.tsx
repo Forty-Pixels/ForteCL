@@ -51,11 +51,11 @@ export default function InsurancePartners() {
                     <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
 
                     {/* Marquee Container */}
-                    <div className="flex w-fit animate-marquee hover:pause-marquee gap-20 md:gap-32 items-center py-10">
+                    <div className="flex w-fit animate-marquee hover:pause-marquee gap-10 md:gap-16 items-center py-10">
                         {marqueeItems.map((partner, index) => (
                             <div 
                                 key={`${partner.name}-${index}`} 
-                                className="flex-shrink-0 w-44 md:w-56 lg:w-72 h-16 md:h-24 relative transition-all duration-300 transform hover:scale-110"
+                                className="flex-shrink-0 w-52 md:w-64 lg:w-80 h-20 md:h-28 relative transition-all duration-300 transform hover:scale-110"
                             >
                                 <Image
                                     src={partner.image}
