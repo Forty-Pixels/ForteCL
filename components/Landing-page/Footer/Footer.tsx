@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="bg-white text-gray-900 pt-12 pb-6 border-t border-gray-100">
+        <footer className="bg-white text-gray-900 pt-8 pb-4 border-t border-gray-100">
             <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr_1.3fr] gap-8 lg:gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr_1.3fr] gap-8 lg:gap-6 mb-6">
 
                     {/* Brand Section */}
                     <div className="flex flex-col space-y-4">
@@ -17,15 +17,12 @@ export default function Footer() {
                                 className="object-contain object-left"
                             />
                         </div>
-                        <p className="text-gray-500 text-xs leading-relaxed max-w-xs">
-                            A stand-alone large-scale diagnostic laboratory in Dubai routine tests to complex genomics under one roof.
-                        </p>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-base font-semibold mb-5">Quick Links</h4>
-                        <ul className="space-y-3 text-gray-500 text-xs">
+                        <h4 className="text-base font-semibold mb-3">Quick Links</h4>
+                        <ul className="space-y-2 text-gray-500 text-xs">
                             <li><Link href="/" className="hover:text-[#f88c29] transition-colors">Home</Link></li>
                             <li><Link href="/lab-tests" className="hover:text-[#f88c29] transition-colors">Lab Tests</Link></li>
                             <li><Link href="/packages" className="hover:text-[#f88c29] transition-colors">Packages</Link></li>
@@ -39,8 +36,8 @@ export default function Footer() {
 
                     {/* Get In Touch */}
                     <div>
-                        <h4 className="text-base font-semibold mb-5">Get in Touch</h4>
-                        <ul className="space-y-4 text-gray-500 text-xs">
+                        <h4 className="text-base font-semibold mb-3">Get in Touch</h4>
+                        <ul className="space-y-3 text-gray-500 text-xs">
                             <li className="flex items-start space-x-3">
                                 <div className="mt-0.5 flex-shrink-0">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
@@ -81,7 +78,7 @@ export default function Footer() {
                     </div>
 
                     {/* Newsletter Section */}
-                    <div className="flex flex-col space-y-5">
+                    <div className="flex flex-col space-y-4">
                         <h4 className="text-base font-semibold">Sign Up to our Newsletter</h4>
                         <p className="text-gray-500 text-xs leading-relaxed">
                             Get health tips, test guides, and updates from Forte straight to your inbox.
@@ -100,7 +97,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="pt-6 border-t border-gray-100 text-center text-gray-500 text-xs">
+                <div className="pt-4 border-t border-gray-100 text-center text-gray-500 text-xs">
                     <p>© {new Date().getFullYear()} Forte Clinical Laboratory LLC · Privacy Policy</p>
                 </div>
             </div>
