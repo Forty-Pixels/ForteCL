@@ -49,7 +49,7 @@ export default function NewsInsights() {
     };
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-br from-[#307984] to-[#3C8E9B]">
+        <section className="py-10 md:py-12 bg-gradient-to-br from-[#307984] to-[#3C8E9B]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
                 {/* Header */}
@@ -64,7 +64,7 @@ export default function NewsInsights() {
                     </h2>
                 </Reveal>
                 <Reveal delayMs={210}>
-                    <p className="text-white/90 text-xs md:text-sm max-w-2xl mx-auto mb-12 leading-relaxed">
+                    <p className="text-white/90 text-xs md:text-sm max-w-2xl mx-auto mb-8 leading-relaxed">
                         Explore the latest health tips, diagnostic breakthroughs and wellness guidance from our expert team.
                         Our articles keep you educated and empowered to make better health decisions.
                     </p>
