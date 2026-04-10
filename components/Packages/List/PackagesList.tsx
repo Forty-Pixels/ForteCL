@@ -29,31 +29,30 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
     };
 
     return (
-        <section className="py-20 bg-[#fcfcfc] overflow-hidden">
+        <section className="py-8 bg-[#fcfcfc] overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
+                <div className="text-center mb-8">
                     <Reveal delayMs={100}>
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F2937] mb-4">
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1F2937] mb-2">
                             Premium Health Packages
                         </h2>
                     </Reveal>
                     <Reveal delayMs={200}>
-                        <p className="text-gray-500 max-w-2xl mx-auto text-sm sm:text-base">
-                            Comprehensive diagnostic screens designed for your peace of mind, 
-                            tailored to different health needs and age groups.
+                        <p className="text-gray-500 max-w-2xl mx-auto text-[11px] sm:text-xs">
+                            Tailored diagnostic screens for your complete peace of mind.
                         </p>
                     </Reveal>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
                     {packages.map((pkg, index) => {
                         const { cleanTitle, price } = parsePrice(pkg.title);
 
                         return (
                             <Reveal key={pkg.id} delayMs={index * 100} className="h-full">
-                                <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 flex flex-col h-full group">
+                                <div className="group bg-white rounded-[1.8rem] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.02)] border border-gray-100 hover:shadow-[0_15px_45px_rgba(48,121,132,0.08)] transition-all duration-500 flex flex-col h-full">
                                     {/* Image Section */}
-                                    <div className="relative h-44 sm:h-52 overflow-hidden">
+                                    <div className="relative h-32 overflow-hidden">
                                         {pkg.image ? (
                                             <Image
                                                 src={urlFor(pkg.image).url()}
@@ -66,43 +65,43 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                                 No Image Available
                                             </div>
                                         )}
-                                        {/* Gradient Overlay for soft transition */}
-                                        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/40 to-transparent shadow-[inset_0_-30px_30px_-30px_rgba(255,255,255,1)]"></div>
+                                        {/* Fade Effect */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
                                     </div>
 
                                     {/* Content Section */}
-                                    <div className="px-6 pb-6 flex-grow flex flex-col items-center text-center -mt-6 relative z-10">
-                                        <h3 className="text-lg sm:text-xl font-bold text-[#1F2937] mb-1.5 leading-tight">
+                                    <div className="px-3 pb-3.5 flex-grow flex flex-col items-center text-center -mt-2 relative z-10">
+                                        <h3 className="text-[13px] sm:text-[14px] font-bold text-[#1F2937] leading-tight line-clamp-1 group-hover:text-[#307984] transition-colors mb-0.5">
                                             {cleanTitle}
                                         </h3>
                                         
                                         {price && (
-                                            <div className="mb-3">
-                                                <span className="text-[#307984] text-xl font-black tracking-tight">{price}</span>
+                                            <div className="mb-1">
+                                                <span className="text-[#307984] text-sm font-black tracking-tight">{price}</span>
                                             </div>
                                         )}
 
-                                        <p className="text-gray-500 text-xs sm:text-sm mb-5 leading-relaxed italic opacity-85 line-clamp-3">
+                                        <p className="text-gray-400 text-[10px] mb-2.5 leading-tight line-clamp-1 px-1">
                                             {pkg.description}
                                         </p>
 
-                                        <div className="mt-auto w-full flex flex-col items-center gap-4">
+                                        <div className="mt-auto w-full space-y-2">
                                             {/* WhatsApp CTA */}
                                             <a
                                                 href={`https://wa.me/97142729302?text=Hi, I would like to book the ${cleanTitle}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="bg-[#307984] hover:bg-[#1f5a63] text-white px-8 py-3 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-1 block w-full sm:w-auto min-w-[180px]"
+                                                className="bg-[#307984] hover:bg-[#256069] text-white py-2 rounded-full text-[10px] font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center w-full"
                                             >
                                                 Book Now
                                             </a>
 
-                                            {/* Tests Included Toggle - NOW OPENS MODAL */}
+                                            {/* Tests Included Toggle */}
                                             <button
                                                 onClick={() => setSelectedPackage(pkg)}
-                                                className="text-[#307984] group/btn font-bold text-sm flex items-center gap-2 hover:opacity-80 transition-all"
+                                                className="text-[#307984] group/btn font-bold text-[9px] flex items-center justify-center gap-1 hover:opacity-80 transition-all w-full"
                                             >
-                                                <span className="text-lg transition-transform group-hover/btn:scale-125">+</span>
+                                                <span className="text-xs transition-transform group-hover/btn:rotate-90">+</span>
                                                 <span className="border-b border-transparent group-hover/btn:border-[#307984]">Tests Included ({pkg.testsTotal || pkg.subTests?.length || 0})</span>
                                             </button>
                                         </div>
@@ -142,34 +141,38 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                     leaveFrom="opacity-100 scale-100 translate-y-0"
                                     leaveTo="opacity-0 scale-95 translate-y-4"
                                 >
-                                    <DialogPanel className="w-full max-w-2xl transform overflow-hidden rounded-[2.5rem] bg-white p-8 text-left align-middle shadow-2xl transition-all">
-                                        <div className="flex items-center justify-between mb-8">
+                                    <DialogPanel className="w-full max-w-3xl transform overflow-hidden rounded-[2rem] bg-white p-6 sm:p-8 text-left align-middle shadow-[0_25px_70px_rgba(0,0,0,0.15)] transition-all border border-gray-100">
+                                        <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-50">
                                             <div>
-                                                <DialogTitle as="h3" className="text-2xl font-bold text-[#1F2937]">
+                                                <DialogTitle as="h3" className="text-xl sm:text-2xl font-black text-[#1F2937] tracking-tight">
                                                     {parsePrice(selectedPackage.title).cleanTitle}
                                                 </DialogTitle>
-                                                <div className="text-[#307984] font-bold mt-1">Included Tests ({selectedPackage.testsTotal || selectedPackage.subTests?.length || 0})</div>
+                                                <div className="flex items-center gap-2 mt-1">
+                                                    <span className="px-2.5 py-0.5 rounded-full bg-[#307984]/10 text-[#307984] text-[10px] font-bold uppercase tracking-wider">
+                                                        {selectedPackage.testsTotal || selectedPackage.subTests?.length || 0} Included Tests
+                                                    </span>
+                                                </div>
                                             </div>
                                             <button
                                                 onClick={() => setSelectedPackage(null)}
-                                                className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
+                                                className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#f88c29] hover:bg-[#f88c29]/5 transition-all"
                                             >
-                                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
                                             </button>
                                         </div>
 
-                                        <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
                                             {(selectedPackage.subTests || []).map((test: any, i: number) => (
                                                 <motion.div 
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: i * 0.05 }}
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: i * 0.03 }}
                                                     key={i} 
-                                                    className="p-5 rounded-2xl bg-[#307984]/5 border border-[#307984]/10 group hover:bg-[#307984]/10 transition-colors"
+                                                    className="p-3.5 rounded-xl bg-gray-50/50 border-l-4 border-[#307984]/20 hover:border-[#307984] hover:bg-white hover:shadow-sm transition-all group/item"
                                                 >
-                                                    <div className="font-bold text-[#307984] mb-2">{test.title}</div>
+                                                    <div className="font-bold text-[#307984] text-[13px] group-hover/item:text-[#307984] mb-1 transition-colors">{test.title}</div>
                                                     {test.explanation && (
-                                                        <p className="text-gray-500 text-sm leading-relaxed italic">
+                                                        <p className="text-gray-400 text-[11px] leading-snug line-clamp-2">
                                                             {test.explanation}
                                                         </p>
                                                     )}
@@ -177,12 +180,20 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                             ))}
                                         </div>
 
-                                        <div className="mt-10">
+                                        <div className="mt-8 flex gap-3">
+                                            <a
+                                                href={`https://wa.me/97142729302?text=Hi, I would like to book the ${parsePrice(selectedPackage.title).cleanTitle}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex-1 bg-[#307984] text-white py-3.5 rounded-full text-sm font-bold hover:bg-[#256069] transition-all text-center shadow-lg shadow-[#307984]/10"
+                                            >
+                                                Book This Package
+                                            </a>
                                             <button
                                                 onClick={() => setSelectedPackage(null)}
-                                                className="w-full bg-[#307984] text-white py-4 rounded-full font-bold hover:bg-[#1f5a63] transition-colors"
+                                                className="px-8 bg-gray-100 text-[#1F2937] py-3.5 rounded-full text-sm font-bold hover:bg-gray-200 transition-all"
                                             >
-                                                Back to Packages
+                                                Close
                                             </button>
                                         </div>
                                     </DialogPanel>
