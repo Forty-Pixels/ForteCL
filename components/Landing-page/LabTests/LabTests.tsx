@@ -45,7 +45,7 @@ export default function LabTests() {
     };
 
     return (
-        <section className="bg-[#111111] py-16 lg:py-20 overflow-hidden">
+        <section className="bg-gradient-to-br from-[#307984] to-[#3C8E9B] py-16 lg:py-20 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-12">
 
@@ -62,13 +62,13 @@ export default function LabTests() {
                             </h2>
                         </Reveal>
                         <Reveal delayMs={210}>
-                            <p className="text-gray-300 text-xs md:text-sm mb-8 leading-relaxed opacity-90">
+                            <p className="text-white/90 text-xs md:text-sm mb-8 leading-relaxed">
                                 From everyday blood work to molecular diagnostics and genetic screening, Forte Clinical Laboratory processes over 10,000 parameters daily with the capacity to handle 4,500+ special tests under one roof. Our in-house pathologists, consultants and microbiologists review and authorise every report — so you get results you can act on.
                             </p>
                         </Reveal>
 
                         <Reveal delayMs={280}>
-                            <Link href="/lab-tests" className="bg-[#307984] hover:bg-[#307984]/90 text-white px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto">
+                            <Link href="/lab-tests" className="bg-white hover:bg-gray-100 text-[#307984] px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto">
                                 Explore Lab Tests
                             </Link>
                         </Reveal>
@@ -114,14 +114,14 @@ export default function LabTests() {
                         <div className="flex gap-4 mt-5 justify-end">
                             <button
                                 onClick={scrollLeft}
-                                className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                                className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-[#307984] transition-all"
                                 aria-label="Previous Slide"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                             </button>
                             <button
                                 onClick={scrollRight}
-                                className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                                className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-[#307984] transition-all"
                                 aria-label="Next Slide"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -138,5 +138,6 @@ export default function LabTests() {
         }
       `}} />
         </section>
+
     );
 }
