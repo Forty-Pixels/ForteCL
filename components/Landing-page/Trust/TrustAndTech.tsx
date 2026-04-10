@@ -10,7 +10,7 @@ const logos = [
 
 export default function TrustAndTech() {
     return (
-        <section className="relative w-full flex items-center py-20 md:py-24 lg:py-32 overflow-hidden">
+        <section className="relative w-full flex items-center py-12 md:py-16 lg:py-20 overflow-hidden">
             <div className="absolute inset-0 z-0 h-full w-full">
                 <Image
                     src="/Landing-page/trust/bg-v3.png"
