@@ -11,6 +11,13 @@ interface NavbarProps {
 export default function Navbar({ currentPage }: NavbarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [openMobileSubmenus, setOpenMobileSubmenus] = useState<string[]>([]);
+
+    const toggleMobileSubmenu = (name: string) => {
+        setOpenMobileSubmenus(prev => 
+            prev.includes(name) ? prev.filter(i => i !== name) : [...prev, name]
+        );
+    };
 
     // Lock scroll when menu is open
     useEffect(() => {
@@ -36,8 +43,14 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'Lab Tests', href: '/lab-tests' },
-        { name: 'Packages', href: '/packages' },
+        { 
+            name: 'Test List', 
+            href: '#',
+            submenu: [
+                { name: 'Find A Test', href: '/lab-tests' },
+                { name: 'Packages', href: '/packages' }
+            ]
+        },
         { name: 'Departments', href: '/departments' },
         { name: 'Resources', href: '/resources' },
         { name: 'About', href: '/about' },
@@ -45,8 +58,12 @@ export default function Navbar({ currentPage }: NavbarProps) {
     ];
 
     // Helper to check if link is active
-    const isActive = (name: string) => {
-        return name === currentPage;
+    const isActive = (link: any) => {
+        if (link.href !== '#' && link.name === currentPage) return true;
+        if (link.submenu) {
+            return link.submenu.some((sub: any) => sub.name === currentPage);
+        }
+        return false;
     };
 
     return (
@@ -68,14 +85,46 @@ export default function Navbar({ currentPage }: NavbarProps) {
             </div>
 
             <div className="hidden lg:flex items-center space-x-8">
-                {navLinks.slice(0, 6).map((link) => (
-                    <Link
-                        key={link.name}
-                        href={link.href}
-                        className={`text-sm ${isActive(link.name) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors`}
-                    >
-                        {link.name}
-                    </Link>
+                {navLinks.map((link) => (
+                    <div key={link.name} className="relative group lg:py-4">
+                        {link.submenu ? (
+                            <div className="flex items-center gap-1 cursor-pointer">
+                                <span className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} group-hover:text-[#f88c29] font-medium transition-colors`}>
+                                    {link.name}
+                                </span>
+                                <svg 
+                                    className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-400'}`} 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                                
+                                {/* Dropdown Menu */}
+                                <div className="absolute top-full left-0 mt-0 w-48 bg-[#307984] rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]">
+                                    <div className="py-2">
+                                        {link.submenu.map((sub) => (
+                                            <Link
+                                                key={sub.name}
+                                                href={sub.href}
+                                                className="block px-4 py-2 text-sm text-white hover:bg-white/10 hover:text-[#f88c29] transition-colors"
+                                            >
+                                                {sub.name}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ) : (
+                            <Link
+                                href={link.href}
+                                className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors`}
+                            >
+                                {link.name}
+                            </Link>
+                        )}
+                    </div>
                 ))}
             </div>
 
@@ -160,15 +209,56 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                 className={`transform transition-all duration-500 delay-[${index * 100}ms] ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                                     }`}
                             >
-                                <Link
-                                    href={link.href}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className={`text-3xl sm:text-4xl font-bold tracking-tight ${isActive(link.name) ? 'text-[#f88c29]' : 'text-white'
-                                        } hover:text-[#f88c29] transition-colors flex items-center group`}
-                                >
-                                    {link.name}
-                                    <span className="ml-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-xl">→</span>
-                                </Link>
+                                {link.submenu ? (
+                                    <div className="flex flex-col">
+                                        <button 
+                                            onClick={() => toggleMobileSubmenu(link.name)}
+                                            className="flex items-center justify-between w-full text-3xl sm:text-4xl font-bold tracking-tight text-white hover:text-[#f88c29] transition-colors group"
+                                        >
+                                            <span>{link.name}</span>
+                                            <svg 
+                                                className={`w-8 h-8 transition-transform duration-300 ${openMobileSubmenus.includes(link.name) ? 'rotate-180 text-[#f88c29]' : 'text-white/40'}`} 
+                                                fill="none" 
+                                                stroke="currentColor" 
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                        
+                                        <div className={`grid transition-all duration-300 ease-in-out ${openMobileSubmenus.includes(link.name) ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>
+                                            <div className="overflow-hidden">
+                                                <div className="flex flex-col space-y-4 pl-4 border-l border-[#307984]/30">
+                                                    {link.submenu.map((sub) => (
+                                                        <Link
+                                                            key={sub.name}
+                                                            href={sub.href}
+                                                            onClick={() => setIsMenuOpen(false)}
+                                                            className={`text-2xl sm:text-3xl font-bold tracking-tight ${isActive({ name: sub.name, href: sub.href }) ? 'text-[#f88c29]' : 'text-white/70'
+                                                                } hover:text-[#f88c29] transition-colors flex items-center group`}
+                                                        >
+                                                            {sub.name}
+                                                            <span className="ml-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-xl">→</span>
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <Link
+                                        href={link.href}
+                                        onClick={() => {
+                                            setIsMenuOpen(false);
+                                            setOpenMobileSubmenus([]);
+                                        }}
+                                        className={`text-3xl sm:text-4xl font-bold tracking-tight ${isActive(link) ? 'text-[#f88c29]' : 'text-white'
+                                            } hover:text-[#f88c29] transition-colors flex items-center group`}
+                                    >
+                                        {link.name}
+                                        <span className="ml-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-xl">→</span>
+                                    </Link>
+                                )}
                             </div>
                         ))}
                     </div>

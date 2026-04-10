@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar/Navbar';
 
 export default function LabTestsHero() {
     return (
-        <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen min-h-[600px] w-full flex items-center justify-center overflow-hidden">
             <Navbar currentPage="Lab Tests" />
             {/* Background */}
             <Image

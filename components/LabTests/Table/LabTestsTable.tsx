@@ -44,7 +44,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
     };
 
     return (
-        <section className="bg-white py-16 -mt-32 relative z-20">
+        <section className="bg-white py-16 relative z-20">
             <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
                 {/* Modern Search & Filter Card */}
                 <div className="bg-white p-6 md:p-10 rounded-[2.5rem] shadow-[0_30px_70px_rgba(0,0,0,0.08)] mb-20 border border-gray-100">
