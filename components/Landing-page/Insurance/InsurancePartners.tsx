@@ -35,9 +35,9 @@ export default function InsurancePartners() {
     const marqueeItems = [...partners, ...partners];
 
     return (
-        <section className="bg-white py-12 md:py-16 overflow-hidden">
+        <section className="bg-white py-6 md:py-8 overflow-hidden">
             <div className="max-w-[1440px] mx-auto">
-                <div className="mb-10 text-center px-4">
+                <div className="mb-6 text-center px-4">
                     <Reveal delayMs={70}>
                         <h2 className="text-xl md:text-3xl font-bold text-gray-900">
                             Our Insurance Partners
@@ -51,11 +51,11 @@ export default function InsurancePartners() {
                     <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
 
                     {/* Marquee Container */}
-                    <div className="flex w-fit animate-marquee hover:pause-marquee gap-10 md:gap-16 items-center py-10">
+                    <div className="flex w-fit animate-marquee hover:pause-marquee gap-8 md:gap-12 items-center py-2">
                         {marqueeItems.map((partner, index) => (
                             <div 
                                 key={`${partner.name}-${index}`} 
-                                className="flex-shrink-0 w-52 md:w-64 lg:w-80 h-20 md:h-28 relative transition-all duration-300 transform hover:scale-110"
+                                className="flex-shrink-0 w-64 md:w-80 lg:w-[400px] h-32 md:h-44 lg:h-56 relative transition-all duration-300 transform hover:scale-105"
                             >
                                 <Image
                                     src={partner.image}
@@ -67,6 +67,7 @@ export default function InsurancePartners() {
                         ))}
                     </div>
                 </div>
+
             </div>
 
             <style dangerouslySetInnerHTML={{
