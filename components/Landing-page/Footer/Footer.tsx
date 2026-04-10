@@ -87,9 +87,9 @@ export default function Footer() {
                             <input
                                 type="email"
                                 placeholder="Enter Your Email Address"
-                                className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-[#307984] w-full text-gray-900"
+                                className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-[#f88c29] w-full text-gray-900"
                             />
-                            <button className="bg-[#307984] hover:bg-[#307984]/90 text-white px-5 py-2.5 rounded-lg font-medium transition-colors text-xs whitespace-nowrap">
+                            <button className="bg-[#f88c29] hover:bg-[#f88c29]/90 text-white px-5 py-2.5 rounded-lg font-medium transition-colors text-xs whitespace-nowrap">
                                 Sign Up
                             </button>
                         </div>

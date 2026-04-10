@@ -70,13 +70,13 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                 Search Database
                             </label>
                             <div className="relative group">
-                                <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#307984] transition-colors" />
+                                <MagnifyingGlassIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#f88c29] transition-colors" />
                                 <input
                                     type="text"
                                     placeholder="Search tests..."
                                     value={search}
                                     onChange={e => { setSearch(e.target.value); setPage(1); }}
-                                    className="w-full pl-11 pr-4 py-4 bg-[#f8fafc] border-2 border-transparent rounded-[1.2rem] text-[14px] text-gray-700 focus:outline-none focus:bg-white focus:border-[#307984]/30 focus:ring-4 focus:ring-[#307984]/5 transition-all"
+                                    className="w-full pl-11 pr-4 py-4 bg-[#f8fafc] border-2 border-transparent rounded-[1.2rem] text-[14px] text-gray-700 focus:outline-none focus:bg-white focus:border-[#f88c29]/30 focus:ring-4 focus:ring-[#f88c29]/5 transition-all"
                                 />
                             </div>
                         </div>
@@ -89,7 +89,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                             <div className="relative">
                                 <Listbox value={diseaseFilter} onChange={(val) => { setDiseaseFilter(val); setPage(1); }}>
                                     <div className="relative">
-                                        <Listbox.Button className="relative w-full cursor-pointer rounded-[1.2rem] bg-[#f8fafc] py-4 pl-4 pr-10 text-left text-[14px] text-gray-600 focus:outline-none ring-offset-2 border-2 border-transparent focus:border-[#307984]/30 transition-all">
+                                        <Listbox.Button className="relative w-full cursor-pointer rounded-[1.2rem] bg-[#f8fafc] py-4 pl-4 pr-10 text-left text-[14px] text-gray-600 focus:outline-none ring-offset-2 border-2 border-transparent focus:border-[#f88c29]/30 transition-all">
                                             <span className="block truncate">{diseaseFilter || 'All Categories'}</span>
                                             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                                                 <ChevronDownIcon className="h-4 w-4 text-gray-400" aria-hidden="true" />
@@ -97,11 +97,11 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                         </Listbox.Button>
                                         <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
                                             <Listbox.Options className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-[14px] shadow-2xl ring-1 ring-black/5 focus:outline-none">
-                                                <Listbox.Option value="" className={({ active }) => cn("relative cursor-pointer select-none py-2.5 pl-10 pr-4", active ? "bg-[#307984]/5 text-[#307984]" : "text-gray-900")}>
+                                                <Listbox.Option value="" className={({ active }) => cn("relative cursor-pointer select-none py-2.5 pl-10 pr-4", active ? "bg-[#f88c29]/5 text-[#f88c29]" : "text-gray-900")}>
                                                     {({ selected }) => <span className={cn("block truncate", selected ? "font-bold" : "font-normal")}>All Categories</span>}
                                                 </Listbox.Option>
                                                 {diseaseFilters.map((disease) => (
-                                                    <Listbox.Option key={disease} value={disease} className={({ active }) => cn("relative cursor-pointer select-none py-2.5 pl-10 pr-4", active ? "bg-[#307984]/5 text-[#307984]" : "text-gray-900")}>
+                                                    <Listbox.Option key={disease} value={disease} className={({ active }) => cn("relative cursor-pointer select-none py-2.5 pl-10 pr-4", active ? "bg-[#f88c29]/5 text-[#f88c29]" : "text-gray-900")}>
                                                         {({ selected }) => <span className={cn("block truncate", selected ? "font-bold" : "font-normal")}>{disease}</span>}
                                                     </Listbox.Option>
                                                 ))}
@@ -120,7 +120,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                             <div className="relative">
                                 <Listbox value={departmentFilter} onChange={(val) => { setDepartmentFilter(val); setPage(1); }}>
                                     <div className="relative">
-                                        <Listbox.Button className="relative w-full cursor-pointer rounded-[1.2rem] bg-[#f8fafc] py-4 pl-4 pr-10 text-left text-[14px] text-gray-600 focus:outline-none border-2 border-transparent focus:border-[#307984]/30 transition-all">
+                                        <Listbox.Button className="relative w-full cursor-pointer rounded-[1.2rem] bg-[#f8fafc] py-4 pl-4 pr-10 text-left text-[14px] text-gray-600 focus:outline-none border-2 border-transparent focus:border-[#f88c29]/30 transition-all">
                                             <span className="block truncate">{departmentFilter || 'All Departments'}</span>
                                             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                                                 <ChevronDownIcon className="h-4 w-4 text-gray-400" aria-hidden="true" />
@@ -128,11 +128,11 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                         </Listbox.Button>
                                         <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
                                             <Listbox.Options className="absolute z-50 mt-2 max-h-60 w-full overflow-auto rounded-xl bg-white py-1 text-[14px] shadow-2xl ring-1 ring-black/5 focus:outline-none">
-                                                <Listbox.Option value="" className={({ active }) => cn("relative cursor-pointer select-none py-2.5 pl-10 pr-4", active ? "bg-[#307984]/5 text-[#307984]" : "text-gray-900")}>
+                                                <Listbox.Option value="" className={({ active }) => cn("relative cursor-pointer select-none py-2.5 pl-10 pr-4", active ? "bg-[#f88c29]/5 text-[#f88c29]" : "text-gray-900")}>
                                                     {({ selected }) => <span className={cn("block truncate", selected ? "font-bold" : "font-normal")}>All Departments</span>}
                                                 </Listbox.Option>
                                                 {departments.map((dept) => (
-                                                    <Listbox.Option key={dept} value={dept} className={({ active }) => cn("relative cursor-pointer select-none py-2.5 pl-10 pr-4", active ? "bg-[#307984]/5 text-[#307984]" : "text-gray-900")}>
+                                                    <Listbox.Option key={dept} value={dept} className={({ active }) => cn("relative cursor-pointer select-none py-2.5 pl-10 pr-4", active ? "bg-[#f88c29]/5 text-[#f88c29]" : "text-gray-900")}>
                                                         {({ selected }) => <span className={cn("block truncate", selected ? "font-bold" : "font-normal")}>{dept}</span>}
                                                     </Listbox.Option>
                                                 ))}
@@ -158,7 +158,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                 {/* Dense Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-12">
                     {paginated.map((test, i) => (
-                        <div key={test.slug} className="group bg-white rounded-[1.8rem] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_45px_rgba(48,121,132,0.1)] transition-all duration-300 flex overflow-hidden min-h-[180px] max-h-[220px]">
+                        <div key={test.slug} className="group bg-white rounded-[1.8rem] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_45px_rgba(248,140,41,0.1)] transition-all duration-300 flex overflow-hidden min-h-[180px] max-h-[220px]">
                             {/* Horizontal Image Section */}
                             <Link href={`/lab-tests/${test.slug}`} className="relative w-40 flex-shrink-0 overflow-hidden border-r border-gray-100 block">
                                 <Image
@@ -179,7 +179,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                         </span>
                                     </div>
                                     <Link href={`/lab-tests/${test.slug}`}>
-                                        <h3 className="text-[14px] font-bold text-gray-900 group-hover:text-[#307984] transition-colors leading-tight line-clamp-2 mb-2">
+                                        <h3 className="text-[14px] font-bold text-gray-900 group-hover:text-[#f88c29] transition-colors leading-tight line-clamp-2 mb-2">
                                             {test.name}
                                         </h3>
                                     </Link>
@@ -237,7 +237,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                 onClick={() => setPage(p)}
                                 className={cn(
                                     "w-10 h-10 rounded-xl text-xs font-bold transition-all",
-                                    p === page ? 'bg-[#307984] text-white shadow-lg shadow-[#307984]/20' : 'bg-white border border-gray-100 text-gray-500 hover:bg-gray-50'
+                                    p === page ? 'bg-[#f88c29] text-white shadow-lg shadow-orange-500/20' : 'bg-white border border-gray-100 text-gray-500 hover:bg-gray-50'
                                 )}
                             >
                                 {p}

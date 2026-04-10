@@ -44,12 +44,12 @@ export default function DepartmentGrid() {
                                     </p>
                                     
                                     <div className="mt-auto flex items-center justify-between">
-                                        <span className="text-[#307984] text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                                        <span className="text-[#307984] group-hover:text-[#f88c29] text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                                             View Details
                                             <ArrowRightIcon className="w-3 h-3" />
                                         </span>
                                         <div className="w-8 h-1 bg-gray-50 rounded-full overflow-hidden">
-                                            <div className="w-0 group-hover:w-full h-full bg-[#307984] transition-all duration-700" />
+                                            <div className="w-0 group-hover:w-full h-full bg-[#f88c29] transition-all duration-700" />
                                         </div>
                                     </div>
                                 </div>

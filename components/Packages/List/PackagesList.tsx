@@ -213,11 +213,11 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                     background: transparent;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: #30798440;
+                    background: #f88c2940;
                     border-radius: 10px;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: #30798480;
+                    background: #f88c2980;
                 }
             `}} />
         </section>

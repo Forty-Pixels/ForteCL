@@ -48,7 +48,7 @@ export default function TrustAndTech() {
                         <Reveal delayMs={290} className="w-full">
                             <div className="grid grid-cols-2 gap-4 w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[400px] mx-auto lg:mx-0">
                                 {logos.map((logo, index) => (
-                                    <div key={index} className="bg-white rounded-[24px] p-4 flex items-center justify-center h-12 sm:h-14 lg:h-16 transition-transform hover:scale-105 shadow-sm">
+                                    <div key={index} className="bg-white rounded-[24px] p-4 flex items-center justify-center h-12 sm:h-14 lg:h-16 transition-all hover:scale-105 hover:ring-2 hover:ring-[#f88c29] shadow-sm">
                                         <div className="relative w-full h-full">
                                             <Image src={logo.src} alt={logo.alt} fill className="object-contain" priority />
                                         </div>

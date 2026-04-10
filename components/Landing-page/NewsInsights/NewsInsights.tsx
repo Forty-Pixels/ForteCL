@@ -77,7 +77,7 @@ export default function NewsInsights() {
                         {/* Left Arrow */}
                         <button
                             onClick={() => scroll('left')}
-                            className="absolute left-0 lg:-left-20 top-[35%] sm:top-[38%] lg:top-[33%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
+                            className="absolute left-0 lg:-left-20 top-[35%] sm:top-[38%] lg:top-[33%] -translate-y-1/2 z-10 p-2 text-white hover:text-[#f88c29] transition-all opacity-70 group-hover:opacity-100"
                             aria-label="Previous articles"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
@@ -118,7 +118,7 @@ export default function NewsInsights() {
                         {/* Right Arrow */}
                         <button
                             onClick={() => scroll('right')}
-                            className="absolute right-0 lg:-right-20 top-[35%] sm:top-[38%] lg:top-[33%] -translate-y-1/2 z-10 p-2 text-white hover:text-white/80 transition-colors opacity-70 group-hover:opacity-100"
+                            className="absolute right-0 lg:-right-20 top-[35%] sm:top-[38%] lg:top-[33%] -translate-y-1/2 z-10 p-2 text-white hover:text-[#f88c29] transition-all opacity-70 group-hover:opacity-100"
                             aria-label="Next articles"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">

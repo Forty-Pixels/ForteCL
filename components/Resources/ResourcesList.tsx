@@ -43,11 +43,11 @@ export default function ResourcesList({ initialPosts, initialCategories }: Resou
                     {/* Search Bar - Center and Large */}
                     <Reveal delayMs={100} className="w-full max-w-2xl">
                         <div className="relative group">
-                            <MagnifyingGlassIcon className="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400 group-focus-within:text-[#307984] transition-colors" />
+                            <MagnifyingGlassIcon className="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400 group-focus-within:text-[#f88c29] transition-colors" />
                             <input
                                 type="text"
                                 placeholder="Search our expertise (e.g., 'Genomics', 'Testing')..."
-                                className="w-full pl-16 pr-8 py-5 rounded-3xl border border-gray-100 bg-white shadow-xl shadow-gray-100/50 focus:outline-none focus:border-[#307984]/30 focus:ring-4 focus:ring-[#307984]/5 text-lg placeholder:text-gray-300 transition-all font-light"
+                                className="w-full pl-16 pr-8 py-5 rounded-3xl border border-gray-100 bg-white shadow-xl shadow-gray-100/50 focus:outline-none focus:border-[#f88c29]/30 focus:ring-4 focus:ring-[#f88c29]/5 text-lg placeholder:text-gray-300 transition-all font-light"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
@@ -63,8 +63,8 @@ export default function ResourcesList({ initialPosts, initialCategories }: Resou
                                     onClick={() => setSelectedCategory(category)}
                                     className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300 border ${
                                         selectedCategory === category 
-                                        ? 'bg-[#307984] text-white border-[#307984] shadow-lg shadow-[#307984]/20 scale-105' 
-                                        : 'bg-white text-gray-500 border-gray-100 hover:border-[#307984]/20 hover:bg-gray-50/50'
+                                        ? 'bg-[#f88c29] text-white border-[#f88c29] shadow-lg shadow-orange-500/20 scale-105' 
+                                        : 'bg-white text-gray-500 border-gray-100 hover:border-[#f88c29]/20 hover:bg-gray-50/50'
                                     }`}
                                 >
                                     {category}
@@ -91,7 +91,7 @@ export default function ResourcesList({ initialPosts, initialCategories }: Resou
                                             className="object-cover transition-transform duration-500 group-hover:scale-110"
                                         />
                                         <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
-                                            <span className="text-[10px] font-bold text-[#307984] uppercase tracking-wider">
+                                            <span className="text-[10px] font-bold text-[#f88c29] uppercase tracking-wider">
                                                 {post.category}
                                             </span>
                                         </div>
@@ -104,7 +104,7 @@ export default function ResourcesList({ initialPosts, initialCategories }: Resou
                                             <span>By {post.author}</span>
                                         </div>
                                         
-                                        <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-[#307984] transition-colors line-clamp-2">
+                                        <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-[#f88c29] transition-colors line-clamp-2">
                                             {post.title}
                                         </h3>
                                         
@@ -112,7 +112,7 @@ export default function ResourcesList({ initialPosts, initialCategories }: Resou
                                             {post.excerpt}
                                         </p>
                                         
-                                        <div className="mt-auto flex items-center text-[#307984] text-xs font-bold uppercase tracking-wider group-hover:gap-2 transition-all">
+                                        <div className="mt-auto flex items-center text-[#f88c29] text-xs font-bold uppercase tracking-wider group-hover:gap-2 transition-all">
                                             Read Full Article <span className="ml-1">→</span>
                                         </div>
                                     </div>

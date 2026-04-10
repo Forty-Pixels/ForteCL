@@ -68,7 +68,7 @@ export default function LabTests() {
                         </Reveal>
 
                         <Reveal delayMs={280}>
-                            <Link href="/lab-tests" className="bg-white hover:bg-gray-100 text-[#307984] px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto">
+                            <Link href="/lab-tests" className="bg-[#f88c29] hover:bg-[#f88c29]/90 text-white px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto shadow-lg shadow-orange-500/20">
                                 Explore Lab Tests
                             </Link>
                         </Reveal>
@@ -89,7 +89,7 @@ export default function LabTests() {
                                     {slide.map((test, index) => (
                                         <div
                                             key={index}
-                                            className="relative aspect-square md:aspect-[4/5] rounded-xl overflow-hidden group cursor-pointer bg-gray-800"
+                                            className="relative aspect-square md:aspect-[4/5] rounded-xl overflow-hidden group cursor-pointer bg-gray-800 border-2 border-[#f88c29]/40 hover:border-[#f88c29] transition-all duration-300 shadow-lg hover:shadow-orange-500/10"
                                         >
                                             <Image
                                                 src={test.image}
@@ -114,14 +114,14 @@ export default function LabTests() {
                         <div className="flex gap-4 mt-5 justify-end">
                             <button
                                 onClick={scrollLeft}
-                                className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-[#307984] transition-all"
+                                className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-[#f88c29] hover:border-[#f88c29] transition-all"
                                 aria-label="Previous Slide"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                             </button>
                             <button
                                 onClick={scrollRight}
-                                className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-white hover:text-[#307984] transition-all"
+                                className="w-10 h-10 rounded-full border border-white/40 flex items-center justify-center text-white hover:bg-[#f88c29] hover:border-[#f88c29] transition-all"
                                 aria-label="Next Slide"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>

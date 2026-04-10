@@ -54,7 +54,6 @@ export default function Navbar({ currentPage }: NavbarProps) {
         { name: 'Departments', href: '/departments' },
         { name: 'Resources', href: '/resources' },
         { name: 'About', href: '/about' },
-        { name: 'Contact', href: '/contact' },
     ];
 
     // Helper to check if link is active
@@ -88,9 +87,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 {navLinks.map((link) => (
                     <div key={link.name} className="relative group lg:py-4">
                         {link.submenu ? (
-                            <div className="flex items-center gap-1 cursor-pointer">
-                                <span className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} group-hover:text-[#f88c29] font-medium transition-colors`}>
+                            <div className="flex items-center gap-1 cursor-pointer group/nav">
+                                <span className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} group-hover/nav:text-[#f88c29] font-medium transition-colors relative`}>
                                     {link.name}
+                                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f88c29] transition-all duration-300 group-hover/nav:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
                                 </span>
                                 <svg 
                                     className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-400'}`} 
@@ -119,9 +119,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         ) : (
                             <Link
                                 href={link.href}
-                                className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors`}
+                                className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors relative group/navlink`}
                             >
                                 {link.name}
+                                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f88c29] transition-all duration-300 group-hover/navlink:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
                             </Link>
                         )}
                     </div>
@@ -130,7 +131,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
             {/* Right: Contact Button & Mobile Menu Toggle */}
             <div className="flex items-center gap-4 z-50">
-                <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#307984] text-white px-5 py-2 rounded-full text-sm font-medium transition-transform hover:scale-105">
+                <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#307984] text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-[#f88c29] hover:shadow-lg hover:shadow-orange-500/20 hover:scale-105">
                     <svg
                         className="w-4 h-4 mr-2"
                         fill="none"
