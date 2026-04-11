@@ -28,16 +28,14 @@ export default function Hero() {
                 </Reveal>
 
                 <Reveal delayMs={140}>
-                    <h1 className="text-white font-bold tracking-tight text-3xl sm:text-4xl lg:text-5xl max-w-xs sm:max-w-xl lg:max-w-3xl text-center mb-4 sm:mb-6 leading-tight sm:leading-tight lg:leading-tight">
-                        Diagnostic Results You Can Count On
+                    <h1 className="text-white font-bold tracking-tight text-3xl sm:text-4xl lg:text-5xl max-w-xs sm:max-w-xl lg:max-w-4xl text-center mb-4 sm:mb-6 leading-tight sm:leading-tight lg:leading-tight">
+                        The UAE’s Largest and Most Trusted Molecular Diagnostics & Genetic Testing Partner.
                     </h1>
                 </Reveal>
 
                 <Reveal delayMs={210}>
-                    <p className="text-white text-center max-w-xs sm:max-w-lg lg:max-w-3xl text-sm md:text-sm lg:text-base mb-8 sm:mb-10 leading-relaxed opacity-90 px-4 sm:px-0">
-                        Combining cutting edge technology with experienced professionals, Forte Clinical Laboratory<br className="hidden md:block" />
-                        delivers lab test services and health screening you can trust. From routine blood panels to<br className="hidden md:block" />
-                        complex genomics all under one roof in Al Garhoud, Dubai.
+                    <p className="text-white text-center max-w-xs sm:max-w-lg lg:max-w-3xl text-sm md:text-base lg:text-lg mb-8 sm:mb-10 leading-relaxed opacity-90 px-4 sm:px-0">
+                        Dubai’s Latest Purpose-Built, State-of-the-Art, Fully Automated Laboratory.
                     </p>
                 </Reveal>
 
