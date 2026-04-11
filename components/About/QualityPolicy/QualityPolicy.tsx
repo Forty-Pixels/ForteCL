@@ -23,7 +23,7 @@ export default function QualityPolicy() {
     ];
 
     return (
-        <section className="bg-gray-100 py-10 md:py-14 relative">
+        <section className="bg-gray-100 py-10 md:py-14 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-48 h-48 bg-[#307984]/5 rounded-full -mr-24 -mt-24 blur-3xl"></div>
 
             <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">

@@ -100,8 +100,6 @@ export default function FloatingContact() {
                 </div>
             </div>
 
-            {/* Inset for page content on mobile to avoid overlapping the bottom bar */}
-            <div className="lg:hidden h-24 w-full bg-transparent pointer-events-none" />
         </div>
     );
 }

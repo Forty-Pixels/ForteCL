@@ -7,7 +7,7 @@ import Footer from '@/components/Landing-page/Footer/Footer';
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen bg-black">
+        <main className="min-h-screen bg-black overflow-x-hidden">
             <AboutHero />
             <LeadingTheWay />
             <Facilities />
