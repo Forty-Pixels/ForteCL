@@ -45,7 +45,7 @@ const resolveDepartmentIdFromCms = (record: DepartmentTestRecord) => {
 
     let best: { id: string; score: number } | null = null;
 
-    Object.entries(DEPARTMENT_ALIASES).forEach(([id, aliases]) => {
+    for (const [id, aliases] of Object.entries(DEPARTMENT_ALIASES)) {
         let score = 0;
         const idNorm = normalizeText(id);
 
@@ -53,20 +53,21 @@ const resolveDepartmentIdFromCms = (record: DepartmentTestRecord) => {
             score += 8;
         }
 
-        aliases.forEach((alias) => {
+        for (const alias of aliases) {
             const aliasNorm = normalizeText(alias);
-            if (!aliasNorm) return;
+            if (!aliasNorm) continue;
             if (titleNorm === aliasNorm) score += 6;
             else if (titleNorm.includes(aliasNorm) || aliasNorm.includes(titleNorm)) score += 4;
             if (slugNorm === aliasNorm || slugNorm.includes(aliasNorm)) score += 5;
-        });
+        }
 
         if (score > 0 && (!best || score > best.score)) {
             best = { id, score };
         }
-    });
+    }
 
-    return best && best.score >= 4 ? best.id : null;
+    if (!best || best.score < 4) return null;
+    return best.id;
 };
 
 export async function generateMetadata({ params }: DepartmentPageProps): Promise<Metadata> {

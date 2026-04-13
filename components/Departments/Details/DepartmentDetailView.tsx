@@ -88,11 +88,11 @@ const resolveSlugByName = (
     for (const variant of variants) {
         const variantTokens = toTokenSet(variant);
         if (variantTokens.size === 0) continue;
-        testIndex.forEach((candidate) => {
+        for (const candidate of testIndex) {
             let common = 0;
-            variantTokens.forEach((token) => {
+            for (const token of variantTokens) {
                 if (candidate.tokens.has(token)) common += 1;
-            });
+            }
 
             const score = common / Math.max(variantTokens.size, candidate.tokens.size);
             if (common >= 2 && score >= 0.5) {
@@ -100,10 +100,11 @@ const resolveSlugByName = (
                     bestMatch = { slug: candidate.slug, score };
                 }
             }
-        });
+        }
     }
 
-    return bestMatch?.slug ?? null;
+    if (!bestMatch) return null;
+    return bestMatch.slug;
 };
 
 interface DepartmentDetailViewProps {
