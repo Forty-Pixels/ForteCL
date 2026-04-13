@@ -32,11 +32,45 @@ export const labTestBySlugQuery = `*[_type == "labTest" && slug.current == $slug
 /** Fetch all lab test slugs (for generateStaticParams) */
 export const allLabTestSlugsQuery = `*[_type == "labTest"] { "slug": slug.current }`;
 
+/** Fetch all lab test names/slugs (for cross-linking from departments) */
+export const allLabTestNamesAndSlugsQuery = `*[
+  _type == "labTest" &&
+  defined(slug.current)
+] | order(name asc) {
+  name,
+  "slug": slug.current
+}`;
+
+/** Fetch all lab tests with department metadata for department-page mapping */
+export const allLabTestsWithDepartmentQuery = `*[
+  _type == "labTest" &&
+  defined(slug.current)
+] | order(name asc) {
+  "slug": slug.current,
+  name,
+  tat,
+  sampleType,
+  "departmentTitle": department->title,
+  "departmentSlug": department->slug.current
+}`;
+
 /** Fetch distinct disease filters (from the dedicated document type) */
 export const distinctDiseaseFiltersQuery = `*[_type == "diseaseCategory"] | order(title asc).title`;
 
 /** Fetch distinct departments (from the dedicated document type) */
 export const distinctDepartmentsQuery = `*[_type == "department"] | order(title asc).title`;
+
+/** Fetch tests for a department page by department slug */
+export const labTestsByDepartmentSlugQuery = `*[
+  _type == "labTest" &&
+  defined(slug.current) &&
+  department->slug.current == $slug
+] | order(name asc) {
+  "slug": slug.current,
+  name,
+  tat,
+  sampleType
+}`;
 
 
 // ─── Packages ────────────────────────────────────────────

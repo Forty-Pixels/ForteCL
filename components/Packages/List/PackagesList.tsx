@@ -6,6 +6,7 @@ import { urlFor } from '@/lib/sanity';
 import Reveal from '@/components/Animation/Reveal';
 import { Dialog, Transition, TransitionChild, DialogPanel, DialogTitle } from '@headlessui/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BookActionButton from '@/components/Booking/BookActionButton';
 
 interface PackagesListProps {
     initialPackages: any[];
@@ -44,7 +45,7 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                     </Reveal>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
                     {packages.map((pkg, index) => {
                         const { cleanTitle, price } = parsePrice(pkg.title);
 
@@ -87,14 +88,11 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
 
                                         <div className="mt-auto w-full space-y-2">
                                             {/* WhatsApp CTA */}
-                                            <a
-                                                href={`https://wa.me/97142729302?text=Hi, I would like to book the ${cleanTitle}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
+                                            <BookActionButton
+                                                label="Book Now"
+                                                whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
                                                 className="bg-[#307984] hover:bg-[#256069] text-white py-2 rounded-full text-[10px] font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center w-full"
-                                            >
-                                                Book Now
-                                            </a>
+                                            />
 
                                             {/* Tests Included Toggle */}
                                             <button
@@ -181,14 +179,11 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                         </div>
 
                                         <div className="mt-8 flex gap-3">
-                                            <a
-                                                href={`https://wa.me/97142729302?text=Hi, I would like to book the ${parsePrice(selectedPackage.title).cleanTitle}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
+                                            <BookActionButton
+                                                label="Book This Package"
+                                                whatsappText={`Hi, I would like to book the ${parsePrice(selectedPackage.title).cleanTitle} package.`}
                                                 className="flex-1 bg-[#307984] text-white py-3.5 rounded-full text-sm font-bold hover:bg-[#256069] transition-all text-center shadow-lg shadow-[#307984]/10"
-                                            >
-                                                Book This Package
-                                            </a>
+                                            />
                                             <button
                                                 onClick={() => setSelectedPackage(null)}
                                                 className="px-8 bg-gray-100 text-[#1F2937] py-3.5 rounded-full text-sm font-bold hover:bg-gray-200 transition-all"

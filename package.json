@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "enrich:lab-tests:dry": "node scripts/enrich-lab-tests-content.mjs",
+    "enrich:lab-tests:apply": "node scripts/enrich-lab-tests-content.mjs --apply"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

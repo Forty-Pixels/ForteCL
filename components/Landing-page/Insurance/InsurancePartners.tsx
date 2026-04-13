@@ -4,30 +4,17 @@ import Image from 'next/image';
 import Reveal from '@/components/Animation/Reveal';
 
 const partners = [
-    { name: 'Emarat Takaful', image: '/Landing-page/insurance/partner-1.webp' },
-    { name: 'SALAMA', image: '/Landing-page/insurance/partner-2.webp' },
-    { name: 'NGI', image: '/Landing-page/insurance/partner-3.webp' },
-    { name: 'NLG', image: '/Landing-page/insurance/partner-4.webp' },
-    { name: 'MetLife', image: '/Landing-page/insurance/partner-5.webp' },
-    { name: 'Life Line', image: '/Landing-page/insurance/partner-6.webp' },
-    { name: 'Orient Insurance', image: '/Landing-page/insurance/partner-7.webp' },
-    { name: 'AMAN', image: '/Landing-page/insurance/partner-8.webp' },
-    { name: 'ALMADALLAH', image: '/Landing-page/insurance/partner-9.webp' },
-    { name: 'Nextcare', image: '/Landing-page/insurance/partner-10.webp' },
+
+    { name: 'ALMADALLAH Healthcare Management', image: '/Landing-page/insurance/partner-14.webp' },
+    { name: 'NGI National General Insurance', image: '/Landing-page/insurance/partner-20.webp' },
+    { name: 'eCare International', image: '/Landing-page/insurance/partner-8.webp' },
     { name: 'NAS', image: '/Landing-page/insurance/partner-11.webp' },
-    { name: 'FMC NETWORK UAE', image: '/Landing-page/insurance/partner-12.webp' },
-    { name: 'SAICO', image: '/Landing-page/insurance/partner-13.webp' },
-    { name: 'NOOR TAKAFUL', image: '/Landing-page/insurance/partner-14.webp' },
-    { name: 'ecare INTERNATIONAL', image: '/Landing-page/insurance/partner-15.webp' },
-    { name: 'DUBAI INSURANCE', image: '/Landing-page/insurance/partner-16.webp' },
-    { name: 'DNI', image: '/Landing-page/insurance/partner-17.webp' },
-    { name: 'Daman', image: '/Landing-page/insurance/partner-18.webp' },
-    { name: 'Al-Buhaira', image: '/Landing-page/insurance/partner-19.webp' },
-    { name: 'AFNIC', image: '/Landing-page/insurance/partner-20.webp' },
-    { name: 'ADNIC', image: '/Landing-page/insurance/partner-21.webp' },
-    { name: 'Aafiya', image: '/Landing-page/insurance/partner-22.webp' },
-    { name: 'Watania Takaful', image: '/Landing-page/insurance/partner-23.webp' },
-    { name: 'MSH International', image: '/Landing-page/insurance/partner-24.webp' },
+    { name: 'FMC Network UAE', image: '/Landing-page/insurance/partner-12.webp' },
+    { name: 'Lifeline', image: '/Landing-page/insurance/partner-17.webp' },
+    { name: 'Inaya', image: '/Landing-page/insurance/inayah-logo.jpg' },
+    { name: 'Enaya', image: '/Landing-page/insurance/enaya-logo.svg' },
+    { name: 'Neuron', image: '/Landing-page/insurance/neuron-logo.png' },
+
 ];
 
 export default function InsurancePartners() {
@@ -35,33 +22,45 @@ export default function InsurancePartners() {
     const marqueeItems = [...partners, ...partners];
 
     return (
-        <section className="bg-white py-6 md:py-8 overflow-hidden">
-            <div className="max-w-[1440px] mx-auto">
-                <div className="mb-6 text-center px-4">
-                    <Reveal delayMs={70}>
-                        <h2 className="text-xl md:text-3xl font-bold text-gray-900">
-                            Our Insurance Partners
+        <section className="py-7 md:py-9 overflow-hidden bg-gradient-to-b from-[#f7fcfb] via-[#f2f9f8] to-white">
+            <div className="max-w-[1440px] mx-auto px-4 md:px-6">
+                <div className="mb-4 md:mb-5 text-center">
+                    <Reveal delayMs={30}>
+                        <div className="inline-flex items-center rounded-full border border-[#307984]/20 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#307984]">
+                            Trusted Coverage Network
+                        </div>
+                    </Reveal>
+
+                    <Reveal delayMs={60}>
+                        <h2 className="mt-2 text-2xl md:text-3xl font-bold text-[#f88c29]">
+                            Insurance Partners
                         </h2>
+                    </Reveal>
+
+                    <Reveal delayMs={90}>
+                        <p className="mt-1 text-sm text-gray-600">
+                            Cashless tie-ups • Fast approval support • UAE network
+                        </p>
                     </Reveal>
                 </div>
 
-                <div className="relative w-full overflow-hidden">
-                    {/* Gradient Overlays for smooth edges */}
-                    <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
-                    <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+                <div className="relative w-full overflow-hidden rounded-2xl border border-[#307984]/10 bg-white/85 p-3 md:p-4">
+                    {/* Gradient overlays for smooth marquee edges */}
+                    <div className="absolute left-0 top-0 bottom-0 w-28 md:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-28 md:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-                    {/* Marquee Container */}
-                    <div className="flex w-fit animate-marquee hover:pause-marquee gap-8 md:gap-12 items-center py-2">
+                    {/* Marquee container */}
+                    <div className="flex w-fit animate-marquee hover:pause-marquee gap-6 md:gap-10 items-center py-2 md:py-3">
                         {marqueeItems.map((partner, index) => (
-                            <div 
-                                key={`${partner.name}-${index}`} 
-                                className="flex-shrink-0 w-64 md:w-80 lg:w-[400px] h-32 md:h-44 lg:h-56 relative transition-all duration-300 transform hover:scale-105"
+                            <div
+                                key={`${partner.name}-${index}`}
+                                className="flex-shrink-0 w-72 md:w-96 lg:w-[440px] h-32 md:h-44 lg:h-52 relative rounded-xl border border-gray-100 bg-white px-5 py-3 transition-transform duration-300 hover:scale-[1.02]"
                             >
                                 <Image
                                     src={partner.image}
                                     alt={partner.name}
                                     fill
-                                    className="object-contain"
+                                    className="object-contain p-3 md:p-4"
                                 />
                             </div>
                         ))}
@@ -70,19 +69,22 @@ export default function InsurancePartners() {
 
             </div>
 
-            <style dangerouslySetInnerHTML={{
-                __html: `
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: `
                 @keyframes marquee {
                     0% { transform: translateX(0); }
                     100% { transform: translateX(-50%); }
                 }
                 .animate-marquee {
-                    animation: marquee 55s linear infinite;
+                    animation: marquee 50s linear infinite;
                 }
                 .hover\\:pause-marquee:hover {
                     animation-play-state: paused;
                 }
-            `}} />
+            `,
+                }}
+            />
         </section>
     );
 }

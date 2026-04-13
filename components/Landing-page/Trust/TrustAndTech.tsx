@@ -10,7 +10,7 @@ const logos = [
 
 export default function TrustAndTech() {
     return (
-        <section className="relative w-full flex items-center py-8 md:py-12 lg:py-14 overflow-hidden">
+        <section className="relative w-full flex items-center py-10 md:py-12 lg:py-14 overflow-hidden">
             <div className="absolute inset-0 z-0 h-full w-full">
                 <Image
                     src="/Landing-page/trust/bg-v3.png"
@@ -25,10 +25,44 @@ export default function TrustAndTech() {
             <div className="absolute inset-0 z-10 hidden lg:block bg-gradient-to-l from-[#0D3B66]/98 via-[#0D3B66]/80 to-transparent"></div>
 
             <div className="relative z-20 max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-[58%_42%]">
-                    <div className="hidden lg:block"></div>
+                <div className="grid grid-cols-1 lg:grid-cols-[54%_46%] gap-8 lg:gap-10 items-center">
+                    <div className="order-2 lg:order-1">
+                        <Reveal delayMs={90}>
+                            <div className="grid grid-cols-2 gap-4 sm:gap-5 items-end">
+                                <div className="relative">
+                                    <div className="absolute -left-2 sm:-left-3 top-2 bottom-16 w-2 sm:w-3 rounded-full bg-[#2ab56f]" />
+                                    <div className="relative aspect-[4/5] overflow-hidden rounded-[88px_18px_18px_18px] border border-white/40 shadow-xl">
+                                        <Image
+                                            src="/office2.png"
+                                            alt="Forte laboratory workspace and team area"
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+                                        <div className="absolute left-3 bottom-3 bg-white/90 text-[#1f2937] rounded-full px-3 py-1 text-[9px] font-black tracking-wider uppercase">
+                                            5,000 sq.ft Facility
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-12 text-white">
+                                <div className="relative">
+                                    <div className="absolute -right-2 sm:-right-3 top-8 bottom-20 w-2 sm:w-3 rounded-full bg-[#2e6ab7]" />
+                                    <div className="relative aspect-[4/5] overflow-hidden rounded-[18px_18px_92px_18px] border border-white/40 shadow-xl">
+                                        <Image
+                                            src="/office1.png"
+                                            alt="Forte office and diagnostic facility interior"
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                                    </div>
+                                </div>
+                            </div>
+                        </Reveal>
+                       
+                    </div>
+
+                    <div className="order-1 lg:order-2 flex flex-col items-center text-center lg:items-start lg:text-left text-white">
                         <Reveal delayMs={70}>
                             <span className="text-[#f88c29] font-medium text-[0.65rem] tracking-[0.2em] mb-3 uppercase block">
                                 Precision & Accreditation

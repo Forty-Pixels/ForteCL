@@ -1,35 +1,38 @@
 'use client';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
 
-const tests = [
+const mainTests = [
     { name: 'Diabetes Care', image: '/Landing-page/tests/test-8.png' },
-    { name: 'Liver Tests', image: '/Landing-page/tests/test-3.png' },
-    { name: 'Kidney Tests', image: '/Landing-page/tests/test-4.png' },
-    { name: 'Thyroid Tests', image: '/Landing-page/tests/test-2.png' },
+    { name: 'Liver Function Profile', image: '/Landing-page/tests/test-3.png' },
+    { name: 'Kidney Function Panel', image: '/Landing-page/tests/test-4.png' },
+    { name: 'Thyroid Profile', image: '/Landing-page/tests/test-2.png' },
     { name: 'Lipid Profile', image: '/Landing-page/tests/test-1.png' },
-    { name: 'Complete Blood Count (CBC)', image: '/Landing-page/tests/test-5.png' },
+    { name: 'Complete Blood Count', image: '/Landing-page/tests/test-5.png' },
     { name: 'Electrolytes Panel', image: '/Landing-page/tests/test-7.png' },
     { name: 'Mineral Panel', image: '/Landing-page/tests/test-mineral.png' },
-    { name: 'HIV Test', image: '/Landing-page/tests/test-hiv.png' },
+    { name: 'HIV Screening', image: '/Landing-page/tests/test-hiv.png' },
     { name: 'Fertility (Female)', image: '/Landing-page/tests/test-fertility.png' },
-    { name: 'Hormone Panel (Men)', image: '/Landing-page/tests/test-hormone.png' },
+    { name: 'Hormone Panel (Male)', image: '/Landing-page/tests/test-hormone.png' },
     { name: 'Vitamin B12', image: '/Landing-page/tests/test-vitamin-b12.png' },
+    { name: 'Vitamin D Panel', image: '/Landing-page/tests/test-6.png' },
+    { name: 'Iron Studies', image: '/Landing-page/tests/test-9.png' },
+    { name: 'Cardiac Risk Panel', image: '/Landing-page/tests/test-10.png' },
+    { name: 'Prenatal Wellness Panel', image: '/Landing-page/tests/test-11.png' },
+    { name: 'Bone Health Panel', image: '/Landing-page/tests/test-12.png' },
+    { name: 'General Wellness Profile', image: '/Landing-page/tests/test-2.png' },
 ];
-
-// Triple the tests to simulate infinity
-const infiniteTests = [...tests, ...tests, ...tests];
 
 export default function LabTests() {
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    // Create chunks of 8 tests
-    const allTests = [...tests, ...tests]; // 24 total to have 3 full slides of 8
+    // 18 tests max, rendered as 3 slides of 6 cards each
+    const allTests = mainTests.slice(0, 18);
     const chunked = [];
-    for (let i = 0; i < allTests.length; i += 8) {
-        chunked.push(allTests.slice(i, i + 8));
+    for (let i = 0; i < allTests.length; i += 6) {
+        chunked.push(allTests.slice(i, i + 6));
     }
 
     const scrollLeft = () => {
@@ -84,7 +87,7 @@ export default function LabTests() {
                             {chunked.map((slide, slideIndex) => (
                                 <div
                                     key={slideIndex}
-                                    className="min-w-full grid grid-cols-2 sm:grid-cols-4 grid-rows-4 sm:grid-rows-2 gap-3 snap-start flex-shrink-0"
+                                    className="min-w-full grid grid-cols-2 sm:grid-cols-3 grid-rows-3 sm:grid-rows-2 gap-3 snap-start flex-shrink-0"
                                 >
                                     {slide.map((test, index) => (
                                         <div

@@ -4,6 +4,7 @@ import Reveal from '@/components/Animation/Reveal';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Landing-page/Footer/Footer';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
+import BookActionButton from '@/components/Booking/BookActionButton';
 
 interface ResourcePost {
     slug: string;
@@ -157,14 +158,11 @@ export default function ResourceDetail({ post, relatedPosts }: ResourceDetailPro
                                     </div>
                                     
                                     <div className="pt-2">
-                                        <Link 
-                                            href="https://wa.me/97142729302"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
+                                        <BookActionButton
+                                            label="Book a Test"
+                                            whatsappText={`Hi, I would like to book a test after reading \"${post.title}\".`}
                                             className="block w-full text-center bg-[#307984] hover:bg-[#307984]/90 text-white rounded-xl py-4 font-bold text-sm transition-all shadow-md active:scale-95"
-                                        >
-                                            Book a Test
-                                        </Link>
+                                        />
                                     </div>
                                 </div>
                             </Reveal>

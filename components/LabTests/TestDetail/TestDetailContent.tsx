@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { LabTest } from '@/data/labTestTypes';
 import Reveal from '@/components/Animation/Reveal';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
+import BookActionButton from '@/components/Booking/BookActionButton';
 
 interface Props {
     test: LabTest;
@@ -117,9 +118,11 @@ export default function TestDetailContent({ test, allTests }: Props) {
                         {/* Action Buttons */}
                         <Reveal delayMs={240}>
                             <div className="flex flex-col sm:flex-row gap-4 mt-16 pt-16 border-t border-gray-100">
-                                <Link href="/contact" className="bg-[#307984] hover:bg-[#245d65] text-white px-10 py-4 rounded-2xl text-[15px] font-bold transition-all shadow-[0_15px_30px_rgba(48,121,132,0.15)] text-center">
-                                    Book An Appointment
-                                </Link>
+                                <BookActionButton
+                                    label="Book An Appointment"
+                                    whatsappText={`Hi, I would like to book the ${test.name} test.`}
+                                    className="bg-[#307984] hover:bg-[#245d65] text-white px-10 py-4 rounded-2xl text-[15px] font-bold transition-all shadow-[0_15px_30px_rgba(48,121,132,0.15)] text-center"
+                                />
                                 <Link href="/lab-tests" className="bg-[#111111] hover:bg-black text-white px-10 py-4 rounded-2xl text-[15px] font-bold transition-all text-center">
                                     Back to Database
                                 </Link>

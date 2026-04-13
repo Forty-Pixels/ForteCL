@@ -8,17 +8,157 @@ import {
     CheckCircleIcon, 
     BeakerIcon, 
     ShieldCheckIcon, 
-    InformationCircleIcon,
-    ArrowLeftIcon
+    InformationCircleIcon
 } from '@heroicons/react/24/outline';
 
 import Navbar from '@/components/Navbar/Navbar';
 
+const TEST_LIMIT = 18;
+
+const normalizeTestName = (value: string) =>
+    value
+        .toLowerCase()
+        .replace(/\([^)]*\)/g, ' ')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+const toTokenSet = (value: string) => new Set(value.split(' ').filter(Boolean));
+
+const abbreviationMap: Record<string, string> = {
+    cbc: 'complete blood count',
+    pbs: 'peripheral blood smear',
+    esr: 'erythrocyte sedimentation rate',
+    hb: 'hemoglobin',
+    crp: 'c reactive protein',
+    ana: 'antinuclear antibody',
+    rf: 'rheumatoid factor',
+    ast: 'antibiotic sensitivity test',
+    afb: 'acid fast bacilli',
+    fnac: 'fine needle aspiration cytology',
+    pcr: 'polymerase chain reaction',
+};
+
+const getNameVariants = (value: string) => {
+    const normalized = normalizeTestName(value);
+    const variants = new Set<string>([normalized]);
+
+    Object.entries(abbreviationMap).forEach(([short, expanded]) => {
+        const shortPattern = new RegExp(`\\b${short}\\b`, 'g');
+        if (shortPattern.test(normalized)) {
+            variants.add(normalized.replace(shortPattern, expanded).trim());
+        }
+    });
+
+    return Array.from(variants).filter(Boolean);
+};
+
+type CmsTestIndexItem = {
+    slug: string;
+    normalizedName: string;
+    tokens: Set<string>;
+};
+
+const resolveSlugByName = (
+    testName: string,
+    testIndex: CmsTestIndexItem[]
+) => {
+    const variants = getNameVariants(testName);
+    if (variants.length === 0) return null;
+
+    for (const variant of variants) {
+        const exact = testIndex.find((item) => item.normalizedName === variant);
+        if (exact) return exact.slug;
+    }
+
+    for (const variant of variants) {
+        const variantFlat = variant.replace(/\s+/g, '');
+        const includes = testIndex.find((item) => {
+            const candidateFlat = item.normalizedName.replace(/\s+/g, '');
+            return (
+                item.normalizedName.includes(variant) ||
+                variant.includes(item.normalizedName) ||
+                candidateFlat === variantFlat
+            );
+        });
+        if (includes) return includes.slug;
+    }
+
+    let bestMatch: { slug: string; score: number } | null = null;
+    for (const variant of variants) {
+        const variantTokens = toTokenSet(variant);
+        if (variantTokens.size === 0) continue;
+        testIndex.forEach((candidate) => {
+            let common = 0;
+            variantTokens.forEach((token) => {
+                if (candidate.tokens.has(token)) common += 1;
+            });
+
+            const score = common / Math.max(variantTokens.size, candidate.tokens.size);
+            if (common >= 2 && score >= 0.5) {
+                if (!bestMatch || score > bestMatch.score) {
+                    bestMatch = { slug: candidate.slug, score };
+                }
+            }
+        });
+    }
+
+    return bestMatch?.slug ?? null;
+};
+
 interface DepartmentDetailViewProps {
     department: Department;
+    cmsTests?: {
+        slug: string;
+        name: string;
+        tat?: string;
+        sampleType?: string[];
+    }[];
+    allCmsTests?: {
+        name: string;
+        slug: string;
+    }[];
 }
 
-export default function DepartmentDetailView({ department }: DepartmentDetailViewProps) {
+export default function DepartmentDetailView({
+    department,
+    cmsTests = [],
+    allCmsTests = [],
+}: DepartmentDetailViewProps) {
+    const cmsTestIndex = allCmsTests.map((test) => ({
+        slug: test.slug,
+        normalizedName: normalizeTestName(test.name),
+        tokens: toTokenSet(normalizeTestName(test.name)),
+    }));
+
+    const cmsDerivedTests = cmsTests.map((test) => ({
+        name: test.name,
+        description: [
+            test.tat ? `TAT: ${test.tat}` : null,
+            test.sampleType?.length ? `Sample: ${test.sampleType.join(', ')}` : null,
+        ]
+            .filter(Boolean)
+            .join(' • ') || 'Comprehensive diagnostics performed by our department specialists.',
+        slug: test.slug || resolveSlugByName(test.name, cmsTestIndex),
+    }));
+
+    const fallbackDepartmentTests = department.commonTests.map((test) => ({
+        name: test.name,
+        description: test.description,
+        slug: resolveSlugByName(test.name, cmsTestIndex),
+    }));
+
+    const merged = [...cmsDerivedTests, ...fallbackDepartmentTests];
+    const seenNames = new Set<string>();
+    const standardTests = merged
+        .filter((test) => {
+            const key = normalizeTestName(test.name);
+            if (!key || seenNames.has(key)) return false;
+            seenNames.add(key);
+            return true;
+        })
+        .slice(0, TEST_LIMIT);
+
     return (
         <section className="bg-white min-h-screen pb-24 pt-20 sm:pt-24 lg:pt-28">
             <Navbar currentPage="Departments" />
@@ -130,26 +270,43 @@ export default function DepartmentDetailView({ department }: DepartmentDetailVie
                             <div className="bg-[#f8fafc] rounded-[2.5rem] p-8 sm:p-10 border border-gray-100 shadow-inner">
                                 <div className="flex items-center justify-between mb-8">
                                     <h3 className="text-xl font-black text-[#202020] tracking-tight">
-                                        Standard Procedures
+                                        Standard Procedures & Tests
                                     </h3>
                                     <ShieldCheckIcon className="w-8 h-8 text-[#f88c29] opacity-20" />
                                 </div>
                                 
                                 <div className="grid grid-cols-1 gap-6">
-                                    {department.commonTests.map((test, tIndex) => (
+                                    {standardTests.map((test, tIndex) => (
                                         <Reveal key={tIndex} delayMs={500 + (tIndex * 50)}>
-                                            <div className="group flex items-start gap-4">
+                                            <div className="group flex items-start gap-4 justify-between">
                                                 <div className="mt-1 flex-shrink-0 w-7 h-7 rounded-xl bg-white border border-gray-200 flex items-center justify-center group-hover:bg-[#f88c29] group-hover:border-[#f88c29] transition-all shadow-sm">
                                                     <CheckCircleIcon className="w-4 h-4 text-[#307984] group-hover:text-white transition-colors" />
                                                 </div>
-                                                <div>
-                                                    <h4 className="text-sm font-black text-gray-800 mb-1 group-hover:text-[#f88c29] transition-colors leading-tight">
-                                                        {test.name}
-                                                    </h4>
+                                                <div className="flex-1">
+                                                    {test.slug ? (
+                                                        <Link
+                                                            href={`/lab-tests/${test.slug}`}
+                                                            className="text-sm font-black text-gray-800 mb-1 group-hover:text-[#f88c29] transition-colors leading-tight inline-block"
+                                                        >
+                                                            {test.name}
+                                                        </Link>
+                                                    ) : (
+                                                        <h4 className="text-sm font-black text-gray-800 mb-1 group-hover:text-[#f88c29] transition-colors leading-tight">
+                                                            {test.name}
+                                                        </h4>
+                                                    )}
                                                     <p className="text-[11px] text-gray-500 leading-relaxed font-bold max-w-lg">
                                                         {test.description}
                                                     </p>
                                                 </div>
+                                                {test.slug && (
+                                                    <Link
+                                                        href={`/lab-tests/${test.slug}`}
+                                                        className="shrink-0 inline-flex items-center rounded-full border border-[#307984]/20 bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-[#307984] hover:bg-[#307984] hover:text-white transition-colors"
+                                                    >
+                                                        View Details
+                                                    </Link>
+                                                )}
                                             </div>
                                         </Reveal>
                                     ))}

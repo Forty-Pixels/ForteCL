@@ -3,10 +3,22 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { DEPARTMENTS_DATA } from '@/constants/departments';
 
 interface NavbarProps {
     currentPage?: 'Home' | 'Lab Tests' | 'Packages' | 'Departments' | 'Resources' | 'About' | 'Contact';
 }
+
+type NavSubLink = {
+    name: string;
+    href: string;
+};
+
+type NavLink = {
+    name: string;
+    href: string;
+    submenu?: NavSubLink[];
+};
 
 export default function Navbar({ currentPage }: NavbarProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,7 +53,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navLinks = [
+    const navLinks: NavLink[] = [
         { name: 'Home', href: '/' },
         { 
             name: 'Test List', 
@@ -51,16 +63,27 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 { name: 'Packages', href: '/packages' }
             ]
         },
-        { name: 'Departments', href: '/departments' },
+        {
+            name: 'Departments',
+            href: '/departments',
+            submenu: [
+                { name: 'All Departments', href: '/departments' },
+                ...DEPARTMENTS_DATA.map((dept) => ({
+                    name: dept.title.replace(' Department', ''),
+                    href: `/departments/${dept.id}`,
+                })),
+            ],
+        },
         { name: 'Resources', href: '/resources' },
         { name: 'About', href: '/about' },
     ];
 
     // Helper to check if link is active
-    const isActive = (link: any) => {
+    const isActive = (link: NavLink | NavSubLink) => {
         if (link.href !== '#' && link.name === currentPage) return true;
-        if (link.submenu) {
-            return link.submenu.some((sub: any) => sub.name === currentPage);
+        if ('submenu' in link && link.name === 'Departments' && currentPage === 'Departments') return true;
+        if ('submenu' in link && link.submenu) {
+            return link.submenu.some((sub) => sub.name === currentPage);
         }
         return false;
     };
@@ -102,8 +125,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                 </svg>
                                 
                                 {/* Dropdown Menu */}
-                                <div className="absolute top-full left-0 mt-0 w-48 bg-[#307984] rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]">
-                                    <div className="py-2">
+                                <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : 'w-48'} bg-[#307984] rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]`}>
+                                    <div className={`py-2 ${link.name === 'Departments' ? 'max-h-[380px] overflow-y-auto' : ''}`}>
                                         {link.submenu.map((sub) => (
                                             <Link
                                                 key={sub.name}
@@ -234,7 +257,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                                         <Link
                                                             key={sub.name}
                                                             href={sub.href}
-                                                            onClick={() => setIsMenuOpen(false)}
+                                                            onClick={() => {
+                                                                setIsMenuOpen(false);
+                                                                setOpenMobileSubmenus([]);
+                                                            }}
                                                             className={`text-2xl sm:text-3xl font-bold tracking-tight ${isActive({ name: sub.name, href: sub.href }) ? 'text-[#f88c29]' : 'text-white/70'
                                                                 } hover:text-[#f88c29] transition-colors flex items-center group`}
                                                         >

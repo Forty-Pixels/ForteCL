@@ -7,6 +7,7 @@ import { ChevronDownIcon, CheckIcon, MagnifyingGlassIcon, ClockIcon, BeakerIcon,
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { urlFor } from '@/lib/sanity';
+import BookActionButton from '@/components/Booking/BookActionButton';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -200,12 +201,11 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
 
                                 {/* Compact Actions */}
                                 <div className="flex items-center gap-2 mt-3 pt-3 border-t border-gray-50">
-                                    <Link 
-                                        href={`/lab-tests/${test.slug}`}
+                                    <BookActionButton
+                                        label="Book Now"
+                                        whatsappText={`Hi, I would like to book the ${test.name} test.`}
                                         className="flex-1 py-2 bg-[#f88c29] hover:bg-[#e67e22] text-white text-[11px] font-bold rounded-lg text-center transition-all shadow-[0_5px_15px_rgba(248,140,41,0.15)]"
-                                    >
-                                        Book Now
-                                    </Link>
+                                    />
                                 </div>
                             </div>
                         </div>

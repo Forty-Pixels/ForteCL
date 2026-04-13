@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar/Navbar';
 import Reveal from '@/components/Animation/Reveal';
+import BookActionButton from '@/components/Booking/BookActionButton';
 
 export default function Hero() {
     return (
@@ -41,14 +42,11 @@ export default function Hero() {
 
                 <Reveal delayMs={280}>
                     <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full sm:w-auto px-4">
-                        <Link
-                            href="https://wa.me/97142729302"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <BookActionButton
+                            label="Book a Test"
+                            whatsappText="Hi, I would like to book a test from the home page."
                             className="bg-[#307984] hover:bg-[#307984]/90 text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-colors w-full sm:w-auto text-center"
-                        >
-                            Book a Test
-                        </Link>
+                        />
                         <Link
                             href="/lab-tests"
                             className="border-2 border-[#307984] hover:bg-[#307984]/10 text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-colors w-full sm:w-auto text-center backdrop-blur-sm"

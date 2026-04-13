@@ -6,8 +6,6 @@ import {
     ShieldCheckIcon, 
     CpuChipIcon, 
     CircleStackIcon, 
-    VariableIcon, 
-    ChartBarIcon, 
     AcademicCapIcon,
     SparklesIcon
 } from '@heroicons/react/24/outline';
@@ -16,11 +14,9 @@ const departments = [
     { name: 'Hematology Department', icon: BeakerIcon, id: 'hematology' },
     { name: 'Microbiology', icon: SparklesIcon, id: 'microbiology' },
     { name: 'Immunology Department', icon: ShieldCheckIcon, id: 'immunology' },
-    { name: 'Serology Department', icon: ChartBarIcon, id: 'serology' },
     { name: 'Clinical Biochemistry Department', icon: CircleStackIcon, id: 'biochemistry' },
     { name: 'Pathology / Histopathology Department', icon: AcademicCapIcon, id: 'pathology' },
     { name: 'Molecular Biology / Genetics', icon: CpuChipIcon, id: 'molecular' },
-    { name: 'Histopathology & Cytopathology', icon: VariableIcon, id: 'cytopathology' },
 ];
 
 export default function Departments() {

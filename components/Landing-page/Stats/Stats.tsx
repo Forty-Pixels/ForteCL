@@ -9,6 +9,7 @@ type StatItem = {
     suffix?: string;
     target?: number;
     staticValue?: string;
+    note: string;
     icon: ReactNode;
 };
 
@@ -82,6 +83,7 @@ export default function Stats() {
             label: 'Parameters processed daily',
             target: 10000,
             suffix: '+',
+            note: 'High-throughput workflow with verified reporting.',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
@@ -96,6 +98,7 @@ export default function Stats() {
             label: 'Special tests under one roof',
             target: 4500,
             suffix: '+',
+            note: 'Comprehensive diagnostics from one location.',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M10 2v2" />
@@ -110,6 +113,7 @@ export default function Stats() {
         {
             label: 'Sample Collection',
             staticValue: '24/7',
+            note: 'Walk-ins and home collection support every day.',
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
@@ -121,29 +125,35 @@ export default function Stats() {
         {
             label: 'Joint Commission International',
             staticValue: 'JCI Certified',
+            note: 'Accredited quality and safety standards.',
             icon: (
-                <Image src="/accreditations/jci-gold-badge1.png" alt="JCI Certified Logo" width={28} height={28} className="object-contain" />
+                <Image src="/accreditations/jci-gold-badge1.png" alt="JCI Certified Logo" width={42} height={42} className="object-contain" />
             ),
         },
     ], []);
 
     return (
-        <section ref={sectionRef} className="bg-white py-10">
+        <section ref={sectionRef} className="bg-gradient-to-b from-white to-[#f7fcfb] py-10 md:py-11">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
                     {stats.map((stat, index) => (
                         <Reveal key={stat.label} delayMs={90 + index * 80}>
-                            <div className="flex flex-col items-start justify-start">
-                                <div className="text-[#307984] mb-3">{stat.icon}</div>
-                                <h3 className="text-2xl md:text-3xl font-bold text-[#307984] mb-2 font-poppins">
+                            <div className="h-full rounded-2xl border border-[#307984]/15 bg-gradient-to-b from-white to-[#f1f8f7] p-5 md:p-6 transition-transform duration-300 hover:-translate-y-1">
+                                <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${stat.label === 'Joint Commission International' ? 'bg-[#fff5ea] text-[#f88c29]' : 'bg-[#e5f3f1] text-[#307984]'}`}>
+                                    {stat.icon}
+                                </div>
+                                <h3 className="text-3xl md:text-[2rem] font-bold text-[#f88c29] mb-1 font-poppins leading-tight">
                                     {typeof stat.target === 'number' ? (
                                         <CountText target={stat.target} suffix={stat.suffix} shouldStart={isVisible} />
                                     ) : (
                                         stat.staticValue
                                     )}
                                 </h3>
-                                <p className="text-gray-600 font-medium text-xs md:text-sm leading-snug max-w-[140px]">
+                                <p className="text-gray-700 font-semibold text-sm md:text-[15px] leading-snug">
                                     {stat.label}
+                                </p>
+                                <p className="mt-2 text-xs md:text-sm text-gray-500 leading-snug">
+                                    {stat.note}
                                 </p>
                             </div>
                         </Reveal>

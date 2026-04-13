@@ -3,30 +3,21 @@ const fs = require('fs');
 const path = require('path');
 
 const insurancePartners = [
-    { name: 'Emarat Takaful', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-1.webp' },
-    { name: 'SALAMA', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-2.webp' },
+
     { name: 'NGI', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-3.webp' },
-    { name: 'NLG', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-4.webp' },
-    { name: 'MetLife', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-5.webp' },
-    { name: 'Life Line', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-6.webp' },
-    { name: 'Orient Insurance', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-7.webp' },
-    { name: 'AMAN', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-8.webp' },
+
+
+
     { name: 'ALMADALLAH', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-9.webp' },
-    { name: 'Nextcare', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-10.webp' },
+
     { name: 'NAS', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-11.webp' },
     { name: 'FMC NETWORK UAE', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-12.webp' },
-    { name: 'SAICO', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-13.webp' },
-    { name: 'NOOR TAKAFUL', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-14.webp' },
-    { name: 'ecare INTERNATIONAL', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-15.webp' },
-    { name: 'DUBAI INSURANCE', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-16.webp' },
-    { name: 'DNI', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-17.webp' },
-    { name: 'Daman', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-18.webp' },
-    { name: 'Al-Buhaira', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-19.webp' },
-    { name: 'AFNIC', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-20.webp' },
-    { name: 'ADNIC', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-21.webp' },
-    { name: 'Aafiya', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-22.webp' },
-    { name: 'Watania Takaful', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-23.webp' },
-    { name: 'MSH International', url: 'https://genexlab.ae/wp-content/uploads/2025/03/Insurance-Partner-24.webp' },
+  
+   
+    { name: 'ecare INTERNATIONAL', url: 'https://static.wixstatic.com/media/e3cc81_bc08fcb3ecbf4b2892334531b1720fb7~mv2.jpg/v1/fill/w_1920,h_415,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e3cc81_bc08fcb3ecbf4b2892334531b1720fb7~mv2.jpg' },
+
+
+   
 ];
 
 const download = (url, dest) => {

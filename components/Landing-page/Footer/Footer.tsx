@@ -3,8 +3,18 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="bg-white text-gray-900 pt-8 pb-28 lg:pb-8 border-t border-gray-100 overflow-hidden">
-            <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
+        <footer className="relative text-white pt-10 pb-28 lg:pb-10 overflow-hidden">
+            <div className="absolute inset-0">
+                <Image
+                    src="/Landing-page/hero-image.png"
+                    alt="Forte laboratory background"
+                    fill
+                    className="object-cover opacity-8"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#307984] to-[#42AFBF]" />
+            </div>
+
+            <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr_1.3fr] gap-8 lg:gap-6 mb-6">
 
                     {/* Brand Section */}
@@ -21,8 +31,8 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-base font-semibold mb-3">Quick Links</h4>
-                        <ul className="space-y-2 text-gray-500 text-xs">
+                        <h4 className="text-base font-semibold mb-3 text-white">Quick Links</h4>
+                        <ul className="space-y-2 text-white/80 text-xs">
                             <li><Link href="/" className="hover:text-[#f88c29] transition-colors">Home</Link></li>
                             <li><Link href="/lab-tests" className="hover:text-[#f88c29] transition-colors">Lab Tests</Link></li>
                             <li><Link href="/packages" className="hover:text-[#f88c29] transition-colors">Packages</Link></li>
@@ -36,8 +46,8 @@ export default function Footer() {
 
                     {/* Get In Touch */}
                     <div>
-                        <h4 className="text-base font-semibold mb-3">Get in Touch</h4>
-                        <ul className="space-y-3 text-gray-500 text-xs">
+                        <h4 className="text-base font-semibold mb-3 text-white">Get in Touch</h4>
+                        <ul className="space-y-3 text-white/80 text-xs">
                             <li className="flex items-start space-x-3">
                                 <div className="mt-0.5 flex-shrink-0">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
@@ -79,15 +89,15 @@ export default function Footer() {
 
                     {/* Newsletter Section */}
                     <div className="flex flex-col space-y-4">
-                        <h4 className="text-base font-semibold">Sign Up to our Newsletter</h4>
-                        <p className="text-gray-500 text-xs leading-relaxed">
+                        <h4 className="text-base font-semibold text-white">Sign Up to our Newsletter</h4>
+                        <p className="text-white/80 text-xs leading-relaxed">
                             Get health tips, test guides, and updates from Forte straight to your inbox.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3">
                             <input
                                 type="email"
                                 placeholder="Enter Your Email Address"
-                                className="bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-[#f88c29] w-full text-gray-900"
+                                className="bg-white/15 border border-white/25 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-[#f88c29] w-full text-white placeholder:text-white/70"
                             />
                             <button className="bg-[#f88c29] hover:bg-[#f88c29]/90 text-white px-5 py-2.5 rounded-lg font-medium transition-colors text-xs whitespace-nowrap">
                                 Sign Up
@@ -97,7 +107,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="pt-4 border-t border-gray-100 text-center text-gray-500 text-xs">
+                <div className="pt-4 border-t border-white/25 text-center text-white/75 text-xs">
                     <p>© {new Date().getFullYear()} Forte Clinical Laboratory LLC · Privacy Policy</p>
                 </div>
             </div>

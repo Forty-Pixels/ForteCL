@@ -42,7 +42,7 @@ export default function DepartmentGrid() {
                                     <p className="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">
                                         {dept.description}
                                     </p>
-                                    
+
                                     <div className="mt-auto flex items-center justify-between">
                                         <span className="text-[#307984] group-hover:text-[#f88c29] text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                                             View Details
