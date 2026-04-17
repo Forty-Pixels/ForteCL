@@ -4,19 +4,23 @@ import Reveal from '@/components/Animation/Reveal';
 import { 
     BeakerIcon, 
     ShieldCheckIcon, 
-    CpuChipIcon, 
+    FingerPrintIcon, 
     CircleStackIcon, 
     AcademicCapIcon,
-    SparklesIcon
+    SparklesIcon,
+    MagnifyingGlassCircleIcon,
+    DocumentMagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 
 const departments = [
-    { name: 'Hematology Department', icon: BeakerIcon, id: 'hematology' },
+    { name: 'Clinical Biochemistry', icon: CircleStackIcon, id: 'biochemistry' },
+    { name: 'Hematology', icon: BeakerIcon, id: 'hematology' },
     { name: 'Microbiology', icon: SparklesIcon, id: 'microbiology' },
-    { name: 'Immunology Department', icon: ShieldCheckIcon, id: 'immunology' },
-    { name: 'Clinical Biochemistry Department', icon: CircleStackIcon, id: 'biochemistry' },
-    { name: 'Pathology / Histopathology Department', icon: AcademicCapIcon, id: 'pathology' },
-    { name: 'Molecular Biology / Genetics', icon: CpuChipIcon, id: 'molecular' },
+    { name: 'Immunology / Serology', icon: ShieldCheckIcon, id: 'immunology' },
+    { name: 'Molecular / Genetic Diagnostics', icon: FingerPrintIcon, id: 'molecular' },
+    { name: 'Clinical Pathology', icon: AcademicCapIcon, id: 'pathology' },
+    { name: 'Histopathology', icon: MagnifyingGlassCircleIcon, id: 'histopathology' },
+    { name: 'Cytology', icon: DocumentMagnifyingGlassIcon, id: 'cytology' },
 ];
 
 export default function Departments() {
@@ -71,12 +75,12 @@ export default function Departments() {
                                 <Reveal key={dept.name} delayMs={250 + (i * 50)}>
                                     <Link 
                                         href={`/departments#${dept.id}`}
-                                        className="group flex items-center gap-2.5 bg-[#f8fafc] p-2.5 rounded-lg border border-gray-100 hover:bg-white hover:shadow-md hover:border-[#307984]/20 transition-all duration-300"
+                                        className="group flex items-center gap-2.5 bg-white p-2.5 rounded-lg border border-gray-100 hover:shadow-md hover:border-[#f88c29]/20 transition-all duration-300"
                                     >
-                                        <div className="flex-shrink-0 w-8 h-8 rounded bg-white border border-gray-100 flex items-center justify-center group-hover:bg-[#307984] group-hover:border-[#307984] transition-all duration-300 shadow-sm">
-                                            <dept.icon className="w-4 h-4 text-[#307984] group-hover:text-white transition-colors" />
+                                        <div className="flex-shrink-0 w-8 h-8 rounded bg-white border border-gray-100 flex items-center justify-center group-hover:bg-[#f88c29] group-hover:border-[#f88c29] transition-all duration-300 shadow-sm">
+                                            <dept.icon className="w-4 h-4 text-[#f88c29] group-hover:text-white transition-colors" />
                                         </div>
-                                        <span className="text-[10px] md:text-xs font-bold text-gray-700 transition-colors group-hover:text-[#307984]">
+                                        <span className="text-[10px] md:text-xs font-bold text-gray-700 transition-colors group-hover:text-[#f88c29]">
                                             {dept.name}
                                         </span>
                                     </Link>
