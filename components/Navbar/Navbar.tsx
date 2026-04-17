@@ -106,88 +106,91 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 </Link>
             </div>
 
-            <div className="hidden lg:flex items-center space-x-8">
-                {navLinks.map((link) => (
-                    <div key={link.name} className="relative group lg:py-4">
-                        {link.submenu ? (
-                            <div className="flex items-center gap-1 cursor-pointer group/nav">
-                                <span className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} group-hover/nav:text-[#f88c29] font-medium transition-colors relative`}>
-                                    {link.name}
-                                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f88c29] transition-all duration-300 group-hover/nav:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
-                                </span>
-                                <svg 
-                                    className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-400'}`} 
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                </svg>
-                                
-                                {/* Dropdown Menu */}
-                                <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : 'w-48'} bg-[#307984] rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]`}>
-                                    <div className={`py-2 ${link.name === 'Departments' ? 'max-h-[380px] overflow-y-auto' : ''}`}>
-                                        {link.submenu.map((sub) => (
-                                            <Link
-                                                key={sub.name}
-                                                href={sub.href}
-                                                className="block px-4 py-2 text-sm text-white hover:bg-white/10 hover:text-[#f88c29] transition-colors"
-                                            >
-                                                {sub.name}
-                                            </Link>
-                                        ))}
+            {/* Desktop Navigation & Contact Button */}
+            <div className="flex items-center gap-8">
+                <div className="hidden lg:flex items-center space-x-8">
+                    {navLinks.map((link) => (
+                        <div key={link.name} className="relative group lg:py-4">
+                            {link.submenu ? (
+                                <div className="flex items-center gap-1 cursor-pointer group/nav">
+                                    <span className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} group-hover/nav:text-[#f88c29] font-medium transition-colors relative`}>
+                                        {link.name}
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f88c29] transition-all duration-300 group-hover/nav:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
+                                    </span>
+                                    <svg 
+                                        className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-400'}`} 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                    
+                                    {/* Dropdown Menu */}
+                                    <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : 'w-48'} bg-[#307984] rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]`}>
+                                        <div className={`py-2 ${link.name === 'Departments' ? 'max-h-[380px] overflow-y-auto' : ''}`}>
+                                            {link.submenu.map((sub) => (
+                                                <Link
+                                                    key={sub.name}
+                                                    href={sub.href}
+                                                    className="block px-4 py-2 text-sm text-white hover:bg-white/10 hover:text-[#f88c29] transition-colors"
+                                                >
+                                                    {sub.name}
+                                                </Link>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ) : (
-                            <Link
-                                href={link.href}
-                                className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors relative group/navlink`}
-                            >
-                                {link.name}
-                                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f88c29] transition-all duration-300 group-hover/navlink:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
-                            </Link>
-                        )}
-                    </div>
-                ))}
-            </div>
+                            ) : (
+                                <Link
+                                    href={link.href}
+                                    className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors relative group/navlink`}
+                                >
+                                    {link.name}
+                                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f88c29] transition-all duration-300 group-hover/navlink:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
+                                </Link>
+                            )}
+                        </div>
+                    ))}
+                </div>
 
-            {/* Right: Contact Button & Mobile Menu Toggle */}
-            <div className="flex items-center gap-4 z-50">
-                <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#307984] text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-[#f88c29] hover:shadow-lg hover:shadow-orange-500/20 hover:scale-105">
-                    <svg
-                        className="w-4 h-4 mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                {/* Right: Contact Button & Mobile Menu Toggle */}
+                <div className="flex items-center gap-4 z-50">
+                    <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#307984] text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-[#f88c29] hover:shadow-lg hover:shadow-orange-500/20 hover:scale-105">
+                        <svg
+                            className="w-4 h-4 mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                            />
+                        </svg>
+                        Contact
+                    </Link>
+
+                    {/* Hamburger Icon for Mobile */}
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="lg:hidden text-gray-800 p-2 focus:outline-none transition-colors hover:text-[#f88c29]"
+                        aria-label="Toggle mobile menu"
                     >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                        />
-                    </svg>
-                    Contact
-                </Link>
-
-                {/* Hamburger Icon for Mobile */}
-                <button
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="lg:hidden text-gray-800 p-2 focus:outline-none transition-colors hover:text-[#f88c29]"
-                    aria-label="Toggle mobile menu"
-                >
-                    {isMenuOpen ? (
-                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    ) : (
-                        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    )}
-                </button>
+                        {isMenuOpen ? (
+                            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        ) : (
+                            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        )}
+                    </button>
+                </div>
             </div>
         </nav>
         </header>
