@@ -46,7 +46,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                 MAIN PACKAGES
                             </span>
                             <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight">
-                                Popular Health <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#307984] to-[#42AFBF]">Packages</span>
+                                Popular Health <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f88c29] to-[#d35400]">Packages</span>
                             </h2>
                         </div>
                         <Link
@@ -63,12 +63,12 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                         const { cleanTitle, price } = parsePrice(pkg.title || '');
                         return (
                             <Reveal key={pkg.slug || index} delayMs={130 + index * 100}>
-                                <article className="group relative flex flex-col items-center text-center px-4 py-8 rounded-[60px] border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent hover:border-[#307984]/50 transition-all duration-500 overflow-hidden min-h-[380px]">
+                                <article className="group relative flex flex-col items-center text-center px-4 py-8 rounded-[60px] border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent hover:border-[#f88c29]/50 transition-all duration-500 overflow-hidden min-h-[380px]">
                                     {/* Glassmorphic Background Effect */}
                                     <div className="absolute inset-0 bg-white/[0.01] backdrop-blur-3xl -z-10" />
                                    
                                     {/* Top Image Circle */}
-                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#307984] transition-colors duration-500 mb-4">
+                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#f88c29] transition-colors duration-500 mb-4">
                                         {pkg.image ? (
                                             <Image
                                                 src={urlFor(pkg.image).url()}
@@ -77,7 +77,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                         ) : (
-                                            <div className="absolute inset-0 bg-gradient-to-br from-[#307984] to-[#f88c29]" />
+                                            <div className="absolute inset-0 bg-gradient-to-br from-[#f88c29] to-[#d35400]" />
                                         )}
                                     </div>
 
@@ -104,12 +104,12 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                         <BookActionButton
                                             label="BOOK NOW"
                                             whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
-                                            className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#307984] hover:text-white transition-all duration-300 shadow-xl"
+                                            className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#f88c29] hover:text-white transition-all duration-300"
                                         />
                                     </div>
 
                                     {/* Hover Aurora Effect */}
-                                    <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#307984]/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                    <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#f88c29]/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 </article>
                             </Reveal>
                         );

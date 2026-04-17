@@ -187,11 +187,11 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                     
                                     <div className="grid grid-cols-1 gap-1">
                                         <div className="flex items-center gap-2 text-gray-500">
-                                            <ClockIcon className="w-3.5 h-3.5 text-[#307984]/40" />
+                                            <ClockIcon className="w-3.5 h-3.5 text-[#f88c29]/40" />
                                             <span className="text-[10px] font-medium truncate">{test.tat || 'Contact Lab'}</span>
                                         </div>
                                         <div className="flex items-center gap-2 text-gray-500">
-                                            <BeakerIcon className="w-3.5 h-3.5 text-[#307984]/40" />
+                                            <BeakerIcon className="w-3.5 h-3.5 text-[#f88c29]/40" />
                                             <span className="text-[10px] font-medium truncate">
                                                 {test.sampleType && test.sampleType.length > 0 ? test.sampleType.join(', ') : 'Check Sample'}
                                             </span>
@@ -204,7 +204,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                     <BookActionButton
                                         label="Book Now"
                                         whatsappText={`Hi, I would like to book the ${test.name} test.`}
-                                        className="flex-1 py-2 bg-[#f88c29] hover:bg-[#e67e22] text-white text-[11px] font-bold rounded-lg text-center transition-all shadow-[0_5px_15px_rgba(248,140,41,0.15)]"
+                                        className="flex-1 py-2 bg-[#f88c29] hover:bg-[#e67b1d] text-white text-[11px] font-bold rounded-lg text-center transition-all shadow-md"
                                     />
                                 </div>
                             </div>
@@ -214,7 +214,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                     {paginated.length === 0 && (
                         <div className="col-span-full py-16 text-center">
                             <h3 className="text-lg font-bold text-gray-900">No tests found</h3>
-                            <button onClick={clearFilters} className="mt-4 text-[#307984] font-bold text-sm hover:underline">
+                            <button onClick={clearFilters} className="mt-4 text-[#f88c29] font-bold text-sm hover:underline">
                                 Clear all filters
                             </button>
                         </div>
@@ -237,7 +237,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                 onClick={() => setPage(p)}
                                 className={cn(
                                     "w-10 h-10 rounded-xl text-xs font-bold transition-all",
-                                    p === page ? 'bg-[#f88c29] text-white shadow-lg shadow-orange-500/20' : 'bg-white border border-gray-100 text-gray-500 hover:bg-gray-50'
+                                    p === page ? 'bg-[#f88c29] text-white shadow-md' : 'bg-white border border-gray-100 text-gray-500 hover:bg-gray-50'
                                 )}
                             >
                                 {p}

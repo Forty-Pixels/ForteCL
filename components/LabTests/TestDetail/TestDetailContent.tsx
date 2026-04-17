@@ -121,7 +121,7 @@ export default function TestDetailContent({ test, allTests }: Props) {
                                 <BookActionButton
                                     label="Book An Appointment"
                                     whatsappText={`Hi, I would like to book the ${test.name} test.`}
-                                    className="bg-[#307984] hover:bg-[#245d65] text-white px-10 py-4 rounded-2xl text-[15px] font-bold transition-all shadow-[0_15px_30px_rgba(48,121,132,0.15)] text-center"
+                                    className="bg-[#f88c29] hover:bg-[#e67b1d] text-white px-10 py-4 rounded-2xl text-[15px] font-bold transition-all shadow-md text-center"
                                 />
                                 <Link href="/lab-tests" className="bg-[#111111] hover:bg-black text-white px-10 py-4 rounded-2xl text-[15px] font-bold transition-all text-center">
                                     Back to Database

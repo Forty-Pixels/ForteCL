@@ -222,12 +222,12 @@ export default function ReviewsSection() {
             {/* Final CTA */}
             <div className="mt-4 text-center">
                 <motion.a
-                    href="https://www.google.com/maps/place/Forte+Clinical+Laboratory/@25.2513176,55.3392117,17z/data=!4m7!3m6!1s0x3e5f5dc493f1e96b:0x1f7cf27e212b52f1!8m2!3d25.2513176!4d55.3392117!9m1!1b1"
+                    href="https://www.google.com/maps/search/?api=1&query=Forte+Clinical+Laboratory+Dubai"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-1.5 bg-[#307984] text-white px-6 py-2 rounded-full font-bold text-[11px] shadow-lg hover:bg-[#256069] transition-all"
+                    className="inline-flex items-center gap-1.5 bg-[#f88c29] text-white px-6 py-2 rounded-full font-bold text-[11px] shadow-md hover:bg-[#e67b1d] transition-all"
                 >
                     View More
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

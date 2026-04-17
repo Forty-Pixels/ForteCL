@@ -19,7 +19,7 @@ export default function FloatingContact() {
             <motion.div 
                 initial={{ y: 100 }}
                 animate={{ y: 0 }}
-                className="lg:hidden fixed bottom-0 left-0 right-0 z-[110] bg-[#307984]/85 backdrop-blur-xl border-t border-white/10 text-white p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.2)] flex items-center justify-between px-6"
+                className="lg:hidden fixed bottom-0 left-0 right-0 z-[110] bg-[#f88c29]/90 backdrop-blur-xl border-t border-white/10 text-white p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex items-center justify-between px-6"
             >
                 <div className="flex flex-col">
                     <span className="font-bold text-[0.9rem] tracking-tight leading-tight">Need a Lab Test? We're Ready 24/7</span>

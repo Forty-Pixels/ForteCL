@@ -281,7 +281,7 @@ export default function DepartmentDetailView({
                                         <Reveal key={tIndex} delayMs={500 + (tIndex * 50)}>
                                             <div className="group flex items-start gap-4 justify-between">
                                                 <div className="mt-1 flex-shrink-0 w-7 h-7 rounded-xl bg-white border border-gray-200 flex items-center justify-center group-hover:bg-[#f88c29] group-hover:border-[#f88c29] transition-all shadow-sm">
-                                                    <CheckCircleIcon className="w-4 h-4 text-[#307984] group-hover:text-white transition-colors" />
+                                                    <CheckCircleIcon className="w-4 h-4 text-[#f88c29] group-hover:text-white transition-colors" />
                                                 </div>
                                                 <div className="flex-1">
                                                     {test.slug ? (
@@ -303,7 +303,7 @@ export default function DepartmentDetailView({
                                                 {test.slug && (
                                                     <Link
                                                         href={`/lab-tests/${test.slug}`}
-                                                        className="shrink-0 inline-flex items-center rounded-full border border-[#307984]/20 bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-[#307984] hover:bg-[#307984] hover:text-white transition-colors"
+                                                        className="shrink-0 inline-flex items-center rounded-full border border-[#f88c29]/20 bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-[#f88c29] hover:bg-[#f88c29] hover:text-white transition-colors"
                                                     >
                                                         View Details
                                                     </Link>

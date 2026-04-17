@@ -45,11 +45,11 @@ export default function Hero() {
                         <BookActionButton
                             label="Book a Test"
                             whatsappText="Hi, I would like to book a test from the home page."
-                            className="bg-[#307984] hover:bg-[#307984]/90 text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-colors w-full sm:w-auto text-center"
+                            className="bg-[#f88c29] hover:bg-[#e67b1d] text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-all w-full sm:w-auto text-center shadow-lg"
                         />
                         <Link
                             href="/lab-tests"
-                            className="border-2 border-[#307984] hover:bg-[#307984]/10 text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-colors w-full sm:w-auto text-center backdrop-blur-sm"
+                            className="border-2 border-[#f88c29] hover:bg-[#f88c29]/10 text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-all w-full sm:w-auto text-center backdrop-blur-sm"
                         >
                             Explore Lab Tests
                         </Link>

@@ -123,7 +123,7 @@ export default function LeadingTheWay() {
                         <div className="space-y-3">
                             {uniquePoints.map((point, idx) => (
                                 <div key={idx} className="flex items-start gap-3">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#307984] mt-1.5 flex-shrink-0"></div>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#f88c29] mt-1.5 flex-shrink-0"></div>
                                     <p className="text-[13px] text-gray-600">{point}</p>
                                 </div>
                             ))}
@@ -136,7 +136,7 @@ export default function LeadingTheWay() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                             {specialties.map((spec, idx) => (
                                 <div key={idx} className="flex items-center gap-2.5 py-1.5 border-b border-gray-100">
-                                    <svg className="w-3.5 h-3.5 text-[#307984] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg className="w-3.5 h-3.5 text-[#f88c29] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
                                     <span className="text-[13px] text-gray-700">{spec}</span>

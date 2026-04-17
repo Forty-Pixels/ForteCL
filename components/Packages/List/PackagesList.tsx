@@ -72,13 +72,13 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
 
                                     {/* Content Section */}
                                     <div className="px-3 pb-3.5 flex-grow flex flex-col items-center text-center -mt-2 relative z-10">
-                                        <h3 className="text-[13px] sm:text-[14px] font-bold text-[#1F2937] leading-tight line-clamp-1 group-hover:text-[#307984] transition-colors mb-0.5">
+                                        <h3 className="text-[13px] sm:text-[14px] font-bold text-[#1F2937] leading-tight line-clamp-1 group-hover:text-[#f88c29] transition-colors mb-0.5">
                                             {cleanTitle}
                                         </h3>
                                         
                                         {price && (
                                             <div className="mb-1">
-                                                <span className="text-[#307984] text-sm font-black tracking-tight">{price}</span>
+                                                <span className="text-[#f88c29] text-sm font-black tracking-tight">{price}</span>
                                             </div>
                                         )}
 
@@ -91,16 +91,16 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                             <BookActionButton
                                                 label="Book Now"
                                                 whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
-                                                className="bg-[#307984] hover:bg-[#256069] text-white py-2 rounded-full text-[10px] font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center w-full"
+                                                className="bg-[#f88c29] hover:bg-[#e67b1d] text-white py-2 rounded-full text-[10px] font-bold transition-all shadow-md hover:-translate-y-0.5 flex items-center justify-center w-full"
                                             />
 
                                             {/* Tests Included Toggle */}
                                             <button
                                                 onClick={() => setSelectedPackage(pkg)}
-                                                className="text-[#307984] group/btn font-bold text-[9px] flex items-center justify-center gap-1 hover:opacity-80 transition-all w-full"
+                                                className="text-[#f88c29] group/btn font-bold text-[9px] flex items-center justify-center gap-1 hover:opacity-80 transition-all w-full"
                                             >
                                                 <span className="text-xs transition-transform group-hover/btn:rotate-90">+</span>
-                                                <span className="border-b border-transparent group-hover/btn:border-[#307984]">Tests Included ({pkg.testsTotal || pkg.subTests?.length || 0})</span>
+                                                <span className="border-b border-transparent group-hover/btn:border-[#f88c29]">Tests Included ({pkg.testsTotal || pkg.subTests?.length || 0})</span>
                                             </button>
                                         </div>
                                     </div>
@@ -180,9 +180,9 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
 
                                         <div className="mt-8 flex gap-3">
                                             <BookActionButton
-                                                label="Book This Package"
-                                                whatsappText={`Hi, I would like to book the ${parsePrice(selectedPackage.title).cleanTitle} package.`}
-                                                className="flex-1 bg-[#307984] text-white py-3.5 rounded-full text-sm font-bold hover:bg-[#256069] transition-all text-center shadow-lg shadow-[#307984]/10"
+                                                label="Book Now"
+                                                whatsappText={`Hi, I would like to book the ${selectedPackage.title} package.`}
+                                                className="flex-1 bg-[#f88c29] text-white py-3.5 rounded-full text-sm font-bold hover:bg-[#e67b1d] transition-all text-center shadow-lg"
                                             />
                                             <button
                                                 onClick={() => setSelectedPackage(null)}

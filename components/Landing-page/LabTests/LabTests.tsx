@@ -71,7 +71,7 @@ export default function LabTests() {
                         </Reveal>
 
                         <Reveal delayMs={280}>
-                            <Link href="/lab-tests" className="bg-[#f88c29] hover:bg-[#f88c29]/90 text-white px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto shadow-lg shadow-orange-500/20">
+                            <Link href="/lab-tests" className="bg-[#f88c29] hover:bg-[#e67b1d] text-white px-6 py-3 rounded-md text-sm font-bold transition-colors text-center w-full sm:w-auto">
                                 Explore Lab Tests
                             </Link>
                         </Reveal>
@@ -92,7 +92,7 @@ export default function LabTests() {
                                     {slide.map((test, index) => (
                                         <div
                                             key={index}
-                                            className="relative aspect-square md:aspect-[4/5] rounded-xl overflow-hidden group cursor-pointer bg-gray-800 border-2 border-[#f88c29]/40 hover:border-[#f88c29] transition-all duration-300 shadow-lg hover:shadow-orange-500/10"
+                                            className="relative aspect-square md:aspect-[4/5] rounded-xl overflow-hidden group cursor-pointer bg-gray-800 border-2 border-[#f88c29] transition-all duration-300"
                                         >
                                             <Image
                                                 src={test.image}

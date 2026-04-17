@@ -63,7 +63,7 @@ export default function ResourcesList({ initialPosts, initialCategories }: Resou
                                     onClick={() => setSelectedCategory(category)}
                                     className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all duration-300 border ${
                                         selectedCategory === category 
-                                        ? 'bg-[#f88c29] text-white border-[#f88c29] shadow-lg shadow-orange-500/20 scale-105' 
+                                        ? 'bg-[#f88c29] text-white border-[#f88c29] shadow-md scale-105' 
                                         : 'bg-white text-gray-500 border-gray-100 hover:border-[#f88c29]/20 hover:bg-gray-50/50'
                                     }`}
                                 >

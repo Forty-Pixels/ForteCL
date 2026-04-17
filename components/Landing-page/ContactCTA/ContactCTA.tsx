@@ -220,7 +220,7 @@ export default function ContactCTA() {
                             </div>
                             <button
                                 type="submit"
-                                className="group relative overflow-hidden inline-flex w-full justify-center bg-[#307984] hover:bg-[#26656f] text-white font-bold py-3 px-8 rounded-lg transition-all text-sm shadow-md"
+                                className="group relative overflow-hidden inline-flex w-full justify-center bg-[#f88c29] hover:bg-[#e67b1d] text-white font-bold py-3 px-8 rounded-lg transition-all text-sm shadow-md"
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     Submit Inquiry

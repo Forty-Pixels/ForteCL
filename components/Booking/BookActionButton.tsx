@@ -73,7 +73,7 @@ export default function BookActionButton({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <a
                         href={telUrl}
-                        className="inline-flex items-center justify-center rounded-xl bg-[#307984] hover:bg-[#256069] text-white font-semibold py-3 px-4 transition-colors"
+                        className="inline-flex items-center justify-center rounded-xl bg-[#f88c29] hover:bg-[#e67b1d] text-white font-semibold py-3 px-4 transition-colors shadow-md"
                     >
                         Call Now
                     </a>
@@ -81,7 +81,7 @@ export default function BookActionButton({
                         href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center rounded-xl border border-[#307984]/25 text-[#307984] hover:bg-[#307984] hover:text-white font-semibold py-3 px-4 transition-colors"
+                        className="inline-flex items-center justify-center rounded-xl border border-[#f88c29]/25 text-[#f88c29] hover:bg-[#f88c29] hover:text-white font-semibold py-3 px-4 transition-colors"
                     >
                         WhatsApp
                     </a>
