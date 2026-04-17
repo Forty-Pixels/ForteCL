@@ -3,36 +3,30 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="relative text-white pt-10 pb-28 lg:pb-10 overflow-hidden">
-            <div className="absolute inset-0">
-                <Image
-                    src="/Landing-page/hero-image.png"
-                    alt="Forte laboratory background"
-                    fill
-                    className="object-cover opacity-8"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#307984] to-[#42AFBF]" />
-            </div>
-
+        <footer className="relative bg-white text-gray-900 pt-6 pb-10 overflow-hidden border-t border-gray-100">
             <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr_1.3fr] gap-8 lg:gap-6 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.1fr_0.7fr_1fr_1.2fr] gap-6 lg:gap-4 mb-4">
 
                     {/* Brand Section */}
                     <div className="flex flex-col space-y-4">
-                        <div className="relative w-44 h-10">
-                            <Image
-                                src="/fortecl-logo2.png"
-                                alt="Forte Clinical Laboratory"
-                                fill
-                                className="object-contain object-left"
-                            />
+                        <div className="inline-block">
+                            <div className="bg-white px-0 py-1 rounded-2xl shadow-[0_4px_25px_rgba(48,121,132,0.25)] border border-gray-100/50 max-w-fit flex items-center justify-center">
+                                <div className="relative w-40 h-10">
+                                    <Image
+                                        src="/fortecl-logo2.png"
+                                        alt="Forte Clinical Laboratory"
+                                        fill
+                                        className="object-contain object-center"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-base font-semibold mb-3 text-white">Quick Links</h4>
-                        <ul className="space-y-2 text-white/80 text-xs">
+                        <h4 className="text-sm font-black mb-5 text-[#307984] uppercase tracking-wider">Quick Links</h4>
+                        <ul className="space-y-3 text-gray-500 text-xs font-medium">
                             <li><Link href="/" className="hover:text-[#f88c29] transition-colors">Home</Link></li>
                             <li><Link href="/lab-tests" className="hover:text-[#f88c29] transition-colors">Lab Tests</Link></li>
                             <li><Link href="/packages" className="hover:text-[#f88c29] transition-colors">Packages</Link></li>
@@ -46,11 +40,11 @@ export default function Footer() {
 
                     {/* Get In Touch */}
                     <div>
-                        <h4 className="text-base font-semibold mb-3 text-white">Get in Touch</h4>
-                        <ul className="space-y-3 text-white/80 text-xs">
+                        <h4 className="text-sm font-black mb-5 text-[#307984] uppercase tracking-wider">Get in Touch</h4>
+                        <ul className="space-y-4 text-gray-500 text-xs font-medium">
                             <li className="flex items-start space-x-3">
-                                <div className="mt-0.5 flex-shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                <div className="mt-0.5 flex-shrink-0 text-[#f88c29]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                                     </svg>
@@ -59,14 +53,14 @@ export default function Footer() {
                                     href="https://www.google.com/maps/search/?api=1&query=Forte+Clinical+Laboratory+Dubai" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
-                                    className="hover:text-[#f88c29] transition-colors"
+                                    className="hover:text-[#f88c29] transition-colors leading-relaxed"
                                 >
                                     S-G09/S-G10, Al Garhoud Business Centre, Garhoud, Dubai, UAE
                                 </a>
                             </li>
                             <li className="flex items-center space-x-3">
-                                <div className="flex-shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                <div className="flex-shrink-0 text-[#f88c29]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                                     </svg>
                                 </div>
@@ -75,9 +69,9 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li className="flex items-center space-x-3">
-                                <div className="flex-shrink-0">
+                                <div className="flex-shrink-0 text-[#f88c29]">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-4 h-4" viewBox="0 0 24 24">
-                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .011 5.403.011 12.038c0 2.12.553 4.189 1.604 6.04l-1.705 6.226 6.37-1.67a11.803 11.803 0 005.766 1.498h.005c6.634 0 12.038-5.403 12.038-12.039a11.811 11.811 0 00-3.414-8.417" />
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .011 5.403.011 12.038c0 2.12.553 4.189 1.604 6.04l-1.705 6.226 6.37-1.67a11.803 11.803 0 005.766 1.498h.005c6.634 0 12.038-5.403 12.038-12.039a11.811 11.811 0 00-3.414-8.417" />
                                     </svg>
                                 </div>
                                 <a href="https://wa.me/97142729302" target="_blank" rel="noopener noreferrer" className="hover:text-[#f88c29] transition-colors">
@@ -88,18 +82,18 @@ export default function Footer() {
                     </div>
 
                     {/* Newsletter Section */}
-                    <div className="flex flex-col space-y-4">
-                        <h4 className="text-base font-semibold text-white">Sign Up to our Newsletter</h4>
-                        <p className="text-white/80 text-xs leading-relaxed">
+                    <div className="flex flex-col space-y-6">
+                        <h4 className="text-sm font-black text-[#307984] uppercase tracking-wider">Join Our Newsletter</h4>
+                        <p className="text-gray-500 text-xs leading-relaxed max-w-sm font-medium">
                             Get health tips, test guides, and updates from Forte straight to your inbox.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-3">
+                        <div className="flex flex-col sm:flex-row gap-2.5">
                             <input
                                 type="email"
                                 placeholder="Enter Your Email Address"
-                                className="bg-white/15 border border-white/25 rounded-lg px-3 py-2.5 text-xs focus:outline-none focus:border-[#f88c29] w-full text-white placeholder:text-white/70"
+                                className="bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-[#f88c29] focus:bg-white w-full text-gray-900 placeholder:text-gray-400 transition-all font-medium"
                             />
-                            <button className="bg-[#f88c29] hover:bg-[#f88c29]/90 text-white px-5 py-2.5 rounded-lg font-medium transition-colors text-xs whitespace-nowrap">
+                            <button className="bg-[#f88c29] hover:bg-[#e67b1d] text-white px-6 py-3 rounded-xl font-bold transition-all text-xs whitespace-nowrap shadow-md shadow-orange-200">
                                 Sign Up
                             </button>
                         </div>
@@ -107,8 +101,8 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="pt-4 border-t border-white/25 text-center text-white/75 text-xs">
-                    <p>© {new Date().getFullYear()} Forte Clinical Laboratory LLC · Privacy Policy</p>
+                <div className="pt-8 border-t border-gray-100 text-center text-gray-400 text-[10px] font-bold tracking-widest uppercase">
+                    <p>© {new Date().getFullYear()} Forte Clinical Laboratory LLC · All Rights Reserved</p>
                 </div>
             </div>
         </footer>
