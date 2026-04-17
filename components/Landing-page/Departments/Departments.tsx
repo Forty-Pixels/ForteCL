@@ -33,7 +33,7 @@ export default function Departments() {
                     <Reveal delayMs={170} className="relative order-2 lg:order-1">
                         <div className="relative aspect-[16/9] lg:aspect-[3/2] w-full rounded-2xl overflow-hidden shadow-lg group">
                             <Image
-                                src="/Landing-page/departments/lab_specialist_high_res1.png"
+                                src="/Landing-page/our-specializations/left-image.png"
                                 alt="Laboratory specialist conducting diagnostic tests"
                                 fill
                                 className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
@@ -42,7 +42,7 @@ export default function Departments() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                         </div>
                         {/* Compact DHA badge */}
-                        <div className="absolute -bottom-4 -right-2 bg-[#307984] p-4 md:p-5 rounded-xl shadow-lg z-10 border-2 border-white">
+                        <div className="absolute -bottom-4 -right-2 bg-[#f88c29] p-4 md:p-5 rounded-xl shadow-lg z-10 border-2 border-white">
                             <div className="text-white text-lg md:text-xl font-black leading-none mb-0.5">DHA</div>
                             <div className="text-white/80 text-[7px] font-bold uppercase tracking-widest leading-none">Approved</div>
                         </div>
