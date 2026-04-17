@@ -37,82 +37,83 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
     }
 
     return (
-        <section className="bg-gradient-to-br from-[#307984] to-[#42AFBF] py-14 md:py-18 border-b border-[#ffffff33]">
-            <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
+        <section className="bg-[#0a0a0a] py-8 md:py-12 overflow-hidden">
+            <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
                 <Reveal delayMs={80}>
-                    <div className="flex items-end justify-between gap-4 mb-8 md:mb-10">
+                    <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-4 mb-6 md:mb-10 text-center md:text-left">
                         <div>
-                            <span className="text-white/80 font-semibold text-[10px] sm:text-xs tracking-wider mb-2 block">
+                            <span className="text-[#f88c29] font-bold text-[11px] sm:text-xs tracking-[0.3em] mb-1.5 uppercase block">
                                 MAIN PACKAGES
                             </span>
-                            <h2 className="text-2xl md:text-3xl font-black text-white">
-                                Popular Health Packages
+                            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight">
+                                Popular Health <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#307984] to-[#42AFBF]">Packages</span>
                             </h2>
                         </div>
                         <Link
                             href="/packages"
-                            className="hidden sm:inline-flex items-center rounded-full border border-white/40 px-5 py-2 text-xs font-black uppercase tracking-wider text-white hover:bg-white hover:text-[#307984] transition-colors"
+                            className="inline-flex items-center rounded-full border border-white/20 px-6 py-2.5 text-[10px] font-black uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all duration-300"
                         >
                             See All Packages
                         </Link>
                     </div>
                 </Reveal>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 lg:gap-3">
                     {topPackages.map((pkg, index) => {
                         const { cleanTitle, price } = parsePrice(pkg.title || '');
                         return (
-                            <Reveal key={pkg.slug || index} delayMs={130 + index * 70}>
-                                <article className="group rounded-3xl overflow-hidden border border-gray-100 shadow-[0_8px_25px_rgba(17,24,39,0.06)] bg-white">
-                                    <div className="relative h-36">
+                            <Reveal key={pkg.slug || index} delayMs={130 + index * 100}>
+                                <article className="group relative flex flex-col items-center text-center px-4 py-8 rounded-[60px] border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent hover:border-[#307984]/50 transition-all duration-500 overflow-hidden min-h-[380px]">
+                                    {/* Glassmorphic Background Effect */}
+                                    <div className="absolute inset-0 bg-white/[0.01] backdrop-blur-3xl -z-10" />
+                                   
+                                    {/* Top Image Circle */}
+                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#307984] transition-colors duration-500 mb-4">
                                         {pkg.image ? (
                                             <Image
                                                 src={urlFor(pkg.image).url()}
                                                 alt={cleanTitle}
                                                 fill
-                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                         ) : (
-                                            <div className="absolute inset-0 bg-gradient-to-br from-[#307984]/20 to-[#f88c29]/30" />
-                                        )}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
-                                        {price && (
-                                            <span className="absolute top-3 right-3 rounded-full bg-white/95 px-3 py-1 text-[10px] font-black text-[#307984]">
-                                                {price}
-                                            </span>
+                                            <div className="absolute inset-0 bg-gradient-to-br from-[#307984] to-[#f88c29]" />
                                         )}
                                     </div>
-                                    <div className="p-4">
-                                        <h3 className="text-sm font-black text-[#1f2937] line-clamp-2 min-h-[2.5rem]">
+
+                                    {/* Content */}
+                                    <div className="flex-1 flex flex-col items-center">
+                                        {price && (
+                                            <div className="mb-2 text-[#f88c29] font-black text-[13px] tracking-tighter">
+                                                {price}
+                                            </div>
+                                        )}
+                                        <h3 className="text-sm md:text-base font-black text-white mb-2 leading-snug lg:h-11 line-clamp-2">
                                             {cleanTitle}
                                         </h3>
-                                        <p className="text-[11px] text-gray-500 mt-2 line-clamp-2 min-h-[2rem]">
+                                        <p className="text-[11px] text-gray-300 leading-relaxed line-clamp-3 mb-4 font-medium">
                                             {pkg.description}
                                         </p>
-                                        <div className="mt-4 flex items-center justify-between gap-2">
-                                            <span className="text-[10px] uppercase tracking-wider font-bold text-gray-400">
-                                                {pkg.testsTotal || pkg.subTests?.length || 0} tests
-                                            </span>
-                                            <BookActionButton
-                                                label="Book"
-                                                whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
-                                                className="rounded-full bg-[#307984] px-3 py-1.5 text-[10px] font-black text-white hover:bg-[#256069] transition-colors"
-                                            />
-                                        </div>
                                     </div>
+
+                                    {/* Footer Actions */}
+                                    <div className="mt-auto w-full flex flex-col items-center gap-2">
+                                        <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#307984]">
+                                            {pkg.testsTotal || pkg.subTests?.length || 0} Parameters
+                                        </div>
+                                        <BookActionButton
+                                            label="BOOK NOW"
+                                            whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
+                                            className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#307984] hover:text-white transition-all duration-300 shadow-xl"
+                                        />
+                                    </div>
+
+                                    {/* Hover Aurora Effect */}
+                                    <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#307984]/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 </article>
                             </Reveal>
                         );
                     })}
-                </div>
-
-                <div className="sm:hidden mt-6">
-                    <Link
-                        href="/packages"
-                        className="inline-flex items-center rounded-full border border-white/40 px-5 py-2 text-xs font-black uppercase tracking-wider text-white hover:bg-white hover:text-[#307984] transition-colors"
-                    >
-                        See All Packages
-                    </Link>
                 </div>
             </div>
         </section>
