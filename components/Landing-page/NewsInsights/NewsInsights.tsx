@@ -40,97 +40,122 @@ export default function NewsInsights() {
     const scroll = (direction: 'left' | 'right') => {
         if (scrollContainerRef.current) {
             const container = scrollContainerRef.current;
-            // Scroll by one full view width (adjust for gaps)
             const viewWidth = container.clientWidth;
             const scrollAmount = direction === 'left' ? -viewWidth : viewWidth;
-            
             container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
     };
 
     return (
-        <section className="py-6 md:py-8 bg-gradient-to-br from-[#307984] to-[#3C8E9B]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="py-10 md:py-12 bg-[#307984] overflow-hidden relative">
+            {/* Background Accent */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none overflow-hidden">
+                <div className="absolute -top-[10%] -left-[10%] w-[30%] h-[30%] bg-white rounded-full blur-[100px]" />
+                <div className="absolute -bottom-[10%] -right-[10%] w-[30%] h-[30%] bg-[#f88c29] rounded-full blur-[100px]" />
+            </div>
 
+            <div className="max-w-[1440px] mx-auto px-6 relative z-10">
                 {/* Header */}
-                <Reveal delayMs={70}>
-                    <span className="text-[#f88c29] font-medium text-xs tracking-wider mb-3 uppercase inline-block">
-                        News & Insights
-                    </span>
-                </Reveal>
-                <Reveal delayMs={140}>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
-                        Stay Informed. Stay Ahead
-                    </h2>
-                </Reveal>
-                <Reveal delayMs={210}>
-                    <p className="text-white/90 text-xs md:text-sm max-w-2xl mx-auto mb-8 leading-relaxed">
-                        Explore the latest health tips, diagnostic breakthroughs and wellness guidance from our expert team.
-                        Our articles keep you educated and empowered to make better health decisions.
-                    </p>
-                </Reveal>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                    <div className="max-w-xl">
+                        <Reveal delayMs={100}>
+                            <span className="text-[#f88c29] font-bold text-[9px] tracking-[0.2em] uppercase mb-2 block">
+                                News & Insights
+                            </span>
+                        </Reveal>
+                        <Reveal delayMs={200}>
+                            <h2 className="text-2xl md:text-3xl font-black text-white leading-tight">
+                                Stay Informed. <br />
+                                <span className="text-white/80">Empower Your Health Journey.</span>
+                            </h2>
+                        </Reveal>
+                    </div>
+                    
+                    <Reveal delayMs={300}>
+                        <div className="flex gap-2.5">
+                            <button
+                                onClick={() => scroll('left')}
+                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#307984] transition-all duration-300 group"
+                                aria-label="Previous articles"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                                </svg>
+                            </button>
+                            <button
+                                onClick={() => scroll('right')}
+                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#307984] transition-all duration-300 group"
+                                aria-label="Next articles"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </button>
+                        </div>
+                    </Reveal>
+                </div>
 
-                {/* Carousel Wrapper with space for arrows */}
-                <Reveal delayMs={280}>
-                    <div className="relative group px-10 sm:px-16 lg:px-0">
-
-                        {/* Left Arrow */}
-                        <button
-                            onClick={() => scroll('left')}
-                            className="absolute left-0 lg:-left-20 top-[35%] sm:top-[38%] lg:top-[33%] -translate-y-1/2 z-10 p-2 text-white hover:text-[#f88c29] transition-all opacity-70 group-hover:opacity-100"
-                            aria-label="Previous articles"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                            </svg>
-                        </button>
-
-                        {/* Scrollable Track */}
-                        <div
-                            ref={scrollContainerRef}
-                            onScroll={handleScroll}
-                            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide w-full scroll-smooth"
-                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                        >
-                            {infiniteNewsItems.map((item, index) => (
-                                <Link
-                                    key={index}
-                                    href={`/resources/${item.slug}`}
-                                    className="w-[calc(100%-24px)] min-w-[calc(100%-24px)] sm:w-[calc(50%-12px)] sm:min-w-[calc(50%-12px)] lg:w-[calc(16.666%-20px)] lg:min-w-[calc(16.666%-20px)] flex-shrink-0 flex flex-col pt-1 snap-start group/card"
-                                >
-                                    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg mb-4 bg-[#061414]/20 group-hover/card:shadow-xl transition-all border border-white/5">
+                {/* Carousel */}
+                <Reveal delayMs={400}>
+                    <div
+                        ref={scrollContainerRef}
+                        onScroll={handleScroll}
+                        className="flex overflow-x-auto gap-5 pb-8 snap-x snap-mandatory scrollbar-hide w-full scroll-smooth"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    >
+                        {infiniteNewsItems.map((item, index) => (
+                            <Link
+                                key={index}
+                                href={`/resources/${item.slug}`}
+                                className="w-full md:w-full lg:w-[320px] flex-shrink-0 snap-start group/card"
+                            >
+                                <div className="bg-white rounded-[1.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col h-full border border-white/10">
+                                    {/* Image Container */}
+                                    <div className="relative aspect-[16/10] overflow-hidden">
                                         <Image
                                             src={item.image}
                                             alt={item.title}
                                             fill
-                                            className="object-cover transform transition-transform duration-500 group-hover/card:scale-110"
+                                            className="object-cover transform transition-transform duration-700 group-hover/card:scale-110"
                                             unoptimized
-                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 16vw"
                                         />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+                                        
+                                        <div className="absolute top-3 left-3 bg-[#307984] text-white text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg">
+                                            {item.category}
+                                        </div>
                                     </div>
-                                    <h3 className="text-white font-medium text-xs md:text-sm leading-snug px-1 text-center group-hover/card:text-[#f88c29] transition-colors">
-                                        {item.title}
-                                    </h3>
-                                </Link>
-                            ))}
-                        </div>
 
-                        {/* Right Arrow */}
-                        <button
-                            onClick={() => scroll('right')}
-                            className="absolute right-0 lg:-right-20 top-[35%] sm:top-[38%] lg:top-[33%] -translate-y-1/2 z-10 p-2 text-white hover:text-[#f88c29] transition-all opacity-70 group-hover:opacity-100"
-                            aria-label="Next articles"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 sm:w-8 sm:h-8">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </button>
+                                    {/* Content Area */}
+                                    <div className="p-5 flex flex-col flex-1">
+                                        <div className="flex items-center gap-2 mb-2.5">
+                                            <span className="text-[#f88c29] font-bold text-[8px] uppercase tracking-widest">{item.date}</span>
+                                        </div>
+                                        
+                                        <h3 className="text-[#1a1a1a] font-bold text-base md:text-lg leading-[1.3] mb-3 group-hover/card:text-[#307984] transition-colors duration-300 line-clamp-2">
+                                            {item.title}
+                                        </h3>
+                                        
+                                        <p className="text-gray-500 text-[10px] leading-relaxed mb-4 line-clamp-2">
+                                            {item.excerpt}
+                                        </p>
 
+                                        <div className="mt-auto flex items-center justify-between">
+                                            <span className="text-[#307984] font-bold text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 group/btn">
+                                                Read More
+                                                <svg className="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
                     </div>
                 </Reveal>
             </div>
 
-            {/* Global CSS to hide scrollbar explicitly for webkit browsers */}
             <style dangerouslySetInnerHTML={{
                 __html: `
                 .scrollbar-hide::-webkit-scrollbar {
