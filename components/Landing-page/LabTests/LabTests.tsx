@@ -89,23 +89,23 @@ export default function LabTests() {
                     </div>
                 </div>
 
-                {/* Right Column (50%) - White + Carousel */}
-                <div className="w-full lg:w-[50%] bg-white flex flex-col justify-center py-16 lg:py-0 px-6 sm:px-10 lg:px-12 relative">
+                {/* Right Column (50%) - Subtle Teal Tint + Carousel */}
+                <div className="w-full lg:w-[50%] bg-[#f4fbfc] flex flex-col justify-center py-16 lg:py-0 px-6 sm:px-10 lg:px-12 relative border-l border-gray-100/50">
                     <Reveal delayMs={180} className="w-full relative flex flex-col items-center">
                         <div
                             ref={scrollRef}
-                            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 w-full h-[500px]"
+                            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 w-full h-[510px]"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
                             {chunked.map((slide, slideIndex) => (
                                 <div
                                     key={slideIndex}
-                                    className="min-w-full grid grid-cols-2 sm:grid-cols-3 grid-rows-3 sm:grid-rows-2 gap-3 lg:gap-4 snap-start flex-shrink-0 h-full"
+                                    className="min-w-full grid grid-cols-2 sm:grid-cols-3 grid-rows-3 sm:grid-rows-2 gap-4 lg:gap-5 snap-start flex-shrink-0 h-full"
                                 >
                                     {slide.map((test, index) => (
                                         <div
                                             key={index}
-                                            className="relative rounded-[1.25rem] overflow-hidden group cursor-pointer bg-gray-50 transition-all duration-300 shadow-xl h-full"
+                                            className="relative overflow-hidden group cursor-pointer bg-white transition-all duration-500 shadow-lg hover:shadow-2xl h-full rounded-tl-[3.5rem] rounded-br-[3.5rem] rounded-tr-xl rounded-bl-xl border border-white"
                                         >
                                             <Image
                                                 src={test.image}
@@ -115,9 +115,9 @@ export default function LabTests() {
                                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                             {/* Minimal Bottom Gradient for text clarity only */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                                            <div className="absolute inset-0 p-3 flex flex-col justify-end">
-                                                <h3 className="text-white font-bold text-[10px] md:text-xs leading-tight">
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                            <div className="absolute inset-0 p-4 flex flex-col justify-end">
+                                                <h3 className="text-white font-extrabold text-[10px] md:text-xs leading-tight tracking-wide">
                                                     {test.name}
                                                 </h3>
                                             </div>
@@ -131,14 +131,14 @@ export default function LabTests() {
                         <div className="flex gap-4 mt-6 justify-end w-full">
                             <button
                                 onClick={scrollLeft}
-                                className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-[#202020] hover:bg-[#f88c29] hover:border-[#f88c29] hover:text-white transition-all shadow-sm"
+                                className="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center text-[#202020] hover:bg-[#f88c29] hover:border-[#f88c29] hover:text-white transition-all shadow-sm active:scale-90"
                                 aria-label="Previous Slide"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                             </button>
                             <button
                                 onClick={scrollRight}
-                                className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-[#202020] hover:bg-[#f88c29] hover:border-[#f88c29] hover:text-white transition-all shadow-sm"
+                                className="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center text-[#202020] hover:bg-[#f88c29] hover:border-[#f88c29] hover:text-white transition-all shadow-sm active:scale-90"
                                 aria-label="Next Slide"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
