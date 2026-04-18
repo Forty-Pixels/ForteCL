@@ -75,9 +75,9 @@ export default function LabTests() {
             <div className="flex flex-col lg:flex-row items-stretch lg:h-[500px] lg:gap-4">
                 
                 {/* Left Column (50%) - Image + Content */}
-                <div className="w-full lg:w-[49%] relative flex flex-col justify-center py-10 lg:py-0 px-6 sm:px-10 lg:pl-[calc((100vw-1280px)/2+3rem)] lg:pr-10 min-h-[360px] lg:min-h-0">
+                <div className="w-full lg:w-[49%] relative flex flex-col justify-center py-12 lg:py-0 px-8 sm:px-14 lg:pl-20 xl:pl-[calc((100vw-1280px)/2+3rem)] lg:pr-10 min-h-[400px] lg:min-h-0">
                     {/* Shaped background image container */}
-                    <div className="absolute inset-y-4 left-8 right-3 overflow-hidden rounded-[30px_82px_26px_90px] sm:left-10 sm:right-5 lg:left-16 lg:right-10">
+                    <div className="absolute inset-y-4 inset-x-4 sm:inset-x-6 overflow-hidden rounded-[40px_110px_40px_110px] lg:left-12 lg:right-10 lg:rounded-[30px_82px_26px_90px]">
                         <Image
                             src="/lab-tests/left-image.png"
                             alt="Lab Excellence"
@@ -85,7 +85,7 @@ export default function LabTests() {
                             className="object-cover object-right"
                             priority
                         />
-                        <div className="absolute inset-0 bg-black/40" />
+                        <div className="absolute inset-0 bg-black/45" />
                     </div>
 
                     <div className="relative z-10 flex flex-col items-start max-w-[34rem]">
@@ -95,18 +95,18 @@ export default function LabTests() {
                             </span>
                         </Reveal>
                         <Reveal delayMs={140}>
-                            <h2 className="text-white text-3xl md:text-4xl lg:text-[2.7rem] font-black mb-5 leading-tight">
+                            <h2 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-[1.8rem] xl:text-[2.7rem] font-black mb-2 sm:mb-4 lg:mb-4 leading-tight">
                                 4,500+ Specialised Tests.<br /> One Location.
                             </h2>
                         </Reveal>
                         <Reveal delayMs={210}>
-                            <p className="text-white/80 text-[13px] md:text-sm mb-8 leading-relaxed line-clamp-4 lg:line-clamp-none">
+                            <p className="text-white/80 text-[11px] sm:text-[12px] md:text-[13px] lg:text-[12px] xl:text-sm mb-5 sm:mb-7 lg:mb-6 leading-relaxed">
                                 From everyday blood work to molecular diagnostics and genetic screening, Forte Clinical Laboratory processes over 10,000 parameters daily with the capacity to handle 4,500+ special tests under one roof. Our in-house pathologists, consultants and microbiologists review and authorise every report — so you get results you can act on.
                             </p>
                         </Reveal>
 
                         <Reveal delayMs={280}>
-                            <Link href="/lab-tests" className="bg-[#f88c29] hover:bg-[#e67b1d] text-white px-7 py-3.5 rounded-xl text-xs font-bold transition-all text-center w-full sm:w-auto uppercase tracking-wider active:scale-95 shadow-lg shadow-black/20">
+                            <Link href="/lab-tests" className="bg-[#f88c29] hover:bg-[#e67b1d] text-white px-4 py-2 sm:px-5 sm:py-2.5 md:px-7 md:py-3.5 lg:px-5 lg:py-2.5 xl:px-7 xl:py-3.5 rounded-xl text-[9px] sm:text-[10px] md:text-xs lg:text-[10px] xl:text-xs font-bold transition-all text-center w-full sm:w-auto uppercase tracking-wider active:scale-95 shadow-lg shadow-black/20">
                                 Explore All Tests
                             </Link>
                         </Reveal>
@@ -114,12 +114,12 @@ export default function LabTests() {
                 </div>
 
                 {/* Right Column (50%) - Subtle Teal Tint + Carousel */}
-                <div className="w-full lg:w-[49%] flex flex-col justify-center py-10 lg:py-0 px-6 sm:px-8 lg:pl-2 lg:pr-8 relative border-t lg:border-t-0 lg:border-l border-gray-100/50">
+                <div className="w-full lg:w-[49%] flex flex-col justify-center py-12 lg:py-0 px-6 sm:px-8 lg:pl-2 lg:pr-8 relative border-t lg:border-t-0 lg:border-l border-gray-100/50">
                     <Reveal delayMs={180} className="w-full relative flex justify-start">
                         <div className="w-full max-w-[560px] relative">
                         <div
                             ref={scrollRef}
-                            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-3 pb-1 w-full h-[300px] md:h-[320px]"
+                            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-3 pb-1 w-full h-[320px] sm:h-[340px] md:h-[360px] lg:h-[320px]"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
                             {chunked.map((slide, slideIndex) => (
@@ -130,7 +130,7 @@ export default function LabTests() {
                                     {slide.map((test, index) => (
                                         <div
                                             key={index}
-                                            className="relative overflow-hidden group cursor-pointer bg-white transition-all duration-500 shadow-sm hover:shadow-lg h-full rounded-tl-[2.25rem] rounded-br-[2.25rem] rounded-tr-lg rounded-bl-lg border border-white"
+                                            className="relative overflow-hidden group cursor-pointer bg-white transition-all duration-500 shadow-sm hover:shadow-lg h-full rounded-tl-[2rem] rounded-br-[2rem] rounded-tr-lg rounded-bl-lg border border-white"
                                         >
                                             <Image
                                                 src={test.image}
