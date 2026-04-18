@@ -21,7 +21,7 @@ const officeImages = [
 
 export default function OfficeGallery() {
     return (
-        <section className="bg-[#f6fafb] py-12 md:py-16 border-y border-gray-100">
+        <section className="bg-white py-12 md:py-16 border-y border-gray-100">
             <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
                 <Reveal delayMs={80}>
                     <div className="text-center mb-8">

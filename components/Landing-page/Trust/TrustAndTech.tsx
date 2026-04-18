@@ -8,14 +8,13 @@ const logos = [
 
 export default function TrustAndTech() {
     return (
-        <section className="relative w-full flex items-center py-10 md:py-12 lg:py-14 overflow-hidden bg-slate-100 border-y border-slate-200/60">
+        <section className="relative w-full flex items-center py-10 md:py-12 lg:py-14 overflow-hidden bg-white border-y border-gray-100">
             <div className="relative z-20 max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 w-full">
                 <div className="grid grid-cols-1 lg:grid-cols-[54%_46%] gap-8 lg:gap-10 items-center">
                     <div className="order-2 lg:order-1">
                         <Reveal delayMs={90}>
                             <div className="grid grid-cols-2 gap-4 sm:gap-5 items-end">
                                 <div className="relative">
-                                    <div className="absolute -left-2 sm:-left-3 top-2 bottom-16 w-2 sm:w-3 rounded-full bg-[#f88c29]" />
                                     <div className="relative aspect-[4/5] overflow-hidden rounded-[88px_18px_18px_18px] border border-gray-100 shadow-xl">
                                         <Image
                                             src="/office2.png"
@@ -31,13 +30,12 @@ export default function TrustAndTech() {
                                 </div>
 
                                 <div className="relative">
-                                    <div className="absolute -right-2 sm:-right-3 top-8 bottom-20 w-2 sm:w-3 rounded-full bg-[#f88c29]" />
                                     <div className="relative aspect-[4/5] overflow-hidden rounded-[18px_18px_92px_18px] border border-gray-100 shadow-xl">
                                         <Image
                                             src="/office1.png"
                                             alt="Forte facility interior"
                                             fill
-                                            className="object-cover"
+                                            className="object-cover scale-[1.08]"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                                     </div>

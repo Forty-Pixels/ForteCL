@@ -135,21 +135,23 @@ export default function ContactCTA() {
     return (
         <section ref={sectionRef} className="pt-8 pb-10 md:pt-10 md:pb-12 bg-white border-t border-gray-100 overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-                <div className="text-center lg:text-left mb-8 md:mb-10">
-                    <h2 className="text-xl md:text-3xl font-black text-[#1f2937] mb-2 leading-tight">
-                        Looking For Trusted Diagnostics In Dubai?
-                    </h2>
-                    <p className="text-gray-500 text-xs md:text-base max-w-2xl lg:max-w-none font-medium">
-                        Fill the contact form and our team will get back to you shortly.
-                    </p>
+                <div className="mb-8 md:mb-10 text-center lg:flex lg:justify-end">
+                    <div className="lg:w-[52.4%] lg:text-left">
+                        <h2 className="text-xl md:text-3xl font-black text-[#1f2937] mb-2 leading-tight">
+                            Looking For Trusted Diagnostics In Dubai?
+                        </h2>
+                        <p className="text-gray-500 text-xs md:text-base max-w-2xl lg:max-w-none font-medium">
+                            Fill the contact form and our team will get back to you shortly.
+                        </p>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start">
                     {/* Left Side: Stats 2x2 */}
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-8 lg:pr-4">
+                    <div className="grid grid-cols-2 auto-rows-fr gap-x-6 gap-y-8 lg:pr-4">
                         {stats.map((stat, index) => (
-                            <Reveal key={stat.label} delayMs={100 + index * 100}>
-                                <div className="flex flex-col">
+                            <Reveal key={stat.label} delayMs={100 + index * 100} className="h-full">
+                                <div className="flex h-full min-h-[172px] flex-col rounded-2xl border border-[#307984]/10 bg-white p-4 shadow-sm transition-transform duration-300 motion-safe:hover:scale-[1.04]">
                                     <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#fff5ea] text-[#f88c29]">
                                         <div className="scale-75 origin-center">{stat.icon}</div>
                                     </div>
@@ -163,7 +165,7 @@ export default function ContactCTA() {
                                     <p className="text-[#1f2937] font-bold text-[11px] md:text-xs leading-tight mb-1 uppercase tracking-wider opacity-70">
                                         {stat.label}
                                     </p>
-                                    <p className="text-gray-400 text-[10px] md:text-[11px] leading-relaxed max-w-[160px] font-medium">
+                                    <p className="mt-auto text-gray-400 text-[10px] md:text-[11px] leading-relaxed max-w-[160px] font-medium">
                                         {stat.note}
                                     </p>
                                 </div>
@@ -236,5 +238,3 @@ export default function ContactCTA() {
         </section>
     );
 }
-
-

@@ -183,7 +183,7 @@ export default function ReviewsSection() {
     const marqueeItems = [...reviews, ...reviews];
 
     return (
-        <section className="py-10 bg-[#fbfcfd] overflow-hidden">
+        <section className="py-10 bg-white overflow-hidden">
             <div className="max-w-[1440px] mx-auto px-6">
                 {/* Header */}
                 <div className="text-center mb-8">
