@@ -76,16 +76,17 @@ export default function LabTests() {
                 
                 {/* Left Column (50%) - Image + Content */}
                 <div className="w-full lg:w-[49%] relative flex flex-col justify-center py-10 lg:py-0 px-6 sm:px-10 lg:pl-[calc((100vw-1280px)/2+3rem)] lg:pr-10 min-h-[360px] lg:min-h-0">
-                    {/* Background Image */}
-                    <Image 
-                        src="/lab-tests/left-image.png"
-                        alt="Lab Excellence"
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                    {/* Dark Overlay for content readability (Reduced) */}
-                    <div className="absolute inset-0 bg-black/40" />
+                    {/* Shaped background image container */}
+                    <div className="absolute inset-y-4 left-8 right-3 overflow-hidden rounded-[30px_82px_26px_90px] sm:left-10 sm:right-5 lg:left-16 lg:right-10">
+                        <Image
+                            src="/lab-tests/left-image.png"
+                            alt="Lab Excellence"
+                            fill
+                            className="object-cover object-right"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-black/40" />
+                    </div>
 
                     <div className="relative z-10 flex flex-col items-start max-w-[34rem]">
                         <Reveal delayMs={70}>

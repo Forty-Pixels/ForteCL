@@ -135,37 +135,26 @@ export default function ContactCTA() {
     return (
         <section ref={sectionRef} className="pt-8 pb-10 md:pt-10 md:pb-12 bg-white border-t border-gray-100 overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-                <div className="mb-8 md:mb-10 text-center lg:flex lg:justify-end">
-                    <div className="lg:w-[52.4%] lg:text-left">
-                        <h2 className="text-xl md:text-3xl font-black text-[#1f2937] mb-2 leading-tight">
-                            Looking For Trusted Diagnostics In Dubai?
-                        </h2>
-                        <p className="text-gray-500 text-xs md:text-base max-w-2xl lg:max-w-none font-medium">
-                            Fill the contact form and our team will get back to you shortly.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-[0.94fr_1.06fr] gap-4 lg:gap-10 items-stretch">
                     {/* Left Side: Stats 2x2 */}
-                    <div className="grid grid-cols-2 auto-rows-fr gap-x-6 gap-y-8 lg:pr-4">
+                    <div className="mx-auto grid h-full w-full max-w-[548px] content-center grid-cols-2 gap-x-6 gap-y-7">
                         {stats.map((stat, index) => (
-                            <Reveal key={stat.label} delayMs={100 + index * 100} className="h-full">
-                                <div className="flex h-full min-h-[172px] flex-col rounded-2xl border border-[#307984]/10 bg-white p-4 shadow-sm transition-transform duration-300 motion-safe:hover:scale-[1.04]">
-                                    <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#fff5ea] text-[#f88c29]">
+                            <Reveal key={stat.label} delayMs={100 + index * 100}>
+                                <div className="flex min-h-[184px] flex-col rounded-2xl border border-[#307984]/10 bg-white p-4 shadow-sm transition-transform duration-300 motion-safe:hover:scale-[1.04]">
+                                    <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg bg-[#fff5ea] text-[#f88c29]">
                                         <div className="scale-75 origin-center">{stat.icon}</div>
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-bold text-[#f88c29] mb-0.5 font-poppins">
+                                    <h3 className="text-xl md:text-2xl font-bold text-[#f88c29] mb-0 font-poppins">
                                         {typeof stat.target === 'number' ? (
                                             <CountText target={stat.target} suffix={stat.suffix} shouldStart={isVisible} />
                                         ) : (
                                             stat.staticValue
                                         )}
                                     </h3>
-                                    <p className="text-[#1f2937] font-bold text-[11px] md:text-xs leading-tight mb-1 uppercase tracking-wider opacity-70">
+                                    <p className="text-[#1f2937] font-bold text-[11px] md:text-xs leading-tight mb-0.5 uppercase tracking-wider opacity-70">
                                         {stat.label}
                                     </p>
-                                    <p className="mt-auto text-gray-400 text-[10px] md:text-[11px] leading-relaxed max-w-[160px] font-medium">
+                                    <p className="text-gray-400 text-[10px] md:text-[11px] leading-snug max-w-[196px] line-clamp-2 font-medium">
                                         {stat.note}
                                     </p>
                                 </div>
@@ -174,55 +163,70 @@ export default function ContactCTA() {
                     </div>
 
                     {/* Right Side: Form (The "Table") */}
-                    <Reveal delayMs={200} className="w-full">
-                        <form className="rounded-[24px] p-5 md:p-8 bg-white shadow-[0_15px_40px_rgba(10,40,52,0.08)] border border-gray-100 space-y-3.5">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                <div className="space-y-1">
-                                    <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">First Name</label>
-                                    <input
-                                        type="text"
-                                        placeholder="First name"
-                                        className="w-full px-3.5 py-2.5 text-xs rounded-lg bg-[#f8fafb] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] transition-all"
-                                    />
+                    <Reveal delayMs={200} className="w-full h-full">
+                        <form className="h-full rounded-[30px] p-5 md:p-8 bg-white shadow-[0_14px_38px_rgba(12,44,62,0.09)] border border-[#e8eff0] flex flex-col">
+                            <div className="mb-4 md:mb-5">
+                                <span className="inline-flex items-center rounded-full border border-[#307984]/20 bg-[#f5faf9] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#307984]">
+                                    Trusted Diagnostics
+                                </span>
+                                <h2 className="mt-3 text-lg md:text-2xl font-black text-[#1f2937] leading-tight">
+                                    Looking For Trusted Diagnostics In Dubai?
+                                </h2>
+                                <p className="mt-2 text-gray-500 text-xs md:text-[13px] font-medium">
+                                    Fill the contact form and our team will get back to you shortly.
+                                </p>
+                            </div>
+
+                            <div className="space-y-3.5 flex-1">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                    <div className="space-y-1">
+                                        <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">First Name</label>
+                                        <input
+                                            type="text"
+                                            placeholder="First name"
+                                            className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-[#fbfdfd] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] focus:bg-white transition-all"
+                                        />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">Last Name</label>
+                                        <input
+                                            type="text"
+                                            placeholder="Last name"
+                                            className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-[#fbfdfd] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] focus:bg-white transition-all"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                    <div className="space-y-1">
+                                        <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">Phone</label>
+                                        <input
+                                            type="text"
+                                            placeholder="+971 -- --- ----"
+                                            className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-[#fbfdfd] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] focus:bg-white transition-all"
+                                        />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">Email</label>
+                                        <input
+                                            type="email"
+                                            placeholder="your@email.com"
+                                            className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-[#fbfdfd] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] focus:bg-white transition-all"
+                                        />
+                                    </div>
                                 </div>
                                 <div className="space-y-1">
-                                    <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">Last Name</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Last name"
-                                        className="w-full px-3.5 py-2.5 text-xs rounded-lg bg-[#f8fafb] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] transition-all"
+                                    <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">Message</label>
+                                    <textarea
+                                        placeholder="Briefly describe your inquiry..."
+                                        rows={3}
+                                        className="w-full px-3.5 py-2.5 text-xs rounded-xl bg-[#fbfdfd] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] focus:bg-white transition-all resize-none"
                                     />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                <div className="space-y-1">
-                                    <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">Phone</label>
-                                    <input
-                                        type="text"
-                                        placeholder="+971 -- --- ----"
-                                        className="w-full px-3.5 py-2.5 text-xs rounded-lg bg-[#f8fafb] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] transition-all"
-                                    />
-                                </div>
-                                <div className="space-y-1">
-                                    <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">Email</label>
-                                    <input
-                                        type="email"
-                                        placeholder="your@email.com"
-                                        className="w-full px-3.5 py-2.5 text-xs rounded-lg bg-[#f8fafb] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] transition-all"
-                                    />
-                                </div>
-                            </div>
-                            <div className="space-y-1">
-                                <label className="text-[9px] font-black uppercase tracking-wider text-gray-400 ml-1">Message</label>
-                                <textarea
-                                    placeholder="Briefly describe your inquiry..."
-                                    rows={3}
-                                    className="w-full px-3.5 py-2.5 text-xs rounded-lg bg-[#f8fafb] border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#307984] transition-all resize-none"
-                                />
-                            </div>
+
                             <button
                                 type="submit"
-                                className="group relative overflow-hidden inline-flex w-full justify-center bg-[#f88c29] hover:bg-[#e67b1d] text-white font-bold py-3 px-8 rounded-lg transition-all text-sm shadow-md"
+                                className="mt-4 group relative overflow-hidden inline-flex w-full justify-center bg-[#f88c29] hover:bg-[#e67b1d] text-white font-bold py-3 px-8 rounded-xl transition-all text-sm shadow-md"
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     Submit Inquiry
