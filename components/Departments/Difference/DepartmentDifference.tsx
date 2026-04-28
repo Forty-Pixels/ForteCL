@@ -10,16 +10,12 @@ export default function DepartmentDifference() {
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <div className="flex flex-col lg:flex-row gap-8 items-stretch">
                     {/* Left Side: Image Column */}
-                    <div className="w-full lg:w-1/2 relative min-h-[500px]">
-                        <div className="relative w-full h-full rounded-[1.5rem] overflow-hidden">
-                            <Image 
-                                src="/Departments/difference/orange-lab.png" 
-                                alt="Forte Difference"
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-                    </div>
+                    <div 
+                        className="w-full lg:w-1/2 rounded-[1.5rem] overflow-hidden shadow-2xl h-[400px] sm:h-[500px] lg:min-h-[600px] bg-center bg-cover bg-no-repeat"
+                        style={{ backgroundImage: 'url("/departments/difference/orange-lab.png")' }}
+                        role="img"
+                        aria-label="Forte Laboratory Excellence"
+                    />
 
                     {/* Right Side: Gray Content Box */}
                     <div className="w-full lg:w-1/2 bg-[#e9e9e9] rounded-[1.5rem] p-10 lg:p-16 relative overflow-hidden flex flex-col justify-center">
