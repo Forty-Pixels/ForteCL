@@ -74,7 +74,7 @@ export default function Departments() {
                             {departments.map((dept, i) => (
                                 <Reveal key={dept.name} delayMs={250 + (i * 50)}>
                                     <Link 
-                                        href={`/departments#${dept.id}`}
+                                        href={`/departments/${dept.id}`}
                                         className="group flex items-center gap-2.5 bg-white p-2.5 rounded-lg border border-gray-100 hover:shadow-md hover:border-[#f88c29]/20 transition-all duration-300"
                                     >
                                         <div className="flex-shrink-0 w-8 h-8 rounded bg-white border border-gray-100 flex items-center justify-center group-hover:bg-[#f88c29] group-hover:border-[#f88c29] transition-all duration-300 shadow-sm">

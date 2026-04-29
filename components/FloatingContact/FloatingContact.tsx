@@ -46,7 +46,7 @@ export default function FloatingContact() {
             </motion.div>
 
             {/* Desktop Side Buttons (Visible on >= lg) - Premium Floating Pill Buttons */}
-            <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-[110] flex-col space-y-4">
+            <div className="hidden lg:flex fixed right-8 bottom-8 z-[110] flex-col space-y-4">
                 {/* Call Button */}
                 <div className="relative flex items-center justify-end">
                     <AnimatePresence>

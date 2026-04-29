@@ -1,323 +1,138 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import Reveal from '@/components/Animation/Reveal';
-import { Department } from '@/constants/departments';
-import { 
-    CheckCircleIcon, 
-    BeakerIcon, 
-    ShieldCheckIcon, 
-    InformationCircleIcon
-} from '@heroicons/react/24/outline';
-
 import Navbar from '@/components/Navbar/Navbar';
+import { Department } from '@/constants/departments';
+import { InformationCircleIcon, ArrowRightIcon, PhoneIcon } from '@heroicons/react/24/outline';
+import DepartmentQuote from '@/components/Departments/Quote/DepartmentQuote';
+import DepartmentDifference from '@/components/Departments/Difference/DepartmentDifference';
+import DepartmentCTA from '@/components/Departments/CTA/DepartmentCTA';
 
-const TEST_LIMIT = 18;
+const WhatsAppIcon = ({ className }: { className?: string }) => (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .011 5.403.011 12.038c0 2.12.553 4.189 1.604 6.04l-1.705 6.226 6.37-1.67a11.803 11.803 0 005.766 1.498h.005c6.634 0 12.038-5.403 12.038-12.039a11.811 11.811 0 00-3.414-8.417" />
+    </svg>
+);
 
-const normalizeTestName = (value: string) =>
-    value
-        .toLowerCase()
-        .replace(/\([^)]*\)/g, ' ')
-        .replace(/[^a-z0-9]+/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim();
-
-const toTokenSet = (value: string) => new Set(value.split(' ').filter(Boolean));
-
-const abbreviationMap: Record<string, string> = {
-    cbc: 'complete blood count',
-    pbs: 'peripheral blood smear',
-    esr: 'erythrocyte sedimentation rate',
-    hb: 'hemoglobin',
-    crp: 'c reactive protein',
-    ana: 'antinuclear antibody',
-    rf: 'rheumatoid factor',
-    ast: 'antibiotic sensitivity test',
-    afb: 'acid fast bacilli',
-    fnac: 'fine needle aspiration cytology',
-    pcr: 'polymerase chain reaction',
-};
-
-const getNameVariants = (value: string) => {
-    const normalized = normalizeTestName(value);
-    const variants = new Set<string>([normalized]);
-
-    Object.entries(abbreviationMap).forEach(([short, expanded]) => {
-        const shortPattern = new RegExp(`\\b${short}\\b`, 'g');
-        if (shortPattern.test(normalized)) {
-            variants.add(normalized.replace(shortPattern, expanded).trim());
-        }
-    });
-
-    return Array.from(variants).filter(Boolean);
-};
-
-type CmsTestIndexItem = {
+interface TestRecord {
     slug: string;
-    normalizedName: string;
-    tokens: Set<string>;
-};
-
-const resolveSlugByName = (
-    testName: string,
-    testIndex: CmsTestIndexItem[]
-) => {
-    const variants = getNameVariants(testName);
-    if (variants.length === 0) return null;
-
-    for (const variant of variants) {
-        const exact = testIndex.find((item) => item.normalizedName === variant);
-        if (exact) return exact.slug;
-    }
-
-    for (const variant of variants) {
-        const variantFlat = variant.replace(/\s+/g, '');
-        const includes = testIndex.find((item) => {
-            const candidateFlat = item.normalizedName.replace(/\s+/g, '');
-            return (
-                item.normalizedName.includes(variant) ||
-                variant.includes(item.normalizedName) ||
-                candidateFlat === variantFlat
-            );
-        });
-        if (includes) return includes.slug;
-    }
-
-    let bestMatch: { slug: string; score: number } | null = null;
-    for (const variant of variants) {
-        const variantTokens = toTokenSet(variant);
-        if (variantTokens.size === 0) continue;
-        for (const candidate of testIndex) {
-            let common = 0;
-            for (const token of variantTokens) {
-                if (candidate.tokens.has(token)) common += 1;
-            }
-
-            const score = common / Math.max(variantTokens.size, candidate.tokens.size);
-            if (common >= 2 && score >= 0.5) {
-                if (!bestMatch || score > bestMatch.score) {
-                    bestMatch = { slug: candidate.slug, score };
-                }
-            }
-        }
-    }
-
-    if (!bestMatch) return null;
-    return bestMatch.slug;
-};
+    name: string;
+    tat?: string;
+    sampleType?: string[];
+}
 
 interface DepartmentDetailViewProps {
     department: Department;
-    cmsTests?: {
-        slug: string;
-        name: string;
-        tat?: string;
-        sampleType?: string[];
-    }[];
-    allCmsTests?: {
-        name: string;
-        slug: string;
-    }[];
+    cmsTests: TestRecord[];
+    allCmsTests: { name: string; slug: string }[];
 }
 
-export default function DepartmentDetailView({
-    department,
-    cmsTests = [],
-    allCmsTests = [],
-}: DepartmentDetailViewProps) {
-    const cmsTestIndex = allCmsTests.map((test) => ({
-        slug: test.slug,
-        normalizedName: normalizeTestName(test.name),
-        tokens: toTokenSet(normalizeTestName(test.name)),
-    }));
-
-    const cmsDerivedTests = cmsTests.map((test) => ({
-        name: test.name,
-        description: [
-            test.tat ? `TAT: ${test.tat}` : null,
-            test.sampleType?.length ? `Sample: ${test.sampleType.join(', ')}` : null,
-        ]
-            .filter(Boolean)
-            .join(' • ') || 'Comprehensive diagnostics performed by our department specialists.',
-        slug: test.slug || resolveSlugByName(test.name, cmsTestIndex),
-    }));
-
-    const fallbackDepartmentTests = department.commonTests.map((test) => ({
-        name: test.name,
-        description: test.description,
-        slug: resolveSlugByName(test.name, cmsTestIndex),
-    }));
-
-    const merged = [...cmsDerivedTests, ...fallbackDepartmentTests];
-    const seenNames = new Set<string>();
-    const standardTests = merged
-        .filter((test) => {
-            const key = normalizeTestName(test.name);
-            if (!key || seenNames.has(key)) return false;
-            seenNames.add(key);
-            return true;
-        })
-        .slice(0, TEST_LIMIT);
-
+export default function DepartmentDetailView({ department, cmsTests, allCmsTests }: DepartmentDetailViewProps) {
     return (
-        <section className="bg-white min-h-screen pb-24 pt-20 sm:pt-24 lg:pt-28">
-            <Navbar currentPage="Departments" />
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="py-4 lg:py-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start relative">
-                        
-                        {/* Content Side - STICKY (Restored Original Layout) */}
-                        <div className="lg:sticky lg:top-[120px] self-start h-fit">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-11 h-11 rounded-2xl bg-[#f88c29]/10 flex items-center justify-center text-[#f88c29]">
-                                    <BeakerIcon className="w-5 h-5" />
-                                </div>
-                                <h1 className="text-3xl lg:text-4xl font-black text-[#202020] tracking-tight">
-                                    {department.title}
+        <main className="bg-white min-h-screen">
+            <div className="absolute top-0 left-0 w-full z-50">
+                <Navbar currentPage="Departments" />
+            </div>
+
+            {/* The ORANGE BOX HERO with Diagonal Stripes Background */}
+            <section className="relative pt-40 pb-0 bg-white overflow-hidden flex items-start">
+                {/* Diagonal Stripes Background */}
+                <div className="absolute inset-0 z-0">
+                    <div 
+                        className="absolute inset-0 opacity-[0.05]" 
+                        style={{ 
+                            backgroundImage: 'repeating-linear-gradient(-45deg, #000, #000 20px, transparent 20px, transparent 40px)',
+                        }}
+                    />
+                    {/* Vertical Fade Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
+                </div>
+
+                <div className="w-full pl-6 lg:pl-12 relative z-10">
+                    <div className="relative bg-[#f88c29] rounded-tl-[4rem] rounded-bl-none p-8 sm:p-12 lg:p-20 shadow-2xl ml-auto w-full lg:w-[96%] min-h-[400px] flex flex-col justify-center">
+                        {/* Floating Action Icons */}
+                        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4">
+                            <a href="tel:+97142729302" className="w-12 h-12 bg-[#1a1a1a] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
+                                <PhoneIcon className="w-6 h-6" />
+                            </a>
+                            <a href="https://wa.me/97142729302" target="_blank" className="w-12 h-12 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
+                                <WhatsAppIcon className="w-6 h-6" />
+                            </a>
+                        </div>
+
+                        <Reveal>
+                            <div className="max-w-4xl">
+                                <h1 className="text-3xl lg:text-5xl font-black text-white mb-8 leading-tight uppercase tracking-tight">
+                                    {department.title} <br /> EXCELLENCE IN CLINICAL DIAGNOSTICS.
                                 </h1>
-                            </div>
-
-                            <p className="text-gray-600 text-sm lg:text-[15px] leading-relaxed mb-10">
-                                {department.description}
-                            </p>
-
-                            {/* SubSections */}
-                            {department.subSections && department.subSections.map((sub, sIdx) => (
-                                <div key={sIdx} className="mb-8 bg-[#fcfcfc] p-6 rounded-[2.5rem] border border-gray-100 shadow-sm transition-all hover:shadow-md">
-                                    <h3 className="text-[13px] font-black text-[#f88c29] mb-4 flex items-center gap-3 uppercase tracking-wider">
-                                        <InformationCircleIcon className="w-4 h-4" />
-                                        {sub.title}
-                                    </h3>
-                                    <div className="space-y-3">
-                                        {Array.isArray(sub.content) ? (
-                                            <ul className="grid grid-cols-1 gap-3">
-                                                {sub.content.map((item, iIdx) => (
-                                                    <li key={iIdx} className="text-xs text-gray-700 font-bold flex items-center gap-3">
-                                                        <div className="w-2 h-2 rounded-full bg-[#f88c29]/40" />
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        ) : (
-                                            <p className="text-xs text-gray-600 leading-relaxed font-bold">
-                                                {sub.content}
-                                            </p>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-
-                            {/* Key Services */}
-                            <h3 className="text-[10px] font-black text-[#f88c29] uppercase tracking-[0.2em] mb-5 px-1">
-                                Core Capabilities
-                            </h3>
-                            <div className="flex flex-wrap gap-2.5 mb-10">
-                                {department.keyServices.map((service, sIndex) => (
-                                    <span 
-                                        key={sIndex}
-                                        className="px-4 py-2 rounded-full bg-white text-[#307984] text-[10px] font-black border border-gray-100 shadow-sm transition-all hover:bg-[#f88c29] hover:text-white hover:border-[#f88c29]"
-                                    >
-                                        {service}
-                                    </span>
-                                ))}
-                            </div>
-
-                            {/* Comparison Table */}
-                            {department.table && (
-                                <div className="pt-4">
-                                    <div className="overflow-x-auto rounded-[2rem] border border-gray-100 shadow-sm">
-                                        <table className="w-full text-left border-collapse">
-                                            <thead>
-                                                <tr className="bg-[#f88c29]">
-                                                    {department.table.headers.map((h, i) => (
-                                                        <th key={i} className="px-6 py-5 text-[11px] font-black text-white uppercase tracking-wider">
-                                                            {h}
-                                                        </th>
-                                                    ))}
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-gray-100">
-                                                {department.table.rows.map((row, rIdx) => (
-                                                    <tr key={rIdx} className="hover:bg-gray-50 transition-colors">
-                                                        {row.map((cell, cIdx) => (
-                                                            <td key={cIdx} className={`px-6 py-5 text-[11px] ${cIdx === 0 ? 'font-black text-[#202020]' : 'text-gray-600 font-bold'}`}>
-                                                                    {cell}
-                                                            </td>
-                                                        ))}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Image & Tests Column */}
-                        <div className="space-y-8 lg:mt-4">
-                            <Reveal delayMs={300}>
-                                <div className="relative aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden shadow-2xl group border-[12px] border-gray-50/50">
-                                    <Image
-                                        src={department.image}
-                                        alt={department.title}
-                                        fill
-                                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
-                                </div>
-                            </Reveal>
-
-                            <div className="bg-[#f8fafc] rounded-[2.5rem] p-8 sm:p-10 border border-gray-100 shadow-inner">
-                                <div className="flex items-center justify-between mb-8">
-                                    <h3 className="text-xl font-black text-[#202020] tracking-tight">
-                                        Standard Procedures & Tests
-                                    </h3>
-                                    <ShieldCheckIcon className="w-8 h-8 text-[#f88c29] opacity-20" />
-                                </div>
+                                <p className="text-white/90 text-sm lg:text-base leading-relaxed mb-12 max-w-2xl font-medium">
+                                    {department.description}
+                                </p>
                                 
-                                <div className="grid grid-cols-1 gap-6">
-                                    {standardTests.map((test, tIndex) => (
-                                        <Reveal key={tIndex} delayMs={500 + (tIndex * 50)}>
-                                            <div className="group flex items-start gap-4 justify-between">
-                                                <div className="mt-1 flex-shrink-0 w-7 h-7 rounded-xl bg-white border border-gray-200 flex items-center justify-center group-hover:bg-[#f88c29] group-hover:border-[#f88c29] transition-all shadow-sm">
-                                                    <CheckCircleIcon className="w-4 h-4 text-[#f88c29] group-hover:text-white transition-colors" />
-                                                </div>
-                                                <div className="flex-1">
-                                                    {test.slug ? (
-                                                        <Link
-                                                            href={`/lab-tests/${test.slug}`}
-                                                            className="text-sm font-black text-gray-800 mb-1 group-hover:text-[#f88c29] transition-colors leading-tight inline-block"
-                                                        >
-                                                            {test.name}
-                                                        </Link>
-                                                    ) : (
-                                                        <h4 className="text-sm font-black text-gray-800 mb-1 group-hover:text-[#f88c29] transition-colors leading-tight">
-                                                            {test.name}
-                                                        </h4>
-                                                    )}
-                                                    <p className="text-[11px] text-gray-500 leading-relaxed font-bold max-w-lg">
-                                                        {test.description}
-                                                    </p>
-                                                </div>
-                                                {test.slug && (
-                                                    <Link
-                                                        href={`/lab-tests/${test.slug}`}
-                                                        className="shrink-0 inline-flex items-center rounded-full border border-[#f88c29]/20 bg-white px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-[#f88c29] hover:bg-[#f88c29] hover:text-white transition-colors"
-                                                    >
-                                                        View Details
-                                                    </Link>
-                                                )}
-                                            </div>
-                                        </Reveal>
-                                    ))}
+                                {/* Bottom Progress Line */}
+                                <div className="relative w-full h-[2px] bg-white/20">
+                                    <div className="absolute left-0 top-0 h-full w-1/3 bg-white" />
                                 </div>
                             </div>
-                        </div>
-
+                        </Reveal>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            {/* Reusing the OLD Department Grid layout with the white container box */}
+            <section className="bg-white pt-0 pb-10">
+                <div className="w-full pl-6 lg:pl-12">
+                    <div className="bg-white rounded-bl-[1.5rem] p-8 sm:p-12 lg:p-20 shadow-xl ml-auto w-full lg:w-[96%]">
+                        <h2 className="text-2xl font-bold text-[#333] uppercase mb-8 tracking-tight">
+                            TESTS & PROCEDURES
+                        </h2>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {cmsTests.map((test, index) => (
+                                <Reveal key={test.slug} delayMs={index * 50}>
+                                    <Link 
+                                        href={`/departments/${department.id}/${test.slug}`}
+                                        className="group relative bg-[#f88c29] rounded-[0.75rem] p-5 h-[140px] flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                                    >
+                                        <div className="flex justify-between items-start">
+                                            <h3 className="text-base font-bold text-white leading-tight max-w-[85%] uppercase">
+                                                {test.name}
+                                            </h3>
+                                            <InformationCircleIcon className="w-6 h-6 text-white/50 group-hover:text-white transition-colors" />
+                                        </div>
+
+                                        <div className="flex justify-end">
+                                            <ArrowRightIcon className="w-6 h-6 text-white group-hover:translate-x-2 transition-transform" />
+                                        </div>
+                                    </Link>
+                                </Reveal>
+                            ))}
+                        </div>
+
+                        {cmsTests.length === 0 && (
+                            <div className="text-center py-10">
+                                <p className="text-gray-400 font-bold uppercase tracking-widest">
+                                    No tests listed for this department yet.
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </section>
+
+            {/* Supplementary content */}
+            <DepartmentQuote 
+                quote={department.quote?.text} 
+                highlightedText={department.quote?.highlightedText} 
+            />
+            <DepartmentDifference 
+                title={department.difference?.title}
+                image={department.difference?.image || department.image}
+                items={department.difference?.items}
+            />
+            <DepartmentCTA />
+        </main>
     );
 }

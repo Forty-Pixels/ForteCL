@@ -1,47 +1,43 @@
 'use client';
 
-import Image from 'next/image';
+import Reveal from '@/components/Animation/Reveal';
 import Navbar from '@/components/Navbar/Navbar';
+import Image from 'next/image';
 
 export default function DepartmentsHero() {
     return (
-        <section className="relative w-full bg-white pt-32 pb-0 overflow-hidden flex items-end">
-            <Navbar currentPage="Departments" />
-            
-            {/* Bold Diagonal Stripes with Fade */}
-            <div className="absolute inset-0 opacity-[0.04] pointer-events-none" 
-                 style={{ 
-                    backgroundImage: 'repeating-linear-gradient(-45deg, #000, #000 30px, transparent 30px, transparent 100px)',
-                    maskImage: 'linear-gradient(to bottom, black 20%, transparent 80%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 80%)'
-                 }} 
-            />
-            
-            <div className="w-full pl-6 lg:pl-12 relative z-10">
-                <div className="relative bg-[#f88c29] rounded-tl-[1.5rem] p-8 sm:p-12 lg:p-20 shadow-2xl ml-auto w-full lg:w-[96%]">
-                    <div className="max-w-5xl space-y-10">
-                        <h1 className="text-white font-black tracking-tight text-2xl sm:text-4xl lg:text-5xl leading-[1.1] uppercase">
-                            EXCELLENCE IN CLINICAL <br />
-                            <span className="text-white/80">DIAGNOSTICS & RESEARCH.</span>
-                        </h1>
-                        <p className="text-white/90 text-base sm:text-lg max-w-3xl leading-relaxed font-medium">
-                            For more than two decades, Forte Clinical Laboratory has been a leader 
-                            in diagnostic innovation, providing accurate results to those seeking 
-                            answers to complex medical questions. Our testing is developed by an 
-                            integrated team of clinical and laboratory experts dedicated to the 
-                            highest standards of precision. By combining advanced technology with 
-                            deep scientific insight, we ensure every test result is a reliable 
-                            step toward better patient care.
-                        </p>
-                        
-                        <div className="pt-12">
-                            <div className="w-full h-[2px] bg-white/20">
-                                <div className="w-1/4 h-full bg-white" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <section className="relative min-h-[60vh] lg:min-h-[80vh] flex items-center pt-24 lg:pt-32 pb-56 lg:pb-32 overflow-hidden bg-slate-900">
+            <div className="absolute top-0 left-0 w-full z-50">
+                <Navbar currentPage="Departments" />
             </div>
+
+            {/* Background with abstract medical feel */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/all_departments_hero.png" 
+                    alt="Departments Hero"
+                    fill
+                    className="object-cover opacity-50 lg:opacity-70"
+                    priority
+                />
+            </div>
+
+            <div className="container mx-auto px-6 relative z-10 text-center">
+                <Reveal>
+                    <div className="max-w-4xl mx-auto">
+                        <span className="text-[#f88c29] font-black uppercase tracking-[0.5em] text-[10px] lg:text-xs mb-8 block opacity-0 select-none pointer-events-none">
+                            Our Clinical Infrastructure
+                        </span>
+                        <h1 className="text-4xl lg:text-8xl font-black text-white mb-10 leading-[1.1] uppercase tracking-tighter">
+                            World-Class <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#f88c29]">Diagnostic Expertise</span>
+                        </h1>
+                        <p className="text-gray-200 text-base lg:text-xl max-w-2xl mx-auto leading-relaxed font-medium opacity-90">
+                            Operating across specialized departments, Forte Clinical Laboratory provides a comprehensive suite of diagnostic services powered by advanced technology and medical excellence.
+                        </p>
+                    </div>
+                </Reveal>
+            </div>
+
         </section>
     );
 }

@@ -5,8 +5,17 @@ export interface Department {
     image: string;
     commonTests: { name: string; description: string }[];
     keyServices: string[];
-    subSections?: { title: string; content: string[] | string }[];
+    subSections?: { title: string; content: string[] | string; image?: string }[];
     table?: { headers: string[]; rows: string[][] };
+    startingPrice?: string;
+    faqs?: { question: string; answer: string }[];
+    process?: { title: string; description: string; image?: string }[];
+    quote?: { text: string; highlightedText: string };
+    difference?: {
+        title: string;
+        image: string;
+        items: { title: string; description: string; icon?: any }[];
+    };
 }
 
 export const DEPARTMENTS_DATA: Department[] = [
@@ -27,11 +36,49 @@ export const DEPARTMENTS_DATA: Department[] = [
             'Advanced Hematology Analysis',
             'Anemia Diagnosis & Monitoring',
             'Coagulation & Hemostasis Testing',
-            'Hemoglobin Electrophoresis',
-            'Infection & Inflammation Markers',
-            'Routine & Specialized Testing',
-            'Fast & Reliable Reporting'
-        ]
+            'Infection & Inflammation Markers'
+        ],
+        subSections: [
+            {
+                title: 'Advanced Cell Analysis',
+                content: 'Our department utilizes state-of-the-art flow cytometry and automated cell counters to provide a granular look at your blood health.',
+                image: '/Departments/details/hematology_cells.png'
+            }
+        ],
+        startingPrice: 'AED 150',
+        faqs: [
+            {
+                question: 'What is the importance of a Hematology checkup?',
+                answer: 'A hematology checkup is vital for detecting conditions like anemia, infections, and blood-clotting disorders early. It provides a comprehensive view of your overall health.'
+            },
+            {
+                question: 'Do I need to fast before a CBC test?',
+                answer: 'Generally, fasting is not required for a Complete Blood Count (CBC). However, if your test includes other parameters like blood sugar, you may need to fast for 8-12 hours.'
+            },
+            {
+                question: 'How long does it take to get the results?',
+                answer: 'Most routine hematology results, including CBC, are available within 24 hours of sample collection.'
+            }
+        ],
+        process: [
+            { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
+            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/p_sample.png' },
+            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/p_lab.png' },
+            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/p_report.png' }
+        ],
+        quote: {
+            text: "BLOOD HEALTH IS THE WINDOW TO YOUR WELL-BEING.",
+            highlightedText: " OUR HEMATOLOGY EXPERTS UTILIZE STATE-OF-THE-ART TECHNOLOGY TO UNCOVER CLINICAL INSIGHTS THAT DRIVE PRECISION MEDICINE AND BETTER PATIENT CARE."
+        },
+        difference: {
+            title: "HEMATOLOGY EXCELLENCE",
+            image: "/departments/difference/hematology-lab.png",
+            items: [
+                { title: "Specialized Cell Analysis", description: "Granular evaluation of blood cell morphology to detect subtle abnormalities early." },
+                { title: "Clotting & Hemostasis", description: "Comprehensive coagulation studies to manage bleeding and thrombotic risks." },
+                { title: "Rapid Turnaround", description: "Priority processing for critical hematology panels to support urgent clinical decisions." }
+            ]
+        }
     },
     {
         id: 'microbiology',
@@ -41,7 +88,8 @@ export const DEPARTMENTS_DATA: Department[] = [
         subSections: [
             {
                 title: 'Major Branches of Medical Microbiology',
-                content: ['Bacteriology: Study of bacteria', 'Virology: Study of viruses', 'Mycology: Study of fungi', 'Parasitology: Study of parasites', 'Immunology: Host response to infections']
+                content: ['Bacteriology: Study of bacteria', 'Virology: Study of viruses', 'Mycology: Study of fungi', 'Parasitology: Study of parasites', 'Immunology: Host response to infections'],
+                image: '/Departments/details/microbiology_petri.png'
             }
         ],
         commonTests: [
@@ -66,7 +114,25 @@ export const DEPARTMENTS_DATA: Department[] = [
             'Rapid Diagnostic Testing (PCR, Antigen tests)',
             'Food & Water Microbiology',
             'Mycobacteriology (TB Testing)'
-        ]
+        ],
+        faqs: [
+            { question: 'How is a culture test performed?', answer: 'A sample is placed in a special medium to encourage growth of microorganisms for identification and sensitivity testing.' },
+            { question: 'What is antibiotic resistance?', answer: 'It occurs when bacteria change in response to the use of medicines, making infections harder to treat.' },
+            { question: 'Why is microbiology important in healthcare?', answer: 'It is essential for diagnosing infectious diseases and determining the most effective treatment options.' }
+        ],
+        quote: {
+            text: "IDENTIFYING THE INVISIBLE THREATS TO PROTECT HUMAN HEALTH.",
+            highlightedText: " OUR MICROBIOLOGY TEAM COMBINES TRADITIONAL CULTURE METHODS WITH MOLECULAR PRECISION TO ENSURE TARGETED TREATMENT AND INFECTION CONTROL."
+        },
+        difference: {
+            title: "MICROBIOLOGY PRECISION",
+            image: "/departments/difference/micro-lab.png",
+            items: [
+                { title: "Pathogen Identification", description: "Advanced culture and biochemical techniques to pinpoint infectious agents accurately." },
+                { title: "Antibiotic Stewardship", description: "Providing detailed sensitivity data to guide effective and responsible antibiotic use." },
+                { title: "Molecular Screening", description: "RT-PCR and nucleic acid testing for rapid detection of respiratory and enteric pathogens." }
+            ]
+        }
     },
     {
         id: 'immunology',
@@ -87,7 +153,37 @@ export const DEPARTMENTS_DATA: Department[] = [
             'Autoimmune Disease Testing',
             'Infection & Inflammation Markers',
             'Immunodeficiency Screening'
-        ]
+        ],
+        subSections: [
+            {
+                title: 'Immune System Analysis',
+                content: 'Our advanced immunology testing evaluates the body’s immune response to identify allergies, autoimmune disorders, and chronic inflammation.',
+                image: '/Departments/details/immunology_detail.png'
+            }
+        ],
+        faqs: [
+            { question: 'Can immunology tests diagnose allergies?', answer: 'Yes, specific IgE tests can identify a wide range of allergens causing your symptoms.' },
+            { question: 'What is an ANA test for?', answer: 'The Antinuclear Antibody test is used to screen for various autoimmune disorders.' }
+        ],
+        process: [
+            { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
+            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/p_sample.png' },
+            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/p_lab.png' },
+            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/p_report.png' }
+        ],
+        quote: {
+            text: "ASSESSING THE BODY'S NATURAL DEFENSE MECHANISMS.",
+            highlightedText: " OUR IMMUNOLOGY SPECIALISTS EVALUATE COMPLEX IMMUNE RESPONSES TO HELP DIAGNOSE AUTOIMMUNE CONDITIONS, ALLERGIES, AND IMMUNODEFICIENCIES."
+        },
+        difference: {
+            title: "IMMUNOLOGY EXPERTISE",
+            image: "/Departments/details/immunology_detail.png",
+            items: [
+                { title: "Immune Response Mapping", description: "Evaluating complex cellular and humoral responses to identify underlying immunodeficiencies." },
+                { title: "Autoimmune Precision", description: "Utilizing specific markers to detect and monitor chronic autoimmune conditions with accuracy." },
+                { title: "Allergy Sensitivity", description: "Comprehensive IgE testing for a wide range of environmental and dietary allergens." }
+            ]
+        }
     },
     {
         id: 'serology',
@@ -106,7 +202,37 @@ export const DEPARTMENTS_DATA: Department[] = [
             'Infectious Disease Screening',
             'Antibody & Antigen Detection',
             'Immunity Status Evaluation'
-        ]
+        ],
+        subSections: [
+            {
+                title: 'Serum & Antibody Studies',
+                content: 'Serological testing plays a critical role in detecting past infections and evaluating immunity status through precise antibody analysis.',
+                image: '/Departments/details/serology_detail.png'
+            }
+        ],
+        faqs: [
+            { question: 'What is serology used for?', answer: 'It is used to detect the presence of antibodies or antigens in the blood, indicating infection or immunity.' },
+            { question: 'How long are serology results valid?', answer: 'Validity depends on the specific condition being tested and should be discussed with your physician.' }
+        ],
+        process: [
+            { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
+            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/p_sample.png' },
+            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/p_lab.png' },
+            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/p_report.png' }
+        ],
+        quote: {
+            text: "DETECTING THE MARKERS OF INFECTIOUS EXPOSURE.",
+            highlightedText: " OUR SEROLOGY DEPARTMENT SPECIALIZES IN ANTIBODY AND ANTIGEN DETECTION TO MONITOR DISEASE PROGRESSION AND VERIFY IMMUNITY STATUS."
+        },
+        difference: {
+            title: "SEROLOGICAL PRECISION",
+            image: "/Departments/details/serology_detail.png",
+            items: [
+                { title: "Infectious Disease Screening", description: "Accurate detection of viral and bacterial markers for effective disease management." },
+                { title: "Antibody Status Tracking", description: "Monitoring immunity levels following infection or vaccination programs." },
+                { title: "Rapid Antigen Detection", description: "Utilizing advanced kits for the quick identification of acute infectious threats." }
+            ]
+        }
     },
     {
         id: 'biochemistry',
@@ -128,7 +254,37 @@ export const DEPARTMENTS_DATA: Department[] = [
             'Hormonal Analysis',
             'Organ Function Testing',
             'Routine & Specialized Diagnostic care'
-        ]
+        ],
+        subSections: [
+            {
+                title: 'Metabolic & Fluid Analysis',
+                content: 'Our biochemistry department utilizes high-throughput automated systems to monitor metabolic health and organ function with extreme precision.',
+                image: '/Departments/details/biochemistry_detail.png'
+            }
+        ],
+        faqs: [
+            { question: 'What is Clinical Biochemistry?', answer: 'It is the area of chemistry that is generally concerned with analysis of bodily fluids for diagnostic and therapeutic purposes.' },
+            { question: 'Why are liver function tests important?', answer: 'They help determine the health of your liver by measuring the levels of proteins, liver enzymes, and bilirubin in your blood.' }
+        ],
+        quote: {
+            text: "DECODING THE BIOCHEMICAL MARKERS OF METABOLIC HEALTH.",
+            highlightedText: " OUR CLINICAL BIOCHEMISTRY DEPARTMENT PROVIDES THE QUANTITATIVE DATA NEEDED TO MONITOR ORGAN FUNCTION AND DETECT METABOLIC DISORDERS WITH SUPREME PRECISION."
+        },
+        process: [
+            { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
+            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/p_sample.png' },
+            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/p_lab.png' },
+            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/p_report.png' }
+        ],
+        difference: {
+            title: "BIOCHEMICAL PRECISION",
+            image: "/Departments/details/biochemistry_detail.png",
+            items: [
+                { title: "Metabolic Profiling", description: "Comprehensive assessment of chemical processes within the body to monitor organ health." },
+                { title: "Automated High-Throughput", description: "Utilizing advanced analyzers to ensure rapid and accurate processing of large sample volumes." },
+                { title: "Organ Function Monitoring", description: "Detailed evaluation of liver, kidney, and cardiac markers for proactive health management." }
+            ]
+        }
     },
     {
         id: 'pathology',
@@ -146,7 +302,37 @@ export const DEPARTMENTS_DATA: Department[] = [
             'Comprehensive Tissue Diagnosis',
             'Cancer Detection & Classification',
             'Cytology Services (FNAC, Pap smear)'
-        ]
+        ],
+        subSections: [
+            {
+                title: 'Histological Tissue Studies',
+                content: 'Our pathologists examine tissue architecture at the cellular level to provide definitive diagnoses for cancers and inflammatory conditions.',
+                image: '/Departments/details/pathology_detail.png'
+            }
+        ],
+        faqs: [
+            { question: 'What is a biopsy?', answer: 'A biopsy is the removal of a small sample of tissue for microscopic examination to diagnose diseases like cancer.' },
+            { question: 'How long does a histopathology report take?', answer: 'Depending on the complexity, results are typically available within 3-5 working days.' }
+        ],
+        process: [
+            { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
+            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/p_sample.png' },
+            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/p_lab.png' },
+            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/p_report.png' }
+        ],
+        quote: {
+            text: "THE GOLD STANDARD IN TISSUE-BASED DIAGNOSTICS.",
+            highlightedText: " OUR PATHOLOGY DEPARTMENT COMBINES MICROSCOPIC EXPERTISE WITH CLINICAL INSIGHT TO PROVIDE DEFINITIVE DIAGNOSES FOR COMPLEX CLINICAL CASES."
+        },
+        difference: {
+            title: "PATHOLOGY EXCELLENCE",
+            image: "/Departments/details/pathology_detail.png",
+            items: [
+                { title: "Definitive Tissue Analysis", description: "In-depth microscopic evaluation by board-certified pathologists for definitive disease diagnosis." },
+                { title: "Consultant Review", description: "Our expert team provides secondary reviews for complex cases to ensure diagnostic accuracy." },
+                { title: "Specialized Staining", description: "Utilizing advanced IHC and special stains to pinpoint specific disease markers and origins." }
+            ]
+        }
     },
     {
         id: 'molecular',
@@ -160,7 +346,8 @@ export const DEPARTMENTS_DATA: Department[] = [
             },
             {
                 title: 'Key Technologies',
-                content: ['Polymerase Chain Reaction (PCR)', 'Real-Time PCR (qPCR)', 'Reverse Transcription PCR (RT-PCR)', 'DNA Sequencing (Sanger & NGS)', 'FISH (Fluorescence In Situ Hybridization)', 'Microarray Technology']
+                content: ['Polymerase Chain Reaction (PCR)', 'Real-Time PCR (qPCR)', 'Reverse Transcription PCR (RT-PCR)', 'DNA Sequencing (Sanger & NGS)', 'FISH (Fluorescence In Situ Hybridization)', 'Microarray Technology'],
+                image: '/Departments/details/molecular_dna.png'
             }
         ],
         commonTests: [
@@ -170,13 +357,45 @@ export const DEPARTMENTS_DATA: Department[] = [
             { name: 'Hematology-Related Molecular Tests', description: 'BCR-ABL (CML), JAK2 mutation (Polycythemia Vera), Thalassemia analysis.' }
         ],
         keyServices: [
-            'Advanced Diagnostic Testing (Rapid turnaround)',
-            'Screening & Preventive Medicine (Genetic risk)',
-            'Therapeutic Monitoring (Viral load, Cancer response)',
-            'Personalized Medicine (Genetic profiling)',
-            'Research & Development Support',
-            'Infection Control & Epidemiology'
-        ]
+            'Non-Invasive Prenatal Testing (NIPT)',
+            'Genetic Carrier Screening',
+            'Infectious Disease Molecular Panels',
+            'Oncology Biomarker Testing'
+        ],
+        startingPrice: 'AED 1,199',
+        faqs: [
+            {
+                question: 'What is NIPT and how accurate is it?',
+                answer: 'Non-Invasive Prenatal Testing (NIPT) is a highly accurate screening test that analyzes fetal DNA in the mother’s blood to detect chromosomal abnormalities with over 99% precision.'
+            },
+            {
+                question: 'When can I take the NIPT test?',
+                answer: 'The NIPT test can be taken as early as 10 weeks of pregnancy.'
+            },
+            {
+                question: 'Is there any risk to the baby?',
+                answer: 'No, NIPT is completely non-invasive and poses no risk to the mother or the baby as it only requires a simple maternal blood draw.'
+            }
+        ],
+        process: [
+            { title: 'Consultation', description: 'Schedule your test through our website or via WhatsApp.', image: '/process_book_online_1777481560799.png' },
+            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/process_sample_collection_1777481577050.png' },
+            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/process_lab_processing_1777481594691.png' },
+            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/process_get_reports_1777481610116.png' }
+        ],
+        quote: {
+            text: "UNCOVERING DIAGNOSIS AT THE GENETIC LEVEL.",
+            highlightedText: " MOLECULAR DIAGNOSTICS AT FORTE UTILIZES PCR AND NUCLEIC ACID TESTING TO DETECT PATHOGENS AND GENETIC MARKERS WITH UNMATCHED SENSITIVITY."
+        },
+        difference: {
+            title: "MOLECULAR PRECISION",
+            image: "/Departments/details/molecular_dna.png",
+            items: [
+                { title: "Genomic Accuracy", description: "Detecting genetic variants and pathogen DNA with the highest level of sensitivity and specificity." },
+                { title: "Real-Time Detection", description: "Utilizing advanced qPCR platforms for the rapid identification of infectious agents." },
+                { title: "Targeted Panels", description: "Comprehensive testing for hereditary conditions and oncology-related molecular markers." }
+            ]
+        }
     },
     {
         id: 'cytopathology',
@@ -196,6 +415,13 @@ export const DEPARTMENTS_DATA: Department[] = [
             'Fluid analysis for cancer and infections',
             'Monitoring disease progression and recurrence'
         ],
+        subSections: [
+            {
+                title: 'Cellular Diagnostics',
+                content: 'Cytopathology studies individual cells from fluids and fine needle aspirations to detect early-stage cancers and infections.',
+                image: '/Departments/details/cytopathology_detail.png'
+            }
+        ],
         table: {
             headers: ['Feature', 'Histopathology', 'Cytopathology'],
             rows: [
@@ -204,6 +430,29 @@ export const DEPARTMENTS_DATA: Department[] = [
                 ['Detail Level', 'Tissue architecture', 'Cellular details'],
                 ['Diagnosis', 'Definitive diagnosis', 'Screening & preliminary diagnosis'],
                 ['Turnaround Time', 'Longer', 'Faster']
+            ]
+        },
+        faqs: [
+            { question: 'What is a Pap Smear?', answer: 'A Pap smear is a screening test for cervical cancer that involves collecting cells from the cervix for examination.' },
+            { question: 'Is FNAC painful?', answer: 'FNAC is a minimally invasive procedure that involves a very fine needle and causes minimal discomfort.' }
+        ],
+        process: [
+            { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
+            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/p_sample.png' },
+            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/p_lab.png' },
+            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/p_report.png' }
+        ],
+        quote: {
+            text: "PRECISION SCREENING AT THE CELLULAR LEVEL.",
+            highlightedText: " OUR CYTOLOGY EXPERTS SPECIALIZE IN THE EARLY DETECTION OF CELLULAR ABNORMALITIES, PROVIDING A CRITICAL LINE OF DEFENSE IN CANCER SCREENING AND PREVENTION."
+        },
+        difference: {
+            title: "CYTOLOGY PRECISION",
+            image: "/Departments/details/cytopathology_detail.png",
+            items: [
+                { title: "Early Detection", description: "Identifying precancerous changes at the cellular level before they become invasive." },
+                { title: "Minimal Invasiveness", description: "Expert FNAC procedures that provide clinical answers with minimal patient discomfort." },
+                { title: "Screening Excellence", description: "Comprehensive Pap smear and fluid cytology programs for broad health surveillance." }
             ]
         }
     }

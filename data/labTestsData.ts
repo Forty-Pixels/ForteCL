@@ -414,12 +414,45 @@ export const labTests: LabTest[] = [
     department: "Hematology",
     tat: "1 Day",
     sampleType: ["2.7 mL (1.8 mL min.) plasma from 1 Blue top (Citrate) tube"],
-    overview: "",
-    procedure: "",
-    symptoms: [],
-    normalRanges: [],
-    abnormalLevels: "",
-    relatedTests: [],
+    overview: "A D-Dimer test is used to find out if you have a blood clotting disorder. It measures a protein fragment that the body makes when a blood clot dissolves.",
+    image: "/tests/d-dimer-hero.png",
+    keyServices: [
+      "Deep Vein Thrombosis (DVT) Screening",
+      "Pulmonary Embolism (PE) Evaluation",
+      "Disseminated Intravascular Coagulation (DIC) Monitoring",
+      "Coagulation Status Assessment"
+    ],
+    subSections: [
+      {
+        title: "Clinical Significance of D-Dimer",
+        content: "D-Dimer is a fibrin degradation product (FDP), a small protein fragment present in the blood after a blood clot is degraded by fibrinolysis. It is named so because it contains two D fragments of the fibrin protein joined by a cross-link.",
+        image: "/departments/hematology_hero.png" // Fallback for now or use another
+      },
+      {
+        title: "Why is the D-Dimer Test Performed?",
+        content: [
+          "To rule out the presence of a serious blood clot (thrombus).",
+          "To help diagnose conditions like Deep Vein Thrombosis (DVT).",
+          "To assist in identifying Pulmonary Embolism (PE).",
+          "To monitor treatment for DIC."
+        ],
+        image: "/hero-clinical.png" // Different image
+      }
+    ],
+    faqs: [
+      {
+        question: "What does a high D-Dimer result mean?",
+        answer: "A high D-Dimer result can indicate the presence of significant blood clot formation and breakdown in the body, but it doesn't specify the location or cause."
+      },
+      {
+        question: "Do I need to fast for a D-Dimer test?",
+        answer: "No, fasting is typically not required for a D-Dimer test. However, follow any specific instructions provided by your healthcare provider."
+      }
+    ],
+    relatedTests: [
+      { name: "Prothrombin Time (PT)", slug: "pt" },
+      { name: "Complete Blood Count (CBC)", slug: "cbc" }
+    ],
   },
   {
     slug: "esr",
