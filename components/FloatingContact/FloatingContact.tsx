@@ -10,8 +10,16 @@ const WhatsAppIcon = () => (
     </svg>
 );
 
+import { usePathname } from 'next/navigation';
+
 export default function FloatingContact() {
+    const pathname = usePathname();
     const [hovered, setHovered] = useState<string | null>(null);
+
+    // Hide on department pages
+    if (pathname.includes('/departments')) {
+        return null;
+    }
 
     return (
         <div className="relative floating-contact-wrap">

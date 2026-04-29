@@ -10,6 +10,7 @@ export interface LabTest {
     symptoms?: string[];
     normalRanges?: string[];
     abnormalLevels?: string;
+    content?: any[]; // Sanity Portable Text
     image?: string;
     subSections?: { title: string; content: string | string[]; image?: string }[];
     process?: { title: string; description: string; image: string }[];

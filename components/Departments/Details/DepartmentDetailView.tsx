@@ -52,15 +52,6 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
 
                 <div className="w-full pl-6 lg:pl-12 relative z-10">
                     <div className="relative bg-[#f88c29] rounded-tl-[4rem] rounded-bl-none p-8 sm:p-12 lg:p-20 shadow-2xl ml-auto w-full lg:w-[96%] min-h-[400px] flex flex-col justify-center">
-                        {/* Floating Action Icons */}
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4">
-                            <a href="tel:+97142729302" className="w-12 h-12 bg-[#1a1a1a] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
-                                <PhoneIcon className="w-6 h-6" />
-                            </a>
-                            <a href="https://wa.me/97142729302" target="_blank" className="w-12 h-12 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
-                                <WhatsAppIcon className="w-6 h-6" />
-                            </a>
-                        </div>
 
                         <Reveal>
                             <div className="max-w-4xl">
