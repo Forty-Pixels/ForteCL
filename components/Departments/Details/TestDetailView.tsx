@@ -122,7 +122,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             )}
 
                             <ul className="space-y-3 mb-8">
-                                {test.keyServices.slice(0, 4).map((service, idx) => (
+                                {(test.keyServices || []).slice(0, 4).map((service, idx) => (
                                     <li key={idx} className="flex items-center gap-3 text-sm font-medium text-white/90">
                                         <div className="w-5 h-5 rounded-full border border-white/40 flex items-center justify-center shrink-0">
                                             <CheckIcon className="w-3 h-3 text-white stroke-[3]" />
@@ -201,7 +201,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                     Who May Consider <br /> {test.title}
                                 </h2>
                                 <div className="space-y-4">
-                                    {test.commonTests.slice(0, 5).map((item, idx) => (
+                                    {(test.commonTests || []).slice(0, 5).map((item, idx) => (
                                         <div key={idx} className="flex gap-3">
                                             <div className="w-8 h-8 rounded-full bg-[#f88c29] flex items-center justify-center shrink-0 text-white font-black text-xs">
                                                 {idx + 1}
@@ -237,7 +237,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                         </div>
 
                         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            {test.keyServices.slice(0, 4).map((service, idx) => (
+                            {(test.keyServices || []).slice(0, 4).map((service, idx) => (
                                 <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-all group">
                                     <div className="w-8 h-8 rounded-lg bg-white text-[#f88c29] flex items-center justify-center mb-3 font-black text-sm group-hover:scale-110 transition-transform">
                                         {idx + 1}
