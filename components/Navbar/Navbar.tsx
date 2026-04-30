@@ -127,13 +127,13 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                     </svg>
                                     
                                     {/* Dropdown Menu */}
-                                    <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : 'w-48'} bg-[#307984] rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]`}>
+                                    <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : 'w-48'} bg-[#f88c29] rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]`}>
                                         <div className={`py-2 ${link.name === 'Departments' ? 'max-h-[380px] overflow-y-auto' : ''}`}>
                                             {link.submenu.map((sub) => (
                                                 <Link
                                                     key={sub.name}
                                                     href={sub.href}
-                                                    className="block px-4 py-2 text-sm text-white hover:bg-white/10 hover:text-[#f88c29] transition-colors"
+                                                    className="block px-4 py-2 text-sm text-white hover:bg-white/10 transition-colors"
                                                 >
                                                     {sub.name}
                                                 </Link>
