@@ -351,6 +351,7 @@ export const DEPARTMENTS_DATA: Department[] = [
             }
         ],
         commonTests: [
+            { name: 'NIPT Test (Non-Invasive Prenatal Test)', description: 'Safe, accurate, and early prenatal screening for chromosomal conditions as early as 10 weeks.' },
             { name: 'Infectious Disease Panels', description: 'Respiratory Panel, Gastrointestinal Panel, STI Panel, MTB PCR, Viral load tests (HIV, Hep B/C).' },
             { name: 'Genetic & Hereditary Testing', description: 'Carrier Screening, Prenatal Testing, Newborn Screening, Pharmacogenomics.' },
             { name: 'Oncology Molecular Testing', description: 'Tumor mutation profiling, Liquid biopsy, Biomarker testing (EGFR, KRAS, BRAF, HER2).' },

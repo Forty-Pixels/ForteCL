@@ -111,6 +111,16 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
             sampleType: test.sampleType,
         }));
 
+    // Manually add NIPT test for Molecular department
+    if (slug === 'molecular') {
+        cmsTests.unshift({
+            slug: 'nipt',
+            name: 'NIPT Test',
+            tat: '7-10 Days',
+            sampleType: ['Blood']
+        });
+    }
+
     const allCmsTests = allCmsTestsWithDepartment.map((test) => ({
         slug: test.slug,
         name: test.name,

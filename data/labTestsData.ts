@@ -776,6 +776,116 @@ export const labTests: LabTest[] = [
     abnormalLevels: "",
     relatedTests: [],
   },
+  {
+    slug: "nipt",
+    name: "Non-Invasive Prenatal Test (NIPT)",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular Biology / Genetics",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Whole Blood in specialized Streck tube", "Maternal blood only"],
+    overview: "NIPT is a sophisticated screening test that analyses small fragments of fetal DNA (cell-free DNA) present in the mother’s blood. It identifies the risk of specific chromosomal abnormalities without the need for invasive procedures.",
+    image: "/nipt-intro.png",
+    keyServices: [
+      "Trisomy 21 (Down Syndrome) Screening",
+      "Trisomy 18 (Edwards Syndrome) Screening",
+      "Trisomy 13 (Patau Syndrome) Screening",
+      "Fetal Gender Determination (Optional)",
+      "Sex Chromosome Abnormalities Detection"
+    ],
+    subSections: [
+      {
+        title: "Conditions Screened by NIPT",
+        content: [
+          "Trisomy 21 (Down Syndrome)",
+          "Trisomy 18 (Edwards Syndrome)",
+          "Trisomy 13 (Patau Syndrome)",
+          "Turner Syndrome (Monosomy X)",
+          "Klinefelter Syndrome (XXY)",
+          "Triple X Syndrome (XXX)",
+          "XYY Syndrome",
+          "Selected microdeletion syndromes (DiGeorge, 1p36, etc.)"
+        ],
+        image: "/nipt-labwork.png"
+      },
+      {
+        title: "Who Should Consider NIPT?",
+        content: [
+          "Women aged 35 years or above",
+          "Pregnancies with abnormal ultrasound findings",
+          "Family history of genetic conditions",
+          "Previous pregnancy with chromosomal abnormalities",
+          "Anyone seeking early, non-invasive reassurance from 10 weeks"
+        ],
+        image: "/nipt-consideration.png"
+      }
+    ],
+    process: [
+      { title: "Simple Collection", description: "Blood collection from the mother as early as 10 weeks.", image: "/p_sample.png" },
+      { title: "DNA Extraction", description: "Extraction of cell-free fetal DNA from maternal blood.", image: "/p_lab.png" },
+      { title: "Genomic Analysis", description: "High-precision analysis using advanced molecular techniques.", image: "/p_lab.png" },
+      { title: "Detailed Report", description: "Clinically validated reporting with 99.99% accuracy.", image: "/p_report.png" }
+    ],
+    accuracyNote: "NIPT IS A HIGHLY ADVANCED SCREENING TEST WITH UP TO 99.99% ACCURACY FOR COMMON CHROMOSOMAL CONDITIONS, OFFERING RELIABLE AND EARLY REASSURANCE FOR EXPECTING PARENTS.",
+    packages: [
+        {
+            name: "NIPT BASIC SCREEN",
+            description: "The Basic panel includes screening for the most common chromosomal conditions.",
+            features: [
+                "Trisomy 21 (Down Syndrome)",
+                "Trisomy 18 (Edwards Syndrome)",
+                "Trisomy 13 (Patau Syndrome)",
+                "Fetal Gender Determination"
+            ],
+            color: "bg-[#307984]"
+        },
+        {
+            name: "NIPT ADVANCED SCREEN",
+            description: "Expanded chromosomal analysis for comprehensive screening.",
+            features: [
+                "Common Trisomies (21, 18, 13)",
+                "Sex Chromosome Abnormalities (Turner, Klinefelter, XXX, XYY)",
+                "Rare Autosomal Trisomies (9, 16, 22)",
+                "Fetal Gender Determination"
+            ],
+            color: "bg-[#f88c29]"
+        },
+        {
+            name: "NIPT ADVANCED PLUS SCREEN",
+            description: "Our most detailed screening including microdeletion syndromes.",
+            features: [
+                "Everything in Advanced Screen",
+                "22q11.2 Deletion Syndrome",
+                "1p36 Deletion Syndrome",
+                "Angelman & Prader-Willi Syndrome",
+                "Cri-du-chat Syndrome",
+                "Optional Fetal Gender Determination"
+            ],
+            color: "bg-[#061414]"
+        }
+    ],
+    faqs: [
+      {
+        question: "Is NIPT safe?",
+        answer: "Yes, NIPT is completely safe. It is a non-invasive test that only requires a maternal blood sample and poses no risk to the baby."
+      },
+      {
+        question: "How accurate is NIPT?",
+        answer: "NIPT offers up to 99.99% accuracy for common chromosomal conditions, making it one of the most reliable prenatal screening tests available."
+      },
+      {
+        question: "When can I take the NIPT test?",
+        answer: "NIPT can be performed as early as 10 weeks of pregnancy."
+      },
+      {
+        question: "Can I do the NIPT test at home?",
+        answer: "Yes, the test can be done at home. A licensed healthcare professional will visit you to collect the sample safely and comfortably."
+      }
+    ],
+    relatedTests: [
+      { name: "Genetic Carrier Screening", slug: "genetic-carrier-screening" },
+      { name: "Complete Blood Count", slug: "cbc" }
+    ],
+  },
 ];
 
 export const diseaseFilters = [...new Set(labTests.map(t => t.diseaseFilter))].sort();

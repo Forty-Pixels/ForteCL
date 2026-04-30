@@ -77,6 +77,8 @@ interface TestDetailViewProps {
         commonTests?: Array<{ name: string; description: string }>;
         subSections?: Array<{ title: string; content: string | string[]; image?: string }>;
         startingPrice?: string;
+        packages?: Array<{ name: string; description: string; features: string[]; color?: string }>;
+        accuracyNote?: string;
     };
 }
 
@@ -294,9 +296,67 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                 </section>
             )}
 
-            {/* 6. Frequently Asked Questions */}
+            {/* 6. Accuracy Note (Special for NIPT) */}
+            {test.accuracyNote && (
+                <section className="py-16 bg-[#f88c29] text-white">
+                    <div className="container mx-auto px-6 max-w-4xl text-center">
+                        <Reveal>
+                            <div className="inline-block p-3 rounded-2xl bg-white/10 border border-white/20 mb-8">
+                                <ShieldCheckIcon className="w-12 h-12 text-white" />
+                            </div>
+                            <h2 className="text-2xl lg:text-3xl font-black mb-6 uppercase tracking-tight">Accuracy and Reliability</h2>
+                            <p className="text-xl lg:text-2xl font-bold text-white leading-relaxed italic">
+                                "{test.accuracyNote}"
+                            </p>
+                        </Reveal>
+                    </div>
+                </section>
+            )}
+
+            {/* 7. Packages Section (Special for NIPT) */}
+            {test.packages && (
+                <section className="py-20 bg-gray-50 overflow-hidden">
+                    <div className="container mx-auto px-6 max-w-7xl">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">Choose Your Screening Panel</h2>
+                            <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Select the right level of detailed screening</p>
+                        </div>
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {test.packages.map((pkg, idx) => (
+                                <Reveal key={idx} delayMs={idx * 100}>
+                                    <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:-translate-y-2 transition-all flex flex-col h-full">
+                                        <div className={`p-8 ${pkg.color || 'bg-[#f88c29]'} text-white text-center`}>
+                                            <h3 className="text-xl font-bold mb-2 uppercase tracking-tight">{pkg.name}</h3>
+                                            <p className="text-white/70 text-[10px] font-medium leading-relaxed">{pkg.description}</p>
+                                        </div>
+                                        <div className="p-8 flex-1 flex flex-col">
+                                            <ul className="space-y-4 mb-10">
+                                                {pkg.features.map((feature, i) => (
+                                                    <li key={i} className="flex gap-3 text-sm text-gray-600 font-medium">
+                                                        <CheckCircleIcon className="w-5 h-5 text-[#f88c29] shrink-0" />
+                                                        {feature}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                            <div className="mt-auto">
+                                                <BookActionButton 
+                                                    label="Enquire Now"
+                                                    whatsappText={`Hi, I'm interested in the ${pkg.name}.`}
+                                                    className="w-full border-2 border-gray-100 py-3 rounded-xl font-black text-xs uppercase tracking-wider text-[#307984] hover:border-[#f88c29] hover:text-[#f88c29] transition-all"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Reveal>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* 8. Frequently Asked Questions */}
             {test.faqs && (
-                <section className="py-16 bg-gray-50">
+                <section className="py-16 bg-white">
                     <div className="container mx-auto px-6 max-w-3xl">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-3">

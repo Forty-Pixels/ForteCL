@@ -84,7 +84,7 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
                             {cmsTests.map((test, index) => (
                                 <Reveal key={test.slug} delayMs={index * 50}>
                                     <Link 
-                                        href={`/departments/${department.id}/${test.slug}`}
+                                        href={test.slug === 'nipt' ? `/departments/molecular/nipt` : `/departments/${department.id}/${test.slug}`}
                                         className="group relative bg-[#f88c29] rounded-[0.75rem] p-5 h-[140px] flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                                     >
                                         <div className="flex justify-between items-start">

@@ -65,6 +65,8 @@ export default async function TestPage({ params }: TestPageProps) {
         subSections: testData.subSections || department.subSections,
         process: testData.process || department.process,
         faqs: testData.faqs || department.faqs,
+        accuracyNote: testData.accuracyNote,
+        packages: testData.packages,
     };
 
     return (
