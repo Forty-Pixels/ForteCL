@@ -25,7 +25,7 @@ export default function LabTestsHero() {
                 </Reveal>
                 <Reveal delayMs={140}>
                     <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
-                        A-Z Lab Tests
+                        Lab Tests
                     </h1>
                 </Reveal>
                 <Reveal delayMs={210}>

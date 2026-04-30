@@ -9,7 +9,7 @@ import {
 } from '@/lib/queries';
 
 export const metadata = {
-    title: 'A-Z Lab Tests | Forte Clinical Laboratory',
+    title: 'Lab Tests | Forte Clinical Laboratory',
     description: 'Browse our extensive list of diagnostic tests. From routine blood work to advanced diagnostics — accurate, reliable and timely results.',
 };
 
