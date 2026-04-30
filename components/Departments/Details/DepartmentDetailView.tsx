@@ -50,8 +50,8 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
                     <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
                 </div>
 
-                <div className="w-full pl-6 lg:pl-12 relative z-10">
-                    <div className="relative bg-[#f88c29] rounded-tl-[4rem] rounded-bl-none p-8 sm:p-12 lg:p-20 shadow-2xl ml-auto w-full lg:w-[96%] min-h-[400px] flex flex-col justify-center">
+                <div className="w-full relative z-10 flex justify-end">
+                    <div className="relative bg-[#f88c29] rounded-tl-[4rem] rounded-bl-none p-8 sm:p-12 lg:p-20 shadow-2xl w-full lg:w-[96%] min-h-[400px] flex flex-col justify-center">
 
                         <Reveal>
                             <div className="max-w-4xl">
@@ -73,9 +73,9 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
             </section>
 
             {/* Reusing the OLD Department Grid layout with the white container box */}
-            <section className="bg-white pt-0 pb-10">
-                <div className="w-full pl-6 lg:pl-12">
-                    <div className="bg-white rounded-bl-[1.5rem] p-8 sm:p-12 lg:p-20 shadow-xl ml-auto w-full lg:w-[96%]">
+            <section className="bg-white pt-0 pb-10 overflow-hidden">
+                <div className="w-full flex justify-end">
+                    <div className="bg-white rounded-bl-[1.5rem] p-8 sm:p-12 lg:p-20 shadow-xl w-full lg:w-[96%]">
                         <h2 className="text-2xl font-bold text-[#333] uppercase mb-8 tracking-tight">
                             TESTS & PROCEDURES
                         </h2>
