@@ -75,6 +75,7 @@ export default defineType({
                 }
             ]
         }),
+        /*
         defineField({
             name: 'image',
             title: 'Test Image',
@@ -84,6 +85,7 @@ export default defineType({
             },
             description: 'Upload an image for this test. If empty, a placeholder will be used.',
         }),
+        */
         defineField({
             name: 'relatedTests',
             title: 'Related Tests',

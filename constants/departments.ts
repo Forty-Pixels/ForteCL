@@ -23,7 +23,7 @@ export const DEPARTMENTS_DATA: Department[] = [
         id: 'hematology',
         title: 'Hematology Department',
         description: 'The Hematology Department at Forte Clinical Laboratory is dedicated to the in-depth analysis, diagnosis, and monitoring of blood-related disorders. Our laboratory is equipped with advanced automated analyzers and supported by highly skilled professionals to ensure precise, reliable, and timely results. Hematology plays a critical role in evaluating overall health, detecting diseases at an early stage, and monitoring ongoing treatments. We support clinicians with accurate data for conditions such as anemia, infections, clotting disorders, hematological malignancies, and bone marrow abnormalities.',
-        image: '/Departments/details/hematology.png',
+        image: '/defaults/departments/hematology.png',
         commonTests: [
             { name: 'Complete Blood Count (CBC)', description: 'Provides a detailed analysis of red blood cells, white blood cells, and platelets, helping detect infections, anemia, and other disorders.' },
             { name: 'Peripheral Blood Smear (PBS)', description: 'Microscopic examination of blood cells to identify abnormalities in size, shape, and structure.' },
@@ -84,7 +84,7 @@ export const DEPARTMENTS_DATA: Department[] = [
         id: 'microbiology',
         title: 'Microbiology',
         description: 'Microbiology is the branch of science that studies microorganisms such as bacteria, viruses, fungi, and parasites. In clinical laboratories, microbiology plays a critical role in detecting infections, identifying pathogens, and guiding treatment decisions, especially antibiotic therapy. It helps physicians determine what organism is causing an infection, which antibiotics or antifungal drugs will work, and whether an infection is spreading or resolving.',
-        image: '/Departments/details/microbiology.png',
+        image: '/defaults/departments/microbiology.png',
         subSections: [
             {
                 title: 'Major Branches of Medical Microbiology',
@@ -138,7 +138,7 @@ export const DEPARTMENTS_DATA: Department[] = [
         id: 'immunology',
         title: 'Immunology Department',
         description: 'The Immunology Department at Forte Clinical Laboratory focuses on the evaluation and diagnosis of disorders related to the immune system. Our expert team utilizes advanced technologies and precise methodologies to assess immune function, detect autoimmune diseases, allergies, and immunodeficiencies. We play a vital role in helping clinicians understand how the body responds to infections, allergens, and internal imbalances.',
-        image: '/Departments/details/immunology.png',
+        image: '/defaults/departments/immunology.png',
         commonTests: [
             { name: 'C-Reactive Protein (CRP)', description: 'Detects inflammation and helps monitor infections and chronic diseases.' },
             { name: 'Immunoglobulin Levels (IgG, IgA, IgM, IgE)', description: 'Evaluates immune system strength and detects deficiencies or abnormalities.' },
@@ -189,7 +189,7 @@ export const DEPARTMENTS_DATA: Department[] = [
         id: 'serology',
         title: 'Serology Department',
         description: 'The Serology Department at Forte Clinical Laboratory specializes in the detection of antibodies and antigens in blood to diagnose and monitor infectious diseases and immune responses. Serology plays a crucial role in identifying current and past infections, evaluating immunity status, and supporting disease surveillance.',
-        image: '/Departments/details/serology.png',
+        image: '/defaults/departments/serology.png',
         commonTests: [
             { name: 'Hepatitis Screening (HBsAg, Anti-HCV)', description: 'Detection of Hepatitis B and C infections.' },
             { name: 'HIV Testing (HIV 1 & 2)', description: 'Screening and monitoring of HIV infection.' },
@@ -238,7 +238,7 @@ export const DEPARTMENTS_DATA: Department[] = [
         id: 'biochemistry',
         title: 'Clinical Biochemistry Department',
         description: 'The Clinical Biochemistry Department at Forte Clinical Laboratory focuses on the analysis of blood and body fluids to evaluate organ function, detect metabolic disorders, and monitor overall health. Equipped with advanced automated analyzers, our laboratory ensures accurate, reliable, and timely diagnostic results for diabetes, kidney disease, liver disorders, and cardiovascular risks.',
-        image: '/Departments/details/biochemistry.png',
+        image: '/defaults/departments/biochemistry.png',
         commonTests: [
             { name: 'Blood Glucose (Fasting/Random/HbA1c)', description: 'Assessment and monitoring of diabetes.' },
             { name: 'Lipid Profile', description: 'Measures cholesterol and triglycerides to evaluate heart health.' },
@@ -290,7 +290,7 @@ export const DEPARTMENTS_DATA: Department[] = [
         id: 'pathology',
         title: 'Pathology / Histopathology Department',
         description: 'The Pathology / Histopathology Department at Forte Clinical Laboratory specializes in the microscopic examination of tissues and cells to diagnose diseases at a cellular level. Our опытные pathologists and skilled technicians utilize advanced technologies to detect cancers, inflammatory conditions, infections, and tissue abnormalities.',
-        image: '/Departments/details/pathology.png',
+        image: '/defaults/departments/pathology.png',
         commonTests: [
             { name: 'Biopsy Examination', description: 'Microscopic analysis of tissue samples to detect cancer and other diseases.' },
             { name: 'Histopathology (Tissue Analysis)', description: 'Detailed study of tissue structure and abnormalities.' },
@@ -338,7 +338,7 @@ export const DEPARTMENTS_DATA: Department[] = [
         id: 'molecular',
         title: 'Molecular Biology / Genetics',
         description: 'Molecular Biology / Genetics focuses on understanding how biological molecules—mainly DNA, RNA, and proteins—control living organisms. In a clinical laboratory setting, it plays a critical role in diagnosis, prognosis, disease monitoring, and personalized medicine, enabling detection at the molecular level.',
-        image: '/Departments/details/molecular.png',
+        image: '/defaults/departments/molecular.png',
         subSections: [
             {
                 title: 'Core Concepts',
@@ -402,7 +402,7 @@ export const DEPARTMENTS_DATA: Department[] = [
         id: 'cytopathology',
         title: 'Histopathology & Cytopathology',
         description: 'Histopathology and Cytopathology are essential branches of diagnostic pathology used to study diseases at the microscopic level. Histopathology examines tissue architecture to diagnose cancers, while Cytopathology studies individual cells to detect abnormalities, infections, and malignancies.',
-        image: '/Departments/details/cytopathology.png',
+        image: '/defaults/departments/cytopathology.png',
         commonTests: [
             { name: 'Pap Smear (Cervical Cytology)', description: 'Screening for cervical cancer and precancerous changes.' },
             { name: 'Fine Needle Aspiration Cytology (FNAC)', description: 'Samples cells from lumps (thyroid, breast, lymph nodes).' },

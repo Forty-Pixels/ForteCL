@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
 import { urlFor } from '@/lib/sanity';
-import { getTestLink } from '@/lib/department-utils';
+import { getTestLink, getTestImage } from '@/lib/department-utils';
 
 const PLACEHOLDER_IMAGES = [
     '/Landing-page/tests/test-5.png',
@@ -132,7 +132,7 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
                                             className="relative overflow-hidden group cursor-pointer bg-white transition-all duration-500 shadow-sm hover:shadow-lg h-full rounded-tl-[2rem] rounded-br-[2rem] rounded-tr-lg rounded-bl-lg border border-white block"
                                         >
                                             <Image
-                                                src={test.image ? urlFor(test.image).url() : PLACEHOLDER_IMAGES[index % PLACEHOLDER_IMAGES.length]}
+                                                src={getTestImage(test)}
                                                 alt={test.name}
                                                 fill
                                                 sizes="(max-width: 640px) 50vw, 20vw"

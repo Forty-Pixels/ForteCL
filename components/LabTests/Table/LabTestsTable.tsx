@@ -8,7 +8,7 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { urlFor } from '@/lib/sanity';
 import BookActionButton from '@/components/Booking/BookActionButton';
-import { getTestLink } from '@/lib/department-utils';
+import { getTestLink, getTestImage } from '@/lib/department-utils';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -164,7 +164,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                             {/* Horizontal Image Section */}
                             <Link href={getTestLink(test)} className="relative w-40 flex-shrink-0 overflow-hidden border-r border-gray-100 block">
                                 <Image
-                                    src={test.image ? urlFor(test.image).url() : PLACEHOLDER_IMAGES[i % PLACEHOLDER_IMAGES.length]}
+                                    src={getTestImage(test)}
                                     alt={test.name}
                                     fill
                                     className="object-cover transition-transform duration-500 group-hover:scale-110"

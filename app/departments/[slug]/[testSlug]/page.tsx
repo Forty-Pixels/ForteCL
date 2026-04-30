@@ -1,11 +1,12 @@
 import { DEPARTMENTS_DATA } from '@/constants/departments';
 import { labTests } from '@/data/labTestsData';
-import { client } from '@/lib/sanity';
+import { client, urlFor } from '@/lib/sanity';
 import { labTestBySlugQuery } from '@/lib/queries';
 import TestDetailView from '@/components/Departments/Details/TestDetailView';
 import Footer from '@/components/Landing-page/Footer/Footer';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { getTestImage } from '@/lib/department-utils';
 
 interface TestPageProps {
     params: Promise<{
@@ -59,7 +60,7 @@ export default async function TestPage({ params }: TestPageProps) {
     const viewData = {
         title: testData.name,
         description: testData.overview || department.description,
-        image: testData.image || department.image,
+        image: getTestImage(testData),
         keyServices: testData.keyServices || department.keyServices,
         commonTests: department.commonTests, // This usually lists what the test is for
         subSections: testData.subSections || department.subSections,

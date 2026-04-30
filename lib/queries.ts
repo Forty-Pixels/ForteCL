@@ -10,8 +10,7 @@ export const allLabTestsQuery = `*[_type == "labTest"] | order(name asc) {
   "department": department->title,
   "departmentSlug": department->slug.current,
   tat,
-  sampleType,
-  image
+  sampleType
 }`;
 
 /** Fetch a single lab test by slug (detail page) */
@@ -24,7 +23,6 @@ export const labTestBySlugQuery = `*[_type == "labTest" && slug.current == $slug
   tat,
   sampleType,
   content,
-  image,
   "relatedTests": relatedTests[]->{
     name,
     "slug": slug.current,

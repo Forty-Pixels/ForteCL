@@ -71,3 +71,12 @@ export const getTestLink = (test: { slug: string; department?: string; departmen
     // Fallback if no department found
     return `/lab-tests/${test.slug}`;
 };
+
+export const getTestImage = (test: { department?: string; departmentTitle?: string; departmentSlug?: string }) => {
+    const deptId = resolveDepartmentId(test.departmentTitle || test.department, test.departmentSlug);
+    if (deptId) {
+        return `/defaults/departments/${deptId}.png`;
+    }
+    
+    return '/lab-tests/lab-1.png'; // Global fallback
+};
