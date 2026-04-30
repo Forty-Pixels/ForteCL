@@ -17,4 +17,11 @@ export interface LabTest {
     faqs?: { question: string; answer: string }[];
     keyServices?: string[];
     relatedTests?: { name: string; slug: string }[];
+    accuracyNote?: string;
+    packages?: {
+        name: string;
+        description: string;
+        features: string[];
+        color?: string;
+    }[];
 }
