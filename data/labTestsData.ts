@@ -779,7 +779,7 @@ export const labTests: LabTest[] = [
   {
     slug: "nipt",
     name: "Non-Invasive Prenatal Test (NIPT)",
-    diseaseFilter: "Prenatal Screening",
+    diseaseFilter: "Genetic Tests",
     department: "Molecular Biology / Genetics",
     tat: "7-10 Days",
     sampleType: ["10 mL Whole Blood in specialized Streck tube", "Maternal blood only"],

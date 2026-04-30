@@ -29,6 +29,7 @@ export default async function LabTestsPage() {
             name: 'NIPT Test (Prenatal Screening)',
             slug: 'nipt',
             department: 'Molecular Biology / Genetics',
+            diseaseFilter: 'Genetic Tests',
             category: ['Prenatal', 'Genetics'],
             tat: '7-10 Days',
             price: 'Contact for Price'
