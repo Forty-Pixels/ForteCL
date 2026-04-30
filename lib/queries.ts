@@ -85,8 +85,30 @@ export const allPackagesQuery = `*[_type == "package"] | order(_createdAt asc) {
   description,
   image,
   testsTotal,
-  subTests
+  subTests,
+  overview,
+  benefits,
+  preparation,
+  faqs
 }`;
+
+/** Fetch a single package by slug (detail page) */
+export const packageBySlugQuery = `*[_type == "package" && slug.current == $slug][0] {
+  "id": slug.current,
+  title,
+  "slug": slug.current,
+  description,
+  image,
+  testsTotal,
+  subTests,
+  overview,
+  benefits,
+  preparation,
+  faqs
+}`;
+
+/** Fetch all package slugs (for generateStaticParams) */
+export const allPackageSlugsQuery = `*[_type == "package"] { "slug": slug.current }`;
 
 // ─── Resources & Health Insights ────────────────────────
 

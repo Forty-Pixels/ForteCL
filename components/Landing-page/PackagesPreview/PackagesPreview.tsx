@@ -65,7 +65,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                             <Reveal key={pkg.slug || index} delayMs={130 + index * 100}>
                                 <article className="group relative flex flex-col items-center text-center px-4 py-8 rounded-[60px] border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent hover:border-[#f88c29]/50 transition-all duration-500 overflow-hidden min-h-[380px]">
                                     {/* Link Overlay - covers everything except what's above it */}
-                                    <Link href="/packages" className="absolute inset-0 z-20" aria-label={`View ${cleanTitle} package`} />
+                                    <Link href={`/packages/${pkg.slug}`} className="absolute inset-0 z-20" aria-label={`View ${cleanTitle} package`} />
                                     
                                     {/* Glassmorphic Background Effect */}
                                     <div className="absolute inset-0 bg-white/[0.01] backdrop-blur-3xl -z-10" />

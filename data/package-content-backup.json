@@ -1,0 +1,108 @@
+[
+  {
+    "slug": "diabetes-care-package",
+    "overview": "A comprehensive screening designed to monitor blood sugar levels and assess the risk of diabetes-related complications. This package is ideal for individuals with a family history of diabetes or those experiencing symptoms like increased thirst and fatigue.",
+    "benefits": [
+      "Early detection of Prediabetes",
+      "Comprehensive monitoring of long-term glucose control (HbA1c)",
+      "Assessment of kidney function related to diabetes",
+      "Professional clinical insights for lifestyle management"
+    ],
+    "preparation": "Fasting for 8-12 hours is required. You may drink plain water.",
+    "faqs": [
+      {
+        "question": "How often should I take this test?",
+        "answer": "If you are prediabetic or diabetic, every 3-6 months. For screening, once a year is recommended."
+      },
+      {
+        "question": "Is HbA1c included?",
+        "answer": "Yes, it is the gold standard for monitoring average blood sugar over the last 3 months."
+      }
+    ]
+  },
+  {
+    "slug": "liver-profile",
+    "overview": "The Liver Profile evaluates the health of your liver by measuring levels of proteins, liver enzymes, and bilirubin in your blood. This is essential for detecting liver disease, inflammation, or damage from medications or alcohol.",
+    "benefits": [
+      "Detects silent liver inflammation",
+      "Monitors effects of long-term medications",
+      "Assesses bile flow and gallbladder health",
+      "Early screening for fatty liver disease"
+    ],
+    "preparation": "No specific fasting required, but 8 hours is recommended for more accurate results.",
+    "faqs": [
+      {
+        "question": "What do high SGPT/SGOT levels mean?",
+        "answer": "These enzymes usually leak into the bloodstream when liver cells are damaged or inflamed."
+      }
+    ]
+  },
+  {
+    "slug": "kidney-care-profile",
+    "overview": "Our Kidney Care Profile assesses how well your kidneys are filtering waste from your blood. It measures urea, creatinine, and electrolytes to ensure your renal system is functioning optimally.",
+    "benefits": [
+      "Early detection of kidney dysfunction",
+      "Monitoring electrolyte balance (Sodium/Potassium)",
+      "Essential for hypertensive and diabetic patients",
+      "Non-invasive assessment of renal health"
+    ],
+    "preparation": "Drink plenty of water before the test. No specific fasting required.",
+    "faqs": [
+      {
+        "question": "Why is Creatinine important?",
+        "answer": "Creatinine is a waste product that healthy kidneys should filter out. High levels indicate the kidneys may not be working properly."
+      }
+    ]
+  },
+  {
+    "slug": "healthy-thyroid-with-accurate-thyroid-tests",
+    "overview": "This package screens for thyroid gland disorders, including hypothyroidism (underactive) and hyperthyroidism (overactive). It measures TSH, T3, and T4 levels to ensure your metabolism is regulated correctly.",
+    "benefits": [
+      "Explains unexplained weight changes",
+      "Identifies causes of chronic fatigue",
+      "Essential for hormonal balance evaluation",
+      "Screening for mood and energy fluctuations"
+    ],
+    "preparation": "No fasting required. Take the test in the morning for best results.",
+    "faqs": [
+      {
+        "question": "Can I take my thyroid medication before the test?",
+        "answer": "It is generally recommended to take the test before your daily dose. Consult your doctor."
+      }
+    ]
+  },
+  {
+    "slug": "lipid-profile",
+    "overview": "A Lipid Profile measures the amount of 'good' and 'bad' cholesterol and triglycerides in your blood. This test is crucial for assessing your risk of cardiovascular diseases, heart attack, and stroke.",
+    "benefits": [
+      "Calculates your Heart Disease Risk score",
+      "Measures LDL (Bad) and HDL (Good) cholesterol",
+      "Essential for anyone over 30 or with a family history of heart disease",
+      "Guides dietary and lifestyle adjustments"
+    ],
+    "preparation": "Strict fasting for 9-12 hours is mandatory. Only water is allowed.",
+    "faqs": [
+      {
+        "question": "Why do I need to fast so long?",
+        "answer": "Triglyceride levels are highly sensitive to recent meals, so fasting ensures an accurate baseline."
+      }
+    ]
+  },
+  {
+    "slug": "female-fertility-test-package",
+    "overview": "A specialized panel designed to evaluate the hormonal factors affecting female reproductive health. This package helps in identifying hormonal imbalances that may impact fertility or menstrual regularity.",
+    "benefits": [
+      "Evaluation of FSH, LH, and Prolactin levels",
+      "Insights into ovulation health",
+      "Detection of PCOS or early menopause markers",
+      "Professional guidance for family planning"
+    ],
+    "preparation": "Best taken on Day 2 or 3 of the menstrual cycle for most accurate results.",
+    "faqs": [
+      {
+        "question": "When is the best time for this test?",
+        "answer": "Usually during the early follicular phase (Day 2-5) of your period."
+      }
+    ]
+  }
+]

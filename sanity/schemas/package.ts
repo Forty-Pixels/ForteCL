@@ -68,6 +68,41 @@ export default defineType({
                 },
             ],
         }),
+        defineField({
+            name: 'overview',
+            title: 'Package Overview',
+            type: 'text',
+            rows: 4,
+            description: 'A detailed introduction to what this package covers.',
+        }),
+        defineField({
+            name: 'benefits',
+            title: 'Key Benefits',
+            type: 'array',
+            of: [{ type: 'string' }],
+            description: 'List the main advantages of this package.',
+        }),
+        defineField({
+            name: 'preparation',
+            title: 'Preparation Instructions',
+            type: 'text',
+            rows: 3,
+            description: 'e.g. "Fasting for 10-12 hours required."',
+        }),
+        defineField({
+            name: 'faqs',
+            title: 'Frequently Asked Questions',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        { name: 'question', type: 'string' },
+                        { name: 'answer', type: 'text', rows: 3 },
+                    ],
+                },
+            ],
+        }),
     ],
     preview: {
         select: {

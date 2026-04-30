@@ -2,6 +2,7 @@
 
 import { useState, Fragment } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { urlFor } from '@/lib/sanity';
 import Reveal from '@/components/Animation/Reveal';
 import { Dialog, Transition, TransitionChild, DialogPanel, DialogTitle } from '@headlessui/react';
@@ -53,7 +54,7 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                             <Reveal key={pkg.id} delayMs={index * 100} className="h-full">
                                 <div className="group bg-white rounded-[1.8rem] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.02)] border border-gray-100 hover:shadow-[0_15px_45px_rgba(48,121,132,0.08)] transition-all duration-500 flex flex-col h-full">
                                     {/* Image Section */}
-                                    <div className="relative h-32 overflow-hidden">
+                                    <Link href={`/packages/${pkg.slug}`} className="relative h-32 overflow-hidden block">
                                         {pkg.image ? (
                                             <Image
                                                 src={urlFor(pkg.image).url()}
@@ -68,13 +69,15 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                         )}
                                         {/* Fade Effect */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
-                                    </div>
+                                    </Link>
 
                                     {/* Content Section */}
                                     <div className="px-3 pb-3.5 flex-grow flex flex-col items-center text-center -mt-2 relative z-10">
-                                        <h3 className="text-[13px] sm:text-[14px] font-bold text-[#1F2937] leading-tight line-clamp-1 group-hover:text-[#f88c29] transition-colors mb-0.5">
-                                            {cleanTitle}
-                                        </h3>
+                                        <Link href={`/packages/${pkg.slug}`} className="block">
+                                            <h3 className="text-[13px] sm:text-[14px] font-bold text-[#1F2937] leading-tight line-clamp-1 group-hover:text-[#f88c29] transition-colors mb-0.5">
+                                                {cleanTitle}
+                                            </h3>
+                                        </Link>
                                         
                                         {price && (
                                             <div className="mb-1">
@@ -94,14 +97,14 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                                 className="bg-[#f88c29] hover:bg-[#e67b1d] text-white py-2 rounded-full text-[10px] font-bold transition-all shadow-md hover:-translate-y-0.5 flex items-center justify-center w-full"
                                             />
 
-                                            {/* Tests Included Toggle */}
-                                            <button
-                                                onClick={() => setSelectedPackage(pkg)}
+                                            {/* Link to Detail Page instead of Modal */}
+                                            <Link
+                                                href={`/packages/${pkg.slug}`}
                                                 className="text-[#f88c29] group/btn font-bold text-[9px] flex items-center justify-center gap-1 hover:opacity-80 transition-all w-full"
                                             >
-                                                <span className="text-xs transition-transform group-hover/btn:rotate-90">+</span>
-                                                <span className="border-b border-transparent group-hover/btn:border-[#f88c29]">Tests Included ({pkg.testsTotal || pkg.subTests?.length || 0})</span>
-                                            </button>
+                                                <span className="text-xs transition-transform group-hover/btn:translate-x-1">→</span>
+                                                <span className="border-b border-transparent group-hover/btn:border-[#f88c29]">Package Details ({pkg.testsTotal || pkg.subTests?.length || 0} Tests)</span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
