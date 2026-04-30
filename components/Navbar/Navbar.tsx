@@ -60,7 +60,6 @@ export default function Navbar({ currentPage }: NavbarProps) {
             href: '#',
             submenu: [
                 { name: 'Find A Test', href: '/lab-tests' },
-                { name: 'NIPT Test', href: '/departments/molecular/nipt' },
                 { name: 'Packages', href: '/packages' }
             ]
         },
