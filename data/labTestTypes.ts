@@ -16,6 +16,8 @@ export interface LabTest {
     process?: { title: string; description: string; image: string }[];
     faqs?: { question: string; answer: string }[];
     keyServices?: string[];
+    commonTests?: { name: string; description: string }[];
+    startingPrice?: string;
     relatedTests?: { name: string; slug: string }[];
     accuracyNote?: string;
     packages?: {

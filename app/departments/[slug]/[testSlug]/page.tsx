@@ -62,7 +62,7 @@ export default async function TestPage({ params }: TestPageProps) {
         description: testData.overview || department.description,
         image: getTestImage(testData),
         keyServices: testData.keyServices || department.keyServices,
-        commonTests: department.commonTests, // This usually lists what the test is for
+        commonTests: testData.commonTests || department.commonTests,
         subSections: testData.subSections || department.subSections,
         process: testData.process || department.process,
         faqs: testData.faqs || department.faqs,
