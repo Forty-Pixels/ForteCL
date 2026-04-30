@@ -64,11 +64,14 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                         return (
                             <Reveal key={pkg.slug || index} delayMs={130 + index * 100}>
                                 <article className="group relative flex flex-col items-center text-center px-4 py-8 rounded-[60px] border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent hover:border-[#f88c29]/50 transition-all duration-500 overflow-hidden min-h-[380px]">
+                                    {/* Link Overlay - covers everything except what's above it */}
+                                    <Link href="/packages" className="absolute inset-0 z-20" aria-label={`View ${cleanTitle} package`} />
+                                    
                                     {/* Glassmorphic Background Effect */}
                                     <div className="absolute inset-0 bg-white/[0.01] backdrop-blur-3xl -z-10" />
                                    
                                     {/* Top Image Circle */}
-                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#f88c29] transition-colors duration-500 mb-4">
+                                    <div className="relative z-10 w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#f88c29] transition-colors duration-500 mb-4">
                                         {pkg.image ? (
                                             <Image
                                                 src={urlFor(pkg.image).url()}
@@ -82,7 +85,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                     </div>
 
                                     {/* Content */}
-                                    <div className="flex-1 flex flex-col items-center">
+                                    <div className="relative z-10 flex-1 flex flex-col items-center">
                                         {price && (
                                             <div className="mb-2 text-[#f88c29] font-black text-[13px] tracking-tighter">
                                                 {price}
@@ -97,15 +100,17 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                     </div>
 
                                     {/* Footer Actions */}
-                                    <div className="mt-auto w-full flex flex-col items-center gap-2">
+                                    <div className="relative z-10 mt-auto w-full flex flex-col items-center gap-2">
                                         <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#307984]">
                                             {pkg.testsTotal || pkg.subTests?.length || 0} Parameters
                                         </div>
-                                        <BookActionButton
-                                            label="BOOK NOW"
-                                            whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
-                                            className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#f88c29] hover:text-white transition-all duration-300"
-                                        />
+                                        <div className="relative z-30 w-full">
+                                            <BookActionButton
+                                                label="BOOK NOW"
+                                                whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
+                                                className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#f88c29] hover:text-white transition-all duration-300"
+                                            />
+                                        </div>
                                     </div>
 
                                     {/* Hover Aurora Effect */}

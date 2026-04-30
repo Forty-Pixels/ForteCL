@@ -3,38 +3,35 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
+import { urlFor } from '@/lib/sanity';
 
-const mainTests = [
-    { name: 'Complete Blood Count (CBC)', image: '/Landing-page/tests/test-5.png' },
-    { name: 'Fasting Blood Glucose', image: '/Landing-page/tests/test-8.png' },
-    { name: 'HbA1c (Glycated Hemoglobin)', image: '/Landing-page/tests/test-8.png' },
-    { name: 'Cholesterol Total', image: '/Landing-page/tests/test-1.png' },
-    { name: 'HDL Cholesterol', image: '/Landing-page/tests/test-1.png' },
-    { name: 'LDL Cholesterol', image: '/Landing-page/tests/test-1.png' },
-    { name: 'TSH (Thyroid Stimulating Hormone)', image: '/Landing-page/tests/test-2.png' },
-    { name: 'Free T4 (Thyroxine)', image: '/Landing-page/tests/test-2.png' },
-    { name: 'Alanine Transaminase (ALT / SGPT)', image: '/Landing-page/tests/test-3.png' },
-    { name: 'Aspartate Aminotransferase (AST/SGOT)', image: '/Landing-page/tests/test-3.png' },
-    { name: 'Creatinine', image: '/Landing-page/tests/test-4.png' },
-    { name: 'Urea (BUN)', image: '/Landing-page/tests/test-4.png' },
-    { name: 'Vitamin D (25-OH)', image: '/Landing-page/tests/test-6.png' },
-    { name: 'Vitamin B12', image: '/Landing-page/tests/test-vitamin-b12.png' },
-    { name: 'Iron Studies', image: '/Landing-page/tests/test-9.png' },
-    { name: 'Ferritin', image: '/Landing-page/tests/test-9.png' },
-    { name: 'C Reactive Protein (CRP)', image: '/Landing-page/tests/test-10.png' },
-    { name: 'ESR (Erythrocyte Sedimentation Rate)', image: '/Landing-page/tests/test-10.png' },
+const PLACEHOLDER_IMAGES = [
+    '/Landing-page/tests/test-5.png',
+    '/Landing-page/tests/test-8.png',
+    '/Landing-page/tests/test-1.png',
+    '/Landing-page/tests/test-2.png',
+    '/Landing-page/tests/test-3.png',
+    '/Landing-page/tests/test-4.png',
+    '/Landing-page/tests/test-6.png',
+    '/Landing-page/tests/test-9.png',
+    '/Landing-page/tests/test-10.png',
 ];
 
-export default function LabTests() {
+interface LabTestsProps {
+    tests?: any[];
+}
+
+export default function LabTests({ tests = [] }: LabTestsProps) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
 
-    // 18 tests max, rendered as 3 slides of 6 cards each
-    const allTests = mainTests.slice(0, 18);
+    // Limit to 18 tests for the carousel
+    const displayTests = tests.length > 0 ? tests.slice(0, 18) : [];
+    
     const chunked = [];
-    for (let i = 0; i < allTests.length; i += 6) {
-        chunked.push(allTests.slice(i, i + 6));
+    for (let i = 0; i < displayTests.length; i += 6) {
+        chunked.push(displayTests.slice(i, i + 6));
     }
 
     const scrollLeft = () => {
@@ -68,7 +65,7 @@ export default function LabTests() {
             el.removeEventListener('scroll', updateScrollState);
             window.removeEventListener('resize', updateScrollState);
         };
-    }, []);
+    }, [displayTests]);
 
     return (
         <section className="relative w-full overflow-hidden bg-white py-8 lg:py-10">
@@ -128,12 +125,13 @@ export default function LabTests() {
                                     className="min-w-full grid grid-cols-2 sm:grid-cols-3 grid-rows-3 sm:grid-rows-2 gap-2.5 sm:gap-3 snap-start flex-shrink-0 h-full"
                                 >
                                     {slide.map((test, index) => (
-                                        <div
-                                            key={index}
-                                            className="relative overflow-hidden group cursor-pointer bg-white transition-all duration-500 shadow-sm hover:shadow-lg h-full rounded-tl-[2rem] rounded-br-[2rem] rounded-tr-lg rounded-bl-lg border border-white"
+                                        <Link
+                                            key={test.slug || index}
+                                            href={`/lab-tests/${test.slug}`}
+                                            className="relative overflow-hidden group cursor-pointer bg-white transition-all duration-500 shadow-sm hover:shadow-lg h-full rounded-tl-[2rem] rounded-br-[2rem] rounded-tr-lg rounded-bl-lg border border-white block"
                                         >
                                             <Image
-                                                src={test.image}
+                                                src={test.image ? urlFor(test.image).url() : PLACEHOLDER_IMAGES[index % PLACEHOLDER_IMAGES.length]}
                                                 alt={test.name}
                                                 fill
                                                 sizes="(max-width: 640px) 50vw, 20vw"
@@ -146,13 +144,13 @@ export default function LabTests() {
                                                     {test.name}
                                                 </h3>
                                             </div>
-                                        </div>
+                                        </Link>
                                     ))}
                                 </div>
                             ))}
                         </div>
 
-                            {canScrollRight || canScrollLeft ? (
+                            {(canScrollRight || canScrollLeft) && chunked.length > 1 ? (
                                 <div className="mt-3 flex items-center justify-end gap-3">
                                     <button
                                         onClick={scrollLeft}

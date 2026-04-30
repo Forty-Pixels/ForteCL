@@ -16,11 +16,11 @@ const departments = [
     { name: 'Clinical Biochemistry', icon: CircleStackIcon, id: 'biochemistry' },
     { name: 'Hematology', icon: BeakerIcon, id: 'hematology' },
     { name: 'Microbiology', icon: SparklesIcon, id: 'microbiology' },
-    { name: 'Immunology / Serology', icon: ShieldCheckIcon, id: 'immunology' },
+    { name: 'Immunology', icon: ShieldCheckIcon, id: 'immunology' },
+    { name: 'Serology', icon: ShieldCheckIcon, id: 'serology' },
     { name: 'Molecular / Genetic Diagnostics', icon: FingerPrintIcon, id: 'molecular' },
-    { name: 'Clinical Pathology', icon: AcademicCapIcon, id: 'pathology' },
-    { name: 'Histopathology', icon: MagnifyingGlassCircleIcon, id: 'histopathology' },
-    { name: 'Cytology', icon: DocumentMagnifyingGlassIcon, id: 'cytology' },
+    { name: 'Pathology / Histopathology', icon: AcademicCapIcon, id: 'pathology' },
+    { name: 'Cytology', icon: DocumentMagnifyingGlassIcon, id: 'cytopathology' },
 ];
 
 export default function Departments() {

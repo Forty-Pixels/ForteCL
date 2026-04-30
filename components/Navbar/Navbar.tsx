@@ -90,7 +90,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
     return (
         <>
-        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 bg-white ${isScrolled ? 'shadow-lg py-2' : 'py-3 sm:py-4'}`}>
+        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 bg-[#f88c29] ${isScrolled ? 'shadow-lg py-2' : 'py-3 sm:py-4'}`}>
             <nav className="relative flex items-center justify-between px-4 sm:px-8 max-w-7xl mx-auto w-full">
                 {/* Left: Logo */}
                 <div className="flex-shrink-0 z-50">
@@ -113,12 +113,12 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         <div key={link.name} className="relative group lg:py-4">
                             {link.submenu ? (
                                 <div className="flex items-center gap-1 cursor-pointer group/nav">
-                                    <span className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} group-hover/nav:text-[#f88c29] font-medium transition-colors relative`}>
+                                    <span className={`text-sm text-white group-hover/nav:text-white font-bold transition-colors relative`}>
                                         {link.name}
-                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f88c29] transition-all duration-300 group-hover/nav:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover/nav:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
                                     </span>
                                     <svg 
-                                        className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-400'}`} 
+                                        className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-white`} 
                                         fill="none" 
                                         stroke="currentColor" 
                                         viewBox="0 0 24 24"
@@ -144,10 +144,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
                             ) : (
                                 <Link
                                     href={link.href}
-                                    className={`text-sm ${isActive(link) ? 'text-[#f88c29]' : 'text-gray-800'} hover:text-[#f88c29] font-medium transition-colors relative group/navlink`}
+                                    className={`text-sm text-white hover:text-white font-bold transition-colors relative group/navlink`}
                                 >
                                     {link.name}
-                                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#f88c29] transition-all duration-300 group-hover/navlink:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
+                                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover/navlink:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
                                 </Link>
                             )}
                         </div>
@@ -156,7 +156,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
                 {/* Right: Contact Button & Mobile Menu Toggle */}
                 <div className="flex items-center gap-4 z-50">
-                    <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#f88c29] text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-[#e67b1d] hover:shadow-lg hover:scale-105">
+                    <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#307984] text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-[#255d65] hover:shadow-lg hover:scale-105">
                         <svg
                             className="w-4 h-4 mr-2"
                             fill="none"
@@ -177,7 +177,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     {/* Hamburger Icon for Mobile */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="lg:hidden text-gray-800 p-2 focus:outline-none transition-colors hover:text-[#f88c29]"
+                        className="lg:hidden text-white p-2 focus:outline-none transition-colors hover:text-white"
                         aria-label="Toggle mobile menu"
                     >
                         {isMenuOpen ? (
@@ -206,7 +206,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 <div className="absolute inset-0 bg-[#061414]/98 backdrop-blur-2xl"></div>
 
                 {/* Close Button & Logo Area */}
-                <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-8 py-6 z-50 bg-white shadow-sm">
+                <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-8 py-6 z-50 bg-[#f88c29] shadow-sm">
                     <Link href="/" onClick={() => setIsMenuOpen(false)}>
                         <Image
                             src="/fortecl-logo3.png"
@@ -218,7 +218,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     </Link>
                     <button
                         onClick={() => setIsMenuOpen(false)}
-                        className="text-gray-800 p-2 hover:text-[#f88c29] transition-colors"
+                        className="text-white p-2 hover:text-white transition-colors"
                         aria-label="Close menu"
                     >
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
