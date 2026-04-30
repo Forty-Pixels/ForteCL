@@ -255,46 +255,44 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                 </div>
             </section>
 
-            {/* 5. "Our Simple 4 Step Process" */}
-            {test.process && (
-                <section className="py-16 bg-white">
-                    <div className="container mx-auto px-6 max-w-7xl">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-3">
-                                Our Simple 4 Step Process
-                            </h2>
-                            <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px]">Efficient • Reliable • Professional</p>
-                        </div>
-
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                            {processSteps.map((step, idx) => (
-                                <Reveal key={idx} delayMs={idx * 150}>
-                                    <div className="text-center group">
-                                        <div className="relative w-28 h-28 lg:w-36 lg:h-36 mx-auto mb-6">
-                                            <div className="absolute inset-0 bg-[#f88c29]/10 rounded-full group-hover:scale-110 transition-transform duration-500" />
-                                            <div className="absolute inset-3 rounded-full overflow-hidden border-2 border-white shadow-lg">
-                                                <Image 
-                                                    src={step.image || test.image} 
-                                                    alt={step.title} 
-                                                    fill 
-                                                    className="object-cover group-hover:scale-110 transition-transform duration-500" 
-                                                />
-                                            </div>
-                                            <div className="absolute top-0 right-0 w-8 h-8 bg-[#f88c29] text-white rounded-full flex items-center justify-center font-black text-xs shadow-md">
-                                                {idx + 1}
-                                            </div>
-                                        </div>
-                                        <h4 className="text-lg font-black text-gray-900 mb-1">{step.title}</h4>
-                                        <p className="text-xs text-gray-500 font-medium leading-relaxed px-2">
-                                            {step.description}
-                                        </p>
-                                    </div>
-                                </Reveal>
-                            ))}
-                        </div>
+            {/* 5. "Our Simple 4 Step Process" - Always show as it's the same for all tests */}
+            <section className="py-16 bg-white">
+                <div className="container mx-auto px-6 max-w-7xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-3">
+                            Our Simple 4 Step Process
+                        </h2>
+                        <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px]">Efficient • Reliable • Professional</p>
                     </div>
-                </section>
-            )}
+
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        {processSteps.map((step, idx) => (
+                            <Reveal key={idx} delayMs={idx * 150}>
+                                <div className="text-center group">
+                                    <div className="relative w-28 h-28 lg:w-36 lg:h-36 mx-auto mb-6">
+                                        <div className="absolute inset-0 bg-[#f88c29]/10 rounded-full group-hover:scale-110 transition-transform duration-500" />
+                                        <div className="absolute inset-3 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                                            <Image 
+                                                src={step.image || `/p_${['book', 'sample', 'lab', 'report'][idx]}.png`} 
+                                                alt={step.title} 
+                                                fill 
+                                                className="object-cover group-hover:scale-110 transition-transform duration-500" 
+                                            />
+                                        </div>
+                                        <div className="absolute top-0 right-0 w-8 h-8 bg-[#f88c29] text-white rounded-full flex items-center justify-center font-black text-xs shadow-md">
+                                            {idx + 1}
+                                        </div>
+                                    </div>
+                                    <h4 className="text-lg font-black text-gray-900 mb-1">{step.title}</h4>
+                                    <p className="text-xs text-gray-500 font-medium leading-relaxed px-2">
+                                        {step.description}
+                                    </p>
+                                </div>
+                            </Reveal>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
             {/* 6. Accuracy Note (Special for NIPT) */}
             {test.accuracyNote && (

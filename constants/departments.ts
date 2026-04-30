@@ -351,11 +351,10 @@ export const DEPARTMENTS_DATA: Department[] = [
             }
         ],
         commonTests: [
-            { name: 'NIPT Test (Non-Invasive Prenatal Test)', description: 'Safe, accurate, and early prenatal screening for chromosomal conditions as early as 10 weeks.' },
-            { name: 'Infectious Disease Panels', description: 'Respiratory Panel, Gastrointestinal Panel, STI Panel, MTB PCR, Viral load tests (HIV, Hep B/C).' },
-            { name: 'Genetic & Hereditary Testing', description: 'Carrier Screening, Prenatal Testing, Newborn Screening, Pharmacogenomics.' },
-            { name: 'Oncology Molecular Testing', description: 'Tumor mutation profiling, Liquid biopsy, Biomarker testing (EGFR, KRAS, BRAF, HER2).' },
-            { name: 'Hematology-Related Molecular Tests', description: 'BCR-ABL (CML), JAK2 mutation (Polycythemia Vera), Thalassemia analysis.' }
+            { name: 'Oncology Molecular Profiling', description: 'Detecting somatic mutations to guide targeted cancer therapies.' },
+            { name: 'Genetic Screening', description: 'Identifying hereditary risks for conditions like Thalassemia and SMA.' },
+            { name: 'Infectious Disease PCR', description: 'Rapid and sensitive detection of viral and bacterial pathogens.' },
+            { name: 'Prenatal Genomics', description: 'Advanced screening for fetal health and chromosomal conditions.' }
         ],
         keyServices: [
             'Non-Invasive Prenatal Testing (NIPT)',
@@ -366,23 +365,23 @@ export const DEPARTMENTS_DATA: Department[] = [
         startingPrice: 'AED 1,199',
         faqs: [
             {
-                question: 'What is NIPT and how accurate is it?',
-                answer: 'Non-Invasive Prenatal Testing (NIPT) is a highly accurate screening test that analyzes fetal DNA in the mother’s blood to detect chromosomal abnormalities with over 99% precision.'
+                question: 'What is molecular diagnostic testing?',
+                answer: 'Molecular diagnostic testing analyzes biological markers in the genome and proteome to detect specific diseases, pathogens, and genetic variations with high precision.'
             },
             {
-                question: 'When can I take the NIPT test?',
-                answer: 'The NIPT test can be taken as early as 10 weeks of pregnancy.'
+                question: 'How long do results typically take?',
+                answer: 'Turnaround times vary by complexity, ranging from 24 hours for simple PCR panels to several weeks for comprehensive sequencing like Whole Exome Sequencing.'
             },
             {
-                question: 'Is there any risk to the baby?',
-                answer: 'No, NIPT is completely non-invasive and poses no risk to the mother or the baby as it only requires a simple maternal blood draw.'
+                question: 'How is the sample collected?',
+                answer: 'Most molecular tests require a simple blood draw (EDTA), while infectious disease panels may use specialized swabs or fluid samples.'
             }
         ],
         process: [
-            { title: 'Consultation', description: 'Schedule your test through our website or via WhatsApp.', image: '/process_book_online_1777481560799.png' },
-            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/process_sample_collection_1777481577050.png' },
-            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/process_lab_processing_1777481594691.png' },
-            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/process_get_reports_1777481610116.png' }
+            { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
+            { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/p_sample.png' },
+            { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/p_lab.png' },
+            { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/p_report.png' }
         ],
         quote: {
             text: "UNCOVERING DIAGNOSIS AT THE GENETIC LEVEL.",

@@ -886,6 +886,662 @@ export const labTests: LabTest[] = [
       { name: "Complete Blood Count", slug: "cbc" }
     ],
   },
+  {
+    slug: "bcr-abl",
+    name: "BCR-ABL (Philadelphia Chromosome)",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["4 mL Whole Blood (EDTA) or Bone Marrow"],
+    overview: "Detects the BCR-ABL1 fusion gene, which is the hallmark of Chronic Myeloid Leukemia (CML) and some forms of Acute Lymphoblastic Leukemia (ALL).",
+    keyServices: ["Leukemia Diagnosis", "Minimal Residual Disease Monitoring", "Tyrosine Kinase Inhibitor Response"]
+  },
+  {
+    slug: "jak2-mutation",
+    name: "JAK2 V617F Mutation Analysis",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Identifies the V617F mutation in the JAK2 gene, essential for diagnosing myeloproliferative neoplasms like polycythemia vera.",
+    keyServices: ["MPN Diagnostic Support", "Blood Disorder Characterization", "Clonality Assessment"]
+  },
+  {
+    slug: "braf-mutation",
+    name: "BRAF V600E Mutation",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["Biopsy Tissue or Plasma"],
+    overview: "Analyzes the BRAF gene for mutations, particularly V600E, which are common in melanoma, colorectal, and thyroid cancers.",
+    keyServices: ["Targeted Therapy Selection", "Cancer Prognosis Assessment", "Molecular Tumor Profiling"]
+  },
+  {
+    slug: "egfr-mutation",
+    name: "EGFR Mutation Analysis",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["Biopsy Tissue or Plasma (Liquid Biopsy)"],
+    overview: "Screens for mutations in the EGFR gene to guide targeted therapy for non-small cell lung cancer (NSCLC).",
+    keyServices: ["TKIs Therapy Guidance", "NSCLC Molecular Diagnostics", "Resistance Mutation Tracking"]
+  },
+  {
+    slug: "carrier-screening-panel",
+    name: "Carrier Screening Panel (Thalassemia, SMA, CF)",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "14-21 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "A multi-condition genetic screening panel for prospective parents to identify risks of passing on hereditary conditions like Thalassemia, Spinal Muscular Atrophy, and Cystic Fibrosis.",
+    keyServices: ["Preconception Genetic Health", "Hereditary Risk Management", "Family Planning Support"]
+  },
+  {
+    slug: "factor-v-leiden",
+    name: "Factor V Leiden Mutation",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Factor V Leiden is a genetic mutation that increases the risk of developing abnormal blood clots, most commonly in the legs (deep vein thrombosis) or lungs (pulmonary embolism).",
+    keyServices: ["Thrombophilia Screening", "Recurrent Pregnancy Loss Evaluation", "Genetic Risk Assessment"],
+    faqs: [{ question: "Is this test for everyone?", answer: "Usually recommended for those with a personal or strong family history of unexplained blood clots." }]
+  },
+  {
+    slug: "mthfr",
+    name: "MTHFR Gene Mutation",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "MTHFR genotyping identifies variants in the methylenetetrahydrofolate reductase gene, which can affect how your body processes folate and homocysteine.",
+    keyServices: ["Homocysteine Regulation Analysis", "Cardiovascular Risk Assessment", "Folate Metabolism Screening"]
+  },
+  {
+    slug: "nipt-basic",
+    name: "NIPT - Basic Panel",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Streck Blood Tube"],
+    overview: "The Basic NIPT panel screens for the most common chromosomal trisomies (21, 18, and 13) using cell-free fetal DNA from maternal blood.",
+    keyServices: ["Down Syndrome Screening", "Edwards Syndrome Screening", "Patau Syndrome Screening"]
+  },
+  {
+    slug: "nipt-advance",
+    name: "NIPT - Advance Panel",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Streck Blood Tube"],
+    overview: "The Advance NIPT panel includes screening for all chromosomes and sex chromosome aneuploidies, providing a comprehensive fetal genetic profile.",
+    keyServices: ["All Chromosome Screening", "Sex Chromosome Aneuploidy Detection", "Fetal Gender Determination"]
+  },
+  {
+    slug: "nipt-advance-microdeletion",
+    name: "NIPT - Advance with Microdeletions",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Streck Blood Tube"],
+    overview: "This comprehensive NIPT panel adds screening for clinically significant microdeletion syndromes, such as DiGeorge and 1p36 deletion syndromes.",
+    keyServices: ["Microdeletion Syndrome Screening", "22q11.2 Deletion Detection", "Comprehensive Aneuploidy Screening"]
+  },
+  {
+    slug: "nipt-advance-rh-factor",
+    name: "NIPT - Advance with Rh Factor",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Streck Blood Tube"],
+    overview: "Combines comprehensive chromosomal screening with fetal RhD status determination, critical for Rh-negative mothers to manage potential isoimmunization.",
+    keyServices: ["Fetal RhD Genotyping", "Isoimmunization Risk Management", "Full Chromosomal Profile"]
+  },
+  {
+    slug: "brca1-brca2-mutation",
+    name: "BRCA1 & BRCA2 Mutation Analysis",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "14-21 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Screens for hereditary mutations in BRCA1 and BRCA2 genes, which significantly increase the lifetime risk of breast, ovarian, and other cancers.",
+    keyServices: ["Hereditary Cancer Risk Assessment", "Preventative Care Planning", "Family Genetic Counseling Support"]
+  },
+  {
+    slug: "whole-exome-sequencing",
+    name: "Whole Exome Sequencing (WES)",
+    diseaseFilter: "Rare Disease",
+    department: "Molecular",
+    tat: "4-6 Weeks",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "A comprehensive genetic test that sequences all protein-coding regions of the genome (the exome) to identify the genetic cause of complex medical conditions.",
+    keyServices: ["Rare Disease Diagnosis", "Complex Genetic Profiling", "Advanced Genomic Analysis"]
+  },
+  {
+    slug: "std5",
+    name: "STD 5 Panel (Multiplex PCR)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "2-3 Days",
+    sampleType: ["Urine or Swab"],
+    overview: "Rapidly detects five common sexually transmitted pathogens using advanced multiplex PCR technology for high sensitivity and specificity.",
+    keyServices: ["Chlamydia Detection", "Gonorrhea Screening", "Trichomonas Identification"]
+  },
+  {
+    slug: "std7",
+    name: "STD 7 Panel (Multiplex PCR)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "2-3 Days",
+    sampleType: ["Urine or Swab"],
+    overview: "An expanded panel detecting seven key sexually transmitted infections in a single highly accurate molecular test.",
+    keyServices: ["Mycoplasma Detection", "Ureaplasma Screening", "Comprehensive Pathogen Profiling"]
+  },
+  {
+    slug: "covid",
+    name: "COVID-19 (SARS-CoV-2) PCR",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "24 Hours",
+    sampleType: ["Nasopharyngeal Swab"],
+    overview: "Gold-standard RT-PCR testing for the detection of SARS-CoV-2, providing high accuracy and fast turnaround for clinical diagnosis and travel.",
+    keyServices: ["Diagnostic PCR Testing", "Travel Clearance (QR Code)", "High Sensitivity Detection"]
+  },
+  {
+    slug: "hla-b27",
+    name: "HLA-B27 Genotyping",
+    diseaseFilter: "Autoimmune",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Identifies the presence of the HLA-B27 surface antigen, which is strongly associated with ankylosing spondylitis and other inflammatory disorders.",
+    keyServices: ["Ankylosing Spondylitis Screening", "Autoimmune Risk Profiling", "Inflammatory Arthritis Support"]
+  },
+  {
+    slug: "factor-v-leiden",
+    name: "Factor V Leiden Mutation",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Factor V Leiden is a genetic mutation that increases the risk of developing abnormal blood clots, most commonly in the legs (deep vein thrombosis) or lungs (pulmonary embolism). It is the most common inherited form of thrombophilia.",
+    keyServices: ["Thrombophilia Screening", "Recurrent Pregnancy Loss Evaluation", "Genetic Risk Assessment"],
+    faqs: [
+      { question: "What causes Factor V Leiden?", answer: "It is an inherited condition caused by a mutation in the F5 gene." },
+      { question: "Does everyone with the mutation get clots?", answer: "No, many people with the mutation never develop blood clots, but their risk is higher than the general population." }
+    ]
+  },
+  {
+    slug: "mthfr",
+    name: "MTHFR Gene Mutation",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "This test identifies variants in the MTHFR gene, which provides instructions for making an enzyme called methylenetetrahydrofolate reductase. This enzyme is important for processing folate and regulating homocysteine levels.",
+    keyServices: ["Homocysteine Regulation Analysis", "Cardiovascular Risk Assessment", "Folate Metabolism Screening"]
+  },
+  {
+    slug: "nipt-basic",
+    name: "NIPT - Basic Panel",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Streck Blood Tube"],
+    overview: "The Basic NIPT panel screens for the most common chromosomal trisomies: Down syndrome (Trisomy 21), Edwards syndrome (Trisomy 18), and Patau syndrome (Trisomy 13).",
+    keyServices: ["Fetal Aneuploidy Screening", "Gender Determination (Optional)", "High-Precision Prenatal Risk Assessment"],
+    faqs: [
+      { question: "How early can I take this test?", answer: "NIPT can be performed as early as 10 weeks of pregnancy." },
+      { question: "Is it safe for the baby?", answer: "Yes, it is completely non-invasive as it only requires a blood sample from the mother." }
+    ]
+  },
+  {
+    slug: "nipt-advance",
+    name: "NIPT - Advance Panel",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Streck Blood Tube"],
+    overview: "The Advance NIPT panel goes beyond basic trisomies to screen for all chromosomes and common sex chromosome aneuploidies (e.g., Turner syndrome, Klinefelter syndrome).",
+    keyServices: ["Whole Genome Aneuploidy Screening", "Sex Chromosome Abnormality Detection", "Comprehensive Fetal Health Insights"]
+  },
+  {
+    slug: "nipt-advance-microdeletion",
+    name: "NIPT - Advance with Microdeletions",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Streck Blood Tube"],
+    overview: "This comprehensive panel includes screening for common microdeletion syndromes such as DiGeorge syndrome (22q11.2), 1p36 deletion, Prader-Willi, and Angelman syndromes.",
+    keyServices: ["Microdeletion Syndrome Screening", "Advanced Genetic Risk Profiling", "Total Chromosomal Health Assessment"]
+  },
+  {
+    slug: "nipt-advance-rh-factor",
+    name: "NIPT - Advance with Rh Factor",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["10 mL Streck Blood Tube"],
+    overview: "The Advance NIPT panel includes fetal RhD genotyping, which is critical for Rh-negative mothers to manage the risk of hemolytic disease of the newborn.",
+    keyServices: ["Fetal RhD Genotyping", "Isoimmunization Risk Management", "Full Chromosomal Screening"],
+    commonTests: [
+      { name: "Rh-Negative Mothers", description: "Essential for mothers with Rh-negative blood type." },
+      { name: "Previous Rh-Isoimmunization", description: "Critical for managing subsequent pregnancies." },
+      { name: "Advanced Maternal Age", description: "Recommended for mothers over 35." }
+    ]
+  },
+  {
+    slug: "sperm-dna-fragmentation",
+    name: "Sperm DNA Fragmentation",
+    diseaseFilter: "Infertility",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["Semen Sample"],
+    overview: "Evaluates the percentage of sperm with fragmented DNA, which can impact fertilization, embryo development, and successful pregnancy rates in both natural and assisted conception.",
+    keyServices: ["Male Infertility Evaluation", "IVF/ICSI Success Prediction", "Recurrent Pregnancy Loss Assessment"],
+    commonTests: [
+      { name: "Recurrent Pregnancy Loss", description: "Couples experiencing multiple miscarriages." },
+      { name: "Unexplained Infertility", description: "When routine semen analysis is normal but conception fails." },
+      { name: "Advanced Paternal Age", description: "Men over 40 considering fatherhood." }
+    ]
+  },
+  {
+    slug: "brca1-brca2-mutation",
+    name: "BRCA1 & BRCA2 Mutation Analysis",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "14-21 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Screens for hereditary mutations in the BRCA1 and BRCA2 genes, which are associated with an increased risk of breast, ovarian, prostate, and pancreatic cancers.",
+    keyServices: ["Hereditary Cancer Risk Assessment", "Preventative Care Planning", "Genetic Counseling Support"],
+    faqs: [
+      { question: "Who should consider BRCA testing?", answer: "Individuals with a strong family history of breast or ovarian cancer, or those diagnosed at a young age." },
+      { question: "What does a positive result mean?", answer: "A positive result indicates an increased risk of developing certain cancers, but it does not mean you definitely have or will get cancer." }
+    ]
+  },
+  {
+    slug: "carrier-screening-panel",
+    name: "Carrier Screening (Thalassemia, SMA, CF)",
+    diseaseFilter: "Preconception",
+    department: "Molecular",
+    tat: "14-21 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "A comprehensive genetic panel for prospective parents to identify if they are carriers of serious recessive conditions like Thalassemia, Spinal Muscular Atrophy (SMA), and Cystic Fibrosis (CF).",
+    keyServices: ["Preconception Health Screening", "Hereditary Risk Management", "Family Planning Consultation"],
+    faqs: [
+      { question: "Why is carrier screening important?", answer: "It helps prospective parents understand the risk of passing on hereditary conditions to their children." },
+      { question: "What if both partners are carriers?", answer: "If both carry the same recessive gene, there is a 25% chance their child will be affected by the condition." }
+    ]
+  },
+  {
+    slug: "whole-exome-sequencing",
+    name: "Whole Exome Sequencing (WES)",
+    diseaseFilter: "Rare Disease",
+    department: "Molecular",
+    tat: "4-6 Weeks",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "WES is a comprehensive genetic test that sequences all the protein-coding regions of the genome (the exome) to identify the genetic cause of complex medical conditions.",
+    keyServices: ["Rare Disease Diagnosis", "Complex Genetic Profiling", "Advanced Genomic Analysis"],
+    faqs: [
+      { question: "How is WES different from other genetic tests?", answer: "WES looks at all 20,000+ genes simultaneously, whereas most tests look at only one or a few genes." },
+      { question: "Who is a candidate for WES?", answer: "Patients with complex, undiagnosed medical conditions or those with features of a rare genetic disorder." }
+    ]
+  },
+  {
+    slug: "std5",
+    name: "STD 5 Panel (Multiplex PCR)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "2-3 Days",
+    sampleType: ["Urine or Swab"],
+    overview: "Detects the DNA of 5 common sexually transmitted pathogens using rapid multiplex PCR technology for high sensitivity and accuracy.",
+    keyServices: ["Chlamydia Detection", "Gonorrhea Screening", "Trichomonas & Mycoplasma Testing"]
+  },
+  {
+    slug: "std7",
+    name: "STD 7 Panel (Multiplex PCR)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "2-3 Days",
+    sampleType: ["Urine or Swab"],
+    overview: "An expanded molecular panel for the detection of 7 key sexually transmitted infections in a single highly sensitive test.",
+    keyServices: ["Comprehensive STI Screening", "Rapid Pathogen Identification", "Advanced Molecular Diagnosis"]
+  },
+  {
+    slug: "prothrombin-gene-mutation",
+    name: "Prothrombin Gene Mutation (G20210A)",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "This test identifies a specific mutation in the prothrombin gene that increases the risk of developing abnormal blood clots (venous thromboembolism).",
+    keyServices: ["Thrombophilia Risk Assessment", "DVT/PE Clinical Evaluation", "Hereditary Risk Screening"]
+  },
+  {
+    slug: "apoe-genotyping",
+    name: "APOE Genotyping (Alzheimer Risk)",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Determines the APOE alleles (E2, E3, E4) to assess the genetic risk for late-onset Alzheimer's disease and cardiovascular conditions related to lipid metabolism.",
+    keyServices: ["Neurological Risk Assessment", "Lipid Metabolism Analysis", "Hereditary Health Insights"]
+  },
+  {
+    slug: "karyotyping",
+    name: "Karyotyping (Chromosomal Analysis)",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "10-14 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "A test to examine chromosomes in a sample of cells, which can help identify genetic problems as the cause of a disorder or disease.",
+    keyServices: ["Chromosomal Abnormality Detection", "Infertility Workup", "Prenatal Genetic Diagnosis"]
+  },
+  {
+    slug: "bcr-abl",
+    name: "BCR-ABL (Philadelphia chromosome)",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Quantitative RT-PCR to detect and monitor the BCR-ABL1 fusion transcript, primarily used in the diagnosis and treatment monitoring of Chronic Myeloid Leukemia (CML).",
+    keyServices: ["CML Diagnosis", "Minimal Residual Disease Monitoring", "Tyrosine Kinase Inhibitor Response"]
+  },
+  {
+    slug: "jak2-mutation",
+    name: "JAK2 V617F Mutation Analysis",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Detects the V617F mutation in the JAK2 gene, which is a hallmark of myeloproliferative neoplasms such as Polycythemia Vera and Essential Thrombocythemia.",
+    keyServices: ["Myeloproliferative Neoplasm Diagnosis", "Blood Disorder Characterization", "Oncology Risk Profiling"]
+  },
+  {
+    slug: "coeliac-disease-hla",
+    name: "Coeliac Disease - HLA DQ2/DQ8",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Genetic screening for HLA-DQ2 and HLA-DQ8 alleles. The absence of these alleles virtually rules out Coeliac Disease.",
+    keyServices: ["Coeliac Disease Rule-out", "Genetic Predisposition Testing", "Gluten Sensitivity Workup"]
+  },
+  {
+    slug: "egfr-mutation",
+    name: "EGFR Mutation Analysis",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["Biopsy or Liquid Biopsy"],
+    overview: "Identifies mutations in the EGFR gene in non-small cell lung cancer (NSCLC) patients to determine eligibility for targeted therapies like TKIs.",
+    keyServices: ["Targeted Therapy Selection", "Precision Oncology", "Lung Cancer Biomarker Testing"]
+  },
+  {
+    slug: "std19",
+    name: "STD 19 Panel (Comprehensive PCR)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["Urine or Swab"],
+    overview: "An ultra-comprehensive molecular screen for 19 different sexually transmitted and urogenital pathogens in a single test.",
+    keyServices: ["Full Spectrum STI Screening", "Urogenital Health Assessment", "Molecular Pathogen Profiling"]
+  },
+  {
+    slug: "respiratory-27",
+    name: "Respiratory Pathogen Panel (27 targets)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "24-48 Hours",
+    sampleType: ["Nasopharyngeal Swab"],
+    overview: "Rapidly detects 27 respiratory viruses and bacteria, including Influenza, RSV, and common pneumonia-causing pathogens.",
+    keyServices: ["Acute Respiratory Infection Diagnosis", "Pediatric Fever Workup", "Critical Care Pathogen Screening"]
+  },
+  {
+    slug: "hbv-quantitative",
+    name: "HBV Quantitative (Viral Load)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["4 mL Plasma (EDTA)"],
+    overview: "Measures the amount of Hepatitis B virus DNA in the blood to monitor the infection and the effectiveness of antiviral treatment.",
+    keyServices: ["HBV Treatment Monitoring", "Viral Load Quantification", "Chronic Hepatitis Management"]
+  },
+  {
+    slug: "uti",
+    name: "Urinary Tract Infection (Molecular UTI)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "24 Hours",
+    sampleType: ["Urine"],
+    overview: "Advanced PCR-based detection of UTI pathogens and antibiotic resistance genes, providing faster and more accurate results than traditional cultures.",
+    keyServices: ["Rapid UTI Diagnosis", "Antibiotic Resistance Screening", "Targeted Treatment Guidance"]
+  },
+  {
+    slug: "hfe-gene-hemochromatosis",
+    name: "HFE Gene (Hemochromatosis)",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Detects mutations in the HFE gene (C282Y and H63D) associated with hereditary hemochromatosis, a condition causing the body to absorb too much iron.",
+    keyServices: ["Iron Overload Evaluation", "Hereditary Hemochromatosis Diagnosis", "Genetic Carrier Testing"]
+  },
+  {
+    slug: "fish",
+    name: "FISH (Fluorescence In Situ Hybridization)",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["4 mL Whole Blood (EDTA) or Tissue"],
+    overview: "A molecular cytogenetic technique used to detect and locate the presence or absence of specific DNA sequences on chromosomes.",
+    keyServices: ["Chromosomal Rearrangement Detection", "Oncology Genetic Profiling", "Prenatal Aneuploidy Testing"]
+  },
+  {
+    slug: "amniocentesis-pcr",
+    name: "Amniocentesis - Rapid PCR Diagnosis",
+    diseaseFilter: "Prenatal Screening",
+    department: "Molecular",
+    tat: "2 Days",
+    sampleType: ["Amniotic Fluid"],
+    overview: "Rapid QF-PCR analysis of amniotic fluid for the quick diagnosis of common chromosomal trisomies (21, 18, 13) and sex chromosome aneuploidies.",
+    keyServices: ["Urgent Prenatal Diagnosis", "Rapid Chromosome Screening", "Advanced Fetal Health Assessment"]
+  },
+  {
+    slug: "beta-thalassemia-sequencing",
+    name: "Beta Thalassemia - Beta-Globin Sequencing",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "10-14 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Full sequencing of the HBB gene to identify mutations causing Beta Thalassemia, providing definitive genetic confirmation and carrier status.",
+    keyServices: ["Thalassemia Diagnosis", "Carrier Screening", "Pre-marital Genetic Counseling"]
+  },
+  {
+    slug: "hpv-genotyping-28",
+    name: "HPV Genotyping (28 High & Low Risk Types)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["Cervical or Urogenital Swab"],
+    overview: "Advanced molecular genotyping to detect 28 different types of Human Papillomavirus, including high-risk oncogenic types 16 and 18.",
+    keyServices: ["Cervical Cancer Risk Screening", "Oncogenic HPV Identification", "Comprehensive Viral Genotyping"]
+  },
+  {
+    slug: "gi-panel-24",
+    name: "GI Panel - 24 Pathogens",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "24-48 Hours",
+    sampleType: ["Stool Sample"],
+    overview: "Rapidly identifies 24 common viral, bacterial, and parasitic causes of gastroenteritis in a single molecular panel.",
+    keyServices: ["Acute Diarrhea Workup", "Enteric Pathogen Detection", "Infection Control Support"]
+  },
+  {
+    slug: "hcv-quantitative",
+    name: "HCV Quantitative (Viral Load)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["4 mL Plasma (EDTA)"],
+    overview: "Measures the amount of Hepatitis C virus RNA in the blood, essential for diagnosing chronic infection and monitoring treatment response.",
+    keyServices: ["HCV Treatment Monitoring", "Viral Load Quantification", "Direct-Acting Antiviral (DAA) Therapy Support"],
+    faqs: [
+      { question: "How often should I test?", answer: "Usually every 3-6 months during treatment, or as advised by your hepatologist." }
+    ]
+  },
+  {
+    slug: "azoospermia-karyotype",
+    name: "Azoospermia Evaluation (Karyotype + Y Deletions)",
+    diseaseFilter: "Infertility",
+    department: "Molecular",
+    tat: "10-14 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "A comprehensive genetic workup for men with no sperm in their ejaculate, combining chromosomal analysis with specific searches for Y-chromosome microdeletions.",
+    keyServices: ["Male Infertility Genetics", "Spermatogenic Failure Analysis", "ICSI Eligibility Assessment"],
+    faqs: [
+      { question: "Why is this test needed?", answer: "To identify if there is a genetic cause for the lack of sperm, which can impact treatment choices like ICSI." }
+    ],
+    commonTests: [
+      { name: "Non-Obstructive Azoospermia", description: "Men with no sperm count in clinical analysis." },
+      { name: "Severe Oligozoospermia", description: "Extremely low sperm counts (less than 5 million/mL)." }
+    ]
+  },
+  {
+    slug: "y-chromosome-microdeletion",
+    name: "Y-Chromosome Microdeletion Analysis",
+    diseaseFilter: "Infertility",
+    department: "Molecular",
+    tat: "7-10 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Detects missing genetic material in the AZF regions of the Y chromosome, which are essential for normal sperm production.",
+    keyServices: ["AZF Region Analysis", "Male Reproductive Health", "Infertility Genetic Screening"]
+  },
+  {
+    slug: "androgen-insensitivity",
+    name: "Androgen Insensitivity (AR Gene Sequencing)",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "14-21 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "Sequences the Androgen Receptor (AR) gene to diagnose conditions where the body cannot respond properly to male sex hormones.",
+    keyServices: ["Disorders of Sex Development (DSD)", "AR Gene Mutation Detection", "Endocrine Genetic Profiling"],
+    faqs: [
+      { question: "What are the symptoms?", answer: "Symptoms vary from mild infertility to complete androgen insensitivity syndrome (CAIS)." }
+    ]
+  },
+  {
+    slug: "autism-spectrum-disorder",
+    name: "Autism Spectrum Disorder Genetic Panel",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "21-28 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "A specialized panel to identify genetic variants and chromosomal abnormalities associated with Autism Spectrum Disorder and developmental delays.",
+    keyServices: ["Neurodevelopmental Genetics", "ASD Risk Assessment", "Pediatric Genetic Screening"]
+  },
+  {
+    slug: "microarray-cgh",
+    name: "Microarray (Array CGH)",
+    diseaseFilter: "Genetic Tests",
+    department: "Molecular",
+    tat: "14-21 Days",
+    sampleType: ["4 mL Whole Blood (EDTA)"],
+    overview: "A high-resolution test that detects small gains or losses of genetic material across the entire genome, used for diagnosing developmental delays and congenital anomalies.",
+    keyServices: ["Copy Number Variant (CNV) Analysis", "Developmental Delay Diagnosis", "High-Resolution Chromosomal Screen"]
+  },
+  {
+    slug: "colorectal-cancer-ngs",
+    name: "Colorectal Cancer NGS Panel",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "14-21 Days",
+    sampleType: ["Biopsy or Tissue Sample"],
+    overview: "Comprehensive Next-Generation Sequencing (NGS) panel to detect somatic mutations in genes like KRAS, NRAS, and BRAF, guiding targeted therapy for colorectal cancer patients.",
+    keyServices: ["Somatic Mutation Profiling", "Targeted Therapy Guidance", "Precision Oncology Support"],
+    faqs: [
+      { question: "How does this help in treatment?", answer: "It identifies specific genetic mutations that predict response to certain chemotherapy and biological drugs." }
+    ]
+  },
+  {
+    slug: "braf-mutation",
+    name: "BRAF V600E Mutation Analysis",
+    diseaseFilter: "Oncology Genetics",
+    department: "Molecular",
+    tat: "5-7 Days",
+    sampleType: ["Tissue or Liquid Biopsy"],
+    overview: "Detects the V600E mutation in the BRAF gene, a key biomarker for melanoma, thyroid, and colorectal cancers.",
+    keyServices: ["BRAF V600E Detection", "Prognostic Assessment", "Therapy Response Prediction"]
+  },
+  {
+    slug: "hpv-40-genotyping",
+    name: "HPV 40 Genotyping Panel",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["Cervical or Urogenital Swab"],
+    overview: "A highly comprehensive screen for 40 different types of Human Papillomavirus, providing granular detail on viral exposure.",
+    keyServices: ["Extended HPV Profiling", "Risk Stratification", "Molecular Viral Detection"],
+    faqs: [
+      { question: "Is this the same as a Pap smear?", answer: "No, this test detects the virus itself at a molecular level, whereas a Pap smear looks for cell changes." }
+    ]
+  },
+  {
+    slug: "hiv-quantitative",
+    name: "HIV-1/2 Quantitative (Viral Load)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["4 mL Plasma (EDTA)"],
+    overview: "Quantitative measurement of HIV RNA levels in the blood, essential for managing antiretroviral therapy (ART).",
+    keyServices: ["HIV Treatment Monitoring", "Viral Load Quantification", "Treatment Success Verification"],
+    faqs: [
+      { question: "What is an undetectable viral load?", answer: "It means the amount of HIV in the blood is too low to be detected by the test, indicating highly effective treatment." }
+    ]
+  },
+  {
+    slug: "std13",
+    name: "STD 13 Panel (Multiplex PCR)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "2-3 Days",
+    sampleType: ["Urine or Swab"],
+    overview: "A comprehensive molecular screen for 13 common sexually transmitted and urogenital pathogens.",
+    keyServices: ["Multiplex STI Detection", "Rapid Clinical Results", "Sensitive Pathogen Screening"]
+  },
+  {
+    slug: "hiv-1",
+    name: "HIV-1 RNA (Qualitative PCR)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["4 mL Plasma (EDTA)"],
+    overview: "Direct detection of the HIV-1 virus genetic material, allowing for earlier diagnosis than traditional antibody tests.",
+    keyServices: ["Early HIV Detection", "Acute Infection Diagnosis", "Molecular Viral Screening"],
+    faqs: [
+      { question: "How is this different from a rapid test?", answer: "This test detects the virus itself (RNA), whereas rapid tests look for antibodies which can take longer to appear after exposure." }
+    ]
+  },
+  {
+    slug: "respiratory-23",
+    name: "Respiratory Pathogen Panel (23 targets)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "24-48 Hours",
+    sampleType: ["Nasopharyngeal Swab"],
+    overview: "A focused molecular panel detecting 23 major respiratory pathogens, providing rapid guidance for clinical management of respiratory infections.",
+    keyServices: ["Multiplex Respiratory Screening", "Rapid Pathogen ID", "Targeted Infection Control"]
+  },
+  {
+    slug: "sti28",
+    name: "STI 28 Panel (Comprehensive Molecular Screen)",
+    diseaseFilter: "Infectious Disease",
+    department: "Molecular",
+    tat: "3-5 Days",
+    sampleType: ["Urine or Swab"],
+    overview: "Our most comprehensive molecular screen for sexually transmitted and reproductive health pathogens, identifying 28 different targets in a single analysis.",
+    keyServices: ["Elite Spectrum STI Screening", "Advanced Pathogen Identification", "Comprehensive Urogenital Profile"]
+  }
 ];
 
 export const diseaseFilters = [...new Set(labTests.map(t => t.diseaseFilter))].sort();
