@@ -114,6 +114,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
     // Add Molecular & Genetics tests manually
     if (slug === 'molecular') {
         const molecularTests = [
+            { name: 'Non-Invasive Prenatal Testing (NIPT)', slug: 'nipt' },
             { name: 'Factor V Leiden', slug: 'factor-v-leiden' },
             { name: 'MTHFR', slug: 'mthfr' },
             { name: 'Non-Invasive Prenatal Testing - Basic', slug: 'nipt-basic' },
@@ -165,11 +166,20 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
             { name: 'HLA-B27', slug: 'hla-b27' }
         ];
 
-        cmsTests.push(...molecularTests.map(t => ({
-            ...t,
-            tat: '3-7 Days',
-            sampleType: ['Blood']
-        })));
+        cmsTests.push(...molecularTests.map(t => {
+            if (t.slug === 'nipt') {
+                return {
+                    ...t,
+                    tat: '7-10 Days',
+                    sampleType: ['10 mL Whole Blood (Streck Tube)']
+                };
+            }
+            return {
+                ...t,
+                tat: '3-7 Days',
+                sampleType: ['Blood']
+            };
+        }));
     }
 
     const allCmsTests = allCmsTestsWithDepartment.map((test) => ({

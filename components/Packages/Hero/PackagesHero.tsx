@@ -21,7 +21,7 @@ export default function PackagesHero() {
 
                 <p className="text-white text-center max-w-xs sm:max-w-lg lg:max-w-3xl text-xs sm:text-sm lg:text-base mb-8 sm:mb-10 leading-relaxed opacity-90 px-4 sm:px-0">
                     Comprehensive health checkup packages tailored for individuals, families and corporate
-                    giving you a full diagnostic picture in one convenient visit or home collection
+                    giving you a full diagnostic picture in one convenient visit or mobile collection
                 </p>
             </div>
         </section>

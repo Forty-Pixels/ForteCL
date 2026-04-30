@@ -39,8 +39,8 @@ const faqs = [
         answer: "NIPT can be performed as early as 10 weeks of pregnancy."
     },
     {
-        question: "Can I do the NIPT test at home?",
-        answer: "Yes, the test can be done at home. A licensed healthcare professional will visit you to collect the sample safely and comfortably."
+        question: "Can I do the NIPT test?",
+        answer: "Yes, the test can be done at our facility or through our mobile collection service. A licensed healthcare professional will ensure the sample is collected safely and comfortably."
     },
     {
         question: "Can NIPT determine the baby’s gender?",
@@ -352,7 +352,7 @@ export default function NiptPage() {
                 </div>
             </section>
 
-            {/* NIPT at Home */}
+            {/* NIPT Mobile Collection */}
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="bg-[#307984] rounded-[50px] p-8 lg:p-20 text-white relative overflow-hidden">
@@ -362,7 +362,7 @@ export default function NiptPage() {
                         <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
                             <div>
                                 <Reveal delayMs={100}>
-                                    <h2 className="text-3xl lg:text-5xl font-bold mb-6">NIPT Test at Home in Dubai</h2>
+                                    <h2 className="text-3xl lg:text-5xl font-bold mb-6">NIPT Test in Dubai</h2>
                                 </Reveal>
                                 <Reveal delayMs={200}>
                                     <p className="text-xl text-white/80 mb-10 leading-relaxed">
@@ -397,7 +397,7 @@ export default function NiptPage() {
                                         </div>
                                         <div>
                                             <h4 className="font-bold">Convenience</h4>
-                                            <p className="text-sm text-gray-500">Book anytime, at-home collection at your chosen location.</p>
+                                            <p className="text-sm text-gray-500">Book anytime, mobile sample collection at your chosen location.</p>
                                         </div>
                                     </div>
                                     <div className="flex gap-4">
@@ -410,8 +410,8 @@ export default function NiptPage() {
                                         </div>
                                     </div>
                                     <BookActionButton 
-                                        label="BOOK HOME COLLECTION"
-                                        whatsappText="Hi, I'd like to book an NIPT test at home."
+                                        label="BOOK APPOINTMENT"
+                                        whatsappText="Hi, I'd like to book an NIPT test."
                                         className="w-full bg-[#061414] text-white py-4 rounded-2xl font-bold hover:bg-[#f88c29] transition-all mt-4"
                                     />
                                 </div>

@@ -37,7 +37,7 @@ const reviews: Review[] = [
         id: 3,
         name: "Najim Shafana",
         role: "Verified Patient",
-        text: "Accurate and reliable NIPT reports, delivered within just a few days and cost is more affordable for all test when compared to others.They also have free home collection also.",
+        text: "Accurate and reliable NIPT reports, delivered within just a few days and cost is more affordable for all test when compared to others. They also have free mobile collection also.",
         rating: 5,
         date: "2 months ago",
         avatarBg: "bg-indigo-500"

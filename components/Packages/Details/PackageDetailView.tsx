@@ -86,7 +86,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                             <Reveal delayMs={300}>
                                 <div className="pt-2">
                                     <BookActionButton
-                                        label="Book Home Collection"
+                                        label="Book Appointment"
                                         whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
                                         className="bg-[#0f172a] hover:bg-[#1e293b] text-white px-8 py-3.5 rounded-xl font-bold text-sm transition-all shadow-xl shadow-[#0f172a]/10 hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
                                     />
@@ -123,7 +123,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                     <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
                                     <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">Available</span>
                                 </div>
-                                <p className="text-[10px] font-bold text-[#0f172a] leading-tight">Home collection available across Dubai & Sharjah.</p>
+                                <p className="text-[10px] font-bold text-[#0f172a] leading-tight">Mobile collection available across Dubai & Sharjah.</p>
                             </motion.div>
                         </Reveal>
                     </div>
@@ -260,7 +260,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                     <div className="space-y-3">
                         {(pkg.faqs && pkg.faqs.length > 0 ? pkg.faqs : [
                             { question: "When will I receive my reports?", answer: "Most reports are delivered within 24 hours via email and WhatsApp." },
-                            { question: "Can I book for my family?", answer: "Yes, group home collections can be scheduled in a single visit." }
+                            { question: "Can I book for my family?", answer: "Yes, group mobile collections can be scheduled in a single visit." }
                         ]).map((faq, i) => (
                             <details key={i} className="group p-5 rounded-2xl bg-[#fafafa] border border-gray-100 open:bg-white open:shadow-md transition-all duration-300">
                                 <summary className="font-bold text-sm text-[#0f172a] list-none cursor-pointer flex justify-between items-center outline-none">

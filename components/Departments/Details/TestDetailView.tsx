@@ -114,7 +114,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                     <Reveal>
                         <div className="max-w-3xl text-white">
                             <h1 className="text-3xl lg:text-5xl font-black mb-4 leading-tight">
-                                {test.title} <br className="hidden lg:block" /> at Home
+                                {test.title}
                             </h1>
                             
                             {test.startingPrice && (

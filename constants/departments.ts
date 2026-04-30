@@ -351,6 +351,7 @@ export const DEPARTMENTS_DATA: Department[] = [
             }
         ],
         commonTests: [
+            { name: 'Non-Invasive Prenatal Testing (NIPT)', description: 'Safe, early, and highly accurate screening for chromosomal conditions like Down syndrome from 10 weeks of pregnancy.' },
             { name: 'Oncology Molecular Profiling', description: 'Detecting somatic mutations to guide targeted cancer therapies.' },
             { name: 'Genetic Screening', description: 'Identifying hereditary risks for conditions like Thalassemia and SMA.' },
             { name: 'Infectious Disease PCR', description: 'Rapid and sensitive detection of viral and bacterial pathogens.' },
