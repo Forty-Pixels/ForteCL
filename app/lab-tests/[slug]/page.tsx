@@ -1,9 +1,10 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import TestDetailHero from '@/components/LabTests/TestDetail/TestDetailHero';
 import TestDetailContent from '@/components/LabTests/TestDetail/TestDetailContent';
 import Footer from '@/components/Landing-page/Footer/Footer';
 import { client } from '@/lib/sanity';
 import { labTestBySlugQuery, allLabTestSlugsQuery, allLabTestsQuery } from '@/lib/queries';
+import { getTestLink } from '@/lib/department-utils';
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -37,6 +38,12 @@ export default async function TestDetailPage({ params }: Props) {
     ]);
 
     if (!test) notFound();
+    
+    // Link to the department-based path instead of /lab-tests/[slug]
+    const targetLink = getTestLink(test);
+    if (targetLink !== `/lab-tests/${slug}`) {
+        redirect(targetLink);
+    }
 
     return (
         <main className="min-h-screen bg-white">

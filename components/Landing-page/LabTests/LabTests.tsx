@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
 import { urlFor } from '@/lib/sanity';
+import { getTestLink } from '@/lib/department-utils';
 
 const PLACEHOLDER_IMAGES = [
     '/Landing-page/tests/test-5.png',
@@ -127,7 +128,7 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
                                     {slide.map((test, index) => (
                                         <Link
                                             key={test.slug || index}
-                                            href={`/lab-tests/${test.slug}`}
+                                            href={getTestLink(test)}
                                             className="relative overflow-hidden group cursor-pointer bg-white transition-all duration-500 shadow-sm hover:shadow-lg h-full rounded-tl-[2rem] rounded-br-[2rem] rounded-tr-lg rounded-bl-lg border border-white block"
                                         >
                                             <Image

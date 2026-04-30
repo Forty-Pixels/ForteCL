@@ -8,6 +8,7 @@ export const allLabTestsQuery = `*[_type == "labTest"] | order(name asc) {
   name,
   "diseaseFilter": diseaseFilter->title,
   "department": department->title,
+  "departmentSlug": department->slug.current,
   tat,
   sampleType,
   image
@@ -19,13 +20,16 @@ export const labTestBySlugQuery = `*[_type == "labTest" && slug.current == $slug
   name,
   "diseaseFilter": diseaseFilter->title,
   "department": department->title,
+  "departmentSlug": department->slug.current,
   tat,
   sampleType,
   content,
   image,
   "relatedTests": relatedTests[]->{
     name,
-    "slug": slug.current
+    "slug": slug.current,
+    "department": department->title,
+    "departmentSlug": department->slug.current
   }
 }`;
 

@@ -3,6 +3,7 @@ import { LabTest } from '@/data/labTestTypes';
 import Reveal from '@/components/Animation/Reveal';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import BookActionButton from '@/components/Booking/BookActionButton';
+import { getTestLink } from '@/lib/department-utils';
 
 interface Props {
     test: LabTest;
@@ -142,7 +143,7 @@ export default function TestDetailContent({ test, allTests }: Props) {
                                     {related.map(t => (
                                         <li key={t.slug}>
                                             <Link
-                                                href={`/lab-tests/${t.slug}`}
+                                                href={getTestLink(t)}
                                                 className="text-gray-400 hover:text-white text-[13px] font-medium transition-all flex items-start gap-3 group"
                                             >
                                                 <span className="text-[#307984] transition-transform group-hover:scale-150 group-hover:font-bold mt-1">→</span>

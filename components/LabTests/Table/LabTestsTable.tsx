@@ -8,6 +8,7 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { urlFor } from '@/lib/sanity';
 import BookActionButton from '@/components/Booking/BookActionButton';
+import { getTestLink } from '@/lib/department-utils';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -161,7 +162,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                     {paginated.map((test, i) => (
                         <div key={test.slug} className="group bg-white rounded-[1.8rem] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_45px_rgba(248,140,41,0.1)] transition-all duration-300 flex overflow-hidden min-h-[180px] max-h-[220px]">
                             {/* Horizontal Image Section */}
-                            <Link href={test.slug === 'nipt' ? `/departments/molecular/nipt` : `/lab-tests/${test.slug}`} className="relative w-40 flex-shrink-0 overflow-hidden border-r border-gray-100 block">
+                            <Link href={getTestLink(test)} className="relative w-40 flex-shrink-0 overflow-hidden border-r border-gray-100 block">
                                 <Image
                                     src={test.image ? urlFor(test.image).url() : PLACEHOLDER_IMAGES[i % PLACEHOLDER_IMAGES.length]}
                                     alt={test.name}
@@ -179,7 +180,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments }: La
                                             {test.diseaseFilter || 'General'}
                                         </span>
                                     </div>
-                                    <Link href={test.slug === 'nipt' ? `/departments/molecular/nipt` : `/lab-tests/${test.slug}`}>
+                                    <Link href={getTestLink(test)}>
                                         <h3 className="text-[14px] font-bold text-gray-900 group-hover:text-[#f88c29] transition-colors leading-tight line-clamp-2 mb-2">
                                             {test.name}
                                         </h3>
