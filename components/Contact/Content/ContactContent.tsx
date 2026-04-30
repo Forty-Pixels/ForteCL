@@ -2,27 +2,20 @@
 
 import Image from 'next/image';
 
-const logos = [
-    { src: '/contact/logos/bio-rad.png', alt: 'Bio-Rad EQAS' },
-    { src: '/contact/logos/siemens.png', alt: 'Siemens' },
-    { src: '/contact/logos/tech-med.png', alt: 'TechMed' },
-    { src: '/contact/logos/jci.png', alt: 'Joint Commission International' },
-];
-
 export default function ContactContent() {
     return (
         <section className="bg-white py-12 md:py-16 lg:py-20">
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-                    {/* Left Column: Contact Info & Logos */}
+                    {/* Left Column: Contact Info */}
                     <div className="flex flex-col space-y-10">
                         <div>
                             <h2 className="text-2xl md:text-3xl font-bold text-[#202020] mb-5">
                                 Get in Touch
                             </h2>
                             <p className="text-gray-600 text-sm md:text-base mb-8 leading-relaxed max-w-md">
-                                We're available 24/7. Walk in or book a home sample collection — our team will guide you to the right test
+                                We're available 24/7. Walk in or book a mobile sample collection — our team will guide you to the right test
                             </p>
 
                             <ul className="space-y-5">
@@ -77,17 +70,6 @@ export default function ContactContent() {
                                     </a>
                                 </li>
                             </ul>
-                        </div>
-
-                        {/* Logo Grid */}
-                        <div className="grid grid-cols-2 gap-4 w-full max-w-[360px]">
-                            {logos.map((logo, index) => (
-                                <div key={index} className="bg-white border border-black rounded-[24px] p-4 flex items-center justify-center h-16 shadow-sm hover:shadow-md transition-shadow">
-                                    <div className="relative w-full h-full">
-                                        <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
-                                    </div>
-                                </div>
-                            ))}
                         </div>
                     </div>
 
