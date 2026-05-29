@@ -14,6 +14,8 @@ const partners = [
     { name: 'Inaya', image: '/Landing-page/insurance/inayah-logo.jpg' },
     { name: 'Enaya', image: '/Landing-page/insurance/enaya-logo.svg' },
     { name: 'Neuron', image: '/Landing-page/insurance/neuron-logo.png' },
+    { name: 'WHealth International', image: '/Landing-page/insurance/whealth-logo.png' },
+    { name: 'GlobeMed Gulf', image: '/Landing-page/insurance/globemed-gulf-logo.svg' },
 
 ];
 
