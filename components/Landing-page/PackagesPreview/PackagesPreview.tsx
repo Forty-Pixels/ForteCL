@@ -42,11 +42,11 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                 <Reveal delayMs={80}>
                     <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-4 mb-6 md:mb-10 text-center md:text-left">
                         <div>
-                            <span className="text-[#f88c29] font-bold text-[11px] sm:text-xs tracking-[0.3em] mb-1.5 uppercase block">
+                            <span className="text-[#A7DCC0] font-bold text-[11px] sm:text-xs tracking-[0.3em] mb-1.5 uppercase block">
                                 MAIN PACKAGES
                             </span>
                             <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white leading-tight">
-                                Popular Health <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f88c29] to-[#d35400]">Packages</span>
+                                Popular Health <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A7DCC0] to-[#EAF4EE]">Packages</span>
                             </h2>
                         </div>
                         <Link
@@ -63,7 +63,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                         const { cleanTitle, price } = parsePrice(pkg.title || '');
                         return (
                             <Reveal key={pkg.slug || index} delayMs={130 + index * 100}>
-                                <article className="group relative flex flex-col items-center text-center px-4 py-8 rounded-[60px] border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent hover:border-[#f88c29]/50 transition-all duration-500 overflow-hidden min-h-[380px]">
+                                <article className="group relative flex flex-col items-center text-center px-4 py-8 rounded-[60px] border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent hover:border-[#A7DCC0]/50 transition-all duration-500 overflow-hidden min-h-[380px]">
                                     {/* Link Overlay - covers everything except what's above it */}
                                     <Link href={`/packages/${pkg.slug}`} className="absolute inset-0 z-20" aria-label={`View ${cleanTitle} package`} />
                                     
@@ -71,7 +71,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                     <div className="absolute inset-0 bg-white/[0.01] backdrop-blur-3xl -z-10" />
                                    
                                     {/* Top Image Circle */}
-                                    <div className="relative z-10 w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#f88c29] transition-colors duration-500 mb-4">
+                                    <div className="relative z-10 w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#A7DCC0] transition-colors duration-500 mb-4">
                                         {pkg.image ? (
                                             <Image
                                                 src={urlFor(pkg.image).url()}
@@ -80,14 +80,14 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                         ) : (
-                                            <div className="absolute inset-0 bg-gradient-to-br from-[#f88c29] to-[#d35400]" />
+                                            <div className="absolute inset-0 bg-gradient-to-br from-[#0F3B2E] to-[#2D785B]" />
                                         )}
                                     </div>
 
                                     {/* Content */}
                                     <div className="relative z-10 flex-1 flex flex-col items-center">
                                         {price && (
-                                            <div className="mb-2 text-[#f88c29] font-black text-[13px] tracking-tighter">
+                                            <div className="mb-2 text-[#A7DCC0] font-black text-[13px] tracking-tighter">
                                                 {price}
                                             </div>
                                         )}
@@ -101,20 +101,20 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
 
                                     {/* Footer Actions */}
                                     <div className="relative z-10 mt-auto w-full flex flex-col items-center gap-2">
-                                        <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#307984]">
+                                        <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#A7DCC0]">
                                             {pkg.testsTotal || pkg.subTests?.length || 0} Parameters
                                         </div>
                                         <div className="relative z-30 w-full">
                                             <BookActionButton
                                                 label="BOOK NOW"
                                                 whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
-                                                className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#f88c29] hover:text-white transition-all duration-300"
+                                                className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#0F3B2E] hover:text-white transition-all duration-300"
                                             />
                                         </div>
                                     </div>
 
                                     {/* Hover Aurora Effect */}
-                                    <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#f88c29]/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                    <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#A7DCC0]/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 </article>
                             </Reveal>
                         );

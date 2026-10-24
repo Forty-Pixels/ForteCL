@@ -34,7 +34,7 @@ export default function InsurancePartners() {
                     </Reveal>
 
                     <Reveal delayMs={60}>
-                        <h2 className="mt-2 text-2xl md:text-3xl font-bold text-[#f88c29]">
+                        <h2 className="mt-2 text-2xl md:text-3xl font-bold text-[#0F3B2E]">
                             Insurance Partners
                         </h2>
                     </Reveal>

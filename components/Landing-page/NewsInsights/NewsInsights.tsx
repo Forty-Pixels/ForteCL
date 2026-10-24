@@ -51,7 +51,7 @@ export default function NewsInsights() {
             {/* Background Accent */}
             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none overflow-hidden">
                 <div className="absolute -top-[10%] -left-[10%] w-[30%] h-[30%] bg-white rounded-full blur-[100px]" />
-                <div className="absolute -bottom-[10%] -right-[10%] w-[30%] h-[30%] bg-[#f88c29] rounded-full blur-[100px]" />
+                <div className="absolute -bottom-[10%] -right-[10%] w-[30%] h-[30%] bg-[#A7DCC0] rounded-full blur-[100px]" />
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 relative z-10">
@@ -59,7 +59,7 @@ export default function NewsInsights() {
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                     <div className="max-w-xl">
                         <Reveal delayMs={100}>
-                            <span className="text-[#f88c29] font-bold text-[9px] tracking-[0.2em] uppercase mb-2 block">
+                            <span className="text-[#EAF4EE] font-bold text-[9px] tracking-[0.2em] uppercase mb-2 block">
                                 News & Insights
                             </span>
                         </Reveal>
@@ -75,7 +75,7 @@ export default function NewsInsights() {
                         <div className="flex gap-2.5">
                             <button
                                 onClick={() => scroll('left')}
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#f88c29] hover:border-[#f88c29] transition-all duration-300 group"
+                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#0F3B2E] hover:border-[#0F3B2E] transition-all duration-300 group"
                                 aria-label="Previous articles"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform">
@@ -84,7 +84,7 @@ export default function NewsInsights() {
                             </button>
                             <button
                                 onClick={() => scroll('right')}
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#f88c29] hover:border-[#f88c29] transition-all duration-300 group"
+                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#0F3B2E] hover:border-[#0F3B2E] transition-all duration-300 group"
                                 aria-label="Next articles"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform">
@@ -121,7 +121,7 @@ export default function NewsInsights() {
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
                                         
-                                        <div className="absolute top-3 left-3 bg-[#f88c29] text-white text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg">
+                                        <div className="absolute top-3 left-3 bg-[#0F3B2E] text-white text-[8px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shadow-lg">
                                             {item.category}
                                         </div>
                                     </div>
@@ -129,10 +129,10 @@ export default function NewsInsights() {
                                     {/* Content Area */}
                                     <div className="p-5 flex flex-col flex-1">
                                         <div className="flex items-center gap-2 mb-2.5">
-                                            <span className="text-[#f88c29] font-bold text-[8px] uppercase tracking-widest">{item.date}</span>
+                                            <span className="text-[#0F3B2E] font-bold text-[8px] uppercase tracking-widest">{item.date}</span>
                                         </div>
                                         
-                                        <h3 className="text-[#1a1a1a] font-bold text-base md:text-lg leading-[1.3] mb-3 group-hover/card:text-[#f88c29] transition-colors duration-300 line-clamp-2">
+                                        <h3 className="text-[#1a1a1a] font-bold text-base md:text-lg leading-[1.3] mb-3 group-hover/card:text-[#0F3B2E] transition-colors duration-300 line-clamp-2">
                                             {item.title}
                                         </h3>
                                         
@@ -141,7 +141,7 @@ export default function NewsInsights() {
                                         </p>
 
                                         <div className="mt-auto flex items-center justify-between">
-                                            <span className="text-[#f88c29] font-bold text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 group/btn">
+                                            <span className="text-[#0F3B2E] font-bold text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 group/btn">
                                                 Read More
                                                 <svg className="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
