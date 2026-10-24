@@ -47,7 +47,7 @@ export default function NewsInsights() {
     };
 
     return (
-        <section className="py-10 md:py-12 bg-[#307984] overflow-hidden relative">
+        <section className="py-10 md:py-12 bg-[#0F3B2E] overflow-hidden relative">
             {/* Background Accent */}
             <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none overflow-hidden">
                 <div className="absolute -top-[10%] -left-[10%] w-[30%] h-[30%] bg-white rounded-full blur-[100px]" />
@@ -75,7 +75,7 @@ export default function NewsInsights() {
                         <div className="flex gap-2.5">
                             <button
                                 onClick={() => scroll('left')}
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#0F3B2E] hover:border-[#0F3B2E] transition-all duration-300 group"
+                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#2D785B] hover:border-[#2D785B] transition-all duration-300 group"
                                 aria-label="Previous articles"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform">
@@ -84,7 +84,7 @@ export default function NewsInsights() {
                             </button>
                             <button
                                 onClick={() => scroll('right')}
-                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#0F3B2E] hover:border-[#0F3B2E] transition-all duration-300 group"
+                                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#2D785B] hover:border-[#2D785B] transition-all duration-300 group"
                                 aria-label="Next articles"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-0.5 transition-transform">
