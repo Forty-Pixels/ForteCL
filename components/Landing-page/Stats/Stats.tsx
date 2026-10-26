@@ -139,10 +139,10 @@ export default function Stats() {
                     {stats.map((stat, index) => (
                         <Reveal key={stat.label} delayMs={90 + index * 80}>
                             <div className="h-full rounded-2xl border border-[#307984]/15 bg-gradient-to-b from-white to-[#f1f8f7] p-5 md:p-6 transition-transform duration-300 hover:-translate-y-1">
-                                <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${stat.label === 'Joint Commission International' ? 'bg-[#fff5ea] text-[#f88c29]' : 'bg-[#e5f3f1] text-[#307984]'}`}>
+                                <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${stat.label === 'Joint Commission International' ? 'bg-[#eaf4f4] text-[#045d65]' : 'bg-[#e5f3f1] text-[#307984]'}`}>
                                     {stat.icon}
                                 </div>
-                                <h3 className="text-3xl md:text-[2rem] font-bold text-[#f88c29] mb-1 font-poppins leading-tight">
+                                <h3 className="text-3xl md:text-[2rem] font-bold text-[#045d65] mb-1 font-poppins leading-tight">
                                     {typeof stat.target === 'number' ? (
                                         <CountText target={stat.target} suffix={stat.suffix} shouldStart={isVisible} />
                                     ) : (

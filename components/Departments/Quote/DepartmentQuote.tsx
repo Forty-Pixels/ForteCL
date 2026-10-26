@@ -18,7 +18,7 @@ export default function DepartmentQuote({
                     <div className="flex flex-col items-end text-right space-y-6 max-w-[950px] ml-auto">
                         <blockquote className="text-[1.8rem] lg:text-[2.2rem] leading-[1.2] font-bold tracking-tighter text-[#333] uppercase">
                             "{quote}
-                            <span className="text-[#f88c29] font-black">{highlightedText}"</span>
+                            <span className="text-[#045d65] font-black">{highlightedText}"</span>
                         </blockquote>
                     </div>
                 </Reveal>

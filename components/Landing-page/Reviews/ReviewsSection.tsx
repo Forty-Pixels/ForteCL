@@ -31,7 +31,7 @@ const reviews: Review[] = [
         text: "I chose Forte Clinical Laboratory for the NIPT Advanced test, and I\u2019m very satisfied with the service. The home sample collection was handled with great care and professionalism, and the process was quick and painless. I received my results in just 6 days, which really exceeded my expectations. Clear communication, reliable reporting, and excellent overall service. I would confidently recommend Forte Clinical Laboratory to others.",
         rating: 5,
         date: "a month ago",
-        avatarBg: "bg-[#0F3B2E]"
+        avatarBg: "bg-[#045d65]"
     },
     {
         id: 3,
@@ -134,7 +134,7 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
                 {/* Rating */}
                 <div className="flex mb-2">
                     {[...Array(review.rating)].map((_, i) => (
-                        <StarIcon key={i} className="w-2.5 h-2.5 text-[#0F3B2E]" />
+                        <StarIcon key={i} className="w-2.5 h-2.5 text-[#045d65]" />
                     ))}
                 </div>
 
@@ -193,7 +193,7 @@ export default function ReviewsSection() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        <span className="text-[#0F3B2E] font-bold text-[10px] tracking-[0.2em] uppercase mb-1.5 block">
+                        <span className="text-[#045d65] font-bold text-[10px] tracking-[0.2em] uppercase mb-1.5 block">
                             Patient Testimonials
                         </span>
                         <h2 className="text-2xl md:text-3xl font-black text-[#1a1a1a] mb-3">
@@ -202,7 +202,7 @@ export default function ReviewsSection() {
                         <div className="flex items-center justify-center gap-2">
                             <div className="flex">
                                 {[...Array(5)].map((_, i) => (
-                                    <StarIcon key={i} className="w-3.5 h-3.5 text-[#0F3B2E]" />
+                                    <StarIcon key={i} className="w-3.5 h-3.5 text-[#045d65]" />
                                 ))}
                             </div>
                             <span className="text-[11px] font-bold text-gray-400">4.7 / 5.0 Rating on Google</span>
@@ -227,7 +227,7 @@ export default function ReviewsSection() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-1.5 bg-[#0F3B2E] text-white px-6 py-2 rounded-full font-bold text-[11px] shadow-md hover:bg-[#14523F] transition-all"
+                    className="inline-flex items-center gap-1.5 bg-[#045d65] text-white px-6 py-2 rounded-full font-bold text-[11px] shadow-md hover:bg-[#08717a] transition-all"
                 >
                     View More
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

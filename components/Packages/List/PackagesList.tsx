@@ -74,14 +74,14 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                     {/* Content Section */}
                                     <div className="px-3 pb-3.5 flex-grow flex flex-col items-center text-center -mt-2 relative z-10">
                                         <Link href={`/packages/${pkg.slug}`} className="block">
-                                            <h3 className="text-[13px] sm:text-[14px] font-bold text-[#1F2937] leading-tight line-clamp-1 group-hover:text-[#f88c29] transition-colors mb-0.5">
+                                            <h3 className="text-[13px] sm:text-[14px] font-bold text-[#1F2937] leading-tight line-clamp-1 group-hover:text-[#045d65] transition-colors mb-0.5">
                                                 {cleanTitle}
                                             </h3>
                                         </Link>
                                         
                                         {price && (
                                             <div className="mb-1">
-                                                <span className="text-[#f88c29] text-sm font-black tracking-tight">{price}</span>
+                                                <span className="text-[#045d65] text-sm font-black tracking-tight">{price}</span>
                                             </div>
                                         )}
 
@@ -94,16 +94,16 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                             <BookActionButton
                                                 label="Book Now"
                                                 whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
-                                                className="bg-[#f88c29] hover:bg-[#e67b1d] text-white py-2 rounded-full text-[10px] font-bold transition-all shadow-md hover:-translate-y-0.5 flex items-center justify-center w-full"
+                                                className="bg-[#045d65] hover:bg-[#034b52] text-white py-2 rounded-full text-[10px] font-bold transition-all shadow-md hover:-translate-y-0.5 flex items-center justify-center w-full"
                                             />
 
                                             {/* Link to Detail Page instead of Modal */}
                                             <Link
                                                 href={`/packages/${pkg.slug}`}
-                                                className="text-[#f88c29] group/btn font-bold text-[9px] flex items-center justify-center gap-1 hover:opacity-80 transition-all w-full"
+                                                className="text-[#045d65] group/btn font-bold text-[9px] flex items-center justify-center gap-1 hover:opacity-80 transition-all w-full"
                                             >
                                                 <span className="text-xs transition-transform group-hover/btn:translate-x-1">→</span>
-                                                <span className="border-b border-transparent group-hover/btn:border-[#f88c29]">Package Details ({pkg.testsTotal || pkg.subTests?.length || 0} Tests)</span>
+                                                <span className="border-b border-transparent group-hover/btn:border-[#045d65]">Package Details ({pkg.testsTotal || pkg.subTests?.length || 0} Tests)</span>
                                             </Link>
                                         </div>
                                     </div>
@@ -156,7 +156,7 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                             </div>
                                             <button
                                                 onClick={() => setSelectedPackage(null)}
-                                                className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#f88c29] hover:bg-[#f88c29]/5 transition-all"
+                                                className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#045d65] hover:bg-[#045d65]/5 transition-all"
                                             >
                                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
                                             </button>
@@ -185,7 +185,7 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                             <BookActionButton
                                                 label="Book Now"
                                                 whatsappText={`Hi, I would like to book the ${selectedPackage.title} package.`}
-                                                className="flex-1 bg-[#f88c29] text-white py-3.5 rounded-full text-sm font-bold hover:bg-[#e67b1d] transition-all text-center shadow-lg"
+                                                className="flex-1 bg-[#045d65] text-white py-3.5 rounded-full text-sm font-bold hover:bg-[#034b52] transition-all text-center shadow-lg"
                                             />
                                             <button
                                                 onClick={() => setSelectedPackage(null)}
@@ -211,11 +211,11 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                     background: transparent;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: #f88c2940;
+                    background: #045d6540;
                     border-radius: 10px;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: #f88c2980;
+                    background: #045d6580;
                 }
             `}} />
         </section>

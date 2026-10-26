@@ -27,7 +27,7 @@ export default function FloatingContact() {
             <motion.div 
                 initial={{ y: 100 }}
                 animate={{ y: 0 }}
-                className="lg:hidden fixed bottom-0 left-0 right-0 z-[110] bg-[#f88c29]/90 backdrop-blur-xl border-t border-white/10 text-white p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex items-center justify-between px-6"
+                className="lg:hidden fixed bottom-0 left-0 right-0 z-[110] bg-[#045d65]/90 backdrop-blur-xl border-t border-white/10 text-white p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex items-center justify-between px-6"
             >
                 <div className="flex flex-col">
                     <span className="font-bold text-[0.9rem] tracking-tight leading-tight">Need a Lab Test? We're Ready 24/7</span>
@@ -42,7 +42,7 @@ export default function FloatingContact() {
                         <PhoneIcon className="w-5 h-5" />
                     </a>
                     <a 
-                        href="https://wa.me/97142729302" 
+                        href="https://wa.me/971569925611"
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="bg-white/10 p-2.5 rounded-xl hover:bg-white/20 transition-all active:scale-95"
@@ -95,7 +95,7 @@ export default function FloatingContact() {
                         )}
                     </AnimatePresence>
                     <a 
-                        href="https://wa.me/97142729302" 
+                        href="https://wa.me/971569925611"
                         target="_blank" 
                         rel="noopener noreferrer"
                         onMouseEnter={() => setHovered('whatsapp')}

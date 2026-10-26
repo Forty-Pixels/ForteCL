@@ -18,6 +18,11 @@ const PLACEHOLDER_IMAGES = [
     '/Landing-page/tests/test-10.png',
 ];
 
+const TEST_NAME_OVERRIDES: Record<string, string> = {
+    'food-allergy-panel': 'Allergy, Food (60 Panel)',
+    bhcg: 'Beta HCG',
+};
+
 interface LabTestsProps {
     tests?: any[];
 }
@@ -28,7 +33,10 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
     const [canScrollRight, setCanScrollRight] = useState(true);
 
     // Limit to 18 tests for the carousel
-    const displayTests = tests.length > 0 ? tests.slice(0, 18) : [];
+    const displayTests = tests.slice(0, 18).map((test) => ({
+        ...test,
+        name: TEST_NAME_OVERRIDES[test.slug] ?? test.name,
+    }));
     
     const chunked = [];
     for (let i = 0; i < displayTests.length; i += 6) {
@@ -88,7 +96,7 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
 
                     <div className="relative z-10 flex flex-col items-start max-w-[34rem]">
                         <Reveal delayMs={70}>
-                            <span className="text-[#0F3B2E] font-black text-[10px] tracking-[0.3em] mb-4 uppercase block">
+                            <span className="text-[#045d65] font-black text-[10px] tracking-[0.3em] mb-4 uppercase block">
                                 Lab Tests
                             </span>
                         </Reveal>
@@ -104,7 +112,7 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
                         </Reveal>
 
                         <Reveal delayMs={280}>
-                            <Link href="/lab-tests" className="bg-[#0F3B2E] hover:bg-[#14523F] text-white px-4 py-2 sm:px-5 sm:py-2.5 md:px-7 md:py-3.5 lg:px-5 lg:py-2.5 xl:px-7 xl:py-3.5 rounded-xl text-[9px] sm:text-[10px] md:text-xs lg:text-[10px] xl:text-xs font-bold transition-all text-center w-full sm:w-auto uppercase tracking-wider active:scale-95 shadow-lg shadow-black/20">
+                            <Link href="/lab-tests" className="bg-[#045d65] hover:bg-[#08717a] text-white px-4 py-2 sm:px-5 sm:py-2.5 md:px-7 md:py-3.5 lg:px-5 lg:py-2.5 xl:px-7 xl:py-3.5 rounded-xl text-[9px] sm:text-[10px] md:text-xs lg:text-[10px] xl:text-xs font-bold transition-all text-center w-full sm:w-auto uppercase tracking-wider active:scale-95 shadow-lg shadow-black/20">
                                 Explore All Tests
                             </Link>
                         </Reveal>
@@ -158,7 +166,7 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
                                         disabled={!canScrollLeft}
                                         className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all shadow-sm ${
                                             canScrollLeft
-                                                ? 'border-gray-200 bg-white text-[#202020] hover:bg-[#0F3B2E] hover:border-[#0F3B2E] hover:text-white active:scale-90'
+                                                ? 'border-gray-200 bg-white text-[#202020] hover:bg-[#045d65] hover:border-[#045d65] hover:text-white active:scale-90'
                                                 : 'border-gray-200 bg-white text-gray-300 cursor-not-allowed'
                                         }`}
                                         aria-label="Previous Slide"
@@ -170,7 +178,7 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
                                         disabled={!canScrollRight}
                                         className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all shadow-sm ${
                                             canScrollRight
-                                                ? 'border-gray-200 bg-white text-[#202020] hover:bg-[#0F3B2E] hover:border-[#0F3B2E] hover:text-white active:scale-90'
+                                                ? 'border-gray-200 bg-white text-[#202020] hover:bg-[#045d65] hover:border-[#045d65] hover:text-white active:scale-90'
                                                 : 'border-gray-200 bg-white text-gray-300 cursor-not-allowed'
                                         }`}
                                         aria-label="Next Slide"

@@ -5,14 +5,14 @@ export default function MissionVision() {
     return (
         <section className="bg-white py-10 md:py-14 relative overflow-hidden">
             {/* Soft decorative background circles */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#f88c29]/5 rounded-full -mr-48 -mt-48 blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#f88c29]/3 rounded-full -ml-36 -mb-36 blur-3xl"></div>
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#045d65]/5 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#045d65]/3 rounded-full -ml-36 -mb-36 blur-3xl"></div>
 
             <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
                 
                 {/* Header Content - SMALLER */}
                 <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
-                    {/* Simplified Orange Tag - SMALLER */}
+                    {/* Simplified Teal Tag - SMALLER */}
                     <span className="text-[#307984] font-semibold text-[9px] sm:text-[10px] tracking-[0.15em] mb-2 block uppercase">
                         Our Standards
                     </span>
@@ -30,7 +30,7 @@ export default function MissionVision() {
                     
                     {/* Goal Card - SMALLER PADDING */}
                     <div className="relative group p-8 md:p-10 bg-white rounded-[2rem] border border-gray-100 shadow-xl overflow-hidden flex flex-col justify-center">
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#f88c29] to-transparent opacity-30"></div>
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#045d65] to-transparent opacity-30"></div>
                         <div className="relative z-10">
                              <div className="text-[9px] font-black uppercase tracking-[0.2em] text-[#307984]/60 mb-4">Strategic Objective</div>
                              <h3 className="text-xl md:text-2xl font-bold text-[#202020] leading-tight">
@@ -46,7 +46,7 @@ export default function MissionVision() {
                     {/* PAR Cards - COMPACT */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
                         <div className="flex-1 flex flex-col sm:flex-row gap-3">
-                            <div className="flex-1 bg-[#f88c29] p-6 rounded-[1.5rem] text-white flex flex-col justify-between group hover:-translate-y-1 transition-transform">
+                            <div className="flex-1 bg-[#045d65] p-6 rounded-[1.5rem] text-white flex flex-col justify-between group hover:-translate-y-1 transition-transform">
                                 <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center mb-4">
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -66,7 +66,7 @@ export default function MissionVision() {
                         <div className="bg-[#202020] p-6 rounded-[1.5rem] text-white flex items-center justify-between group hover:-translate-y-1 transition-transform font-bold text-lg">
                             <span className="opacity-90 group-hover:opacity-100 transition-opacity">Every Time</span>
                             <div className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center">
-                                <div className="w-1.5 h-1.5 bg-[#f88c29] rounded-full animate-pulse"></div>
+                                <div className="w-1.5 h-1.5 bg-[#045d65] rounded-full animate-pulse"></div>
                             </div>
                         </div>
                     </div>

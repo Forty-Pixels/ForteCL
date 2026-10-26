@@ -22,7 +22,7 @@ export default function TestDetailHero({ test }: Props) {
 
             <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
                 <Reveal delayMs={70}>
-                    <span className="text-[#f88c29] font-semibold text-xs tracking-[0.2em] mb-4 uppercase block">
+                    <span className="text-[#045d65] font-semibold text-xs tracking-[0.2em] mb-4 uppercase block">
                         Lab Test
                     </span>
                 </Reveal>

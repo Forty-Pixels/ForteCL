@@ -36,7 +36,7 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
                 <Navbar currentPage="Departments" />
             </div>
 
-            {/* The ORANGE BOX HERO with Diagonal Stripes Background */}
+            {/* The TEAL BOX HERO with Diagonal Stripes Background */}
             <section className="relative pt-40 pb-0 bg-white overflow-hidden flex items-start">
                 {/* Diagonal Stripes Background */}
                 <div className="absolute inset-0 z-0">
@@ -51,7 +51,7 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
                 </div>
 
                 <div className="w-full relative z-10 flex justify-end">
-                    <div className="relative bg-[#f88c29] rounded-tl-[4rem] rounded-bl-none p-8 sm:p-12 lg:p-20 shadow-2xl w-full lg:w-[96%] min-h-[400px] flex flex-col justify-center">
+                    <div className="relative bg-[#045d65] rounded-tl-[4rem] rounded-bl-none p-8 sm:p-12 lg:p-20 shadow-2xl w-full lg:w-[96%] min-h-[400px] flex flex-col justify-center">
 
                         <Reveal>
                             <div className="max-w-4xl">
@@ -85,7 +85,7 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
                                 <Reveal key={test.slug} delayMs={index * 50}>
                                     <Link 
                                         href={test.slug === 'nipt' ? `/departments/molecular/nipt` : `/departments/${department.id}/${test.slug}`}
-                                        className="group relative bg-[#f88c29] rounded-[0.75rem] p-5 h-[140px] flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                                        className="group relative bg-[#045d65] rounded-[0.75rem] p-5 h-[140px] flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                                     >
                                         <div className="flex justify-between items-start">
                                             <h3 className="text-base font-bold text-white leading-tight max-w-[85%] uppercase">

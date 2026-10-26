@@ -77,7 +77,7 @@ const packages = [
             "Rare Autosomal Trisomies (9, 16, 22)",
             "Fetal Gender Determination"
         ],
-        color: "bg-[#f88c29]"
+        color: "bg-[#045d65]"
     },
     {
         name: "NIPT ADVANCED PLUS SCREEN",
@@ -112,14 +112,14 @@ export default function NiptPage() {
                 </div>
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <Reveal delayMs={100}>
-                        <span className="inline-block px-4 py-1.5 rounded-full bg-[#f88c29] text-white text-[10px] font-bold tracking-widest uppercase mb-6">
+                        <span className="inline-block px-4 py-1.5 rounded-full bg-[#045d65] text-white text-[10px] font-bold tracking-widest uppercase mb-6">
                             Advanced Prenatal Screening
                         </span>
                     </Reveal>
                     <Reveal delayMs={200}>
                         <h1 className="text-4xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
                             NIPT TEST IN DUBAI – <br />
-                            <span className="text-[#f88c29]">SAFE, ACCURATE & EARLY SCREENING</span>
+                            <span className="text-[#045d65]">SAFE, ACCURATE & EARLY SCREENING</span>
                         </h1>
                     </Reveal>
                     <Reveal delayMs={300}>
@@ -132,7 +132,7 @@ export default function NiptPage() {
                             <BookActionButton 
                                 label="BOOK APPOINTMENT"
                                 whatsappText="Hi, I would like to book an NIPT test."
-                                className="bg-[#f88c29] hover:bg-[#e67b1d] text-white px-8 py-4 rounded-full font-bold transition-all"
+                                className="bg-[#045d65] hover:bg-[#034b52] text-white px-8 py-4 rounded-full font-bold transition-all"
                             />
                             <Link href="#packages" className="border border-white/20 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold transition-all">
                                 VIEW PACKAGES
@@ -172,7 +172,7 @@ export default function NiptPage() {
                             </Reveal>
                             <div className="grid sm:grid-cols-2 gap-6 mt-10">
                                 <Reveal delayMs={400} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                                    <ShieldCheckIcon className="w-10 h-10 text-[#f88c29] mb-4" />
+                                    <ShieldCheckIcon className="w-10 h-10 text-[#045d65] mb-4" />
                                     <h4 className="font-bold mb-2">100% Risk Free</h4>
                                     <p className="text-sm text-gray-500">No risk of miscarriage or complications for mother or baby.</p>
                                 </Reveal>
@@ -208,10 +208,10 @@ export default function NiptPage() {
                             { step: "04", title: "Expert Reporting", desc: "Detailed, clinically validated reporting by our specialists." }
                         ].map((item, idx) => (
                             <Reveal key={idx} delayMs={300 + idx * 100} className="relative group">
-                                <div className="text-6xl font-black text-gray-100 absolute -top-10 left-0 group-hover:text-[#f88c29]/10 transition-colors">
+                                <div className="text-6xl font-black text-gray-100 absolute -top-10 left-0 group-hover:text-[#045d65]/10 transition-colors">
                                     {item.step}
                                 </div>
-                                <div className="relative pt-10 border-t-2 border-gray-100 group-hover:border-[#f88c29] transition-colors">
+                                <div className="relative pt-10 border-t-2 border-gray-100 group-hover:border-[#045d65] transition-colors">
                                     <h4 className="text-xl font-bold mb-3">{item.title}</h4>
                                     <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                                 </div>
@@ -231,12 +231,12 @@ export default function NiptPage() {
                             </Reveal>
                             <div className="space-y-12">
                                 <div>
-                                    <h4 className="text-[#f88c29] font-bold uppercase tracking-wider text-sm mb-6">Common Chromosomal Disorders</h4>
+                                    <h4 className="text-[#045d65] font-bold uppercase tracking-wider text-sm mb-6">Common Chromosomal Disorders</h4>
                                     <ul className="grid sm:grid-cols-1 gap-4">
                                         {["Trisomy 21 (Down Syndrome)", "Trisomy 18 (Edwards Syndrome)", "Trisomy 13 (Patau Syndrome)"].map((cond, i) => (
                                             <li key={i} className="flex items-center gap-3">
-                                                <div className="w-6 h-6 rounded-full bg-[#f88c29]/20 flex items-center justify-center">
-                                                    <CheckIcon className="w-4 h-4 text-[#f88c29]" />
+                                                <div className="w-6 h-6 rounded-full bg-[#045d65]/20 flex items-center justify-center">
+                                                    <CheckIcon className="w-4 h-4 text-[#045d65]" />
                                                 </div>
                                                 <span className="font-medium">{cond}</span>
                                             </li>
@@ -260,14 +260,14 @@ export default function NiptPage() {
                         </div>
                         <Reveal delayMs={300}>
                             <div className="bg-white/5 border border-white/10 p-10 rounded-[40px] backdrop-blur-sm">
-                                <div className="text-[#f88c29] text-5xl font-black mb-6">99.99%</div>
+                                <div className="text-[#045d65] text-5xl font-black mb-6">99.99%</div>
                                 <h3 className="text-2xl font-bold mb-6">Accuracy and Reliability</h3>
                                 <p className="text-white/60 leading-relaxed mb-8">
                                     NIPT IS A HIGHLY ADVANCED SCREENING TEST WITH UP TO 99.99% ACCURACY FOR COMMON CHROMOSOMAL CONDITIONS, OFFERING RELIABLE AND EARLY REASSURANCE FOR EXPECTING PARENTS.
                                 </p>
-                                <div className="flex items-start gap-4 p-4 bg-orange-500/10 rounded-2xl border border-orange-500/20">
-                                    <InformationCircleIcon className="w-6 h-6 text-[#f88c29] flex-shrink-0" />
-                                    <p className="text-xs text-orange-200">
+                                <div className="flex items-start gap-4 p-4 bg-[#045d65]/10 rounded-2xl border border-[#045d65]/20">
+                                    <InformationCircleIcon className="w-6 h-6 text-[#045d65] flex-shrink-0" />
+                                    <p className="text-xs text-[#b9dadd]">
                                         Important: NIPT is a screening test, not a diagnostic test. Any high-risk result should be confirmed with diagnostic procedures under medical guidance.
                                     </p>
                                 </div>
@@ -309,7 +309,7 @@ export default function NiptPage() {
                                 "Anyone seeking early, non-invasive reassurance"
                             ].map((item, i) => (
                                 <Reveal key={i} delayMs={400 + i * 100} className="p-6 bg-gray-50 rounded-2xl hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-gray-100">
-                                    <div className="w-8 h-8 rounded-full bg-[#f88c29] text-white flex items-center justify-center font-bold mb-4">
+                                    <div className="w-8 h-8 rounded-full bg-[#045d65] text-white flex items-center justify-center font-bold mb-4">
                                         {i + 1}
                                     </div>
                                     <p className="font-medium text-gray-700">{item}</p>
@@ -341,8 +341,8 @@ export default function NiptPage() {
                             { title: "Patient-Centric Care", desc: "Ensuring complete privacy, comfort, and dedicated support." }
                         ].map((item, idx) => (
                             <Reveal key={idx} delayMs={300 + idx * 50} className="bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
-                                <div className="w-12 h-12 rounded-2xl bg-[#f88c29]/10 flex items-center justify-center mb-6">
-                                    <CheckIcon className="w-6 h-6 text-[#f88c29]" />
+                                <div className="w-12 h-12 rounded-2xl bg-[#045d65]/10 flex items-center justify-center mb-6">
+                                    <CheckIcon className="w-6 h-6 text-[#045d65]" />
                                 </div>
                                 <h4 className="text-lg font-bold text-[#061414] mb-3">{item.title}</h4>
                                 <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
@@ -392,8 +392,8 @@ export default function NiptPage() {
                                 <h3 className="text-2xl font-bold mb-8">Why it's better than visiting a lab</h3>
                                 <div className="space-y-8">
                                     <div className="flex gap-4">
-                                        <div className="w-12 h-12 rounded-full bg-[#f88c29]/10 flex items-center justify-center flex-shrink-0">
-                                            <ClockIcon className="w-6 h-6 text-[#f88c29]" />
+                                        <div className="w-12 h-12 rounded-full bg-[#045d65]/10 flex items-center justify-center flex-shrink-0">
+                                            <ClockIcon className="w-6 h-6 text-[#045d65]" />
                                         </div>
                                         <div>
                                             <h4 className="font-bold">Convenience</h4>
@@ -412,7 +412,7 @@ export default function NiptPage() {
                                     <BookActionButton 
                                         label="BOOK APPOINTMENT"
                                         whatsappText="Hi, I'd like to book an NIPT test."
-                                        className="w-full bg-[#061414] text-white py-4 rounded-2xl font-bold hover:bg-[#f88c29] transition-all mt-4"
+                                        className="w-full bg-[#061414] text-white py-4 rounded-2xl font-bold hover:bg-[#045d65] transition-all mt-4"
                                     />
                                 </div>
                             </div>
@@ -443,7 +443,7 @@ export default function NiptPage() {
                                     <ul className="space-y-4 mb-10">
                                         {pkg.features.map((feature, i) => (
                                             <li key={i} className="flex gap-3 text-sm text-gray-600">
-                                                <CheckIcon className="w-5 h-5 text-[#f88c29] flex-shrink-0" />
+                                                <CheckIcon className="w-5 h-5 text-[#045d65] flex-shrink-0" />
                                                 {feature}
                                             </li>
                                         ))}
@@ -451,7 +451,7 @@ export default function NiptPage() {
                                     <BookActionButton 
                                         label="SELECT PANEL"
                                         whatsappText={`Hi, I'm interested in the ${pkg.name}.`}
-                                        className="w-full border-2 border-gray-100 py-3 rounded-2xl font-bold hover:border-[#f88c29] hover:text-[#f88c29] transition-all"
+                                        className="w-full border-2 border-gray-100 py-3 rounded-2xl font-bold hover:border-[#045d65] hover:text-[#045d65] transition-all"
                                     />
                                 </div>
                             </Reveal>
@@ -513,7 +513,7 @@ export default function NiptPage() {
                                             <Image src={`/avatars/user-${i}.png`} alt="User" fill className="object-cover opacity-50" />
                                         </div>
                                     ))}
-                                    <div className="w-10 h-10 rounded-full border-2 border-[#061414] bg-[#f88c29] flex items-center justify-center text-[10px] font-bold text-white">
+                                    <div className="w-10 h-10 rounded-full border-2 border-[#061414] bg-[#045d65] flex items-center justify-center text-[10px] font-bold text-white">
                                         +500
                                     </div>
                                 </div>

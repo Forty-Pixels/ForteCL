@@ -10,11 +10,11 @@ export default function DepartmentGrid() {
     return (
         <section className="bg-white pt-16 lg:pt-24 pb-24 relative overflow-hidden rounded-t-[2.5rem] lg:rounded-t-[4rem] -mt-16 lg:-mt-20 z-20">
             {/* Background decorative elements */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-[#f88c29]/5 -skew-x-12 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-[#045d65]/5 -skew-x-12 translate-x-1/2" />
             
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 <div className="mb-16">
-                    <h2 className="text-sm font-black text-[#f88c29] uppercase tracking-[0.4em] mb-4">
+                    <h2 className="text-sm font-black text-[#045d65] uppercase tracking-[0.4em] mb-4">
                         Clinical Excellence
                     </h2>
                     <h3 className="text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
@@ -43,7 +43,7 @@ export default function DepartmentGrid() {
                                 {/* Content */}
                                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
                                     <div className="mb-4">
-                                        <div className="h-1 w-8 bg-[#f88c29] mb-4 group-hover:w-16 transition-all duration-500" />
+                                        <div className="h-1 w-8 bg-[#045d65] mb-4 group-hover:w-16 transition-all duration-500" />
                                         <h4 className="text-2xl font-black text-white uppercase tracking-tight mb-2">
                                             {dept.title}
                                         </h4>
@@ -59,7 +59,7 @@ export default function DepartmentGrid() {
                                 </div>
 
                                 {/* Hover Border Effect */}
-                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#f88c29]/30 rounded-[2.5rem] transition-all duration-500" />
+                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#045d65]/30 rounded-[2.5rem] transition-all duration-500" />
                             </Link>
                         </Reveal>
                     ))}

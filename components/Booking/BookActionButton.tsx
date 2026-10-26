@@ -18,7 +18,7 @@ export default function BookActionButton({
     whatsappText = 'Hi, I would like to book a test.',
     modalTitle = 'Choose Booking Method',
     phoneNumber = '+97142718226',
-    whatsappNumber = '97142729302',
+    whatsappNumber = '971569925611',
 }: BookActionButtonProps) {
     const [open, setOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
@@ -59,7 +59,7 @@ export default function BookActionButton({
                     <button
                         type="button"
                         onClick={() => setOpen(false)}
-                        className="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-[#f88c29] hover:bg-[#fff4ea] transition-colors"
+                        className="w-8 h-8 rounded-full bg-gray-100 text-gray-500 hover:text-[#045d65] hover:bg-[#eaf4f4] transition-colors"
                         aria-label="Close"
                     >
                         ×
@@ -73,7 +73,7 @@ export default function BookActionButton({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <a
                         href={telUrl}
-                        className="inline-flex items-center justify-center rounded-xl bg-[#f88c29] hover:bg-[#e67b1d] text-white font-semibold py-3 px-4 transition-colors shadow-md"
+                        className="inline-flex items-center justify-center rounded-xl bg-[#045d65] hover:bg-[#034b52] text-white font-semibold py-3 px-4 transition-colors shadow-md"
                     >
                         Call Now
                     </a>
@@ -81,7 +81,7 @@ export default function BookActionButton({
                         href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center rounded-xl border border-[#f88c29]/25 text-[#f88c29] hover:bg-[#f88c29] hover:text-white font-semibold py-3 px-4 transition-colors"
+                        className="inline-flex items-center justify-center rounded-xl border border-[#045d65]/25 text-[#045d65] hover:bg-[#045d65] hover:text-white font-semibold py-3 px-4 transition-colors"
                     >
                         WhatsApp
                     </a>

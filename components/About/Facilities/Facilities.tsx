@@ -58,8 +58,8 @@ export default function Facilities() {
 
                     {/* Right Content */}
                     <div className="flex flex-col items-start px-2 lg:px-0">
-                        {/* Simplified Orange Tag - SMALLER */}
-                        <span className="text-[#f88c29] font-semibold text-[9px] sm:text-[10px] tracking-[0.15em] mb-2 block uppercase">
+                        {/* Simplified Teal Tag - SMALLER */}
+                        <span className="text-[#045d65] font-semibold text-[9px] sm:text-[10px] tracking-[0.15em] mb-2 block uppercase">
                             Our Infrastructure
                         </span>
 

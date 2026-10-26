@@ -9,7 +9,7 @@ export default function DepartmentCTA() {
         <section className="bg-white pt-10 pb-0">
             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                 <Reveal>
-                    <div className="bg-[#f88c29] rounded-t-[1.5rem] p-12 sm:p-16 lg:p-20 flex flex-col lg:flex-row items-center justify-between gap-12">
+                    <div className="bg-[#045d65] rounded-t-[1.5rem] p-12 sm:p-16 lg:p-20 flex flex-col lg:flex-row items-center justify-between gap-12">
                         <div className="max-w-xl text-center lg:text-left">
                             <h2 className="text-white text-xl sm:text-2xl lg:text-3xl font-black leading-[1.2] uppercase tracking-tight">
                                 TAKING YOUR CLINICAL DIAGNOSTICS <br />

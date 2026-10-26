@@ -19,7 +19,7 @@ export const labTests: LabTest[] = [
     slug: "acid-fast-stain",
     name: "Acid Fast Stain (ZN Stain)",
     diseaseFilter: "Specialized Tests",
-    department: "Clinical Chemistry",
+    department: "Microbiology",
     tat: "1-2 Days",
     sampleType: ["Miscellaneous specimens in a sterile screw capped container","OR Swabs in sterile normal saline"],
     overview: "",
@@ -73,7 +73,7 @@ export const labTests: LabTest[] = [
   },
   {
     slug: "food-allergy-panel",
-    name: "Allergy, Food (20 Panel)",
+    name: "Allergy, Food (60 Panel)",
     diseaseFilter: "Allergies & Intolerances",
     department: "Immunology",
     tat: "3-5 Days",
@@ -171,7 +171,7 @@ export const labTests: LabTest[] = [
   },
   {
     slug: "bhcg",
-    name: "Beta HCG Qualitative",
+    name: "Beta HCG",
     diseaseFilter: "Female Fertility Tests",
     department: "Immunology",
     tat: "1 Day",
@@ -847,7 +847,7 @@ export const labTests: LabTest[] = [
                 "Rare Autosomal Trisomies (9, 16, 22)",
                 "Fetal Gender Determination"
             ],
-            color: "bg-[#f88c29]"
+            color: "bg-[#045d65]"
         },
         {
             name: "NIPT ADVANCED PLUS SCREEN",

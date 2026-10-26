@@ -66,7 +66,7 @@ export default function DepartmentList() {
                                 ))}
 
                                 {/* Key Services */}
-                                <h3 className="text-[10px] font-black text-[#f88c29] uppercase tracking-widest mb-4 px-1">
+                                <h3 className="text-[10px] font-black text-[#045d65] uppercase tracking-widest mb-4 px-1">
                                     Our Key Services
                                 </h3>
                                 <div className="flex flex-wrap gap-2 mb-6">

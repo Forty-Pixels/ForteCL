@@ -42,7 +42,7 @@ export default function Departments() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                         </div>
                         {/* Compact DHA badge */}
-                        <div className="absolute -bottom-4 -right-2 bg-[#0F3B2E] p-4 md:p-5 rounded-xl shadow-lg z-10 border-2 border-white">
+                        <div className="absolute -bottom-4 -right-2 bg-[#045d65] p-4 md:p-5 rounded-xl shadow-lg z-10 border-2 border-white">
                             <div className="text-white text-lg md:text-xl font-black leading-none mb-0.5">DHA</div>
                             <div className="text-white/80 text-[7px] font-bold uppercase tracking-widest leading-none">Approved</div>
                         </div>
@@ -51,7 +51,7 @@ export default function Departments() {
                     {/* Content Column */}
                     <div className="flex flex-col items-start order-1 lg:order-2">
                         <Reveal delayMs={70}>
-                            <span className="text-[#0F3B2E] font-semibold text-[10px] sm:text-xs tracking-wider mb-2 block">
+                            <span className="text-[#045d65] font-semibold text-[10px] sm:text-xs tracking-wider mb-2 block">
                                 OUR SPECIALIZATIONS
                             </span>
                         </Reveal>
@@ -75,12 +75,12 @@ export default function Departments() {
                                 <Reveal key={dept.name} delayMs={250 + (i * 50)}>
                                     <Link 
                                         href={`/departments/${dept.id}`}
-                                        className="group flex items-center gap-2.5 bg-white p-2.5 rounded-lg border border-gray-100 hover:shadow-md hover:border-[#0F3B2E]/20 transition-all duration-300"
+                                        className="group flex items-center gap-2.5 bg-white p-2.5 rounded-lg border border-gray-100 hover:shadow-md hover:border-[#045d65]/20 transition-all duration-300"
                                     >
-                                        <div className="flex-shrink-0 w-8 h-8 rounded bg-white border border-gray-100 flex items-center justify-center group-hover:bg-[#0F3B2E] group-hover:border-[#0F3B2E] transition-all duration-300 shadow-sm">
-                                            <dept.icon className="w-4 h-4 text-[#0F3B2E] group-hover:text-white transition-colors" />
+                                        <div className="flex-shrink-0 w-8 h-8 rounded bg-white border border-gray-100 flex items-center justify-center group-hover:bg-[#045d65] group-hover:border-[#045d65] transition-all duration-300 shadow-sm">
+                                            <dept.icon className="w-4 h-4 text-[#045d65] group-hover:text-white transition-colors" />
                                         </div>
-                                        <span className="text-[10px] md:text-xs font-bold text-gray-700 transition-colors group-hover:text-[#0F3B2E]">
+                                        <span className="text-[10px] md:text-xs font-bold text-gray-700 transition-colors group-hover:text-[#045d65]">
                                             {dept.name}
                                         </span>
                                     </Link>

@@ -47,8 +47,8 @@ export default function LeadingTheWay() {
                 {/* Intro Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start mb-16">
                     <div className="flex flex-col items-start">
-                        {/* Simplified Orange Tag - SMALLER */}
-                        <span className="text-[#f88c29] font-semibold text-[9px] sm:text-[10px] tracking-[0.15em] mb-2 block uppercase">
+                        {/* Simplified Teal Tag - SMALLER */}
+                        <span className="text-[#045d65] font-semibold text-[9px] sm:text-[10px] tracking-[0.15em] mb-2 block uppercase">
                             Who Are We?
                         </span>
                         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#202020] mb-6 leading-tight">
@@ -123,7 +123,7 @@ export default function LeadingTheWay() {
                         <div className="space-y-3">
                             {uniquePoints.map((point, idx) => (
                                 <div key={idx} className="flex items-start gap-3">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#f88c29] mt-1.5 flex-shrink-0"></div>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#045d65] mt-1.5 flex-shrink-0"></div>
                                     <p className="text-[13px] text-gray-600">{point}</p>
                                 </div>
                             ))}
@@ -136,7 +136,7 @@ export default function LeadingTheWay() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                             {specialties.map((spec, idx) => (
                                 <div key={idx} className="flex items-center gap-2.5 py-1.5 border-b border-gray-100">
-                                    <svg className="w-3.5 h-3.5 text-[#f88c29] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg className="w-3.5 h-3.5 text-[#045d65] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                     </svg>
                                     <span className="text-[13px] text-gray-700">{spec}</span>

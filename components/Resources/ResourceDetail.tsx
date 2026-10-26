@@ -161,7 +161,7 @@ export default function ResourceDetail({ post, relatedPosts }: ResourceDetailPro
                                         <BookActionButton
                                             label="Book a Test"
                                             whatsappText={`Hi, I would like to book a test after reading \"${post.title}\".`}
-                                            className="block w-full text-center bg-[#f88c29] hover:bg-[#e67b1d] text-white rounded-xl py-4 font-bold text-sm transition-all shadow-md active:scale-95"
+                                            className="block w-full text-center bg-[#045d65] hover:bg-[#034b52] text-white rounded-xl py-4 font-bold text-sm transition-all shadow-md active:scale-95"
                                         />
                                     </div>
                                 </div>

@@ -45,7 +45,7 @@ export default function TrustAndTech() {
                        
                     </div>
 
-                    <div className="order-1 lg:order-2 flex flex-col items-center text-center lg:items-start lg:text-left bg-[#0F3B2E] p-8 md:p-10 rounded-[40px]">
+                    <div className="order-1 lg:order-2 flex flex-col items-center text-center lg:items-start lg:text-left bg-[#045d65] p-8 md:p-10 rounded-[40px]">
                         <Reveal delayMs={70}>
                             <span className="text-white/80 font-medium text-[0.65rem] tracking-[0.2em] mb-3 uppercase block">
                                 Precision & Accreditation

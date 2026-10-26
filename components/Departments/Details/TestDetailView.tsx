@@ -40,10 +40,10 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full py-4 flex items-center justify-between text-left group"
             >
-                <span className={`text-base font-bold transition-colors ${isOpen ? 'text-[#f88c29]' : 'text-gray-900'}`}>
+                <span className={`text-base font-bold transition-colors ${isOpen ? 'text-[#045d65]' : 'text-gray-900'}`}>
                     {question}
                 </span>
-                <div className={`p-1.5 rounded-lg transition-all ${isOpen ? 'bg-[#f88c29] text-white' : 'bg-gray-50 text-gray-400 group-hover:bg-gray-100'}`}>
+                <div className={`p-1.5 rounded-lg transition-all ${isOpen ? 'bg-[#045d65] text-white' : 'bg-gray-50 text-gray-400 group-hover:bg-gray-100'}`}>
                     {isOpen ? <ChevronUpIcon className="w-4 h-4" /> : <ChevronDownIcon className="w-4 h-4" />}
                 </div>
             </button>
@@ -106,8 +106,8 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                         className="object-cover object-right scale-105"
                         priority
                     />
-                    {/* Orange Side Fade Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#f88c29] via-[#f88c29]/95 to-transparent lg:w-[70%] w-full" />
+                    {/* Teal Side Fade Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#045d65] via-[#045d65]/95 to-transparent lg:w-[70%] w-full" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
@@ -137,12 +137,12 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             <div className="flex flex-wrap gap-4">
                                 <Link 
                                     href="/contact"
-                                    className="px-8 py-3.5 rounded-xl bg-white text-[#f88c29] font-black text-xs uppercase tracking-wider shadow-xl hover:bg-gray-100 transition-all hover:-translate-y-1"
+                                    className="px-8 py-3.5 rounded-xl bg-white text-[#045d65] font-black text-xs uppercase tracking-wider shadow-xl hover:bg-gray-100 transition-all hover:-translate-y-1"
                                 >
                                     Book Appointment
                                 </Link>
                                 <a 
-                                    href="https://wa.me/97142729302" 
+                                    href="https://wa.me/971569925611"
                                     target="_blank"
                                     className="px-8 py-3.5 rounded-xl bg-white text-gray-900 font-black text-xs uppercase tracking-wider hover:bg-gray-100 transition-all flex items-center gap-2 shadow-xl"
                                 >
@@ -183,7 +183,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                 </p>
                                 <Link 
                                     href="/contact"
-                                    className="inline-block px-8 py-3 rounded-lg bg-[#f88c29] text-white font-black text-xs uppercase tracking-wider hover:bg-[#e67b1d] transition-all shadow-md"
+                                    className="inline-block px-8 py-3 rounded-lg bg-[#045d65] text-white font-black text-xs uppercase tracking-wider hover:bg-[#034b52] transition-all shadow-md"
                                 >
                                     Talk to an Expert
                                 </Link>
@@ -205,7 +205,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                 <div className="space-y-4">
                                     {(test.commonTests || []).slice(0, 5).map((item, idx) => (
                                         <div key={idx} className="flex gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-[#f88c29] flex items-center justify-center shrink-0 text-white font-black text-xs">
+                                            <div className="w-8 h-8 rounded-full bg-[#045d65] flex items-center justify-center shrink-0 text-white font-black text-xs">
                                                 {idx + 1}
                                             </div>
                                             <p className="text-base text-gray-700 font-bold py-1">
@@ -228,7 +228,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
             {/* 4. "How it Works" (Gradient Section) */}
             <section className="py-12">
                 <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="relative rounded-[2rem] bg-gradient-to-br from-[#f88c29] to-[#d46a0a] p-8 lg:p-12 overflow-hidden shadow-xl">
+                    <div className="relative rounded-[2rem] bg-gradient-to-br from-[#045d65] to-[#023f45] p-8 lg:p-12 overflow-hidden shadow-xl">
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                         
                         <div className="relative z-10 text-center mb-10">
@@ -241,7 +241,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             {(test.keyServices || []).slice(0, 4).map((service, idx) => (
                                 <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-all group">
-                                    <div className="w-8 h-8 rounded-lg bg-white text-[#f88c29] flex items-center justify-center mb-3 font-black text-sm group-hover:scale-110 transition-transform">
+                                    <div className="w-8 h-8 rounded-lg bg-white text-[#045d65] flex items-center justify-center mb-3 font-black text-sm group-hover:scale-110 transition-transform">
                                         {idx + 1}
                                     </div>
                                     <h4 className="text-base font-black text-white mb-2 leading-tight">{service}</h4>
@@ -270,7 +270,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             <Reveal key={idx} delayMs={idx * 150}>
                                 <div className="text-center group">
                                     <div className="relative w-28 h-28 lg:w-36 lg:h-36 mx-auto mb-6">
-                                        <div className="absolute inset-0 bg-[#f88c29]/10 rounded-full group-hover:scale-110 transition-transform duration-500" />
+                                        <div className="absolute inset-0 bg-[#045d65]/10 rounded-full group-hover:scale-110 transition-transform duration-500" />
                                         <div className="absolute inset-3 rounded-full overflow-hidden border-2 border-white shadow-lg">
                                             <Image 
                                                 src={step.image || `/p_${['book', 'sample', 'lab', 'report'][idx]}.png`} 
@@ -279,7 +279,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                                 className="object-cover group-hover:scale-110 transition-transform duration-500" 
                                             />
                                         </div>
-                                        <div className="absolute top-0 right-0 w-8 h-8 bg-[#f88c29] text-white rounded-full flex items-center justify-center font-black text-xs shadow-md">
+                                        <div className="absolute top-0 right-0 w-8 h-8 bg-[#045d65] text-white rounded-full flex items-center justify-center font-black text-xs shadow-md">
                                             {idx + 1}
                                         </div>
                                     </div>
@@ -296,7 +296,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
 
             {/* 6. Accuracy Note (Special for NIPT) */}
             {test.accuracyNote && (
-                <section className="py-16 bg-[#f88c29] text-white">
+                <section className="py-16 bg-[#045d65] text-white">
                     <div className="container mx-auto px-6 max-w-4xl text-center">
                         <Reveal>
                             <div className="inline-block p-3 rounded-2xl bg-white/10 border border-white/20 mb-8">
@@ -323,7 +323,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             {test.packages.map((pkg, idx) => (
                                 <Reveal key={idx} delayMs={idx * 100}>
                                     <div className="bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl hover:-translate-y-2 transition-all flex flex-col h-full">
-                                        <div className={`p-8 ${pkg.color || 'bg-[#f88c29]'} text-white text-center`}>
+                                        <div className={`p-8 ${pkg.color || 'bg-[#045d65]'} text-white text-center`}>
                                             <h3 className="text-xl font-bold mb-2 uppercase tracking-tight">{pkg.name}</h3>
                                             <p className="text-white/70 text-[10px] font-medium leading-relaxed">{pkg.description}</p>
                                         </div>
@@ -331,7 +331,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                             <ul className="space-y-4 mb-10">
                                                 {pkg.features.map((feature, i) => (
                                                     <li key={i} className="flex gap-3 text-sm text-gray-600 font-medium">
-                                                        <CheckCircleIcon className="w-5 h-5 text-[#f88c29] shrink-0" />
+                                                        <CheckCircleIcon className="w-5 h-5 text-[#045d65] shrink-0" />
                                                         {feature}
                                                     </li>
                                                 ))}
@@ -340,7 +340,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                                 <BookActionButton 
                                                     label="Enquire Now"
                                                     whatsappText={`Hi, I'm interested in the ${pkg.name}.`}
-                                                    className="w-full border-2 border-gray-100 py-3 rounded-xl font-black text-xs uppercase tracking-wider text-[#307984] hover:border-[#f88c29] hover:text-[#f88c29] transition-all"
+                                                    className="w-full border-2 border-gray-100 py-3 rounded-xl font-black text-xs uppercase tracking-wider text-[#307984] hover:border-[#045d65] hover:text-[#045d65] transition-all"
                                                 />
                                             </div>
                                         </div>
@@ -360,7 +360,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-3">
                                 Frequently Asked Questions
                             </h2>
-                            <div className="h-1 w-16 bg-[#f88c29] mx-auto rounded-full" />
+                            <div className="h-1 w-16 bg-[#045d65] mx-auto rounded-full" />
                         </div>
                         
                         <div className="bg-white rounded-[2rem] p-6 lg:p-10 shadow-lg border border-gray-100">
@@ -391,7 +391,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             <div className="flex flex-wrap justify-center gap-4">
                                 <Link 
                                     href="/contact"
-                                    className="px-10 py-4 rounded-xl bg-[#f88c29] text-white font-black text-xs uppercase tracking-wider hover:bg-[#e67b1d] transition-all shadow-xl"
+                                    className="px-10 py-4 rounded-xl bg-[#045d65] text-white font-black text-xs uppercase tracking-wider hover:bg-[#034b52] transition-all shadow-xl"
                                 >
                                     Schedule Appointment Now
                                 </Link>

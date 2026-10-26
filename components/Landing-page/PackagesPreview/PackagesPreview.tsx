@@ -80,7 +80,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                                             />
                                         ) : (
-                                            <div className="absolute inset-0 bg-gradient-to-br from-[#0F3B2E] to-[#2D785B]" />
+                                            <div className="absolute inset-0 bg-gradient-to-br from-[#045d65] to-[#08717a]" />
                                         )}
                                     </div>
 
@@ -108,7 +108,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
                                             <BookActionButton
                                                 label="BOOK NOW"
                                                 whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
-                                                className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#0F3B2E] hover:text-white transition-all duration-300"
+                                                className="w-full rounded-full bg-white px-4 py-2.5 text-[10px] font-bold text-black hover:bg-[#045d65] hover:text-white transition-all duration-300"
                                             />
                                         </div>
                                     </div>

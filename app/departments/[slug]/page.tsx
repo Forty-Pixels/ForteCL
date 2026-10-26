@@ -12,6 +12,8 @@ interface DepartmentPageProps {
     }>;
 }
 
+export const revalidate = 60;
+
 type DepartmentTestRecord = {
     slug: string;
     name: string;

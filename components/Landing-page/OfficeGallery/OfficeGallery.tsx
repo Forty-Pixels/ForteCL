@@ -25,7 +25,7 @@ export default function OfficeGallery() {
             <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-20">
                 <Reveal delayMs={80}>
                     <div className="text-center mb-8">
-                        <span className="text-[#f88c29] font-semibold text-[10px] sm:text-xs tracking-wider mb-2 block">
+                        <span className="text-[#045d65] font-semibold text-[10px] sm:text-xs tracking-wider mb-2 block">
                             OUR FACILITY
                         </span>
                         <h2 className="text-2xl md:text-3xl font-black text-[#1f2937]">

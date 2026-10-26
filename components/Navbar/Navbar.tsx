@@ -60,7 +60,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
             href: '#',
             submenu: [
                 { name: 'Find A Test', href: '/lab-tests' },
-                { name: 'Packages', href: '/packages' }
+                { name: 'Health Packages', href: '/packages' }
             ]
         },
         {
@@ -79,18 +79,19 @@ export default function Navbar({ currentPage }: NavbarProps) {
     ];
 
     // Helper to check if link is active
-    const isActive = (link: NavLink | NavSubLink) => {
+    const isActive = (link: NavLink | NavSubLink): boolean => {
+        if (link.href === '/packages' && currentPage === 'Packages') return true;
         if (link.href !== '#' && link.name === currentPage) return true;
         if ('submenu' in link && link.name === 'Departments' && currentPage === 'Departments') return true;
         if ('submenu' in link && link.submenu) {
-            return link.submenu.some((sub) => sub.name === currentPage);
+            return link.submenu.some((sub) => isActive(sub));
         }
         return false;
     };
 
     return (
         <>
-        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 bg-white border-b border-[#0F3B2E]/10 ${isScrolled ? 'shadow-lg py-2' : 'py-3 sm:py-4'}`}>
+        <header className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 bg-white border-b border-[#045d65]/10 ${isScrolled ? 'shadow-lg py-2' : 'py-3 sm:py-4'}`}>
             <nav className="relative flex items-center justify-between px-4 sm:px-8 max-w-7xl mx-auto w-full">
                 {/* Left: Logo */}
                 <div className="flex-shrink-0 z-50">
@@ -113,12 +114,12 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         <div key={link.name} className="relative group lg:py-4">
                             {link.submenu ? (
                                 <div className="flex items-center gap-1 cursor-pointer group/nav">
-                                    <span className={`text-sm text-[#0F3B2E] group-hover/nav:text-[#14523F] font-bold transition-colors relative`}>
+                                    <span className={`text-sm text-[#045d65] group-hover/nav:text-[#08717a] font-bold transition-colors relative`}>
                                         {link.name}
-                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#0F3B2E] transition-all duration-300 group-hover/nav:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#045d65] transition-all duration-300 group-hover/nav:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
                                     </span>
                                     <svg 
-                                        className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-[#0F3B2E]`}
+                                        className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-[#045d65]`}
                                         fill="none" 
                                         stroke="currentColor" 
                                         viewBox="0 0 24 24"
@@ -127,13 +128,13 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                     </svg>
                                     
                                     {/* Dropdown Menu */}
-                                    <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : 'w-48'} bg-white border border-[#0F3B2E]/10 rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]`}>
+                                    <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : 'w-48'} bg-white border border-[#045d65]/10 rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]`}>
                                         <div className={`py-2 ${link.name === 'Departments' ? 'max-h-[380px] overflow-y-auto' : ''}`}>
                                             {link.submenu.map((sub) => (
                                                 <Link
                                                     key={sub.name}
                                                     href={sub.href}
-                                                    className="block px-4 py-2 text-sm text-[#0F3B2E] hover:bg-[#EAF4EE] transition-colors"
+                                                    className="block px-4 py-2 text-sm text-[#045d65] hover:bg-[#EAF4EE] transition-colors"
                                                 >
                                                     {sub.name}
                                                 </Link>
@@ -144,10 +145,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
                             ) : (
                                 <Link
                                     href={link.href}
-                                    className={`text-sm text-[#0F3B2E] hover:text-[#14523F] font-bold transition-colors relative group/navlink`}
+                                    className={`text-sm text-[#045d65] hover:text-[#08717a] font-bold transition-colors relative group/navlink`}
                                 >
                                     {link.name}
-                                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#0F3B2E] transition-all duration-300 group-hover/navlink:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
+                                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#045d65] transition-all duration-300 group-hover/navlink:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
                                 </Link>
                             )}
                         </div>
@@ -156,7 +157,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
                 {/* Right: Contact Button & Mobile Menu Toggle */}
                 <div className="flex items-center gap-4 z-50">
-                    <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#0F3B2E] text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-[#14523F] hover:shadow-lg hover:scale-105">
+                    <Link href="/contact" className="hidden sm:inline-flex items-center justify-center bg-[#045d65] text-white px-5 py-2 rounded-full text-sm font-medium transition-all hover:bg-[#08717a] hover:shadow-lg hover:scale-105">
                         <svg
                             className="w-4 h-4 mr-2"
                             fill="none"
@@ -177,7 +178,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     {/* Hamburger Icon for Mobile */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="lg:hidden text-[#0F3B2E] p-2 focus:outline-none transition-colors hover:text-[#14523F]"
+                        className="lg:hidden text-[#045d65] p-2 focus:outline-none transition-colors hover:text-[#08717a]"
                         aria-label="Toggle mobile menu"
                     >
                         {isMenuOpen ? (
@@ -206,7 +207,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                 <div className="absolute inset-0 bg-[#061414]/98 backdrop-blur-2xl"></div>
 
                 {/* Close Button & Logo Area */}
-                <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-8 py-6 z-50 bg-white border-b border-[#0F3B2E]/10 shadow-sm">
+                <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-8 py-6 z-50 bg-white border-b border-[#045d65]/10 shadow-sm">
                     <Link href="/" onClick={() => setIsMenuOpen(false)}>
                         <Image
                             src="/fortecl-logo3.png"
@@ -218,7 +219,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                     </Link>
                     <button
                         onClick={() => setIsMenuOpen(false)}
-                        className="text-[#0F3B2E] p-2 hover:text-[#14523F] transition-colors"
+                        className="text-[#045d65] p-2 hover:text-[#08717a] transition-colors"
                         aria-label="Close menu"
                     >
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -31,7 +31,7 @@ export default async function ResourcesPage() {
                 
                 <div className="max-w-7xl mx-auto text-center relative z-10 px-6">
                     <Reveal delayMs={100}>
-                        <span className="text-[#f88c29] font-bold text-[10px] md:text-sm tracking-widest uppercase mb-4 block">
+                        <span className="text-[#045d65] font-bold text-[10px] md:text-sm tracking-widest uppercase mb-4 block">
                             Our Knowledge Hub
                         </span>
                     </Reveal>

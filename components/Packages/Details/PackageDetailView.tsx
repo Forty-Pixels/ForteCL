@@ -40,12 +40,12 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
     const { cleanTitle, price } = parsePrice(pkg.title);
 
     return (
-        <div className="min-h-screen bg-[#fafafa] selection:bg-[#f88c29]/30 font-sans">
+        <div className="min-h-screen bg-[#fafafa] selection:bg-[#045d65]/30 font-sans">
             <Navbar currentPage="Packages" />
 
             {/* REFINED HERO SECTION */}
             <section className="relative pt-44 pb-16 overflow-hidden">
-                <div className="absolute top-0 right-0 w-1/3 h-[60%] bg-gradient-to-bl from-[#f88c29]/5 to-transparent rounded-bl-[5rem] -z-10"></div>
+                <div className="absolute top-0 right-0 w-1/3 h-[60%] bg-gradient-to-bl from-[#045d65]/5 to-transparent rounded-bl-[5rem] -z-10"></div>
                 
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -54,7 +54,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                         <div className="lg:col-span-7 space-y-6">
                             <Reveal>
                                 <div className="space-y-3">
-                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#f88c29]/10 text-[#f88c29] text-[9px] font-black uppercase tracking-wider">
+                                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#045d65]/10 text-[#045d65] text-[9px] font-black uppercase tracking-wider">
                                         Clinical Profile
                                     </div>
                                     <h1 className="text-4xl md:text-5xl font-black text-[#0f172a] leading-[1.1] tracking-tight">
@@ -73,7 +73,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                 <div className="flex items-center gap-6">
                                     <div className="flex flex-col">
                                         <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">Price</span>
-                                        <span className="text-3xl font-black text-[#f88c29]">{price || '—'}</span>
+                                        <span className="text-3xl font-black text-[#045d65]">{price || '—'}</span>
                                     </div>
                                     <div className="w-px h-8 bg-gray-200"></div>
                                     <div className="flex flex-col">
@@ -96,7 +96,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
 
                         {/* Floating Hero Image - Restoring the rotated premium look */}
                         <Reveal delayMs={400} className="lg:col-span-5 relative group lg:-mt-12">
-                            <div className="absolute -inset-4 bg-gradient-to-tr from-[#f88c29]/20 to-[#307984]/20 rounded-[4rem] blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-1000"></div>
+                            <div className="absolute -inset-4 bg-gradient-to-tr from-[#045d65]/20 to-[#307984]/20 rounded-[4rem] blur-3xl opacity-50 group-hover:opacity-80 transition-opacity duration-1000"></div>
                             <div className="relative aspect-[4/5] rounded-[3.5rem] overflow-hidden border-[12px] border-white shadow-2xl rotate-2 group-hover:rotate-0 transition-transform duration-700">
                                 {pkg.image ? (
                                     <Image
@@ -143,7 +143,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                 <Reveal>
                                     <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-gray-100">
                                         <h2 className="text-xl font-black text-[#0f172a] mb-5 flex items-center gap-3">
-                                            <span className="w-1.5 h-6 bg-[#f88c29] rounded-full"></span>
+                                            <span className="w-1.5 h-6 bg-[#045d65] rounded-full"></span>
                                             Package Overview
                                         </h2>
                                         <p className="text-base text-gray-500 leading-relaxed font-medium">
@@ -163,8 +163,8 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {pkg.subTests?.map((test, i) => (
                                         <Reveal key={i} delayMs={i * 30}>
-                                            <div className="group p-5 rounded-2xl bg-white border border-gray-100 hover:border-[#f88c29]/20 hover:shadow-md transition-all duration-300">
-                                                <h4 className="text-[#0f172a] font-bold text-sm mb-1.5 group-hover:text-[#f88c29] transition-colors">
+                                            <div className="group p-5 rounded-2xl bg-white border border-gray-100 hover:border-[#045d65]/20 hover:shadow-md transition-all duration-300">
+                                                <h4 className="text-[#0f172a] font-bold text-sm mb-1.5 group-hover:text-[#045d65] transition-colors">
                                                     {test.title}
                                                 </h4>
                                                 {test.explanation && (
@@ -199,15 +199,15 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                                 </div>
                                                 <div className="pt-3 border-t border-gray-50 flex justify-between items-end">
                                                     <span className="text-[10px] font-black text-gray-400 uppercase">Total Amount</span>
-                                                    <span className="text-2xl font-black text-[#f88c29] leading-none">{price || '—'}</span>
+                                                    <span className="text-2xl font-black text-[#045d65] leading-none">{price || '—'}</span>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Compact Prep Box */}
                                         {pkg.preparation && (
-                                            <div className="p-4 rounded-xl bg-orange-50/50 border border-orange-100 space-y-1.5">
-                                                <div className="flex items-center gap-1.5 text-[#f88c29] font-black text-[9px] uppercase tracking-wider">
+                                            <div className="p-4 rounded-xl bg-[#eaf4f4]/50 border border-[#cce4e6] space-y-1.5">
+                                                <div className="flex items-center gap-1.5 text-[#045d65] font-black text-[9px] uppercase tracking-wider">
                                                     <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                                                     Preparation
                                                 </div>
@@ -219,7 +219,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                             <BookActionButton
                                                 label="Confirm Selection"
                                                 whatsappText={`Hi, I would like to book the ${cleanTitle} package.`}
-                                                className="w-full bg-[#f88c29] hover:bg-[#e67b1d] text-white py-3.5 rounded-xl font-black text-sm transition-all"
+                                                className="w-full bg-[#045d65] hover:bg-[#034b52] text-white py-3.5 rounded-xl font-black text-sm transition-all"
                                             />
                                             <p className="text-[9px] text-center text-gray-400 font-medium tracking-tight">Pay upon collection. No card needed.</p>
                                         </div>
@@ -265,7 +265,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                             <details key={i} className="group p-5 rounded-2xl bg-[#fafafa] border border-gray-100 open:bg-white open:shadow-md transition-all duration-300">
                                 <summary className="font-bold text-sm text-[#0f172a] list-none cursor-pointer flex justify-between items-center outline-none">
                                     {faq.question}
-                                    <div className="w-6 h-6 rounded-lg border border-gray-200 flex items-center justify-center group-open:bg-[#f88c29] group-open:border-[#f88c29] transition-all">
+                                    <div className="w-6 h-6 rounded-lg border border-gray-200 flex items-center justify-center group-open:bg-[#045d65] group-open:border-[#045d65] transition-all">
                                         <svg className="w-3 h-3 text-gray-400 group-open:text-white group-open:rotate-180 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
                                     </div>
                                 </summary>

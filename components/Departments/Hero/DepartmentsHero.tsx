@@ -25,11 +25,11 @@ export default function DepartmentsHero() {
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <Reveal>
                     <div className="max-w-4xl mx-auto">
-                        <span className="text-[#f88c29] font-black uppercase tracking-[0.5em] text-[10px] lg:text-xs mb-8 block opacity-0 select-none pointer-events-none">
+                        <span className="text-[#045d65] font-black uppercase tracking-[0.5em] text-[10px] lg:text-xs mb-8 block opacity-0 select-none pointer-events-none">
                             Our Clinical Infrastructure
                         </span>
                         <h1 className="text-4xl lg:text-8xl font-black text-white mb-10 leading-[1.1] uppercase tracking-tighter">
-                            World-Class <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#f88c29]">Diagnostic Expertise</span>
+                            World-Class <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#045d65]">Diagnostic Expertise</span>
                         </h1>
                         <p className="text-gray-200 text-base lg:text-xl max-w-2xl mx-auto leading-relaxed font-medium opacity-90">
                             Operating across specialized departments, Forte Clinical Laboratory provides a comprehensive suite of diagnostic services powered by advanced technology and medical excellence.

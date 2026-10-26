@@ -31,8 +31,8 @@ export default function QualityPolicy() {
                     
                     {/* Quality Policy Intro - Sticky - SMALLER FONT */}
                     <div className="flex flex-col lg:sticky lg:top-24 h-fit">
-                        {/* Simplified Orange Tag - SMALLER */}
-                        <span className="text-[#f88c29] font-semibold text-[9px] sm:text-[10px] tracking-[0.15em] mb-2 block uppercase">
+                        {/* Simplified Teal Tag - SMALLER */}
+                        <span className="text-[#045d65] font-semibold text-[9px] sm:text-[10px] tracking-[0.15em] mb-2 block uppercase">
                             Quality Policy
                         </span>
                         <h2 className="text-2xl sm:text-3xl font-bold text-[#202020] mb-6 leading-tight">

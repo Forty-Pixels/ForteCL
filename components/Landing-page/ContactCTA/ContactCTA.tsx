@@ -141,10 +141,10 @@ export default function ContactCTA() {
                         {stats.map((stat, index) => (
                             <Reveal key={stat.label} delayMs={100 + index * 100}>
                                 <div className="flex min-h-[184px] flex-col rounded-2xl border border-[#307984]/10 bg-white p-4 shadow-sm transition-transform duration-300 motion-safe:hover:scale-[1.04]">
-                                    <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg bg-[#EAF4EE] text-[#0F3B2E]">
+                                    <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg bg-[#EAF4EE] text-[#045d65]">
                                         <div className="scale-75 origin-center">{stat.icon}</div>
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-bold text-[#0F3B2E] mb-0 font-poppins">
+                                    <h3 className="text-xl md:text-2xl font-bold text-[#045d65] mb-0 font-poppins">
                                         {typeof stat.target === 'number' ? (
                                             <CountText target={stat.target} suffix={stat.suffix} shouldStart={isVisible} />
                                         ) : (
@@ -226,7 +226,7 @@ export default function ContactCTA() {
 
                             <button
                                 type="submit"
-                                className="mt-4 group relative overflow-hidden inline-flex w-full justify-center bg-[#0F3B2E] hover:bg-[#14523F] text-white font-bold py-3 px-8 rounded-xl transition-all text-sm shadow-md"
+                                className="mt-4 group relative overflow-hidden inline-flex w-full justify-center bg-[#045d65] hover:bg-[#08717a] text-white font-bold py-3 px-8 rounded-xl transition-all text-sm shadow-md"
                             >
                                 <span className="relative z-10 flex items-center gap-2">
                                     Submit Inquiry
