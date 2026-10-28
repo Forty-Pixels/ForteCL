@@ -32,17 +32,19 @@ interface LabTestsTableProps {
     tests: any[];
     diseaseFilters: string[];
     departments: string[];
+    initialDepartment?: string;
+    initialSearch?: string;
 }
 
-export default function LabTestsTable({ tests, diseaseFilters, departments }: LabTestsTableProps) {
-    const [search, setSearch] = useState('');
+export default function LabTestsTable({ tests, diseaseFilters, departments, initialDepartment = '', initialSearch = '' }: LabTestsTableProps) {
+    const [search, setSearch] = useState(initialSearch);
     const [diseaseFilter, setDiseaseFilter] = useState('');
-    const [departmentFilter, setDepartmentFilter] = useState('');
+    const [departmentFilter, setDepartmentFilter] = useState(initialDepartment);
     const [page, setPage] = useState(1);
 
     const filtered = useMemo(() => {
         return (tests || []).filter(t => {
-            const matchName = t.name.toLowerCase().includes(search.toLowerCase());
+            const matchName = t.name.toLowerCase().includes(search.trim().toLowerCase());
             const matchDisease = !diseaseFilter || t.diseaseFilter === diseaseFilter;
             const matchDept = !departmentFilter || t.department === departmentFilter;
             return matchName && matchDisease && matchDept;

@@ -1,5 +1,6 @@
 import Hero from '../components/Landing-page/Hero/Hero'
 import LabTests from '../components/Landing-page/LabTests/LabTests'
+import TestFinder from '../components/Landing-page/LabTests/TestFinder'
 import TrustAndTech from '../components/Landing-page/Trust/TrustAndTech'
 import Departments from '../components/Landing-page/Departments/Departments'
 import PackagesPreview from '../components/Landing-page/PackagesPreview/PackagesPreview'
@@ -24,6 +25,7 @@ export default async function Home() {
       <Hero />
       <ContactCTA />
       <LabTests tests={tests} />
+      <TestFinder tests={tests} />
       <InsurancePartners />
       <TrustAndTech />
       <Departments />

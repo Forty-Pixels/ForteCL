@@ -16,7 +16,10 @@ export const metadata = {
 // Revalidate every 60 seconds so CMS changes appear quickly
 export const revalidate = 60;
 
-export default async function LabTestsPage() {
+export default async function LabTestsPage({ searchParams }: {
+    searchParams: Promise<{ department?: string; search?: string }>;
+}) {
+    const filters = await searchParams;
     const [tests, diseaseFilters, departments] = await Promise.all([
         client.fetch(allLabTestsQuery),
         client.fetch(distinctDiseaseFiltersQuery),
@@ -41,9 +44,12 @@ export default async function LabTestsPage() {
         <main className="min-h-screen bg-white">
             <LabTestsHero />
             <LabTestsTable
+                key={JSON.stringify([filters.department, filters.search])}
                 tests={allTests}
                 diseaseFilters={diseaseFilters}
                 departments={departments}
+                initialDepartment={departments.includes(filters.department || '') ? filters.department : ''}
+                initialSearch={filters.search || ''}
             />
             <Footer />
         </main>
