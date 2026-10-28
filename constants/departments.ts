@@ -1,3 +1,6 @@
+import { DEPARTMENT_CATEGORIES } from './department-categories';
+import type { ComponentType } from 'react';
+
 export interface Department {
     id: string;
     title: string;
@@ -14,14 +17,14 @@ export interface Department {
     difference?: {
         title: string;
         image: string;
-        items: { title: string; description: string; icon?: any }[];
+        items: { title: string; description: string; icon?: ComponentType<{ className?: string }> }[];
     };
 }
 
-export const DEPARTMENTS_DATA: Department[] = [
+const DEPARTMENT_DETAILS: Department[] = [
     {
         id: 'hematology',
-        title: 'Hematology Department',
+        title: 'Hematology',
         description: 'The Hematology Department at Forte Clinical Laboratory is dedicated to the in-depth analysis, diagnosis, and monitoring of blood-related disorders. Our laboratory is equipped with advanced automated analyzers and supported by highly skilled professionals to ensure precise, reliable, and timely results. Hematology plays a critical role in evaluating overall health, detecting diseases at an early stage, and monitoring ongoing treatments. We support clinicians with accurate data for conditions such as anemia, infections, clotting disorders, hematological malignancies, and bone marrow abnormalities.',
         image: '/defaults/departments/hematology.png',
         commonTests: [
@@ -136,7 +139,7 @@ export const DEPARTMENTS_DATA: Department[] = [
     },
     {
         id: 'immunology',
-        title: 'Immunology Department',
+        title: 'Immunology',
         description: 'The Immunology Department at Forte Clinical Laboratory focuses on the evaluation and diagnosis of disorders related to the immune system. Our expert team utilizes advanced technologies and precise methodologies to assess immune function, detect autoimmune diseases, allergies, and immunodeficiencies. We play a vital role in helping clinicians understand how the body responds to infections, allergens, and internal imbalances.',
         image: '/defaults/departments/immunology.png',
         commonTests: [
@@ -187,7 +190,7 @@ export const DEPARTMENTS_DATA: Department[] = [
     },
     {
         id: 'serology',
-        title: 'Serology Department',
+        title: 'Serology',
         description: 'The Serology Department at Forte Clinical Laboratory specializes in the detection of antibodies and antigens in blood to diagnose and monitor infectious diseases and immune responses. Serology plays a crucial role in identifying current and past infections, evaluating immunity status, and supporting disease surveillance.',
         image: '/defaults/departments/serology.png',
         commonTests: [
@@ -236,8 +239,8 @@ export const DEPARTMENTS_DATA: Department[] = [
     },
     {
         id: 'biochemistry',
-        title: 'Clinical Biochemistry Department',
-        description: 'The Clinical Biochemistry Department at Forte Clinical Laboratory focuses on the analysis of blood and body fluids to evaluate organ function, detect metabolic disorders, and monitor overall health. Equipped with advanced automated analyzers, our laboratory ensures accurate, reliable, and timely diagnostic results for diabetes, kidney disease, liver disorders, and cardiovascular risks.',
+        title: 'Clinical Chemistry',
+        description: 'The Clinical Chemistry Department at Forte Clinical Laboratory focuses on the analysis of blood and body fluids to evaluate organ function, detect metabolic disorders, and monitor overall health. Equipped with advanced automated analyzers, our laboratory ensures accurate, reliable, and timely diagnostic results for diabetes, kidney disease, liver disorders, and cardiovascular risks.',
         image: '/defaults/departments/biochemistry.png',
         commonTests: [
             { name: 'Blood Glucose (Fasting/Random/HbA1c)', description: 'Assessment and monitoring of diabetes.' },
@@ -258,17 +261,17 @@ export const DEPARTMENTS_DATA: Department[] = [
         subSections: [
             {
                 title: 'Metabolic & Fluid Analysis',
-                content: 'Our biochemistry department utilizes high-throughput automated systems to monitor metabolic health and organ function with extreme precision.',
+                content: 'Our clinical chemistry department utilizes automated systems to monitor metabolic health and organ function with precision.',
                 image: '/Departments/details/biochemistry_detail.png'
             }
         ],
         faqs: [
-            { question: 'What is Clinical Biochemistry?', answer: 'It is the area of chemistry that is generally concerned with analysis of bodily fluids for diagnostic and therapeutic purposes.' },
+            { question: 'What is Clinical Chemistry?', answer: 'It is the analysis of body fluids to assess health and support diagnosis and treatment.' },
             { question: 'Why are liver function tests important?', answer: 'They help determine the health of your liver by measuring the levels of proteins, liver enzymes, and bilirubin in your blood.' }
         ],
         quote: {
             text: "DECODING THE BIOCHEMICAL MARKERS OF METABOLIC HEALTH.",
-            highlightedText: " OUR CLINICAL BIOCHEMISTRY DEPARTMENT PROVIDES THE QUANTITATIVE DATA NEEDED TO MONITOR ORGAN FUNCTION AND DETECT METABOLIC DISORDERS WITH SUPREME PRECISION."
+            highlightedText: " OUR CLINICAL CHEMISTRY DEPARTMENT PROVIDES THE DATA NEEDED TO MONITOR ORGAN FUNCTION AND DETECT METABOLIC DISORDERS."
         },
         process: [
             { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
@@ -288,8 +291,8 @@ export const DEPARTMENTS_DATA: Department[] = [
     },
     {
         id: 'pathology',
-        title: 'Pathology / Histopathology Department',
-        description: 'The Pathology / Histopathology Department at Forte Clinical Laboratory specializes in the microscopic examination of tissues and cells to diagnose diseases at a cellular level. Our опытные pathologists and skilled technicians utilize advanced technologies to detect cancers, inflammatory conditions, infections, and tissue abnormalities.',
+        title: 'Pathology',
+        description: 'The Pathology Department at Forte Clinical Laboratory examines specimens to support the diagnosis of disease. Pathology findings help clinicians investigate cancers, inflammation, infections, and other abnormalities.',
         image: '/defaults/departments/pathology.png',
         commonTests: [
             { name: 'Biopsy Examination', description: 'Microscopic analysis of tissue samples to detect cancer and other diseases.' },
@@ -336,7 +339,7 @@ export const DEPARTMENTS_DATA: Department[] = [
     },
     {
         id: 'molecular',
-        title: 'Molecular Biology / Genetics',
+        title: 'Molecular Biology/Genetics',
         description: 'Molecular Biology / Genetics focuses on understanding how biological molecules—mainly DNA, RNA, and proteins—control living organisms. In a clinical laboratory setting, it plays a critical role in diagnosis, prognosis, disease monitoring, and personalized medicine, enabling detection at the molecular level.',
         image: '/defaults/departments/molecular.png',
         subSections: [
@@ -400,8 +403,8 @@ export const DEPARTMENTS_DATA: Department[] = [
     },
     {
         id: 'cytopathology',
-        title: 'Histopathology & Cytopathology',
-        description: 'Histopathology and Cytopathology are essential branches of diagnostic pathology used to study diseases at the microscopic level. Histopathology examines tissue architecture to diagnose cancers, while Cytopathology studies individual cells to detect abnormalities, infections, and malignancies.',
+        title: 'Cytology',
+        description: 'Cytology studies individual cells from smears, fluids, and fine needle aspirates to detect abnormalities, infections, and malignancies.',
         image: '/defaults/departments/cytopathology.png',
         commonTests: [
             { name: 'Pap Smear (Cervical Cytology)', description: 'Screening for cervical cancer and precancerous changes.' },
@@ -423,16 +426,6 @@ export const DEPARTMENTS_DATA: Department[] = [
                 image: '/Departments/details/cytopathology_detail.png'
             }
         ],
-        table: {
-            headers: ['Feature', 'Histopathology', 'Cytopathology'],
-            rows: [
-                ['Sample Type', 'Tissue (biopsy/surgery)', 'Cells (smears, fluids)'],
-                ['Invasiveness', 'More invasive', 'Minimally invasive'],
-                ['Detail Level', 'Tissue architecture', 'Cellular details'],
-                ['Diagnosis', 'Definitive diagnosis', 'Screening & preliminary diagnosis'],
-                ['Turnaround Time', 'Longer', 'Faster']
-            ]
-        },
         faqs: [
             { question: 'What is a Pap Smear?', answer: 'A Pap smear is a screening test for cervical cancer that involves collecting cells from the cervix for examination.' },
             { question: 'Is FNAC painful?', answer: 'FNAC is a minimally invasive procedure that involves a very fine needle and causes minimal discomfort.' }
@@ -456,5 +449,25 @@ export const DEPARTMENTS_DATA: Department[] = [
                 { title: "Screening Excellence", description: "Comprehensive Pap smear and fluid cytology programs for broad health surveillance." }
             ]
         }
+    },
+    {
+        id: 'histopathology',
+        title: 'Histopathology',
+        description: 'Histopathology examines tissue samples under a microscope to help identify cancers, inflammatory conditions, and other tissue changes following a biopsy or surgical procedure.',
+        image: '/defaults/departments/pathology.png',
+        commonTests: [
+            { name: 'Biopsy Examination', description: 'Microscopic examination of tissue collected during a biopsy.' },
+            { name: 'Surgical Specimen Examination', description: 'Assessment of tissue removed during surgery.' },
+            { name: 'Special Stains', description: 'Additional staining to identify tissue features and disease patterns.' },
+            { name: 'Immunohistochemistry (IHC)', description: 'Testing tissue for markers that support diagnosis and classification.' }
+        ],
+        keyServices: ['Tissue Examination', 'Biopsy Analysis', 'Special Stains', 'Immunohistochemistry'],
+        subSections: [
+            { title: 'Tissue Diagnostics', content: 'Microscopic tissue analysis helps clinicians understand disease type and extent.', image: '/Departments/details/pathology_detail.png' }
+        ]
     }
 ];
+
+export const DEPARTMENTS_DATA: Department[] = DEPARTMENT_CATEGORIES.map(category =>
+    DEPARTMENT_DETAILS.find(department => department.id === category.id)!
+);

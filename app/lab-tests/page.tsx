@@ -5,8 +5,8 @@ import { client } from '@/lib/sanity';
 import {
     allLabTestsQuery,
     distinctDiseaseFiltersQuery,
-    distinctDepartmentsQuery,
 } from '@/lib/queries';
+import { DEPARTMENT_TITLES } from '@/constants/department-categories';
 
 export const metadata = {
     title: 'Lab Tests | Forte Clinical Laboratory',
@@ -20,10 +20,9 @@ export default async function LabTestsPage({ searchParams }: {
     searchParams: Promise<{ department?: string; search?: string }>;
 }) {
     const filters = await searchParams;
-    const [tests, diseaseFilters, departments] = await Promise.all([
+    const [tests, diseaseFilters] = await Promise.all([
         client.fetch(allLabTestsQuery),
         client.fetch(distinctDiseaseFiltersQuery),
-        client.fetch(distinctDepartmentsQuery),
     ]);
 
     // Inject NIPT test manually
@@ -31,7 +30,7 @@ export default async function LabTestsPage({ searchParams }: {
         {
             name: 'NIPT Test (Prenatal Screening)',
             slug: 'nipt',
-            department: 'Molecular Biology / Genetics',
+            department: 'Molecular Biology/Genetics',
             diseaseFilter: 'Genetic Tests',
             category: ['Prenatal', 'Genetics'],
             tat: '7-10 Days',
@@ -47,8 +46,8 @@ export default async function LabTestsPage({ searchParams }: {
                 key={JSON.stringify([filters.department, filters.search])}
                 tests={allTests}
                 diseaseFilters={diseaseFilters}
-                departments={departments}
-                initialDepartment={departments.includes(filters.department || '') ? filters.department : ''}
+                departments={DEPARTMENT_TITLES}
+                initialDepartment={DEPARTMENT_TITLES.includes(filters.department || '') ? filters.department : ''}
                 initialSearch={filters.search || ''}
             />
             <Footer />

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
+import { DEPARTMENT_CATEGORIES } from '@/constants/department-categories';
 import { 
     BeakerIcon, 
     ShieldCheckIcon, 
@@ -8,20 +9,26 @@ import {
     CircleStackIcon, 
     AcademicCapIcon,
     SparklesIcon,
-    MagnifyingGlassCircleIcon,
     DocumentMagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 
-const departments = [
-    { name: 'Clinical Biochemistry', icon: CircleStackIcon, id: 'biochemistry' },
-    { name: 'Hematology', icon: BeakerIcon, id: 'hematology' },
-    { name: 'Microbiology', icon: SparklesIcon, id: 'microbiology' },
-    { name: 'Immunology', icon: ShieldCheckIcon, id: 'immunology' },
-    { name: 'Serology', icon: ShieldCheckIcon, id: 'serology' },
-    { name: 'Molecular / Genetic Diagnostics', icon: FingerPrintIcon, id: 'molecular' },
-    { name: 'Pathology / Histopathology', icon: AcademicCapIcon, id: 'pathology' },
-    { name: 'Cytology', icon: DocumentMagnifyingGlassIcon, id: 'cytopathology' },
-];
+const departmentIcons = {
+    biochemistry: CircleStackIcon,
+    hematology: BeakerIcon,
+    pathology: AcademicCapIcon,
+    microbiology: SparklesIcon,
+    serology: ShieldCheckIcon,
+    cytopathology: DocumentMagnifyingGlassIcon,
+    histopathology: DocumentMagnifyingGlassIcon,
+    immunology: ShieldCheckIcon,
+    molecular: FingerPrintIcon,
+};
+
+const departments = DEPARTMENT_CATEGORIES.map(department => ({
+    ...department,
+    name: department.title,
+    icon: departmentIcons[department.id],
+}));
 
 export default function Departments() {
     return (

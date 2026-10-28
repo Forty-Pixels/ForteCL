@@ -3,7 +3,8 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { getTestLink } from '@/lib/department-utils';
+import { getDepartmentTitle, getTestLink } from '@/lib/department-utils';
+import { DEPARTMENT_TITLES } from '@/constants/department-categories';
 
 interface FinderTest {
     slug: string;
@@ -20,14 +21,12 @@ const NAME_OVERRIDES: Record<string, string> = {
 };
 
 export default function TestFinder({ tests }: { tests: FinderTest[] }) {
-    const departments = useMemo(() => Array.from(new Set(
-        tests.filter(test => test.slug && test.department).map(test => test.department as string)
-    )).sort((a, b) => a.localeCompare(b)), [tests]);
+    const departments = DEPARTMENT_TITLES;
     const [selectedDepartment, setSelectedDepartment] = useState('');
     const [search, setSearch] = useState('');
     const department = departments.includes(selectedDepartment) ? selectedDepartment : departments[0] || '';
     const matches = useMemo(() => tests
-        .filter(test => test.slug && department && test.department === department)
+        .filter(test => test.slug && department && getDepartmentTitle(test.department, test.departmentSlug) === department)
         .map(test => ({ ...test, name: NAME_OVERRIDES[test.slug] || test.name }))
         .filter(test => test.name.toLowerCase().includes(search.trim().toLowerCase()))
         .sort((a, b) => a.name.localeCompare(b.name)), [tests, department, search]);
@@ -95,7 +94,7 @@ export default function TestFinder({ tests }: { tests: FinderTest[] }) {
                                 </tbody>
                             </table>
                         </div>
-                        {!matches.length && <div className="px-6 py-12 text-center"><p className="font-semibold text-[#103b40]">{departments.length ? 'No tests match your search in this department.' : 'Browse our full test list or contact our team for help.'}</p>{search && <button type="button" onClick={() => setSearch('')} className="mt-4 rounded px-3 py-2 text-sm font-semibold text-[#045d65] underline focus-visible:outline-2">Clear search</button>}</div>}
+                        {!matches.length && <div className="px-6 py-12 text-center"><p className="font-semibold text-[#103b40]">{search ? 'No tests match your search in this department.' : 'No tests listed for this department yet.'}</p>{search && <button type="button" onClick={() => setSearch('')} className="mt-4 rounded px-3 py-2 text-sm font-semibold text-[#045d65] underline focus-visible:outline-2">Clear search</button>}</div>}
                         {matches.length > 6 && <div className="border-t border-[#d7e5e8] pt-5 text-center"><Link href={`/lab-tests?${moreParams.toString()}`} className="inline-flex items-center gap-3 rounded-full border border-[#045d65]/25 bg-white px-5 py-2.5 text-xs font-bold text-[#045d65] transition-colors hover:bg-[#e1eeeb] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#045d65]">View more <ArrowUpRightIcon aria-hidden="true" className="h-4 w-4" /></Link></div>}
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { DEPARTMENTS_DATA } from '@/constants/departments';
+import { DEPARTMENT_CATEGORIES } from '@/constants/department-categories';
 
 export type DepartmentTestRecord = {
     slug: string;
@@ -14,50 +14,37 @@ const normalizeText = (value?: string) =>
         .replace(/\s+/g, ' ')
         .trim();
 
-const DEPARTMENT_ALIASES: Record<string, string[]> = {
-    hematology: ['hematology'],
-    microbiology: ['microbiology'],
-    immunology: ['immunology'],
-    serology: ['serology'],
-    biochemistry: ['biochemistry', 'clinical biochemistry', 'clinical chemistry'],
-    pathology: ['pathology', 'histopathology', 'histo pathology', 'clinical pathology'],
-    molecular: ['molecular', 'molecular biology', 'molecular diagnostics', 'genetics'],
-    cytopathology: ['cytopathology', 'cytology', 'histopathology cytopathology'],
-};
-
 export const resolveDepartmentId = (departmentTitle?: string, departmentSlug?: string) => {
     const slugNorm = normalizeText(departmentSlug);
     const titleNorm = normalizeText(departmentTitle);
 
-    let best: { id: string; score: number } | null = null;
+    const findExact = (value: string) => DEPARTMENT_CATEGORIES.find(department =>
+        normalizeText(department.id) === value ||
+        normalizeText(department.title) === value ||
+        department.aliases.some(alias => normalizeText(alias) === value)
+    );
 
-    for (const [id, aliases] of Object.entries(DEPARTMENT_ALIASES)) {
-        let score = 0;
-        const idNorm = normalizeText(id);
-
-        // Score based on ID matching slug
-        if (slugNorm && (slugNorm === idNorm || slugNorm.includes(idNorm) || idNorm.includes(slugNorm))) {
-            score += 8;
-        }
-
-        // Score based on aliases matching title or slug
-        for (const alias of aliases) {
-            const aliasNorm = normalizeText(alias);
-            if (!aliasNorm) continue;
-            
-            if (titleNorm === aliasNorm) score += 6;
-            else if (titleNorm.includes(aliasNorm) || aliasNorm.includes(titleNorm)) score += 4;
-            
-            if (slugNorm === aliasNorm || slugNorm.includes(aliasNorm)) score += 5;
-        }
-
-        if (score > 0 && (!best || score > best.score)) {
-            best = { id, score };
-        }
+    if (titleNorm) {
+        const exactTitle = findExact(titleNorm);
+        if (exactTitle) return exactTitle.id;
+    }
+    if (slugNorm) {
+        const exactSlug = findExact(slugNorm);
+        if (exactSlug) return exactSlug.id;
     }
 
-    if (!best || best.score < 4) return null;
-    return best.id;
+    const match = DEPARTMENT_CATEGORIES.find(department =>
+        department.aliases.some(alias =>
+            (titleNorm && titleNorm.includes(normalizeText(alias))) ||
+            (slugNorm && slugNorm.includes(normalizeText(alias)))
+        )
+    );
+    return match?.id || null;
+};
+
+export const getDepartmentTitle = (departmentTitle?: string, departmentSlug?: string) => {
+    const id = resolveDepartmentId(departmentTitle, departmentSlug);
+    return DEPARTMENT_CATEGORIES.find(department => department.id === id)?.title || null;
 };
 
 export const getTestLink = (test: { slug: string; department?: string; departmentTitle?: string; departmentSlug?: string }) => {
@@ -75,7 +62,8 @@ export const getTestLink = (test: { slug: string; department?: string; departmen
 export const getTestImage = (test: { department?: string; departmentTitle?: string; departmentSlug?: string }) => {
     const deptId = resolveDepartmentId(test.departmentTitle || test.department, test.departmentSlug);
     if (deptId) {
-        return `/defaults/departments/${deptId}.png`;
+        const imageId = deptId === 'histopathology' ? 'pathology' : deptId;
+        return `/defaults/departments/${imageId}.png`;
     }
     
     return '/lab-tests/lab-1.png'; // Global fallback

@@ -8,7 +8,7 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { urlFor } from '@/lib/sanity';
 import BookActionButton from '@/components/Booking/BookActionButton';
-import { getTestLink, getTestImage } from '@/lib/department-utils';
+import { getTestLink, getTestImage, getDepartmentTitle } from '@/lib/department-utils';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -29,7 +29,15 @@ const PLACEHOLDER_IMAGES = [
 ];
 
 interface LabTestsTableProps {
-    tests: any[];
+    tests: {
+        slug: string;
+        name: string;
+        department?: string;
+        departmentSlug?: string;
+        diseaseFilter?: string;
+        sampleType?: string[];
+        tat?: string;
+    }[];
     diseaseFilters: string[];
     departments: string[];
     initialDepartment?: string;
@@ -46,7 +54,7 @@ export default function LabTestsTable({ tests, diseaseFilters, departments, init
         return (tests || []).filter(t => {
             const matchName = t.name.toLowerCase().includes(search.trim().toLowerCase());
             const matchDisease = !diseaseFilter || t.diseaseFilter === diseaseFilter;
-            const matchDept = !departmentFilter || t.department === departmentFilter;
+            const matchDept = !departmentFilter || getDepartmentTitle(t.department, t.departmentSlug) === departmentFilter;
             return matchName && matchDisease && matchDept;
         });
     }, [search, diseaseFilter, departmentFilter, tests]);
