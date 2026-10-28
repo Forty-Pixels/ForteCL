@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DEPARTMENTS_DATA } from '@/constants/departments';
+import { usePathname } from 'next/navigation';
 
 interface NavbarProps {
     currentPage?: 'Home' | 'Lab Tests' | 'Packages' | 'Departments' | 'Resources' | 'About' | 'Contact';
@@ -21,6 +21,7 @@ type NavLink = {
 };
 
 export default function Navbar({ currentPage }: NavbarProps) {
+    const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [openMobileSubmenus, setOpenMobileSubmenus] = useState<string[]>([]);
@@ -55,31 +56,15 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
     const navLinks: NavLink[] = [
         { name: 'Home', href: '/' },
-        { 
-            name: 'Test List', 
-            href: '#',
-            submenu: [
-                { name: 'Find A Test', href: '/lab-tests' },
-                { name: 'Health Packages', href: '/packages' }
-            ]
-        },
-        {
-            name: 'Departments',
-            href: '/departments',
-            submenu: [
-                { name: 'All Departments', href: '/departments' },
-                ...DEPARTMENTS_DATA.map((dept) => ({
-                    name: dept.title.replace(' Department', ''),
-                    href: `/departments/${dept.id}`,
-                })),
-            ],
-        },
-        { name: 'Resources', href: '/resources' },
+        { name: 'Health Packages', href: '/packages' },
+        { name: 'NIPT', href: '/departments/molecular/nipt' },
+        { name: 'STD', href: '/std-tests' },
         { name: 'About', href: '/about' },
     ];
 
     // Helper to check if link is active
     const isActive = (link: NavLink | NavSubLink): boolean => {
+        if (pathname === link.href) return true;
         if (link.href === '/packages' && currentPage === 'Packages') return true;
         if (link.href !== '#' && link.name === currentPage) return true;
         if ('submenu' in link && link.name === 'Departments' && currentPage === 'Departments') return true;

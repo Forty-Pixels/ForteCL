@@ -123,6 +123,16 @@ export const allResourcesQuery = `*[_type == "post"] | order(publishedAt desc) {
   "image": mainImage.asset->url
 }`;
 
+/** Fetch the six newest published resources for the homepage */
+export const homepageResourcesQuery = `*[_type == "post" && defined(slug.current) && defined(publishedAt)] | order(publishedAt desc)[0...6] {
+  "slug": slug.current,
+  title,
+  "category": category->title,
+  publishedAt,
+  excerpt,
+  "image": mainImage.asset->url
+}`;
+
 /** Fetch a single resource post by slug (detail page) */
 export const resourceBySlugQuery = `*[_type == "post" && slug.current == $slug][0] {
   "slug": slug.current,

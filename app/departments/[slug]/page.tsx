@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import { client } from '@/lib/sanity';
 import { allLabTestsWithDepartmentQuery } from '@/lib/queries';
 import { resolveDepartmentId } from '@/lib/department-utils';
+import { STD_PANELS } from '@/data/stdPanels';
 
 interface DepartmentPageProps {
     params: Promise<{
@@ -97,15 +98,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
             { name: 'Micro array (Array CGH)', slug: 'microarray-cgh' },
             { name: 'Whole Exome Sequencing (WES)', slug: 'whole-exome-sequencing' },
             { name: 'Autism Spectrum Disorder gene', slug: 'autism-spectrum-disorder' },
-            { name: 'STD5', slug: 'std5' },
-            { name: 'STD7', slug: 'std7' },
-            { name: 'STD 19', slug: 'std19' },
-            { name: 'STD 13', slug: 'std13' },
-            { name: 'STD 14', slug: 'std14' },
-            { name: 'STD 15', slug: 'std15' },
-            { name: 'STD 18', slug: 'std18' },
-            { name: 'STI 28', slug: 'sti28' },
-            { name: 'STI 119', slug: 'sti119' },
+            ...STD_PANELS,
             { name: 'HPV 40 Genotyping', slug: 'hpv-40-genotyping' },
             { name: 'HPV Genotyping 28', slug: 'hpv-genotyping-28' },
             { name: 'Respiratory 23', slug: 'respiratory-23' },

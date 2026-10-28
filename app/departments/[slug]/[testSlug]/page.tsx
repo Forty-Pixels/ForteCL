@@ -4,9 +4,10 @@ import { client, urlFor } from '@/lib/sanity';
 import { labTestBySlugQuery } from '@/lib/queries';
 import TestDetailView from '@/components/Departments/Details/TestDetailView';
 import Footer from '@/components/Landing-page/Footer/Footer';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Metadata } from 'next';
 import { getTestImage } from '@/lib/department-utils';
+import { STD_PANELS } from '@/data/stdPanels';
 
 interface TestPageProps {
     params: Promise<{
@@ -51,6 +52,9 @@ export default async function TestPage({ params }: TestPageProps) {
     const localTest = labTests.find(t => t.slug === testSlug);
 
     if (!cmsTest && !localTest) {
+        if (STD_PANELS.some(panel => panel.slug === testSlug)) {
+            redirect(`/std-tests#${testSlug}`);
+        }
         notFound();
     }
 
