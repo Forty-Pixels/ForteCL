@@ -2,6 +2,18 @@
 
 // ─── Lab Tests ───────────────────────────────────────────
 
+import { DEPARTMENT_CATEGORIES } from '@/constants/department-categories';
+
+const homepageTestFields = `{name, "slug":slug.current, "department":department->title,
+  "departmentSlug":department->slug.current,
+  "sampleType":coalesce(resultSection.sampleType,sampleType),
+  "tat":coalesce(resultSection.tat,tat)}`;
+
+/** Ordered, editor-selected homepage finder tests by department. */
+export const homepageTestFinderQuery = `*[_type == "homepageTestFinder" && _id == "homepage-test-finder"][0]{
+  ${DEPARTMENT_CATEGORIES.map(category => `"${category.id}": ${category.id}[]->${homepageTestFields}`).join(',\n  ')}
+}`;
+
 /** Fetch all lab tests (listing page) */
 export const allLabTestsQuery = `*[_type == "labTest" && slug.current != "std19"] | order(name asc) {
   "slug": slug.current,

@@ -7,6 +7,7 @@ import resourceCategory from './resourceCategory';
 import post from './post';
 import diseaseCategory from './diseaseCategory';
 import department from './department';
+import homepageTestFinder from './homepageTestFinder';
 
 export const schemaTypes = [
     labTest, 
@@ -14,5 +15,6 @@ export const schemaTypes = [
     resourceCategory, 
     post, 
     diseaseCategory, 
-    department
+    department,
+    homepageTestFinder
 ];

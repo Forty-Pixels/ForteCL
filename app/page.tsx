@@ -10,15 +10,16 @@ import ReviewsSection from '../components/Landing-page/Reviews/ReviewsSection'
 import ContactCTA from '../components/Landing-page/ContactCTA/ContactCTA'
 import Footer from '../components/Landing-page/Footer/Footer'
 import { client } from '@/lib/sanity'
-import { allPackagesQuery, allLabTestsQuery, homepageResourcesQuery } from '@/lib/queries'
+import { allPackagesQuery, allLabTestsQuery, homepageResourcesQuery, homepageTestFinderQuery } from '@/lib/queries'
 
 export const revalidate = 60
 
 export default async function Home() {
-  const [packages, tests, resources] = await Promise.all([
+  const [packages, tests, resources, featuredTests] = await Promise.all([
     client.fetch(allPackagesQuery),
     client.fetch(allLabTestsQuery),
-    client.fetch(homepageResourcesQuery)
+    client.fetch(homepageResourcesQuery),
+    client.fetch(homepageTestFinderQuery)
   ])
 
   return (
@@ -26,7 +27,7 @@ export default async function Home() {
       <Hero />
       <ContactCTA />
       <LabTests tests={tests} />
-      <TestFinder tests={tests} />
+      <TestFinder tests={tests} featuredTests={featuredTests} />
       <InsurancePartners />
       <TrustAndTech />
       <Departments />
