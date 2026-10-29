@@ -39,7 +39,7 @@ export default function TestFinder({ tests }: { tests: FinderTest[] }) {
             <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                     <div className="max-w-2xl">
-                        <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#307984]">Find a test</p>
+                        <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#307984]">Find a Medical Test</p>
                         <h2 id="test-finder-title" className="text-2xl font-bold leading-tight text-[#103b40] sm:text-[30px]">The right test. <span className="text-[#307984]">A clearer next step.</span></h2>
                         <p className="mt-2 text-xs leading-5 text-slate-600">Explore our tests by department, find what you need, and connect with our team to book.</p>
                     </div>

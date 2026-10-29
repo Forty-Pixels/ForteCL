@@ -836,7 +836,7 @@ export const labTests: LabTest[] = [
                 "Trisomy 13 (Patau Syndrome)",
                 "Fetal Gender Determination"
             ],
-            color: "bg-[#307984]"
+            color: "bg-[#045d65]"
         },
         {
             name: "NIPT ADVANCED SCREEN",
@@ -860,7 +860,7 @@ export const labTests: LabTest[] = [
                 "Cri-du-chat Syndrome",
                 "Optional Fetal Gender Determination"
             ],
-            color: "bg-[#061414]"
+            color: "bg-[#045d65]"
         }
     ],
     faqs: [

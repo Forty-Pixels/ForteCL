@@ -66,7 +66,7 @@ const packages = [
             "Trisomy 13 (Patau Syndrome)",
             "Fetal Gender Determination"
         ],
-        color: "bg-[#307984]"
+        color: "bg-[#045d65]"
     },
     {
         name: "NIPT ADVANCED SCREEN",
@@ -90,7 +90,7 @@ const packages = [
             "Angelman & Prader-Willi",
             "Cri-du-chat Syndrome"
         ],
-        color: "bg-[#061414]"
+        color: "bg-[#045d65]"
     }
 ];
 

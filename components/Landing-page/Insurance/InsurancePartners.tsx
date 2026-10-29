@@ -56,13 +56,14 @@ export default function InsurancePartners() {
                         {marqueeItems.map((partner, index) => (
                             <div
                                 key={`${partner.name}-${index}`}
-                                className="flex-shrink-0 w-[200px] md:w-[270px] lg:w-[310px] h-[90px] md:h-[125px] lg:h-[145px] relative rounded-xl border border-gray-100 bg-white px-5 py-3 transition-transform duration-300 hover:scale-[1.02]"
+                                className="flex-shrink-0 w-[200px] md:w-[270px] lg:w-[310px] h-[90px] md:h-[125px] lg:h-[145px] flex items-center justify-center rounded-xl border border-gray-100 bg-white px-5 py-3 transition-transform duration-300 hover:scale-[1.02]"
                             >
                                 <Image
                                     src={partner.image}
                                     alt={partner.name}
-                                    fill
-                                    className="object-contain p-3 md:p-4"
+                                    width={200}
+                                    height={80}
+                                    className="h-[62px] w-[154px] object-contain md:h-[80px] md:w-[200px]"
                                 />
                             </div>
                         ))}
