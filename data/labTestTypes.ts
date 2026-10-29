@@ -12,14 +12,19 @@ export interface LabTest {
     abnormalLevels?: string;
     content?: any[]; // Sanity Portable Text
     image?: string;
+    imageUrl?: string;
+    introImageUrl?: string;
+    secondaryImageUrl?: string;
+    contextImageUrl?: string;
+    ctaImageUrl?: string;
     subSections?: { title: string; content: string | string[]; image?: string }[];
     process?: { title: string; description: string; image: string }[];
     faqs?: { question: string; answer: string }[];
     keyServices?: string[];
     commonTests?: { name: string; description: string }[];
-    startingPrice?: string;
     relatedTests?: { name: string; slug: string }[];
     accuracyNote?: string;
+    pageCopy?: Record<string, string>;
     packages?: {
         name: string;
         description: string;

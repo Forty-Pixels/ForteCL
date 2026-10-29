@@ -59,7 +59,9 @@ export const getTestLink = (test: { slug: string; department?: string; departmen
     return `/lab-tests/${test.slug}`;
 };
 
-export const getTestImage = (test: { department?: string; departmentTitle?: string; departmentSlug?: string }) => {
+export const getTestImage = (test: { imageUrl?: string; image?: string; department?: string; departmentTitle?: string; departmentSlug?: string }) => {
+    if (test.imageUrl) return test.imageUrl;
+    if (test.image) return test.image;
     const deptId = resolveDepartmentId(test.departmentTitle || test.department, test.departmentSlug);
     if (deptId) {
         const imageId = deptId === 'histopathology' ? 'pathology' : deptId;

@@ -18,11 +18,6 @@ const PLACEHOLDER_IMAGES = [
     '/Landing-page/tests/test-10.png',
 ];
 
-const TEST_NAME_OVERRIDES: Record<string, string> = {
-    'food-allergy-panel': 'Allergy, Food (60 Panel)',
-    bhcg: 'Beta HCG',
-};
-
 interface LabTestsProps {
     tests?: any[];
 }
@@ -33,10 +28,7 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
     const [canScrollRight, setCanScrollRight] = useState(true);
 
     // Limit to 18 tests for the carousel
-    const displayTests = tests.slice(0, 18).map((test) => ({
-        ...test,
-        name: TEST_NAME_OVERRIDES[test.slug] ?? test.name,
-    }));
+    const displayTests = tests.slice(0, 18);
     
     const chunked = [];
     for (let i = 0; i < displayTests.length; i += 6) {

@@ -113,11 +113,11 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
             { name: 'HLA-B27', slug: 'hla-b27' }
         ];
 
-        cmsTests.push(...molecularTests.map(t => {
+        cmsTests.push(...molecularTests.filter(t => !cmsTests.some(existing => existing.slug === t.slug)).map(t => {
             if (t.slug === 'nipt') {
                 return {
                     ...t,
-                    tat: '7-10 Days',
+                    tat: '8 Days',
                     sampleType: ['10 mL Whole Blood (Streck Tube)']
                 };
             }

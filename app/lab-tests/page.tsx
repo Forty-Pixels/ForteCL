@@ -25,26 +25,12 @@ export default async function LabTestsPage({ searchParams }: {
         client.fetch(distinctDiseaseFiltersQuery),
     ]);
 
-    // Inject NIPT test manually
-    const allTests = [
-        {
-            name: 'NIPT Test (Prenatal Screening)',
-            slug: 'nipt',
-            department: 'Molecular Biology/Genetics',
-            diseaseFilter: 'Genetic Tests',
-            category: ['Prenatal', 'Genetics'],
-            tat: '7-10 Days',
-            price: 'Contact for Price'
-        },
-        ...tests
-    ];
-
     return (
         <main className="min-h-screen bg-white">
             <LabTestsHero />
             <LabTestsTable
                 key={JSON.stringify([filters.department, filters.search])}
-                tests={allTests}
+                tests={tests}
                 diseaseFilters={diseaseFilters}
                 departments={DEPARTMENT_TITLES}
                 initialDepartment={DEPARTMENT_TITLES.includes(filters.department || '') ? filters.department : ''}

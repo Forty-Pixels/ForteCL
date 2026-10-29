@@ -3,14 +3,16 @@
 // ─── Lab Tests ───────────────────────────────────────────
 
 /** Fetch all lab tests (listing page) */
-export const allLabTestsQuery = `*[_type == "labTest"] | order(name asc) {
+export const allLabTestsQuery = `*[_type == "labTest" && slug.current != "std19"] | order(name asc) {
   "slug": slug.current,
   name,
   "diseaseFilter": diseaseFilter->title,
   "department": department->title,
   "departmentSlug": department->slug.current,
-  tat,
-  sampleType
+  "tat": coalesce(resultSection.tat, tat),
+  "sampleType": coalesce(resultSection.sampleType, sampleType),
+  "overview": coalesce(introSection.overview, overview),
+  "imageUrl": coalesce(heroSection.image.asset->url, image.asset->url)
 }`;
 
 /** Fetch a single lab test by slug (detail page) */
@@ -20,9 +22,25 @@ export const labTestBySlugQuery = `*[_type == "labTest" && slug.current == $slug
   "diseaseFilter": diseaseFilter->title,
   "department": department->title,
   "departmentSlug": department->slug.current,
-  tat,
-  sampleType,
-  content,
+  "tat": coalesce(resultSection.tat, tat),
+  "sampleType": coalesce(resultSection.sampleType, sampleType),
+  "overview": coalesce(introSection.overview, overview),
+  "keyServices": coalesce(heroSection.highlights, keyServices),
+  "howItems": howSection.items,
+  "commonTests": coalesce(considerSection.items, commonTests),
+  "accuracyNote": coalesce(accuracySection.note, accuracyNote),
+  "faqs": coalesce(faqSection.items, faqs),
+  "packages": coalesce(panelsSection.items, packages),
+  heroSection, introSection, considerSection, howSection, processSection,
+  accuracySection, panelsSection, faqSection, ctaSection,
+  pageCopy,
+  "imageUrl": coalesce(heroSection.image.asset->url, image.asset->url),
+  "introImageUrl": coalesce(introSection.image.asset->url, introImage.asset->url),
+  "secondaryImageUrl": coalesce(introSection.secondaryImage.asset->url, secondaryImage.asset->url),
+  "contextImageUrl": coalesce(considerSection.image.asset->url, contextImage.asset->url),
+  "ctaImageUrl": coalesce(ctaSection.image.asset->url, ctaImage.asset->url),
+  "subSections": coalesce(additionalInfoSection.sections[]{title, content, items, "imageUrl": image.asset->url}, subSections[]{title, content, items, "imageUrl": image.asset->url}),
+  "process": coalesce(processSection.steps[]{title, description, "imageUrl": image.asset->url}, process[]{title, description, "imageUrl": image.asset->url}),
   "relatedTests": relatedTests[]->{
     name,
     "slug": slug.current,
@@ -32,12 +50,12 @@ export const labTestBySlugQuery = `*[_type == "labTest" && slug.current == $slug
 }`;
 
 /** Fetch all lab test slugs (for generateStaticParams) */
-export const allLabTestSlugsQuery = `*[_type == "labTest"] { "slug": slug.current }`;
+export const allLabTestSlugsQuery = `*[_type == "labTest" && slug.current != "std19"] { "slug": slug.current }`;
 
 /** Fetch all lab test names/slugs (for cross-linking from departments) */
 export const allLabTestNamesAndSlugsQuery = `*[
   _type == "labTest" &&
-  defined(slug.current)
+  defined(slug.current) && slug.current != "std19"
 ] | order(name asc) {
   name,
   "slug": slug.current
@@ -46,12 +64,12 @@ export const allLabTestNamesAndSlugsQuery = `*[
 /** Fetch all lab tests with department metadata for department-page mapping */
 export const allLabTestsWithDepartmentQuery = `*[
   _type == "labTest" &&
-  defined(slug.current)
+  defined(slug.current) && slug.current != "std19"
 ] | order(name asc) {
   "slug": slug.current,
   name,
-  tat,
-  sampleType,
+  "tat": coalesce(resultSection.tat, tat),
+  "sampleType": coalesce(resultSection.sampleType, sampleType),
   "departmentTitle": department->title,
   "departmentSlug": department->slug.current
 }`;
@@ -66,12 +84,13 @@ export const distinctDepartmentsQuery = `*[_type == "department"] | order(title 
 export const labTestsByDepartmentSlugQuery = `*[
   _type == "labTest" &&
   defined(slug.current) &&
+  slug.current != "std19" &&
   department->slug.current == $slug
 ] | order(name asc) {
   "slug": slug.current,
   name,
-  tat,
-  sampleType
+  "tat": coalesce(resultSection.tat, tat),
+  "sampleType": coalesce(resultSection.sampleType, sampleType)
 }`;
 
 

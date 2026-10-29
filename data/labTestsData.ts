@@ -1,4 +1,5 @@
 import { LabTest } from "./labTestTypes";
+import { NIPT_FAQS } from "./niptFaqs";
 
 export const labTests: LabTest[] = [
   {
@@ -781,7 +782,7 @@ export const labTests: LabTest[] = [
     name: "Non-Invasive Prenatal Test (NIPT)",
     diseaseFilter: "Genetic Tests",
     department: "Molecular Biology / Genetics",
-    tat: "7-10 Days",
+    tat: "8 Days",
     sampleType: ["10 mL Whole Blood in specialized Streck tube", "Maternal blood only"],
     overview: "NIPT is a sophisticated screening test that analyses small fragments of fetal DNA (cell-free DNA) present in the mother’s blood. It identifies the risk of specific chromosomal abnormalities without the need for invasive procedures.",
     image: "/nipt-intro.png",
@@ -823,9 +824,9 @@ export const labTests: LabTest[] = [
       { title: "Simple Collection", description: "Blood collection from the mother as early as 10 weeks.", image: "/p_sample.png" },
       { title: "DNA Extraction", description: "Extraction of cell-free fetal DNA from maternal blood.", image: "/p_lab.png" },
       { title: "Genomic Analysis", description: "High-precision analysis using advanced molecular techniques.", image: "/p_lab.png" },
-      { title: "Detailed Report", description: "Clinically validated reporting with 99.99% accuracy.", image: "/p_report.png" }
+      { title: "Detailed Report", description: "Screening results are reported with guidance for follow-up where needed.", image: "/p_report.png" }
     ],
-    accuracyNote: "NIPT IS A HIGHLY ADVANCED SCREENING TEST WITH UP TO 99.99% ACCURACY FOR COMMON CHROMOSOMAL CONDITIONS, OFFERING RELIABLE AND EARLY REASSURANCE FOR EXPECTING PARENTS.",
+    accuracyNote: "NIPT is a highly accurate screening test for common chromosomal conditions. A high-risk result should be discussed with your healthcare provider and may require diagnostic confirmation.",
     packages: [
         {
             name: "NIPT BASIC SCREEN",
@@ -863,24 +864,7 @@ export const labTests: LabTest[] = [
             color: "bg-[#045d65]"
         }
     ],
-    faqs: [
-      {
-        question: "Is NIPT safe?",
-        answer: "Yes, NIPT is completely safe. It is a non-invasive test that only requires a maternal blood sample and poses no risk to the baby."
-      },
-      {
-        question: "How accurate is NIPT?",
-        answer: "NIPT offers up to 99.99% accuracy for common chromosomal conditions, making it one of the most reliable prenatal screening tests available."
-      },
-      {
-        question: "When can I take the NIPT test?",
-        answer: "NIPT can be performed as early as 10 weeks of pregnancy."
-      },
-      {
-        question: "Can I do the NIPT test?",
-        answer: "Yes, the test can be done at our facility or through our mobile collection service. A licensed healthcare professional will ensure the sample is collected safely and comfortably."
-      }
-    ],
+    faqs: NIPT_FAQS,
     relatedTests: [
       { name: "Genetic Carrier Screening", slug: "genetic-carrier-screening" },
       { name: "Complete Blood Count", slug: "cbc" }
@@ -1105,16 +1089,6 @@ export const labTests: LabTest[] = [
     sampleType: ["Biopsy or Liquid Biopsy"],
     overview: "Identifies mutations in the EGFR gene in non-small cell lung cancer (NSCLC) patients to determine eligibility for targeted therapies like TKIs.",
     keyServices: ["Targeted Therapy Selection", "Precision Oncology", "Lung Cancer Biomarker Testing"]
-  },
-  {
-    slug: "std19",
-    name: "STD 19 Panel (Comprehensive PCR)",
-    diseaseFilter: "Infectious Disease",
-    department: "Molecular",
-    tat: "3-5 Days",
-    sampleType: ["Urine or Swab"],
-    overview: "An ultra-comprehensive molecular screen for 19 different sexually transmitted and urogenital pathogens in a single test.",
-    keyServices: ["Full Spectrum STI Screening", "Urogenital Health Assessment", "Molecular Pathogen Profiling"]
   },
   {
     slug: "respiratory-27",

@@ -19,17 +19,12 @@ import {
 import Navbar from '@/components/Navbar/Navbar';
 import Reveal from '@/components/Animation/Reveal';
 import BookActionButton from '@/components/Booking/BookActionButton';
-import { Department } from '@/constants/departments';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .011 5.403.011 12.038c0 2.12.553 4.189 1.604 6.04l-1.705 6.226 6.37-1.67a11.803 11.803 0 005.766 1.498h.005c6.634 0 12.038-5.403 12.038-12.039a11.811 11.811 0 00-3.414-8.417" />
     </svg>
 );
-
-interface DepartmentDetailViewProps {
-    department: Department;
-}
 
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -70,26 +65,27 @@ interface TestDetailViewProps {
     test: {
         title: string;
         description: string;
+        tat?: string;
+        sampleType?: string[];
         image: string;
-        process?: Array<{ title: string; description: string; image: string }>;
+        introImage?: string;
+        secondaryImage?: string;
+        contextImage?: string;
+        ctaImage?: string;
+        process?: Array<{ title: string; description: string; image?: string }>;
         faqs?: Array<{ question: string; answer: string }>;
         keyServices?: string[];
+        howItems?: Array<{ title: string; description?: string }>;
         commonTests?: Array<{ name: string; description: string }>;
         subSections?: Array<{ title: string; content: string | string[]; image?: string }>;
-        startingPrice?: string;
         packages?: Array<{ name: string; description: string; features: string[]; color?: string }>;
         accuracyNote?: string;
+        pageCopy?: Record<string, string>;
     };
 }
 
 export default function TestDetailView({ test }: TestDetailViewProps) {
-    // Fallback process if not provided
-    const processSteps = test.process || [
-        { title: 'Book Online', description: 'Schedule your test through our website or via WhatsApp.', image: '/p_book.png' },
-        { title: 'Sample Collection', description: 'Our certified nurse will visit your location for home sample collection.', image: '/p_sample.png' },
-        { title: 'Lab Processing', description: 'Your sample is processed in our state-of-the-art lab with precision.', image: '/p_lab.png' },
-        { title: 'Get Reports', description: 'Receive your digital reports via email and WhatsApp within 24 hours.', image: '/p_report.png' }
-    ];
+    const processSteps = test.process ?? [];
     return (
         <main className="bg-white min-h-screen relative">
             <div className="absolute top-0 left-0 w-full z-50">
@@ -117,12 +113,6 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                 {test.title}
                             </h1>
                             
-                            {test.startingPrice && (
-                                <p className="text-xl lg:text-2xl font-bold mb-6">
-                                    Price starting from <span className="text-yellow-400">{test.startingPrice}</span>
-                                </p>
-                            )}
-
                             <ul className="space-y-3 mb-8">
                                 {(test.keyServices || []).slice(0, 4).map((service, idx) => (
                                     <li key={idx} className="flex items-center gap-3 text-sm font-medium text-white/90">
@@ -155,7 +145,17 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                 </div>
             </section>
 
+            {(test.tat || (test.sampleType && test.sampleType.length > 0)) && (
+                <section className="border-b border-gray-100 bg-white py-8">
+                    <div className="container mx-auto flex max-w-7xl flex-wrap gap-x-12 gap-y-5 px-6 text-sm text-gray-700">
+                        {test.tat && <p><span className="font-bold text-gray-900">Results in:</span> {test.tat}</p>}
+                        {test.sampleType && test.sampleType.length > 0 && <p><span className="font-bold text-gray-900">Sample:</span> {test.sampleType.join(', ')}</p>}
+                    </div>
+                </section>
+            )}
+
             {/* 2. "What is" Section */}
+            {test.description && (
             <section className="py-16 bg-white overflow-hidden">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -163,12 +163,12 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             <div className="flex gap-4">
                                 <div className="flex-1 mt-8">
                                     <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
-                                        <Image src={test.image} alt="Clinical Care" fill className="object-cover" />
+                                        <Image src={test.introImage || test.image} alt="Clinical Care" fill className="object-cover" />
                                     </div>
                                 </div>
                                 <div className="flex-1 mb-8">
                                     <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
-                                        <Image src={test.subSections?.[0]?.image || test.image} alt="Lab Work" fill className="object-cover" />
+                                        <Image src={test.secondaryImage || test.subSections?.[0]?.image || test.introImage || test.image} alt="Lab Work" fill className="object-cover" />
                                     </div>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                         <Reveal delayMs={200}>
                             <div>
                                 <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-6 leading-tight">
-                                    What is {test.title}?
+                                    {test.pageCopy?.introHeading || `What is ${test.title}?`}
                                 </h2>
                                 <p className="text-base text-gray-600 leading-relaxed mb-8">
                                     {test.description}
@@ -192,15 +192,35 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                     </div>
                 </div>
             </section>
+            )}
+
+            {test.subSections && test.subSections.length > 0 && (
+                <section className="py-16 bg-white">
+                    <div className="container mx-auto px-6 max-w-5xl space-y-12">
+                        {test.subSections?.map((section, index) => (
+                            <div key={index} className="grid gap-8 lg:grid-cols-2 lg:items-center">
+                                <div>
+                                    {section.title && <h2 className="mb-4 text-2xl font-black text-gray-900">{section.title}</h2>}
+                                    {Array.isArray(section.content) ? (
+                                        <ul className="list-disc space-y-2 pl-5 text-gray-600">{section.content.map((item, itemIndex) => <li key={itemIndex}>{item}</li>)}</ul>
+                                    ) : <p className="whitespace-pre-line leading-relaxed text-gray-600">{section.content}</p>}
+                                </div>
+                                {section.image && <div className="relative aspect-[4/3] overflow-hidden rounded-2xl"><Image src={section.image} alt={section.title || test.title} fill className="object-cover" /></div>}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
 
             {/* 3. "Who May Consider" Section */}
+            {test.commonTests && test.commonTests.length > 0 && (
             <section className="py-16 bg-gray-50 overflow-hidden">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <Reveal>
                             <div>
                                 <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-8 leading-tight">
-                                    Who May Consider <br /> {test.title}
+                                    {test.pageCopy?.considerHeading || <>Who May Consider <br /> {test.title}</>}
                                 </h2>
                                 <div className="space-y-4">
                                     {(test.commonTests || []).slice(0, 5).map((item, idx) => (
@@ -218,14 +238,16 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                         </Reveal>
                         <Reveal delayMs={300}>
                             <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-xl">
-                                <Image src={test.subSections?.[1]?.image || test.subSections?.[0]?.image || test.image} alt="Clinical Context" fill className="object-cover" />
+                                <Image src={test.contextImage || test.subSections?.[1]?.image || test.subSections?.[0]?.image || test.image} alt="Clinical Context" fill className="object-cover" />
                             </div>
                         </Reveal>
                     </div>
                 </div>
             </section>
+            )}
 
             {/* 4. "How it Works" (Gradient Section) */}
+            {test.howItems && test.howItems.length > 0 && (
             <section className="py-12">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="relative rounded-[2rem] bg-gradient-to-br from-[#045d65] to-[#023f45] p-8 lg:p-12 overflow-hidden shadow-xl">
@@ -233,20 +255,20 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                         
                         <div className="relative z-10 text-center mb-10">
                             <h2 className="text-2xl lg:text-3xl font-black text-white mb-3">
-                                How {test.title} Works
+                                {test.pageCopy?.howHeading || `How ${test.title} Works`}
                             </h2>
                             <div className="h-1 w-12 bg-white/30 mx-auto rounded-full" />
                         </div>
 
                         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                            {(test.keyServices || []).slice(0, 4).map((service, idx) => (
+                            {(test.howItems || []).slice(0, 4).map((item, idx) => (
                                 <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-all group">
                                     <div className="w-8 h-8 rounded-lg bg-white text-[#045d65] flex items-center justify-center mb-3 font-black text-sm group-hover:scale-110 transition-transform">
                                         {idx + 1}
                                     </div>
-                                    <h4 className="text-base font-black text-white mb-2 leading-tight">{service}</h4>
+                                    <h4 className="text-base font-black text-white mb-2 leading-tight">{item.title}</h4>
                                     <p className="text-white/80 text-[10px] font-medium leading-relaxed">
-                                        Professional diagnostic services tailored to your specific clinical needs.
+                                        {item.description}
                                     </p>
                                 </div>
                             ))}
@@ -254,15 +276,17 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                     </div>
                 </div>
             </section>
+            )}
 
-            {/* 5. "Our Simple 4 Step Process" - Always show as it's the same for all tests */}
+            {/* 5. Process */}
+            {processSteps.length > 0 && (
             <section className="py-16 bg-white">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-3">
-                            Our Simple 4 Step Process
+                            {test.pageCopy?.processHeading || 'Our Simple 4 Step Process'}
                         </h2>
-                        <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px]">Efficient • Reliable • Professional</p>
+                        <p className="text-gray-400 font-bold uppercase tracking-widest text-[10px]">{test.pageCopy?.processSubtitle || 'Efficient • Reliable • Professional'}</p>
                     </div>
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -272,12 +296,12 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                     <div className="relative w-28 h-28 lg:w-36 lg:h-36 mx-auto mb-6">
                                         <div className="absolute inset-0 bg-[#045d65]/10 rounded-full group-hover:scale-110 transition-transform duration-500" />
                                         <div className="absolute inset-3 rounded-full overflow-hidden border-2 border-white shadow-lg">
-                                            <Image 
-                                                src={step.image || `/p_${['book', 'sample', 'lab', 'report'][idx]}.png`} 
-                                                alt={step.title} 
-                                                fill 
-                                                className="object-cover group-hover:scale-110 transition-transform duration-500" 
-                                            />
+                                            {step.image && <Image
+                                                src={step.image}
+                                                alt={step.title}
+                                                fill
+                                                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                            />}
                                         </div>
                                         <div className="absolute top-0 right-0 w-8 h-8 bg-[#045d65] text-white rounded-full flex items-center justify-center font-black text-xs shadow-md">
                                             {idx + 1}
@@ -293,6 +317,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                     </div>
                 </div>
             </section>
+            )}
 
             {/* 6. Accuracy Note (Special for NIPT) */}
             {test.accuracyNote && (
@@ -302,7 +327,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             <div className="inline-block p-3 rounded-2xl bg-white/10 border border-white/20 mb-8">
                                 <ShieldCheckIcon className="w-12 h-12 text-white" />
                             </div>
-                            <h2 className="text-2xl lg:text-3xl font-black mb-6 uppercase tracking-tight">Accuracy and Reliability</h2>
+                            <h2 className="text-2xl lg:text-3xl font-black mb-6 uppercase tracking-tight">{test.pageCopy?.accuracyHeading || 'Accuracy and Reliability'}</h2>
                             <p className="text-xl lg:text-2xl font-bold text-white leading-relaxed italic">
                                 "{test.accuracyNote}"
                             </p>
@@ -312,12 +337,12 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
             )}
 
             {/* 7. Packages Section (Special for NIPT) */}
-            {test.packages && (
+            {test.packages && test.packages.length > 0 && (
                 <section className="py-20 bg-gray-50 overflow-hidden">
                     <div className="container mx-auto px-6 max-w-7xl">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">Choose Your Screening Panel</h2>
-                            <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">Select the right level of detailed screening</p>
+                            <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4">{test.pageCopy?.packagesHeading || 'Choose Your Screening Panel'}</h2>
+                            <p className="text-gray-500 font-bold uppercase tracking-widest text-[10px]">{test.pageCopy?.packagesSubtitle || 'Select the right level of detailed screening'}</p>
                         </div>
                         <div className="grid md:grid-cols-3 gap-8">
                             {test.packages.map((pkg, idx) => (
@@ -353,12 +378,12 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
             )}
 
             {/* 8. Frequently Asked Questions */}
-            {test.faqs && (
+            {test.faqs && test.faqs.length > 0 && (
                 <section className="py-16 bg-white">
                     <div className="container mx-auto px-6 max-w-3xl">
                         <div className="text-center mb-12">
                             <h2 className="text-3xl lg:text-4xl font-black text-gray-900 mb-3">
-                                Frequently Asked Questions
+                                {test.pageCopy?.faqHeading || 'Frequently Asked Questions'}
                             </h2>
                             <div className="h-1 w-16 bg-[#045d65] mx-auto rounded-full" />
                         </div>
@@ -377,16 +402,15 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                 <Reveal>
                     <div className="relative rounded-[2rem] bg-gradient-to-br from-gray-900 to-black p-8 lg:p-12 text-center overflow-hidden shadow-2xl">
                         <div className="absolute inset-0 opacity-20">
-                            <Image src={test.image} alt="Background" fill className="object-cover grayscale" />
+                            <Image src={test.ctaImage || test.image} alt="Background" fill className="object-cover grayscale" />
                         </div>
                         
                         <div className="relative z-10 max-w-2xl mx-auto">
                             <h2 className="text-2xl lg:text-3xl font-black text-white mb-4 leading-tight">
-                                Book Your {test.title} Screening Today
+                                {test.pageCopy?.ctaHeading || `Book ${test.title} Today`}
                             </h2>
                             <p className="text-gray-300 text-xs lg:text-sm mb-8 leading-relaxed">
-                                Take the first step towards precise diagnosis and better health. <br className="hidden lg:block" />
-                                Our experts are ready to assist you.
+                                {test.pageCopy?.ctaDescription || 'Contact our team to learn about this test and booking options.'}
                             </p>
                             <div className="flex flex-wrap justify-center gap-4">
                                 <Link 
