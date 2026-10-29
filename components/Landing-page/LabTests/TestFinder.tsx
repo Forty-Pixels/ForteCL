@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { getDepartmentTitle, getTestLink } from '@/lib/department-utils';
-import { DEPARTMENT_TITLES } from '@/constants/department-categories';
+import { DEPARTMENT_CATEGORIES, DEPARTMENT_TITLES } from '@/constants/department-categories';
 
 interface FinderTest {
     slug: string;
@@ -20,17 +20,28 @@ const NAME_OVERRIDES: Record<string, string> = {
     bhcg: 'Beta HCG',
 };
 
-export default function TestFinder({ tests }: { tests: FinderTest[] }) {
+export default function TestFinder({ tests, featuredTests }: {
+    tests: FinderTest[];
+    featuredTests?: Record<string, FinderTest[] | null> | null;
+}) {
     const departments = DEPARTMENT_TITLES;
     const [selectedDepartment, setSelectedDepartment] = useState('');
     const [search, setSearch] = useState('');
     const department = departments.includes(selectedDepartment) ? selectedDepartment : departments[0] || '';
-    const matches = useMemo(() => tests
-        .filter(test => test.slug && department && getDepartmentTitle(test.department, test.departmentSlug) === department)
-        .map(test => ({ ...test, name: NAME_OVERRIDES[test.slug] || test.name }))
-        .filter(test => test.name.toLowerCase().includes(search.trim().toLowerCase()))
-        .sort((a, b) => a.name.localeCompare(b.name)), [tests, department, search]);
+    const categoryId = DEPARTMENT_CATEGORIES.find(item => item.title === department)?.id;
+    const matches = useMemo(() => {
+        const source = featuredTests ? (featuredTests[categoryId || ''] || []) : tests;
+        const matching = source
+            .filter(test => test?.slug && test.slug !== 'std19' && department && getDepartmentTitle(test.department, test.departmentSlug) === department)
+            .map(test => ({ ...test, name: NAME_OVERRIDES[test.slug] || test.name }))
+            .filter(test => test.name.toLowerCase().includes(search.trim().toLowerCase()));
+        return featuredTests ? matching : matching.sort((a, b) => a.name.localeCompare(b.name));
+    }, [tests, featuredTests, categoryId, department, search]);
     const visibleTests = matches.slice(0, 6);
+    const directoryMatchCount = tests.filter(test =>
+        test.slug && getDepartmentTitle(test.department, test.departmentSlug) === department &&
+        (NAME_OVERRIDES[test.slug] || test.name).toLowerCase().includes(search.trim().toLowerCase())
+    ).length;
     const moreParams = new URLSearchParams({ department });
     if (search.trim()) moreParams.set('search', search.trim());
 
@@ -94,8 +105,8 @@ export default function TestFinder({ tests }: { tests: FinderTest[] }) {
                                 </tbody>
                             </table>
                         </div>
-                        {!matches.length && <div className="px-6 py-12 text-center"><p className="font-semibold text-[#103b40]">{search ? 'No tests match your search in this department.' : 'No tests listed for this department yet.'}</p>{search && <button type="button" onClick={() => setSearch('')} className="mt-4 rounded px-3 py-2 text-sm font-semibold text-[#045d65] underline focus-visible:outline-2">Clear search</button>}</div>}
-                        {matches.length > 6 && <div className="border-t border-[#d7e5e8] pt-5 text-center"><Link href={`/lab-tests?${moreParams.toString()}`} className="inline-flex items-center gap-3 rounded-full border border-[#045d65]/25 bg-white px-5 py-2.5 text-xs font-bold text-[#045d65] transition-colors hover:bg-[#e1eeeb] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#045d65]">View more <ArrowUpRightIcon aria-hidden="true" className="h-4 w-4" /></Link></div>}
+                        {!matches.length && <div className="px-6 py-12 text-center"><p className="font-semibold text-[#103b40]">{search ? 'No featured tests match your search in this department.' : 'No homepage tests selected for this department yet.'}</p>{search && <button type="button" onClick={() => setSearch('')} className="mt-4 rounded px-3 py-2 text-sm font-semibold text-[#045d65] underline focus-visible:outline-2">Clear search</button>}</div>}
+                        {directoryMatchCount > visibleTests.length && <div className="border-t border-[#d7e5e8] pt-5 text-center"><Link href={`/lab-tests?${moreParams.toString()}`} className="inline-flex items-center gap-3 rounded-full border border-[#045d65]/25 bg-white px-5 py-2.5 text-xs font-bold text-[#045d65] transition-colors hover:bg-[#e1eeeb] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#045d65]">View more <ArrowUpRightIcon aria-hidden="true" className="h-4 w-4" /></Link></div>}
                     </div>
                 </div>
             </div>
