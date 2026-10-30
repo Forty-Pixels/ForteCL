@@ -22,6 +22,12 @@ interface DepartmentDetailViewProps {
     allCmsTests: { name: string; slug: string }[];
 }
 
+const WhatsAppIcon = ({ className }: { className?: string }) => (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .011 5.403.011 12.038c0 2.12.553 4.189 1.604 6.04l-1.705 6.226 6.37-1.67a11.803 11.803 0 005.766 1.498h.005c6.634 0 12.038-5.403 12.038-12.039a11.811 11.811 0 00-3.414-8.417" />
+    </svg>
+);
+
 export default function DepartmentDetailView({ department, cmsTests, allCmsTests }: DepartmentDetailViewProps) {
     return (
         <main className="bg-white min-h-screen">
@@ -46,14 +52,26 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
                 <div className="w-full relative z-10 flex justify-end">
                     <div className="relative bg-[#045d65] rounded-tl-[4rem] rounded-bl-none p-8 sm:p-12 lg:p-20 shadow-2xl w-full lg:w-[96%] min-h-[400px] flex flex-col justify-center">
 
-                        <a
-                            href="tel:+97142718226"
-                            aria-label={`Call Forte Clinical Laboratory about ${department.title} at +971 4 271 8226`}
-                            className="mb-8 inline-flex self-start items-center gap-3 rounded-full border border-white/50 bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white lg:absolute lg:right-20 lg:top-12 lg:mb-0"
-                        >
-                            <PhoneIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
-                            <span className="text-sm font-semibold">Call us: +971 4 271 8226</span>
-                        </a>
+                        <div className="mb-8 flex flex-wrap items-center gap-3 lg:absolute lg:right-20 lg:top-12 lg:mb-0 lg:justify-end">
+                            <a
+                                href="tel:+97142718226"
+                                aria-label={`Call Forte Clinical Laboratory about ${department.title} at +971 4 271 8226`}
+                                className="inline-flex items-center gap-3 rounded-full border border-white/50 bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                            >
+                                <PhoneIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                                <span className="text-sm font-semibold">Call us: +971 4 271 8226</span>
+                            </a>
+                            <a
+                                href="https://wa.me/971569925611"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`WhatsApp Forte Clinical Laboratory about ${department.title} at +971 56 992 5611`}
+                                className="inline-flex items-center gap-3 rounded-full border border-white/50 bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                            >
+                                <WhatsAppIcon className="h-5 w-5 shrink-0" />
+                                <span className="text-sm font-semibold">WhatsApp: +971 56 992 5611</span>
+                            </a>
+                        </div>
 
                         <Reveal>
                             <div className="max-w-4xl">
