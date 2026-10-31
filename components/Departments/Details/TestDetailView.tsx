@@ -65,6 +65,7 @@ interface TestDetailViewProps {
     test: {
         title: string;
         description: string;
+        importanceSection?: { heading?: string; content: string };
         tat?: string;
         sampleType?: string[];
         image: string;
@@ -194,6 +195,24 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                     </div>
                 </div>
             </section>
+            )}
+
+            {test.importanceSection?.content && (
+                <section aria-labelledby="test-importance-heading" className="bg-white py-12 sm:py-16">
+                    <div className="mx-auto max-w-7xl px-6">
+                        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#045d65] to-[#023f45] px-7 py-9 shadow-xl sm:px-10 sm:py-12 lg:px-14">
+                            <div className="absolute -right-20 -top-24 h-64 w-64 rounded-full bg-white/5 blur-2xl" aria-hidden="true" />
+                            <div className="relative max-w-4xl">
+                                <h2 id="test-importance-heading" className="mb-5 text-2xl font-black leading-tight text-white sm:text-3xl">
+                                    {test.importanceSection.heading || `Why Is ${test.title} Important?`}
+                                </h2>
+                                <p className="whitespace-pre-line text-sm leading-7 text-white/90 sm:text-base sm:leading-8">
+                                    {test.importanceSection.content}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             )}
 
             {test.subSections && test.subSections.length > 0 && (
