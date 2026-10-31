@@ -43,7 +43,7 @@ export const labTestBySlugQuery = `*[_type == "labTest" && slug.current == $slug
   "accuracyNote": coalesce(accuracySection.note, accuracyNote),
   "faqs": coalesce(faqSection.items, faqs),
   "packages": coalesce(panelsSection.items, packages),
-  heroSection, introSection, considerSection, howSection, processSection,
+  heroSection, introSection, importanceSection, considerSection, howSection, processSection,
   accuracySection, panelsSection, faqSection, ctaSection,
   pageCopy,
   "imageUrl": coalesce(heroSection.image.asset->url, image.asset->url),

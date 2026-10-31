@@ -30,7 +30,11 @@ export default defineType({
             defineField({ name: 'overviewSource', title: 'Overview reference', type: 'url', description: 'Editorial reference; not displayed on the website.' }),
             image('image', 'First image'), image('secondaryImage', 'Second image'),
         ]),
-        section('additionalInfoSection', '4. Additional sections', [
+        section('importanceSection', '4. Why this test matters', [
+            heading(),
+            defineField({ name: 'content', title: 'Content', type: 'text', rows: 12 }),
+        ]),
+        section('additionalInfoSection', '5. Additional sections', [
             detailItems('sections', 'Additional sections', [
                 defineField({ name: 'title', title: 'Heading', type: 'string' }),
                 copy('content', 'Content'),
@@ -38,7 +42,7 @@ export default defineType({
                 image('image', 'Image'),
             ], 'title'),
         ]),
-        section('considerSection', '5. Who may consider this test', [
+        section('considerSection', '6. Who may consider this test', [
             heading(),
             detailItems('items', 'List items', [
                 defineField({ name: 'name', title: 'Item', type: 'string', validation: Rule => Rule.required() }),
@@ -46,14 +50,14 @@ export default defineType({
             ], 'name'),
             image('image', 'Image'),
         ]),
-        section('howSection', '6. How it works', [
+        section('howSection', '7. How it works', [
             heading(),
             detailItems('items', 'Items', [
                 defineField({ name: 'title', title: 'Item heading', type: 'string', validation: Rule => Rule.required() }),
                 copy('description', 'Item content'),
             ], 'title'),
         ]),
-        section('processSection', '7. Process', [
+        section('processSection', '8. Process', [
             heading(), copy('subtitle', 'Subtitle'),
             detailItems('steps', 'Steps', [
                 defineField({ name: 'title', title: 'Step heading', type: 'string', validation: Rule => Rule.required() }),
@@ -61,8 +65,8 @@ export default defineType({
                 image('image', 'Step image'),
             ], 'title'),
         ]),
-        section('accuracySection', '8. Accuracy and reliability', [heading(), copy('note', 'Content')]),
-        section('panelsSection', '9. Screening panels', [
+        section('accuracySection', '9. Accuracy and reliability', [heading(), copy('note', 'Content')]),
+        section('panelsSection', '10. Screening panels', [
             heading(), copy('subtitle', 'Subtitle'),
             detailItems('items', 'Panels', [
                 defineField({ name: 'name', title: 'Panel name', type: 'string', validation: Rule => Rule.required() }),
@@ -70,14 +74,14 @@ export default defineType({
                 defineField({ name: 'features', title: 'Features', type: 'array', of: [{ type: 'string' }] }),
             ], 'name'),
         ]),
-        section('faqSection', '10. Frequently asked questions', [
+        section('faqSection', '11. Frequently asked questions', [
             heading(),
             detailItems('items', 'Questions and answers', [
                 defineField({ name: 'question', title: 'Question', type: 'string', validation: Rule => Rule.required() }),
                 copy('answer', 'Answer'),
             ], 'question'),
         ]),
-        section('ctaSection', '11. Final call to action', [heading(), copy('description', 'Content'), image('image', 'Background image')]),
+        section('ctaSection', '12. Final call to action', [heading(), copy('description', 'Content'), image('image', 'Background image')]),
         defineField({ name: 'relatedTests', title: 'Related tests', type: 'array', of: [{ type: 'reference', to: [{ type: 'labTest' }] }] }),
     ],
     preview: { select: { title: 'name', subtitle: 'department.title', media: 'heroSection.image' } },
