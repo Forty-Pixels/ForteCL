@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { PortableText, type PortableTextBlock, type PortableTextComponents } from '@portabletext/react';
 import { 
     CheckIcon, 
     ChevronDownIcon, 
@@ -15,6 +16,23 @@ import {
 import Navbar from '@/components/Navbar/Navbar';
 import Reveal from '@/components/Animation/Reveal';
 import BookActionButton from '@/components/Booking/BookActionButton';
+
+const importanceComponents: PortableTextComponents = {
+    block: {
+        normal: ({ children }) => <p className="text-sm leading-7 text-white/90 sm:text-base sm:leading-8">{children}</p>,
+        h2: ({ children }) => <h2 className="text-2xl font-black leading-tight text-white sm:text-3xl">{children}</h2>,
+        h3: ({ children }) => <h3 className="pt-3 text-xl font-bold leading-snug text-white sm:text-2xl">{children}</h3>,
+        h4: ({ children }) => <h4 className="pt-2 text-lg font-bold leading-snug text-white">{children}</h4>,
+    },
+    list: {
+        bullet: ({ children }) => <ul className="list-disc space-y-2 pl-6 text-sm leading-7 text-white/90 sm:text-base sm:leading-8">{children}</ul>,
+        number: ({ children }) => <ol className="list-decimal space-y-2 pl-6 text-sm leading-7 text-white/90 sm:text-base sm:leading-8">{children}</ol>,
+    },
+    marks: {
+        strong: ({ children }) => <strong className="font-bold text-white">{children}</strong>,
+        em: ({ children }) => <em>{children}</em>,
+    },
+};
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
@@ -61,7 +79,7 @@ interface TestDetailViewProps {
     test: {
         title: string;
         description: string;
-        importanceSection?: { heading?: string; content: string };
+        importanceSection?: { content?: string; richContent?: PortableTextBlock[] };
         tat?: string;
         sampleType?: string[];
         image: string;
@@ -198,18 +216,21 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
             </section>
             )}
 
-            {test.importanceSection?.content && (
-                <section aria-labelledby="test-importance-heading" className="bg-white py-12 sm:py-16">
+            {(test.importanceSection?.richContent?.length || test.importanceSection?.content) && (
+                <section aria-label="Why this test matters" className="bg-white py-12 sm:py-16">
                     <div className="mx-auto max-w-7xl px-6">
                         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#045d65] to-[#023f45] px-7 py-9 shadow-xl sm:px-10 sm:py-12 lg:px-14">
                             <div className="absolute -right-20 -top-24 h-64 w-64 rounded-full bg-white/5 blur-2xl" aria-hidden="true" />
                             <div className="relative max-w-4xl">
-                                <h2 id="test-importance-heading" className="mb-5 text-2xl font-black leading-tight text-white sm:text-3xl">
-                                    {test.importanceSection.heading || `Why Is ${test.title} Important?`}
-                                </h2>
-                                <p className="whitespace-pre-line text-sm leading-7 text-white/90 sm:text-base sm:leading-8">
-                                    {test.importanceSection.content}
-                                </p>
+                                {test.importanceSection.richContent?.length ? (
+                                    <div className="space-y-4">
+                                        <PortableText value={test.importanceSection.richContent} components={importanceComponents} />
+                                    </div>
+                                ) : (
+                                    <p className="whitespace-pre-line text-sm leading-7 text-white/90 sm:text-base sm:leading-8">
+                                        {test.importanceSection.content}
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -31,8 +31,34 @@ export default defineType({
             image('image', 'First image'), image('secondaryImage', 'Second image'),
         ]),
         section('importanceSection', '4. Why this test matters', [
-            heading(),
-            defineField({ name: 'content', title: 'Content', type: 'text', rows: 12 }),
+            defineField({
+                name: 'richContent', title: 'Rich content', type: 'array',
+                description: 'Add the section heading, paragraphs, subheadings and lists here. This takes priority over the older plain text content.',
+                of: [{
+                    type: 'block',
+                    styles: [
+                        { title: 'Paragraph', value: 'normal' },
+                        { title: 'Heading', value: 'h2' },
+                        { title: 'Subheading', value: 'h3' },
+                        { title: 'Small subheading', value: 'h4' },
+                    ],
+                    lists: [
+                        { title: 'Bullet list', value: 'bullet' },
+                        { title: 'Numbered list', value: 'number' },
+                    ],
+                    marks: {
+                        decorators: [
+                            { title: 'Bold', value: 'strong' },
+                            { title: 'Italic', value: 'em' },
+                        ],
+                    },
+                }],
+            }),
+            defineField({
+                name: 'content', title: 'Legacy plain text content', type: 'text', rows: 12,
+                description: 'Shown until rich content is added.',
+                hidden: ({ parent }) => Array.isArray(parent?.richContent) && parent.richContent.length > 0,
+            }),
         ]),
         section('additionalInfoSection', '5. Additional sections', [
             detailItems('sections', 'Additional sections', [

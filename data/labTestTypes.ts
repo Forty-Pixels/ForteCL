@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from '@portabletext/react';
+
 export interface LabTest {
     slug: string;
     name: string;
@@ -6,7 +8,7 @@ export interface LabTest {
     tat: string;
     sampleType: string[];
     overview?: string;
-    importanceSection?: { heading: string; content: string };
+    importanceSection?: { content?: string; richContent?: PortableTextBlock[] };
     procedure?: string;
     symptoms?: string[];
     normalRanges?: string[];
