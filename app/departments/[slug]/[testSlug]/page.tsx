@@ -75,6 +75,7 @@ export default async function TestPage({ params }: TestPageProps) {
         tat: getField('tat'),
         sampleType: getField('sampleType'),
         description: getField('overview') ?? (cmsTest ? '' : department.description),
+        importanceSection: cmsTest ? cmsTest.importanceSection : localTest?.importanceSection,
         image: getTestImage(testData),
         introImage: cmsTest?.introImageUrl,
         secondaryImage: cmsTest?.secondaryImageUrl,
