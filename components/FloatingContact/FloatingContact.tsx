@@ -35,7 +35,7 @@ export default function FloatingContact() {
                 </div>
                 <div className="flex items-center space-x-3">
                     <a 
-                        href="tel:+97142718226" 
+                        href="tel:+971569925611"
                         className="bg-white/10 p-2.5 rounded-xl hover:bg-white/20 transition-all active:scale-95"
                         aria-label="Call Us"
                     >
@@ -65,12 +65,12 @@ export default function FloatingContact() {
                                 exit={{ opacity: 0, x: 20 }}
                                 className="mr-3 bg-white text-gray-900 px-4 py-2 rounded-full text-xs font-bold shadow-2xl border border-gray-100 whitespace-nowrap"
                             >
-                                Talk to our Experts: +971 4 271 8226
+                                Talk to our Experts: +971 56 992 5611
                             </motion.div>
                         )}
                     </AnimatePresence>
                     <a 
-                        href="tel:+97142718226"
+                        href="tel:+971569925611"
                         onMouseEnter={() => setHovered('call')}
                         onMouseLeave={() => setHovered(null)}
                         className="bg-[#202020] text-white p-4 rounded-full hover:bg-black transition-all shadow-2xl hover:scale-110 active:scale-95 duration-300"

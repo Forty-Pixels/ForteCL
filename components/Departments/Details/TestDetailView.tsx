@@ -181,12 +181,14 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                 <p className="text-base text-gray-600 leading-relaxed mb-8">
                                     {test.description}
                                 </p>
-                                <Link 
-                                    href="/contact"
+                                <a
+                                    href={`https://wa.me/971569925611?text=${encodeURIComponent(`Hi, I would like to speak to an expert about ${test.title}.`)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-block px-8 py-3 rounded-lg bg-[#045d65] text-white font-black text-xs uppercase tracking-wider hover:bg-[#034b52] transition-all shadow-md"
                                 >
                                     Talk to an Expert
-                                </Link>
+                                </a>
                             </div>
                         </Reveal>
                     </div>
@@ -260,9 +262,9 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             <div className="h-1 w-12 bg-white/30 mx-auto rounded-full" />
                         </div>
 
-                        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div className="relative z-10 flex flex-wrap justify-center gap-4">
                             {(test.howItems || []).slice(0, 4).map((item, idx) => (
-                                <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-all group">
+                                <div key={idx} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-2xl hover:bg-white/20 transition-all group">
                                     <div className="w-8 h-8 rounded-lg bg-white text-[#045d65] flex items-center justify-center mb-3 font-black text-sm group-hover:scale-110 transition-transform">
                                         {idx + 1}
                                     </div>
@@ -420,7 +422,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                     Schedule Appointment Now
                                 </Link>
                                 <a 
-                                    href="tel:+97142718226" 
+                                    href="tel:+971569925611"
                                     className="px-10 py-4 rounded-xl bg-white text-gray-900 font-black text-xs uppercase tracking-wider hover:bg-gray-100 transition-all shadow-xl"
                                 >
                                     Call Us

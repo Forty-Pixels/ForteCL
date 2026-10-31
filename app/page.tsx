@@ -25,11 +25,11 @@ export default async function Home() {
   return (
     <main>
       <Hero />
+      <TrustAndTech />
       <ContactCTA />
       <LabTests tests={tests} />
       <TestFinder tests={tests} featuredTests={featuredTests} />
       <InsurancePartners />
-      <TrustAndTech />
       <Departments />
       <PackagesPreview packages={packages} />
       <ReviewsSection />

@@ -54,12 +54,12 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
 
                         <div className="mb-8 flex flex-wrap items-center gap-3 lg:absolute lg:right-20 lg:top-12 lg:mb-0 lg:justify-end">
                             <a
-                                href="tel:+97142718226"
-                                aria-label={`Call Forte Clinical Laboratory about ${department.title} at +971 4 271 8226`}
+                                href="tel:+971569925611"
+                                aria-label={`Call Forte Clinical Laboratory about ${department.title} at +971 56 992 5611`}
                                 className="inline-flex items-center gap-3 rounded-full border border-white/50 bg-white/10 px-5 py-3 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                             >
                                 <PhoneIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
-                                <span className="text-sm font-semibold">Call us: +971 4 271 8226</span>
+                                <span className="text-sm font-semibold">Call us: +971 56 992 5611</span>
                             </a>
                             <a
                                 href="https://wa.me/971569925611"

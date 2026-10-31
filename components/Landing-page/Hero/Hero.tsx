@@ -51,8 +51,25 @@ export default function Hero() {
                             href="/lab-tests"
                             className="border-2 border-[#A7DCC0] hover:bg-[#045d65]/70 text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-all w-full sm:w-auto text-center backdrop-blur-sm"
                         >
-                            Explore Lab Tests
+                            Medical Tests
                         </Link>
+                    </div>
+                </Reveal>
+
+                <Reveal delayMs={350}>
+                    <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-white/90">
+                        <span>Call or WhatsApp</span>
+                        <a href="tel:+971569925611" className="font-semibold text-white hover:underline focus-visible:underline">
+                            +971 56 992 5611
+                        </a>
+                        <a
+                            href="https://wa.me/971569925611"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-semibold text-[#A7DCC0] hover:underline focus-visible:underline"
+                        >
+                            Chat on WhatsApp →
+                        </a>
                     </div>
                 </Reveal>
             </div>

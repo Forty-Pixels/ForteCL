@@ -46,10 +46,10 @@ export default function ContactContent() {
                                         </svg>
                                     </div>
                                     <a 
-                                        href="tel:+97142718226" 
+                                        href="tel:+971569925611"
                                         className="text-gray-700 font-medium text-sm hover:text-[#045d65] transition-colors"
                                     >
-                                        +971 4 271 8226
+                                        +971 56 992 5611
                                     </a>
                                 </li>
 

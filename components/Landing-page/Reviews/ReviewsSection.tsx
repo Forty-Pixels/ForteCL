@@ -197,7 +197,7 @@ export default function ReviewsSection() {
                             Patient Testimonials
                         </span>
                         <h2 className="text-2xl md:text-3xl font-black text-[#1a1a1a] mb-3">
-                            Trusted by Thousands in Dubai
+                            Trusted Medical laboratory in Dubai and Near by
                         </h2>
                         <div className="flex items-center justify-center gap-2">
                             <div className="flex">

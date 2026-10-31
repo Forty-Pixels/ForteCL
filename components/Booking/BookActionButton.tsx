@@ -17,7 +17,7 @@ export default function BookActionButton({
     className,
     whatsappText = 'Hi, I would like to book a test.',
     modalTitle = 'Choose Booking Method',
-    phoneNumber = '+97142718226',
+    phoneNumber = '+971569925611',
     whatsappNumber = '971569925611',
 }: BookActionButtonProps) {
     const [open, setOpen] = useState(false);
