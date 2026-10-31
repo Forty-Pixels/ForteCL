@@ -8,10 +8,6 @@ import {
     CheckIcon, 
     ChevronDownIcon, 
     ChevronUpIcon,
-    ChatBubbleLeftRightIcon,
-    PhoneIcon,
-    DocumentTextIcon,
-    BeakerIcon,
     ShieldCheckIcon,
     CheckCircleIcon
 } from '@heroicons/react/24/outline';
@@ -94,18 +90,23 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
             </div>
 
             {/* 1. Hero Section */}
-            <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
-                <div className="absolute inset-0 z-0">
+            <section className="relative min-h-[700px] lg:min-h-[800px] flex items-center overflow-hidden bg-[#045d65] pt-24 pb-16">
+                <div
+                    className="absolute inset-y-0 right-0 z-0 w-full lg:w-[70%]"
+                    style={{ maskImage: 'linear-gradient(to right, transparent, black 45%)' }}
+                >
                     <Image
                         src={test.image}
                         alt={test.title}
                         fill
-                        className="object-cover object-right scale-105"
+                        className="object-cover object-center blur-[2px]"
+                        sizes="(min-width: 1024px) 70vw, 100vw"
+                        quality={95}
                         priority
                     />
-                    {/* Teal Side Fade Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#045d65] via-[#045d65]/95 to-transparent lg:w-[70%] w-full" />
+                    <div className="absolute inset-0 bg-black/20" />
                 </div>
+                <div className="absolute inset-0 bg-[#045d65]/55 lg:hidden" />
 
                 <div className="container mx-auto px-6 relative z-10">
                     <Reveal>
@@ -350,7 +351,7 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                             </div>
                             <h2 className="text-2xl lg:text-3xl font-black mb-6 uppercase tracking-tight">{test.pageCopy?.accuracyHeading || 'Accuracy and Reliability'}</h2>
                             <p className="text-xl lg:text-2xl font-bold text-white leading-relaxed italic">
-                                "{test.accuracyNote}"
+                                &ldquo;{test.accuracyNote}&rdquo;
                             </p>
                         </Reveal>
                     </div>
