@@ -477,6 +477,10 @@ export const labTests: LabTest[] = [
     tat: "1 Day",
     sampleType: ["2 mL (0.5 mL min.) serum from 1 SST"],
     overview: "",
+    importanceSection: {
+      heading: "Why Is Ferritin Important?",
+      content: "Ferritin is a protein that stores iron in your body, mainly in the liver, spleen and bone marrow. The Ferritin blood test measures how much iron your body has stored and helps identify whether your iron reserves are sufficient. When your body uses up its stored iron, ferritin levels can decrease even before haemoglobin becomes low. This makes the Ferritin test useful for detecting iron deficiency at an early stage, sometimes before anaemia develops. However, ferritin levels can also increase due to inflammation, infection, liver conditions and other health problems, even when iron stores are not high. Therefore, a high ferritin level does not always mean excess iron in the body. A low ferritin level usually indicates depleted iron stores, while a high level may require further investigation. Doctors may interpret ferritin alongside CBC, CRP and other iron studies to understand your iron status more accurately."
+    },
     procedure: "",
     symptoms: [],
     normalRanges: [],

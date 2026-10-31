@@ -6,6 +6,7 @@ export interface LabTest {
     tat: string;
     sampleType: string[];
     overview?: string;
+    importanceSection?: { heading: string; content: string };
     procedure?: string;
     symptoms?: string[];
     normalRanges?: string[];
