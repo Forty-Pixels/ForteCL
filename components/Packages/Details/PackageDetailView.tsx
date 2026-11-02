@@ -1,21 +1,25 @@
 'use client';
 
+import { getPackagePricing } from '@/lib/package-details';
+
 import React from 'react';
 import Image from 'next/image';
+import type { SanityImageSource } from '@sanity/image-url';
 import { urlFor } from '@/lib/sanity';
 import Reveal from '@/components/Animation/Reveal';
 import BookActionButton from '@/components/Booking/BookActionButton';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 import Navbar from '@/components/Navbar/Navbar';
 
 interface PackageDetailViewProps {
     pkg: {
+        amount?: number | null;
+        homeServiceIncluded?: boolean | null;
         title: string;
         slug: string;
         description: string;
-        image: any;
+        image?: SanityImageSource;
         testsTotal?: number;
         subTests?: { title: string; explanation?: string }[];
         overview?: string;
@@ -26,18 +30,10 @@ interface PackageDetailViewProps {
 }
 
 export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
-    const parsePrice = (title: string) => {
-        const match = title.match(/(?:—\s*)?(AED\s*\d+)/i);
-        if (match) {
-            return {
-                cleanTitle: title.replace(match[0], '').trim(),
-                price: match[1]
-            };
-        }
-        return { cleanTitle: title, price: null };
-    };
 
-    const { cleanTitle, price } = parsePrice(pkg.title);
+
+    const { cleanTitle, price } = getPackagePricing(pkg.title, pkg.amount);
+    const benefits = pkg.benefits?.filter(benefit => benefit.trim()) ?? [];
 
     return (
         <div className="min-h-screen bg-[#fafafa] selection:bg-[#045d65]/30 font-sans">
@@ -64,7 +60,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                             </Reveal>
 
                             <Reveal delayMs={100}>
-                                <p className="text-base text-gray-500 leading-relaxed max-w-xl font-medium">
+                                <p className="text-base text-gray-500 leading-relaxed max-w-xl font-medium whitespace-pre-line">
                                     {pkg.description}
                                 </p>
                             </Reveal>
@@ -78,7 +74,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                     <div className="w-px h-8 bg-gray-200"></div>
                                     <div className="flex flex-col">
                                         <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">Tests</span>
-                                        <span className="text-3xl font-black text-[#0f172a]">{pkg.testsTotal || pkg.subTests?.length || 0}</span>
+                                        <span className="text-3xl font-black text-[#0f172a]">{pkg.testsTotal ?? pkg.subTests?.length ?? 0}</span>
                                     </div>
                                 </div>
                             </Reveal>
@@ -121,9 +117,9 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                             >
                                 <div className="flex items-center gap-2.5 mb-2">
                                     <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
-                                    <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">Available</span>
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">{pkg.homeServiceIncluded === true ? 'Home collection' : 'Collection'}</span>
                                 </div>
-                                <p className="text-[10px] font-bold text-[#0f172a] leading-tight">Mobile collection available across Dubai & Sharjah.</p>
+                                <p className="text-[10px] font-bold text-[#0f172a] leading-tight">{pkg.homeServiceIncluded === true ? 'Home collection included across Dubai & Sharjah.' : pkg.homeServiceIncluded === false ? 'Home collection is not included in this package.' : 'Contact us to confirm home collection availability.'}</p>
                             </motion.div>
                         </Reveal>
                     </div>
@@ -146,14 +142,35 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                             <span className="w-1.5 h-6 bg-[#045d65] rounded-full"></span>
                                             Package Overview
                                         </h2>
-                                        <p className="text-base text-gray-500 leading-relaxed font-medium">
+                                        <p className="text-base text-gray-500 leading-relaxed font-medium whitespace-pre-line">
                                             {pkg.overview}
                                         </p>
                                     </div>
                                 </Reveal>
                             )}
 
+                            {benefits.length > 0 && (
+                                <Reveal>
+                                    <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-gray-100">
+                                        <h2 className="text-xl font-black text-[#0f172a] mb-5">Key Benefits</h2>
+                                        <ul className="list-disc pl-5 space-y-3 text-base text-gray-500 leading-relaxed marker:text-[#045d65]">
+                                            {benefits.map((benefit, i) => <li key={i} className="whitespace-pre-line">{benefit}</li>)}
+                                        </ul>
+                                    </div>
+                                </Reveal>
+                            )}
+
+                            {pkg.preparation && (
+                                <Reveal>
+                                    <div className="bg-[#eaf4f4] rounded-[2rem] p-8 md:p-10 border border-[#cce4e6]">
+                                        <h2 className="text-xl font-black text-[#0f172a] mb-5">Preparation Instructions</h2>
+                                        <p className="text-base text-[#0f172a] leading-relaxed whitespace-pre-line">{pkg.preparation}</p>
+                                    </div>
+                                </Reveal>
+                            )}
+
                             {/* Included Tests Grid - More Compact */}
+                            {!!pkg.subTests?.length && (
                             <div className="space-y-8">
                                 <div className="space-y-1">
                                     <h2 className="text-xl font-black text-[#0f172a]">Tests Breakdown</h2>
@@ -177,6 +194,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                     ))}
                                 </div>
                             </div>
+                            )}
                         </div>
 
                         {/* RIGHT SIDEBAR - COMPACT */}
@@ -195,7 +213,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                                 </div>
                                                 <div className="flex justify-between items-center text-[11px] font-medium">
                                                     <span className="text-gray-400">Home Service</span>
-                                                    <span className="text-green-600 font-bold uppercase">Included</span>
+                                                    <span className={pkg.homeServiceIncluded === true ? 'text-green-600 font-bold uppercase' : 'text-gray-500 font-bold uppercase'}>{pkg.homeServiceIncluded === true ? 'Included' : pkg.homeServiceIncluded === false ? 'Not included' : 'Please confirm'}</span>
                                                 </div>
                                                 <div className="pt-3 border-t border-gray-50 flex justify-between items-end">
                                                     <span className="text-[10px] font-black text-gray-400 uppercase">Total Amount</span>
@@ -203,17 +221,6 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                                 </div>
                                             </div>
                                         </div>
-
-                                        {/* Compact Prep Box */}
-                                        {pkg.preparation && (
-                                            <div className="p-4 rounded-xl bg-[#eaf4f4]/50 border border-[#cce4e6] space-y-1.5">
-                                                <div className="flex items-center gap-1.5 text-[#045d65] font-black text-[9px] uppercase tracking-wider">
-                                                    <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                                    Preparation
-                                                </div>
-                                                <p className="text-[#0f172a] text-[10px] font-bold leading-tight">{pkg.preparation}</p>
-                                            </div>
-                                        )}
 
                                         <div className="space-y-2">
                                             <BookActionButton
@@ -225,25 +232,6 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                         </div>
                                     </div>
                                 </Reveal>
-
-                                {/* Mini Benefits */}
-                                <Reveal delayMs={300}>
-                                    <div className="px-4 space-y-4">
-                                        <h4 className="text-[10px] font-black text-[#0f172a] uppercase tracking-widest">Why Forte?</h4>
-                                        <ul className="space-y-3">
-                                            {(pkg.benefits || [
-                                                "Professional Home Nursing",
-                                                "Accurate Clinical Results",
-                                                "Secure Digital Privacy"
-                                            ]).map((benefit, i) => (
-                                                <li key={i} className="flex gap-3 items-start">
-                                                    <svg className="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-                                                    <span className="text-[11px] text-gray-500 font-medium leading-tight">{benefit}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </Reveal>
                             </div>
                         </div>
                     </div>
@@ -251,6 +239,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
             </section>
 
             {/* REFINED FAQ SECTION */}
+            {!!pkg.faqs?.length && (
             <section className="py-24 bg-white border-t border-gray-50">
                 <div className="max-w-3xl mx-auto px-4">
                     <div className="text-center mb-12">
@@ -258,10 +247,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                     </div>
                     
                     <div className="space-y-3">
-                        {(pkg.faqs && pkg.faqs.length > 0 ? pkg.faqs : [
-                            { question: "When will I receive my reports?", answer: "Most reports are delivered within 24 hours via email and WhatsApp." },
-                            { question: "Can I book for my family?", answer: "Yes, group mobile collections can be scheduled in a single visit." }
-                        ]).map((faq, i) => (
+                        {pkg.faqs.map((faq, i) => (
                             <details key={i} className="group p-5 rounded-2xl bg-[#fafafa] border border-gray-100 open:bg-white open:shadow-md transition-all duration-300">
                                 <summary className="font-bold text-sm text-[#0f172a] list-none cursor-pointer flex justify-between items-center outline-none">
                                     {faq.question}
@@ -269,7 +255,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                         <svg className="w-3 h-3 text-gray-400 group-open:text-white group-open:rotate-180 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
                                     </div>
                                 </summary>
-                                <div className="mt-4 text-gray-500 text-[12px] leading-relaxed font-medium animate-in fade-in slide-in-from-top-1">
+                                <div className="mt-4 text-gray-500 text-sm leading-relaxed font-medium whitespace-pre-line animate-in fade-in slide-in-from-top-1">
                                     {faq.answer}
                                 </div>
                             </details>
@@ -277,6 +263,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                     </div>
                 </div>
             </section>
+            )}
         </div>
     );
 }

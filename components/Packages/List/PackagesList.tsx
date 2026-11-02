@@ -1,5 +1,7 @@
 'use client';
 
+import { getPackagePricing } from '@/lib/package-details';
+
 import { useState, Fragment } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,18 +19,6 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
     const [selectedPackage, setSelectedPackage] = useState<any>(null);
 
     const packages = initialPackages || [];
-
-    // Helper to parse price from title
-    const parsePrice = (title: string) => {
-        const match = title.match(/(?:—\s*)?(AED\s*\d+)/i);
-        if (match) {
-            return {
-                cleanTitle: title.replace(match[0], '').trim(),
-                price: match[1]
-            };
-        }
-        return { cleanTitle: title, price: null };
-    };
 
     return (
         <section className="py-8 bg-[#fcfcfc] overflow-hidden">
@@ -48,7 +38,7 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
                     {packages.map((pkg, index) => {
-                        const { cleanTitle, price } = parsePrice(pkg.title);
+                        const { cleanTitle, price } = getPackagePricing(pkg.title, pkg.amount);
 
                         return (
                             <Reveal key={pkg.id} delayMs={index * 100} className="h-full">
@@ -146,7 +136,7 @@ export default function PackagesList({ initialPackages }: PackagesListProps) {
                                         <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-50">
                                             <div>
                                                 <DialogTitle as="h3" className="text-xl sm:text-2xl font-black text-[#1F2937] tracking-tight">
-                                                    {parsePrice(selectedPackage.title).cleanTitle}
+                                                    {getPackagePricing(selectedPackage.title, selectedPackage.amount).cleanTitle}
                                                 </DialogTitle>
                                                 <div className="flex items-center gap-2 mt-1">
                                                     <span className="px-2.5 py-0.5 rounded-full bg-[#307984]/10 text-[#307984] text-[10px] font-bold uppercase tracking-wider">

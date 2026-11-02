@@ -110,6 +110,8 @@ export const labTestsByDepartmentSlugQuery = `*[
 
 /** Fetch all packages (listing page) */
 export const allPackagesQuery = `*[_type == "package"] | order(_createdAt asc) {
+  amount,
+  homeServiceIncluded,
   "id": slug.current,
   title,
   "slug": slug.current,
@@ -125,6 +127,8 @@ export const allPackagesQuery = `*[_type == "package"] | order(_createdAt asc) {
 
 /** Fetch a single package by slug (detail page) */
 export const packageBySlugQuery = `*[_type == "package" && slug.current == $slug][0] {
+  amount,
+  homeServiceIncluded,
   "id": slug.current,
   title,
   "slug": slug.current,

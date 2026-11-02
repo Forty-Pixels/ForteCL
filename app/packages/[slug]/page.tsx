@@ -5,6 +5,10 @@ import Footer from '@/components/Landing-page/Footer/Footer';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
+// Package edits should appear on the next request after publishing in Studio.
+export const dynamic = 'force-dynamic';
+const packageClient = client.withConfig({ useCdn: false });
+
 interface PackagePageProps {
     params: Promise<{
         slug: string;
@@ -13,7 +17,7 @@ interface PackagePageProps {
 
 export async function generateMetadata({ params }: PackagePageProps): Promise<Metadata> {
     const { slug } = await params;
-    const pkg = await client.fetch(packageBySlugQuery, { slug });
+    const pkg = await packageClient.fetch(packageBySlugQuery, { slug }, { cache: 'no-store' });
     
     if (!pkg) return { title: 'Package Not Found' };
 
@@ -32,7 +36,7 @@ export async function generateStaticParams() {
 
 export default async function PackagePage({ params }: PackagePageProps) {
     const { slug } = await params;
-    const pkg = await client.fetch(packageBySlugQuery, { slug });
+    const pkg = await packageClient.fetch(packageBySlugQuery, { slug }, { cache: 'no-store' });
 
     if (!pkg) {
         notFound();

@@ -1,3 +1,4 @@
+import { getPackagePricing } from '@/lib/package-details';
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
@@ -10,6 +11,7 @@ interface PackagesPreviewProps {
 }
 
 interface PackagePreviewItem {
+    amount?: number | null;
     slug?: string;
     title?: string;
     description?: string;
@@ -18,16 +20,6 @@ interface PackagePreviewItem {
     subTests?: { title: string; explanation?: string }[];
 }
 
-function parsePrice(title: string) {
-    const match = title.match(/(?:—\s*)?(AED\s*\d+)/i);
-    if (match) {
-        return {
-            cleanTitle: title.replace(match[0], '').trim(),
-            price: match[1],
-        };
-    }
-    return { cleanTitle: title, price: null };
-}
 
 export default function PackagesPreview({ packages }: PackagesPreviewProps) {
     const topPackages = (packages || []).slice(0, 5);
@@ -60,7 +52,7 @@ export default function PackagesPreview({ packages }: PackagesPreviewProps) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 lg:gap-3">
                     {topPackages.map((pkg, index) => {
-                        const { cleanTitle, price } = parsePrice(pkg.title || '');
+                        const { cleanTitle, price } = getPackagePricing(pkg.title || '', pkg.amount);
                         return (
                             <Reveal key={pkg.slug || index} delayMs={130 + index * 100}>
                                 <article className="group relative flex flex-col items-center text-center px-4 py-8 rounded-[60px] border border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent hover:border-[#A7DCC0]/50 transition-all duration-500 overflow-hidden min-h-[380px]">

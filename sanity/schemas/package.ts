@@ -12,7 +12,22 @@ export default defineType({
             name: 'title',
             title: 'Package Title',
             type: 'string',
-            description: 'e.g. "Diabetes Care Package — AED 89"',
+            description: 'e.g. "Diabetes Care Package". Set the price in Package Amount below.',
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+            name: 'amount',
+            title: 'Package Amount (AED)',
+            type: 'number',
+            description: 'Price shown across the website and in the booking summary. Overrides any price in the title.',
+            validation: (Rule) => Rule.min(0).precision(2),
+        }),
+        defineField({
+            name: 'homeServiceIncluded',
+            title: 'Home Service Included',
+            type: 'boolean',
+            description: 'Enable if home collection is included in this package. Disable if it is not included.',
+            initialValue: false,
             validation: (Rule) => Rule.required(),
         }),
         defineField({
