@@ -5,17 +5,17 @@ import Reveal from '@/components/Animation/Reveal';
 
 const partners = [
 
-    { name: 'ALMADALLAH Healthcare Management', image: '/Landing-page/insurance/partner-14.webp' },
-    { name: 'NGI National General Insurance', image: '/Landing-page/insurance/partner-20.webp' },
-    { name: 'eCare International', image: '/Landing-page/insurance/partner-8.webp' },
-    { name: 'NAS', image: '/Landing-page/insurance/partner-11.webp' },
-    { name: 'FMC Network UAE', image: '/Landing-page/insurance/partner-12.webp' },
-    { name: 'Lifeline', image: '/Landing-page/insurance/partner-17.webp' },
-    { name: 'Inaya', image: '/Landing-page/insurance/inayah-logo.jpg' },
-    { name: 'Enaya', image: '/Landing-page/insurance/enaya-logo.svg' },
-    { name: 'Neuron', image: '/Landing-page/insurance/neuron-logo.png' },
-    { name: 'WHealth International', image: '/Landing-page/insurance/whealth-logo.png' },
-    { name: 'GlobeMed Gulf', image: '/Landing-page/insurance/globemed-gulf-logo.svg' },
+    { name: 'ALMADALLAH Healthcare Management', image: '/Landing-page/insurance/transparent/almadallah.svg' },
+    { name: 'NGI National General Insurance', image: '/Landing-page/insurance/transparent/ngi.png' },
+    { name: 'eCare International', image: '/Landing-page/insurance/transparent/ecare.png' },
+    { name: 'NAS', image: '/Landing-page/insurance/transparent/nas.png' },
+    { name: 'FMC Network UAE', image: '/Landing-page/insurance/transparent/fmc.png' },
+    { name: 'Lifeline', image: '/Landing-page/insurance/transparent/lifeline.png' },
+    { name: 'Inaya', image: '/Landing-page/insurance/transparent/inayah.png' },
+    { name: 'Enaya', image: '/Landing-page/insurance/transparent/enaya.svg' },
+    { name: 'Neuron', image: '/Landing-page/insurance/transparent/neuron.svg' },
+    { name: 'WHealth International', image: '/Landing-page/insurance/transparent/whealth.png' },
+    { name: 'GlobeMed Gulf', image: '/Landing-page/insurance/transparent/globemed.svg' },
 
 ];
 
@@ -56,14 +56,15 @@ export default function InsurancePartners() {
                         {marqueeItems.map((partner, index) => (
                             <div
                                 key={`${partner.name}-${index}`}
-                                className="flex-shrink-0 w-[200px] md:w-[270px] lg:w-[310px] h-[90px] md:h-[125px] lg:h-[145px] flex items-center justify-center rounded-xl border border-gray-100 bg-white px-5 py-3 transition-transform duration-300 hover:scale-[1.02]"
+                                className="flex-shrink-0 w-[200px] md:w-[270px] lg:w-[310px] h-[90px] md:h-[125px] lg:h-[145px] flex items-center justify-center rounded-xl border border-gray-100 bg-white px-4 py-2 transition-transform duration-300 hover:scale-[1.02]"
                             >
                                 <Image
                                     src={partner.image}
                                     alt={partner.name}
-                                    width={200}
-                                    height={80}
-                                    className="h-[62px] w-[154px] object-contain md:h-[80px] md:w-[200px]"
+                                    unoptimized
+                                    width={1800}
+                                    height={720}
+                                    className="h-[68px] w-full object-contain md:h-[100px] lg:h-[116px]"
                                 />
                             </div>
                         ))}
