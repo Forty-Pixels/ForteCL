@@ -5,6 +5,7 @@ import TrustAndTech from '../components/Landing-page/Trust/TrustAndTech'
 import Departments from '../components/Landing-page/Departments/Departments'
 import PackagesPreview from '../components/Landing-page/PackagesPreview/PackagesPreview'
 import InsurancePartners from '../components/Landing-page/Insurance/InsurancePartners'
+import InsuranceCoverage from '../components/Landing-page/Insurance/InsuranceCoverage'
 import NewsInsights from '../components/Landing-page/NewsInsights/NewsInsights'
 import ReviewsSection from '../components/Landing-page/Reviews/ReviewsSection'
 import ContactCTA from '../components/Landing-page/ContactCTA/ContactCTA'
@@ -30,6 +31,7 @@ export default async function Home() {
       <LabTests tests={tests} />
       <TestFinder tests={tests} featuredTests={featuredTests} />
       <InsurancePartners />
+      <InsuranceCoverage />
       <Departments />
       <PackagesPreview packages={packages} />
       <ReviewsSection />
