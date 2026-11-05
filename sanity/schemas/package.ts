@@ -31,6 +31,58 @@ export default defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
+            name: 'turnaroundTime',
+            title: 'Turnaround Time (TAT)',
+            type: 'string',
+            description: 'e.g. "24 hours" or "2-3 working days". Shown on the package page instead of the home collection badge when home collection is NOT included.',
+            hidden: ({ parent }) => parent?.homeServiceIncluded === true,
+        }),
+        defineField({
+            name: 'homeCollection',
+            title: 'Home Collection Page Content',
+            type: 'object',
+            description: 'Only used when Home Service Included is on. Packages with home collection get a dedicated home-visit page. Every field is optional; sensible defaults are used when left empty.',
+            hidden: ({ parent }) => parent?.homeServiceIncluded !== true,
+            options: { collapsible: true, collapsed: false },
+            fields: [
+                defineField({ name: 'eyebrow', title: 'Hero Eyebrow', type: 'string', description: 'Small line above the headline. Default: "DHA Licensed · Home Collection".' }),
+                defineField({ name: 'headline', title: 'Hero Headline', type: 'string', description: 'Defaults to the package title.' }),
+                defineField({ name: 'subheadline', title: 'Hero Subheadline', type: 'text', rows: 3, description: 'Defaults to the package description.' }),
+                defineField({ name: 'collectionHours', title: 'Collection Hours', type: 'string', description: 'e.g. "7:00 AM – 9:00 PM, 7 days a week".' }),
+                defineField({ name: 'coverageAreas', title: 'Coverage Areas', type: 'array', of: [{ type: 'string' }], description: 'Areas where the home visit is available, e.g. Downtown Dubai, Dubai Marina.' }),
+                defineField({
+                    name: 'steps',
+                    title: 'How It Works',
+                    type: 'array',
+                    description: 'Numbered steps. Defaults to a standard 3-step flow when empty.',
+                    of: [{
+                        type: 'object',
+                        fields: [
+                            defineField({ name: 'title', title: 'Step Title', type: 'string', validation: (Rule) => Rule.required() }),
+                            defineField({ name: 'description', title: 'Step Description', type: 'text', rows: 2 }),
+                        ],
+                        preview: { select: { title: 'title', subtitle: 'description' } },
+                    }],
+                }),
+                defineField({ name: 'directAnswer', title: 'Direct Answer Box', type: 'text', rows: 3, description: 'Short summary paragraph shown in the highlighted box under the hero. Defaults to the package overview.' }),
+                defineField({
+                    name: 'highlights',
+                    title: 'Why Choose Us',
+                    type: 'array',
+                    description: 'Selling points shown in the "Support for your care at home" section. Defaults are used when empty.',
+                    of: [{
+                        type: 'object',
+                        fields: [
+                            defineField({ name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() }),
+                            defineField({ name: 'description', title: 'Description', type: 'text', rows: 2 }),
+                        ],
+                        preview: { select: { title: 'title', subtitle: 'description' } },
+                    }],
+                }),
+                defineField({ name: 'whatsappMessage', title: 'WhatsApp Message', type: 'string', description: 'Pre-filled message for the WhatsApp button.' }),
+            ],
+        }),
+        defineField({
             name: 'slug',
             title: 'Slug',
             type: 'slug',

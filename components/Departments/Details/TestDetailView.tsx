@@ -201,14 +201,25 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                                 <p className="text-base text-gray-600 leading-relaxed mb-8">
                                     {test.description}
                                 </p>
-                                <a
-                                    href={`https://wa.me/971569925611?text=${encodeURIComponent(`Hi, I would like to speak to an expert about ${test.title}.`)}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-block px-8 py-3 rounded-lg bg-[#045d65] text-white font-black text-xs uppercase tracking-wider hover:bg-[#034b52] transition-all shadow-md"
-                                >
-                                    Talk to an Expert
-                                </a>
+                                <div className="flex items-center gap-3">
+                                    <a
+                                        href={`https://wa.me/971569925611?text=${encodeURIComponent(`Hi, I would like to speak to an expert about ${test.title}.`)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-block px-8 py-3 rounded-lg bg-[#045d65] text-white font-black text-xs uppercase tracking-wider hover:bg-[#034b52] transition-all shadow-md"
+                                    >
+                                        Talk to an Expert
+                                    </a>
+                                    <a
+                                        href={`https://wa.me/971569925611?text=${encodeURIComponent(`Hi, I would like to speak to an expert about ${test.title}.`)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="Chat with an expert on WhatsApp"
+                                        className="inline-flex h-[2.625rem] w-[2.625rem] items-center justify-center rounded-lg bg-[#25D366] text-white shadow-md transition-all hover:bg-[#1ebe5b] hover:-translate-y-0.5"
+                                    >
+                                        <WhatsAppIcon className="h-6 w-6" />
+                                    </a>
+                                </div>
                             </div>
                         </Reveal>
                     </div>

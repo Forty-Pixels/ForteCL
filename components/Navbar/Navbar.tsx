@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { usePackagesMenu } from '@/components/Navbar/PackagesMenuContext';
+import { getPackagePricing } from '@/lib/package-details';
 
 interface NavbarProps {
     currentPage?: 'Home' | 'Lab Tests' | 'Packages' | 'Departments' | 'Resources' | 'About' | 'Contact';
@@ -12,16 +14,38 @@ interface NavbarProps {
 type NavSubLink = {
     name: string;
     href: string;
+    price?: string | null;
+    badge?: string | null;
+    isViewAll?: boolean;
 };
 
 type NavLink = {
     name: string;
     href: string;
     submenu?: NavSubLink[];
+    submenuHeading?: string;
 };
+
+function buildPackagesLink(menu: ReturnType<typeof usePackagesMenu>): NavLink {
+    const base: NavLink = { name: 'Health Packages', href: '/packages' };
+    const items = menu?.items ?? [];
+    if (menu?.enabled === false || items.length === 0) return base;
+    return {
+        ...base,
+        submenuHeading: menu?.heading || 'Ongoing Campaigns',
+        submenu: [
+            ...items.map((item) => {
+                const { cleanTitle, price } = getPackagePricing(item.title, item.amount);
+                return { name: item.label || cleanTitle, href: `/packages/${item.slug}`, price, badge: item.badge };
+            }),
+            { name: menu?.viewAllLabel || 'View all packages', href: '/packages', isViewAll: true },
+        ],
+    };
+}
 
 export default function Navbar({ currentPage }: NavbarProps) {
     const pathname = usePathname();
+    const packagesMenu = usePackagesMenu();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [openMobileSubmenus, setOpenMobileSubmenus] = useState<string[]>([]);
@@ -56,7 +80,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
     const navLinks: NavLink[] = [
         { name: 'Home', href: '/' },
-        { name: 'Health Packages', href: '/packages' },
+        buildPackagesLink(packagesMenu),
         { name: 'NIPT', href: '/departments/molecular/nipt' },
         { name: 'STD', href: '/std-tests' },
         { name: 'About', href: '/about' },
@@ -99,10 +123,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
                         <div key={link.name} className="relative group lg:py-4">
                             {link.submenu ? (
                                 <div className="flex items-center gap-1 cursor-pointer group/nav">
-                                    <span className={`text-sm text-[#045d65] group-hover/nav:text-[#08717a] font-bold transition-colors relative`}>
+                                    <Link href={link.href} className={`text-sm text-[#045d65] group-hover/nav:text-[#08717a] font-bold transition-colors relative`}>
                                         {link.name}
                                         <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-[#045d65] transition-all duration-300 group-hover/nav:w-full ${isActive(link) ? 'w-full' : ''}`}></span>
-                                    </span>
+                                    </Link>
                                     <svg 
                                         className={`w-4 h-4 transition-transform duration-200 group-hover:rotate-180 text-[#045d65]`}
                                         fill="none" 
@@ -113,15 +137,25 @@ export default function Navbar({ currentPage }: NavbarProps) {
                                     </svg>
                                     
                                     {/* Dropdown Menu */}
-                                    <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : 'w-48'} bg-white border border-[#045d65]/10 rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-[110]`}>
+                                    <div className={`absolute top-full left-0 mt-0 ${link.name === 'Departments' ? 'w-72' : link.submenuHeading ? 'w-80' : 'w-48'} bg-white border border-[#045d65]/10 rounded-lg shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto transition-all duration-200 z-[110]`}>
                                         <div className={`py-2 ${link.name === 'Departments' ? 'max-h-[380px] overflow-y-auto' : ''}`}>
+                                            {link.submenuHeading && (
+                                                <p className="px-4 pt-1 pb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#307984]">{link.submenuHeading}</p>
+                                            )}
                                             {link.submenu.map((sub) => (
                                                 <Link
-                                                    key={sub.name}
+                                                    key={sub.name + sub.href}
                                                     href={sub.href}
-                                                    className="block px-4 py-2 text-sm text-[#045d65] hover:bg-[#EAF4EE] transition-colors"
+                                                    className={sub.isViewAll
+                                                        ? 'mt-1 flex items-center justify-between border-t border-[#045d65]/10 px-4 pt-3 pb-2 text-sm font-bold text-[#045d65] hover:bg-[#EAF4EE] transition-colors'
+                                                        : 'flex items-center justify-between gap-3 px-4 py-2 text-sm text-[#045d65] hover:bg-[#EAF4EE] transition-colors'}
                                                 >
-                                                    {sub.name}
+                                                    <span className="flex items-center gap-2 min-w-0">
+                                                        <span className="truncate">{sub.name}</span>
+                                                        {sub.badge && <span className="shrink-0 rounded-full bg-[#045d65] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">{sub.badge}</span>}
+                                                    </span>
+                                                    {sub.price && <span className="shrink-0 text-xs font-bold text-[#307984]">{sub.price}</span>}
+                                                    {sub.isViewAll && <span aria-hidden="true">→</span>}
                                                 </Link>
                                             ))}
                                         </div>

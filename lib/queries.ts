@@ -112,6 +112,8 @@ export const labTestsByDepartmentSlugQuery = `*[
 export const allPackagesQuery = `*[_type == "package"] | order(_createdAt asc) {
   amount,
   homeServiceIncluded,
+  turnaroundTime,
+  homeCollection,
   "id": slug.current,
   title,
   "slug": slug.current,
@@ -129,6 +131,8 @@ export const allPackagesQuery = `*[_type == "package"] | order(_createdAt asc) {
 export const packageBySlugQuery = `*[_type == "package" && slug.current == $slug][0] {
   amount,
   homeServiceIncluded,
+  turnaroundTime,
+  homeCollection,
   "id": slug.current,
   title,
   "slug": slug.current,
@@ -185,3 +189,25 @@ export const allResourceSlugsQuery = `*[_type == "post"] { "slug": slug.current 
 
 /** Fetch distinct resource categories */
 export const distinctResourceCategoriesQuery = `*[_type == "resourceCategory"] | order(title asc).title`;
+
+/** Navbar "Health Packages" dropdown (singleton controlled in Studio) */
+export const packagesMenuQuery = `*[_type == "packagesMenu" && _id == "packages-menu"][0]{
+  enabled,
+  heading,
+  viewAllLabel,
+  "items": items[defined(package)]{
+    label,
+    badge,
+    "title": package->title,
+    "slug": package->slug.current,
+    "amount": package->amount
+  }[defined(slug)]
+}`;
+
+/** Packages that include home collection (feeds the "Collected at Home" panel) */
+export const homeCollectionPackagesQuery = `*[_type == "package" && homeServiceIncluded == true && defined(slug.current)] | order(_createdAt asc) {
+  title,
+  amount,
+  image,
+  "slug": slug.current
+}`;

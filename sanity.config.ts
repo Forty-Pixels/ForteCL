@@ -17,12 +17,16 @@ export default defineConfig({
         .id('homepage-test-finder')
         .title('Homepage test finder')
         .child(S.document().schemaType('homepageTestFinder').documentId('homepage-test-finder')),
-      ...S.documentTypeListItems().filter(item => item.getId() !== 'homepageTestFinder'),
+      S.listItem()
+        .id('packages-menu')
+        .title('Health Packages Menu (navbar)')
+        .child(S.document().schemaType('packagesMenu').documentId('packages-menu')),
+      ...S.documentTypeListItems().filter(item => !['homepageTestFinder', 'packagesMenu'].includes(item.getId() || '')),
     ]),
   })],
   document: {
-    newDocumentOptions: previous => previous.filter(item => item.templateId !== 'homepageTestFinder'),
-    actions: (previous, context) => context.schemaType === 'homepageTestFinder'
+    newDocumentOptions: previous => previous.filter(item => !['homepageTestFinder', 'packagesMenu'].includes(item.templateId)),
+    actions: (previous, context) => ['homepageTestFinder', 'packagesMenu'].includes(context.schemaType)
       ? previous.filter(action => action.action !== 'delete' && action.action !== 'duplicate')
       : previous,
   },

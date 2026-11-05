@@ -1,6 +1,7 @@
 import { client } from '@/lib/sanity';
 import { packageBySlugQuery, allPackageSlugsQuery } from '@/lib/queries';
 import PackageDetailView from '@/components/Packages/Details/PackageDetailView';
+import HomeCollectionPackageView from '@/components/Packages/HomeCollection/HomeCollectionPackageView';
 import Footer from '@/components/Landing-page/Footer/Footer';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -44,7 +45,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
 
     return (
         <main className="min-h-screen">
-            <PackageDetailView pkg={pkg} />
+            {pkg.homeServiceIncluded === true ? <HomeCollectionPackageView pkg={pkg} /> : <PackageDetailView pkg={pkg} />}
             <Footer />
         </main>
     );

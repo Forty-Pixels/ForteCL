@@ -16,6 +16,7 @@ interface PackageDetailViewProps {
     pkg: {
         amount?: number | null;
         homeServiceIncluded?: boolean | null;
+        turnaroundTime?: string | null;
         title: string;
         slug: string;
         description: string;
@@ -33,6 +34,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
 
 
     const { cleanTitle, price } = getPackagePricing(pkg.title, pkg.amount);
+    const turnaround = pkg.turnaroundTime?.trim() || null;
     const benefits = pkg.benefits?.filter(benefit => benefit.trim()) ?? [];
 
     return (
@@ -117,9 +119,9 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                             >
                                 <div className="flex items-center gap-2.5 mb-2">
                                     <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
-                                    <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">{pkg.homeServiceIncluded === true ? 'Home collection' : 'Collection'}</span>
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">Turnaround time</span>
                                 </div>
-                                <p className="text-[10px] font-bold text-[#0f172a] leading-tight">{pkg.homeServiceIncluded === true ? 'Home collection included across Dubai & Sharjah.' : pkg.homeServiceIncluded === false ? 'Home collection is not included in this package.' : 'Contact us to confirm home collection availability.'}</p>
+                                <p className="text-[10px] font-bold text-[#0f172a] leading-tight">{turnaround ? `Results in ${turnaround}.` : 'Contact us to confirm the turnaround time.'}</p>
                             </motion.div>
                         </Reveal>
                     </div>
@@ -212,8 +214,8 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                                     <span className="text-[#0f172a] text-right font-bold truncate max-w-[120px]">{cleanTitle}</span>
                                                 </div>
                                                 <div className="flex justify-between items-center text-[11px] font-medium">
-                                                    <span className="text-gray-400">Home Service</span>
-                                                    <span className={pkg.homeServiceIncluded === true ? 'text-green-600 font-bold uppercase' : 'text-gray-500 font-bold uppercase'}>{pkg.homeServiceIncluded === true ? 'Included' : pkg.homeServiceIncluded === false ? 'Not included' : 'Please confirm'}</span>
+                                                    <span className="text-gray-400">Turnaround Time</span>
+                                                    <span className="text-[#0f172a] text-right font-bold">{turnaround || 'Please confirm'}</span>
                                                 </div>
                                                 <div className="pt-3 border-t border-gray-50 flex justify-between items-end">
                                                     <span className="text-[10px] font-black text-gray-400 uppercase">Total Amount</span>
