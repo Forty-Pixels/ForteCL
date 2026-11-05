@@ -26,7 +26,7 @@ const chips = [
 ];
 
 /** General "collected at home" panel. The right-hand list is every package with home collection enabled in Sanity. */
-export default function HomeCollectionPanel({ packages, currentSlug }: { packages: HomeCollectionListItem[]; currentSlug?: string }) {
+export default function HomeCollectionPanel({ packages, currentSlug, allPackagesHref = '/packages' }: { packages: HomeCollectionListItem[]; currentSlug?: string; allPackagesHref?: string }) {
     if (!packages.length) return null;
 
     const prices = packages.map(p => p.amount).filter((n): n is number => typeof n === 'number' && n > 0);
@@ -115,7 +115,7 @@ export default function HomeCollectionPanel({ packages, currentSlug }: { package
                                     );
                                 })}
                             </ul>
-                            <Link href="/packages" className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-2.5 text-xs font-semibold transition-colors hover:bg-white/15">
+                            <Link href={allPackagesHref} className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-2.5 text-xs font-semibold transition-colors hover:bg-white/15">
                                 All Packages <Arrow className="h-3.5 w-3.5" />
                             </Link>
                         </div>

@@ -18,7 +18,7 @@ export default async function PackagesPage() {
         <main className="min-h-screen bg-black">
             <PackagesHero />
             <PackagesList initialPackages={packages} />
-            {homePackages.length > 0 && <div className="bg-white py-14"><HomeCollectionPanel packages={homePackages} /></div>}
+            {homePackages.length > 0 && <div className="bg-white py-14"><HomeCollectionPanel packages={homePackages} allPackagesHref="#all-packages" /></div>}
             <Footer />
         </main>
     );
