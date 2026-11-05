@@ -1,9 +1,8 @@
 import { client } from '@/lib/sanity';
 import { packageBySlugQuery, allPackageSlugsQuery } from '@/lib/queries';
 import PackageDetailView from '@/components/Packages/Details/PackageDetailView';
-import HomeCollectionPackageView from '@/components/Packages/HomeCollection/HomeCollectionPackageView';
 import Footer from '@/components/Landing-page/Footer/Footer';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Metadata } from 'next';
 
 // Package edits should appear on the next request after publishing in Studio.
@@ -43,9 +42,12 @@ export default async function PackagePage({ params }: PackagePageProps) {
         notFound();
     }
 
+    // Packages with home collection have their own page under Home Collection.
+    if (pkg.homeServiceIncluded === true) redirect(`/home-collection/${slug}`);
+
     return (
         <main className="min-h-screen">
-            {pkg.homeServiceIncluded === true ? <HomeCollectionPackageView pkg={pkg} /> : <PackageDetailView pkg={pkg} />}
+            <PackageDetailView pkg={pkg} />
             <Footer />
         </main>
     );

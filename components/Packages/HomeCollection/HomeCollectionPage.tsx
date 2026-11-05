@@ -7,34 +7,33 @@ import { getPackagePricing } from '@/lib/package-details';
 import Reveal from '@/components/Animation/Reveal';
 import BookActionButton from '@/components/Booking/BookActionButton';
 import Navbar from '@/components/Navbar/Navbar';
+import HomeCollectionPanel, { type HomeCollectionListItem } from '@/components/Packages/HomeCollection/HomeCollectionPanel';
 
 const PHONE = '+971569925611';
 const PHONE_LABEL = '+971 56 992 5611';
 const WHATSAPP = '971569925611';
 
-export interface HomeCollectionPackage {
-    amount?: number | null;
-    title: string;
-    slug: string;
-    description: string;
-    image?: SanityImageSource;
-    testsTotal?: number;
-    subTests?: { title: string; explanation?: string }[];
-    overview?: string;
-    benefits?: string[];
-    preparation?: string;
+export interface HomeCollectionContent {
+    eyebrow?: string;
+    headline?: string;
+    subheadline?: string;
+    directAnswer?: string;
+    collectionHours?: string;
+    coverageAreas?: string[];
+    steps?: { title: string; description?: string }[];
+    highlights?: { title: string; description?: string }[];
     faqs?: { question: string; answer: string }[];
-    homeCollection?: {
-        eyebrow?: string;
-        headline?: string;
-        subheadline?: string;
-        directAnswer?: string;
-        collectionHours?: string;
-        coverageAreas?: string[];
-        steps?: { title: string; description?: string }[];
-        highlights?: { title: string; description?: string }[];
-        whatsappMessage?: string;
-    } | null;
+    closingHeading?: string;
+    closingText?: string;
+    whatsappMessage?: string;
+    heroImage?: SanityImageSource;
+}
+
+export interface HomeCollectionPackageItem extends HomeCollectionListItem {
+    description?: string;
+    testsTotal?: number;
+    subTests?: { title: string }[];
+    benefits?: string[];
 }
 
 const DEFAULT_STEPS = [
@@ -96,35 +95,41 @@ function TwoTone({ text, tail = 1 }: { text: string; tail?: number }) {
     );
 }
 
-export default function HomeCollectionPackageView({ pkg }: { pkg: HomeCollectionPackage }) {
-    const { cleanTitle, price } = getPackagePricing(pkg.title, pkg.amount);
-    const hc = pkg.homeCollection ?? {};
+const DEFAULT_FAQS = [
+    { question: 'How does home blood collection work?', answer: 'Call or WhatsApp us, choose your package and time, and a trained phlebotomist visits your address to collect the sample. Your report is shared digitally.' },
+    { question: 'Which areas do you cover?', answer: 'We offer home collection across Dubai and Sharjah. Message us your area and we will confirm availability.' },
+    { question: 'Do I need to fast before the test?', answer: 'It depends on the package. Our team confirms the preparation needed when you book.' },
+    { question: 'How do I pay?', answer: 'The package price is confirmed before the visit. You pay upon collection, no card needed in advance.' },
+    { question: 'How soon will I get my results?', answer: 'Turnaround depends on the tests. Our team confirms the expected report time when you book.' },
+    { question: 'Can I book for someone else or for my family?', answer: 'Yes. Tell us how many people need testing and we will arrange the visit for everyone in a single appointment.' },
+];
+
+export default function HomeCollectionPage({ content, packages }: { content: HomeCollectionContent | null; packages: HomeCollectionPackageItem[] }) {
+    const hc = content ?? {};
     const steps = hc.steps?.filter(step => step.title?.trim()).length ? hc.steps!.filter(step => step.title?.trim()) : DEFAULT_STEPS;
     const highlights = hc.highlights?.filter(item => item.title?.trim()).length ? hc.highlights!.filter(item => item.title?.trim()) : DEFAULT_HIGHLIGHTS;
+    const faqs = hc.faqs?.filter(item => item.question?.trim()).length ? hc.faqs!.filter(item => item.question?.trim()) : DEFAULT_FAQS;
     const areas = hc.coverageAreas?.filter(item => item.trim()) ?? [];
-    const benefits = pkg.benefits?.filter(item => item.trim()) ?? [];
-    const subTests = pkg.subTests ?? [];
-    const testCount = pkg.testsTotal ?? subTests.length;
-    const message = hc.whatsappMessage?.trim() || `Hi, I would like to book the ${cleanTitle} package with home collection.`;
+    const message = hc.whatsappMessage?.trim() || 'Hi, I would like to book a home blood test collection.';
     const whatsappUrl = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
-    const headline = hc.headline || cleanTitle;
-    const directAnswer = hc.directAnswer?.trim() || pkg.overview?.trim() || pkg.description;
-    const heroImage = pkg.image ? urlFor(pkg.image).width(1200).url() : null;
+    const headline = hc.headline || 'Home Blood Test Collection in Dubai';
+    const subheadline = hc.subheadline || 'Choose a health package and a licensed professional collects your sample at home, in the office or at your hotel. Results are shared digitally.';
+    const directAnswer = hc.directAnswer || 'Forte Clinical Laboratory offers home sample collection for selected health packages across Dubai. Our DHA-approved laboratory processes your sample in-house, and our team confirms the package, preparation, price and report time before the visit.';
+    const heroSource = hc.heroImage ?? packages.find(p => p.image)?.image;
+    const heroImage = heroSource ? urlFor(heroSource).width(1200).url() : null;
     const stepIcons = [P.phone, P.clipboard, P.home];
     const highlightIcons = [P.shield, P.users, P.clock, P.doc, P.card, P.pin];
-
     const stats = [
-        { value: 'Home', caption: 'Collection included' },
+        { value: 'Home', caption: 'Collection' },
         { value: '24/7', caption: 'Booking enquiries' },
         { value: 'DHA', caption: 'Licensed laboratory' },
-        { value: String(testCount), caption: testCount === 1 ? 'Test included' : 'Tests included' },
+        { value: String(packages.length), caption: packages.length === 1 ? 'Home package' : 'Home packages' },
     ];
 
     return (
         <div className="min-h-screen bg-white font-sans">
-            <Navbar currentPage="Packages" />
+            <Navbar currentPage="Home Collection" />
 
-            {/* FLOATING CALL / WHATSAPP (left edge, like the reference) */}
             <div className="fixed left-3 top-1/2 z-[90] flex -translate-y-1/2 flex-col gap-2.5">
                 <a href={`tel:${PHONE}`} aria-label="Call us" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#045d65] text-white shadow-lg transition-transform hover:scale-110">
                     <Icon d={P.phone} className="h-5 w-5" />
@@ -135,7 +140,7 @@ export default function HomeCollectionPackageView({ pkg }: { pkg: HomeCollection
             </div>
 
             <main className="mx-auto max-w-6xl space-y-20 px-4 pb-20 pt-28 sm:pt-32">
-                {/* 1. HERO */}
+                {/* HERO */}
                 <section className="grid items-center gap-8 rounded-[2rem] bg-[#e9f3f2] p-6 sm:p-10 lg:grid-cols-2 lg:p-12">
                     <div className="space-y-5">
                         <Reveal>
@@ -145,25 +150,15 @@ export default function HomeCollectionPackageView({ pkg }: { pkg: HomeCollection
                             </span>
                         </Reveal>
                         <Reveal delayMs={80}>
-                            <h1 className="text-4xl font-black leading-[1.08] tracking-tight text-[#0f172a] sm:text-5xl">
-                                <TwoTone text={headline} />
-                            </h1>
+                            <h1 className="text-4xl font-black leading-[1.08] tracking-tight text-[#0f172a] sm:text-5xl"><TwoTone text={headline} tail={2} /></h1>
                         </Reveal>
                         <Reveal delayMs={140}>
-                            <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
-                                <strong className="text-[#0f172a]">Care that fits your day.</strong> {hc.subheadline || pkg.description}
-                            </p>
+                            <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600"><strong className="text-[#0f172a]">Care that fits your day.</strong> {subheadline}</p>
                         </Reveal>
                         <Reveal delayMs={200}>
                             <div className="flex flex-wrap gap-3">
-                                <BookActionButton
-                                    label="Book an Appointment"
-                                    whatsappText={message}
-                                    className="rounded-full bg-[#045d65] px-6 py-3 text-xs font-bold text-white shadow-md transition-colors hover:bg-[#034b52]"
-                                />
-                                <a href={`tel:${PHONE}`} className="rounded-full border border-[#045d65]/20 bg-white px-6 py-3 text-xs font-bold text-[#0f172a] transition-colors hover:border-[#045d65]">
-                                    Call Our Team
-                                </a>
+                                <BookActionButton label="Book an Appointment" whatsappText={message} className="rounded-full bg-[#045d65] px-6 py-3 text-xs font-bold text-white shadow-md transition-colors hover:bg-[#034b52]" />
+                                <a href={`tel:${PHONE}`} className="rounded-full border border-[#045d65]/20 bg-white px-6 py-3 text-xs font-bold text-[#0f172a] transition-colors hover:border-[#045d65]">Call Our Team</a>
                             </div>
                         </Reveal>
                         <Reveal delayMs={260}>
@@ -174,34 +169,29 @@ export default function HomeCollectionPackageView({ pkg }: { pkg: HomeCollection
                             </ul>
                         </Reveal>
                     </div>
-
                     <Reveal delayMs={160}>
                         <div className="relative">
                             <div className="relative aspect-[4/4.4] overflow-hidden rounded-3xl bg-white shadow-xl">
-                                {heroImage ? (
-                                    <Image src={heroImage} alt={pkg.title} fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
-                                ) : (
-                                    <div className="h-full w-full bg-gradient-to-br from-[#045d65] to-[#023f45]" />
-                                )}
+                                {heroImage ? <Image src={heroImage} alt="Home blood test collection" fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" /> : <div className="h-full w-full bg-gradient-to-br from-[#045d65] to-[#023f45]" />}
                             </div>
                             <span className="absolute right-4 top-4 rounded-full bg-white px-3 py-1.5 text-[10px] font-bold text-[#045d65] shadow-md">Care at Home</span>
                             <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl">
                                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#045d65] text-white"><Icon d={P.home} className="h-5 w-5" /></span>
                                 <div>
                                     <p className="text-[11px] font-black text-[#0f172a]">Home Collection</p>
-                                    <p className="text-[10px] text-gray-500">{price ? `Package ${price}` : 'Included in this package'}</p>
+                                    <p className="text-[10px] text-gray-500">{hc.collectionHours || 'Book a time that suits you'}</p>
                                 </div>
                             </div>
                         </div>
                     </Reveal>
                 </section>
 
-                {/* 2. DIRECT ANSWER + STAT BAR */}
+                {/* DIRECT ANSWER + STAT BAR */}
                 <section className="-mt-10 space-y-3">
                     <Reveal>
                         <div className="rounded-2xl border-l-4 border-[#045d65] bg-[#f1f8f7] px-6 py-5">
                             <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#045d65]">Direct Answer</p>
-                            <p className="mt-2 line-clamp-4 whitespace-pre-line text-[13px] leading-relaxed text-gray-600">{directAnswer}</p>
+                            <p className="mt-2 whitespace-pre-line text-[13px] leading-relaxed text-gray-600">{directAnswer}</p>
                         </div>
                     </Reveal>
                     <Reveal delayMs={80}>
@@ -216,117 +206,57 @@ export default function HomeCollectionPackageView({ pkg }: { pkg: HomeCollection
                     </Reveal>
                 </section>
 
-                {/* 3. FEATURE: PACKAGE AT HOME */}
-                <section className="space-y-6">
+                {/* PANEL: collected at home */}
+                <HomeCollectionPanel packages={packages} allPackagesHref="#home-packages" />
+
+                {/* CHOOSE THE CARE YOU NEED */}
+                <section id="home-packages" className="scroll-mt-28 space-y-8">
                     <Reveal>
-                        <SectionLabel>Package At Home</SectionLabel>
-                        <h2 className="mt-3 text-3xl font-black text-[#0f172a] sm:text-4xl"><TwoTone text={`${cleanTitle}, Collected at Home`} tail={3} /></h2>
-                        <p className="mt-3 max-w-2xl text-xs leading-relaxed text-gray-500">
-                            {pkg.overview || pkg.description}
-                        </p>
+                        <SectionLabel>Our Packages</SectionLabel>
+                        <h2 className="mt-3 text-3xl font-black text-[#0f172a] sm:text-4xl">Choose the <span className="text-[#045d65]">Package You Need</span></h2>
+                        <p className="mt-3 max-w-2xl text-xs leading-relaxed text-gray-500">Every package below includes home sample collection. Each one has its own tests, preparation and price.</p>
                     </Reveal>
-                    <div className="grid gap-4 lg:grid-cols-[1.6fr_1fr]">
-                        <Reveal>
-                            <div className="grid h-full overflow-hidden rounded-3xl bg-[#e9f3f2] sm:grid-cols-2">
-                                <div className="relative min-h-[260px]">
-                                    {heroImage && <Image src={heroImage} alt={pkg.title} fill sizes="(min-width:1024px) 25vw, 100vw" className="object-cover" />}
-                                    <span className="absolute bottom-3 left-3 rounded-full bg-[#045d65] px-3 py-1.5 text-[10px] font-bold text-white">{price ? `Package ${price}` : 'Home collection'}</span>
-                                </div>
-                                <div className="flex flex-col justify-center gap-4 p-7">
-                                    <span className="w-fit rounded-full bg-white px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-[#045d65]">DHA Licensed</span>
-                                    <h3 className="text-2xl font-black leading-tight text-[#0f172a]">Sample Collection at Your Doorstep</h3>
-                                    <p className="text-[11px] leading-relaxed text-gray-600">
-                                        A licensed professional visits you at home, collects your sample in a single visit and our laboratory delivers your digital report.
-                                    </p>
-                                    <BookActionButton
-                                        label="Book a Home Blood Test →"
-                                        whatsappText={message}
-                                        className="w-fit rounded-full bg-[#045d65] px-5 py-2.5 text-[11px] font-bold text-white transition-colors hover:bg-[#034b52]"
-                                    />
-                                    <div className="flex flex-wrap gap-3 text-[10px] font-semibold text-gray-500">
-                                        {['Slots confirmed', 'Digital results', 'Confirm payment'].map(t => (
-                                            <span key={t} className="flex items-center gap-1"><Icon d={P.check} className="h-3 w-3 text-[#045d65]" sw={3} />{t}</span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </Reveal>
-                        <Reveal delayMs={100}>
-                            <div className="flex h-full flex-col rounded-3xl bg-gradient-to-br from-[#0b3c41] to-[#04282c] p-7 text-white">
-                                <span className="w-fit rounded-full bg-white/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-[#A7DCC0]">Explore Tests</span>
-                                <ul className="mt-5 flex-1 divide-y divide-white/10">
-                                    {(subTests.length ? subTests.slice(0, 6).map(t => t.title) : [cleanTitle]).map(name => (
-                                        <li key={name} className="flex items-center justify-between py-3 text-sm font-semibold">
-                                            <span>{name}</span><Icon d={P.arrow} className="h-3.5 w-3.5 text-white/40" />
-                                        </li>
-                                    ))}
-                                </ul>
-                                <Link href="/packages" className="mt-4 flex items-center justify-between rounded-xl bg-white/10 px-4 py-3 text-sm font-bold transition-colors hover:bg-white/20">
-                                    All Packages <Icon d={P.arrow} className="h-4 w-4" />
-                                </Link>
-                            </div>
-                        </Reveal>
-                    </div>
+                    {packages.length > 0 ? (
+                        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                            {packages.map((item, i) => {
+                                const { cleanTitle, price } = getPackagePricing(item.title, item.amount);
+                                const bullets = (item.benefits?.filter(b => b.trim()).slice(0, 3)) ?? [];
+                                const fallback = (item.subTests ?? []).slice(0, 3).map(t => t.title);
+                                const points = bullets.length ? bullets : fallback;
+                                return (
+                                    <Reveal key={item.slug} delayMs={(i % 3) * 70}>
+                                        <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#e3efee] bg-white">
+                                            <Link href={`/home-collection/${item.slug}`} className="relative block h-40 bg-gradient-to-br from-[#e9f3f2] to-[#cfe6e4]">
+                                                {item.image && <Image src={urlFor(item.image).width(600).url()} alt={item.title} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" />}
+                                                {price && <span className="absolute right-3 top-3 rounded-full bg-[#045d65] px-3 py-1 text-[10px] font-bold text-white">{price}</span>}
+                                            </Link>
+                                            <div className="flex flex-1 flex-col space-y-2 p-5">
+                                                <h3 className="text-sm font-bold text-[#0f172a]">{cleanTitle}</h3>
+                                                <ul className="flex-1 space-y-1 text-[11px] leading-relaxed text-gray-500">
+                                                    {points.map((point, idx) => <li key={idx} className="flex gap-1.5"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#045d65]" />{point}</li>)}
+                                                    <li className="flex gap-1.5"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#045d65]" />Home collection included</li>
+                                                </ul>
+                                                <div className="flex items-center justify-between pt-2">
+                                                    <BookActionButton label="Book Now →" whatsappText={`Hi, I would like to book the ${cleanTitle} package with home collection.`} className="text-[11px] font-bold text-[#045d65] hover:underline" />
+                                                    <Link href={`/home-collection/${item.slug}`} className="text-[11px] font-semibold text-gray-500 hover:text-[#045d65]">View details</Link>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </Reveal>
+                                );
+                            })}
+                        </div>
+                    ) : (
+                        <p className="rounded-2xl border border-dashed border-[#cfe0e8] px-6 py-10 text-center text-sm text-gray-500">Home collection packages are coming soon. Message us to arrange a home visit.</p>
+                    )}
                 </section>
 
-                {/* 4. CHOOSE THE CARE YOU NEED -> what's included */}
-                {subTests.length > 0 && (
-                    <section className="space-y-8">
-                        <Reveal>
-                            <SectionLabel>What&apos;s Included</SectionLabel>
-                            <h2 className="mt-3 text-3xl font-black text-[#0f172a] sm:text-4xl"><TwoTone text="Tests You Get in This Package" tail={3} /></h2>
-                            <p className="mt-3 max-w-2xl text-xs leading-relaxed text-gray-500">
-                                {subTests.length} parameters, all collected in a single home visit. Each result is reviewed and authorised by our laboratory team.
-                            </p>
-                        </Reveal>
-                        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                            {subTests.map((test, i) => (
-                                <Reveal key={i} delayMs={(i % 3) * 70}>
-                                    <article className="h-full overflow-hidden rounded-2xl border border-[#e3efee] bg-white">
-                                        <div className="relative flex h-32 items-center justify-center bg-gradient-to-br from-[#e9f3f2] to-[#cfe6e4]">
-                                            <Icon d={P.flask} className="h-12 w-12 text-[#045d65]/40" sw={1.2} />
-                                            <span className="absolute right-3 top-3 rounded-full bg-[#045d65] px-2.5 py-1 text-[9px] font-bold text-white">Home visit included</span>
-                                        </div>
-                                        <div className="space-y-2 p-5">
-                                            <h3 className="text-sm font-bold text-[#0f172a]">{test.title}</h3>
-                                            {test.explanation && <p className="text-[11px] leading-relaxed text-gray-500">{test.explanation}</p>}
-                                            <ul className="space-y-1 pt-1 text-[10px] text-gray-500">
-                                                <li className="flex items-center gap-1.5"><span className="h-1 w-1 rounded-full bg-[#045d65]" />Collected at your address</li>
-                                                <li className="flex items-center gap-1.5"><span className="h-1 w-1 rounded-full bg-[#045d65]" />Digital report</li>
-                                            </ul>
-                                            <BookActionButton label="Book Now →" whatsappText={message} className="pt-2 text-[11px] font-bold text-[#045d65] hover:underline" />
-                                        </div>
-                                    </article>
-                                </Reveal>
-                            ))}
-                        </div>
-                        {(benefits.length > 0 || pkg.preparation) && (
-                            <div className={`grid gap-4 ${benefits.length > 0 && pkg.preparation ? 'md:grid-cols-2' : ''}`}>
-                                {benefits.length > 0 && (
-                                    <div className="rounded-2xl bg-[#f1f8f7] p-6">
-                                        <h3 className="text-sm font-black text-[#0f172a]">Key benefits</h3>
-                                        <ul className="mt-3 list-disc space-y-2 pl-5 text-[13px] leading-relaxed text-gray-600 marker:text-[#045d65]">
-                                            {benefits.map((b, i) => <li key={i}>{b}</li>)}
-                                        </ul>
-                                    </div>
-                                )}
-                                {pkg.preparation && (
-                                    <div className="rounded-2xl bg-[#f1f8f7] p-6">
-                                        <h3 className="text-sm font-black text-[#0f172a]">Before the visit</h3>
-                                        <p className="mt-3 whitespace-pre-line text-[13px] leading-relaxed text-gray-600">{pkg.preparation}</p>
-                                    </div>
-                                )}
-                            </div>
-                        )}
-                    </section>
-                )}
-
-                {/* 5. THREE SIMPLE STEPS */}
+                {/* STEPS */}
                 <section className="space-y-10 text-center">
                     <Reveal>
                         <SectionLabel>How It Works</SectionLabel>
                         <h2 className="mt-3 text-3xl font-black text-[#0f172a] sm:text-4xl">Arrange Your Care in <span className="text-[#045d65]">{steps.length} Simple Steps</span></h2>
-                        <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-gray-500">Tell us what you need and where you are. We will discuss the service, appointment options and costs before you confirm.</p>
+                        <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-gray-500">Tell us what you need and where you are. We will discuss the package, appointment options and costs before you confirm.</p>
                     </Reveal>
                     <div className="grid gap-5 md:grid-cols-3">
                         {steps.map((step, i) => (
@@ -342,7 +272,7 @@ export default function HomeCollectionPackageView({ pkg }: { pkg: HomeCollection
                     </div>
                 </section>
 
-                {/* 6. SUPPORT FOR YOUR CARE AT HOME */}
+                {/* SUPPORT */}
                 <section className="space-y-8">
                     <Reveal>
                         <SectionLabel>Why Choose Us</SectionLabel>
@@ -383,40 +313,34 @@ export default function HomeCollectionPackageView({ pkg }: { pkg: HomeCollection
                     )}
                 </section>
 
-                {/* 7. FAQ (two columns) */}
-                {!!pkg.faqs?.length && (
-                    <section className="space-y-8 text-center">
-                        <Reveal>
-                            <SectionLabel>FAQ</SectionLabel>
-                            <h2 className="mt-3 text-3xl font-black text-[#0f172a] sm:text-4xl">Your Questions About <span className="text-[#045d65]">Home Collection</span></h2>
-                        </Reveal>
-                        <div className="grid gap-x-8 text-left md:grid-cols-2">
-                            {pkg.faqs.map((faq, i) => (
-                                <details key={i} className="group self-start border-b border-[#e3efee] py-4">
-                                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[13px] font-bold text-[#0f172a] outline-none">
-                                        {faq.question}
-                                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#e3f1f0] text-base leading-none text-[#045d65] transition-transform group-open:rotate-45">+</span>
-                                    </summary>
-                                    <p className="mt-3 whitespace-pre-line text-xs leading-relaxed text-gray-500">{faq.answer}</p>
-                                </details>
-                            ))}
-                        </div>
-                        <p className="text-[11px] text-gray-500">Still have questions? <a href={`tel:${PHONE}`} className="font-bold text-[#045d65]">Call {PHONE_LABEL}</a></p>
-                    </section>
-                )}
+                {/* FAQ */}
+                <section className="space-y-8 text-center">
+                    <Reveal>
+                        <SectionLabel>FAQ</SectionLabel>
+                        <h2 className="mt-3 text-3xl font-black text-[#0f172a] sm:text-4xl">Your Questions About <span className="text-[#045d65]">Home Collection</span></h2>
+                    </Reveal>
+                    <div className="grid gap-x-8 text-left md:grid-cols-2">
+                        {faqs.map((faq, i) => (
+                            <details key={i} className="group self-start border-b border-[#e3efee] py-4">
+                                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[13px] font-bold text-[#0f172a] outline-none">
+                                    {faq.question}
+                                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#e3f1f0] text-base leading-none text-[#045d65] transition-transform group-open:rotate-45">+</span>
+                                </summary>
+                                <p className="mt-3 whitespace-pre-line text-xs leading-relaxed text-gray-500">{faq.answer}</p>
+                            </details>
+                        ))}
+                    </div>
+                    <p className="text-[11px] text-gray-500">Still have questions? <a href={`tel:${PHONE}`} className="font-bold text-[#045d65]">Call {PHONE_LABEL}</a></p>
+                </section>
 
-                {/* 8. CLOSING BANNER */}
+                {/* CLOSING */}
                 <section>
                     <div className="rounded-[2rem] bg-gradient-to-br from-[#045d65] to-[#023f45] px-6 py-14 text-center text-white sm:px-14">
-                        <h2 className="mx-auto max-w-xl text-3xl font-black leading-tight sm:text-4xl">Arrange Your Home Collection in Dubai</h2>
-                        <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-white/75">Tell us the care you need, your location and your preferred time. Our team will confirm the appointment options and full charge before you book.</p>
+                        <h2 className="mx-auto max-w-xl text-3xl font-black leading-tight sm:text-4xl">{hc.closingHeading || 'Arrange Your Home Collection in Dubai'}</h2>
+                        <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-white/75">{hc.closingText || 'Tell us the package you need, your location and your preferred time. Our team will confirm the appointment options and full charge before you book.'}</p>
                         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                            <a href={`tel:${PHONE}`} className="flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-xs font-bold text-[#045d65] transition-colors hover:bg-gray-100 sm:w-auto">
-                                <Icon d={P.phone} className="h-4 w-4" /> Call {PHONE_LABEL}
-                            </a>
-                            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3 text-xs font-bold text-white transition-colors hover:bg-[#1ebe5b] sm:w-auto">
-                                <WhatsAppIcon className="h-4 w-4" /> WhatsApp Us
-                            </a>
+                            <a href={`tel:${PHONE}`} className="flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-xs font-bold text-[#045d65] transition-colors hover:bg-gray-100 sm:w-auto"><Icon d={P.phone} className="h-4 w-4" /> Call {PHONE_LABEL}</a>
+                            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3 text-xs font-bold text-white transition-colors hover:bg-[#1ebe5b] sm:w-auto"><WhatsAppIcon className="h-4 w-4" /> WhatsApp Us</a>
                         </div>
                     </div>
                 </section>

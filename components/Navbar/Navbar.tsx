@@ -8,7 +8,7 @@ import { usePackagesMenu } from '@/components/Navbar/PackagesMenuContext';
 import { getPackagePricing } from '@/lib/package-details';
 
 interface NavbarProps {
-    currentPage?: 'Home' | 'Lab Tests' | 'Packages' | 'Departments' | 'Resources' | 'About' | 'Contact';
+    currentPage?: 'Home' | 'Lab Tests' | 'Packages' | 'Departments' | 'Resources' | 'About' | 'Home Collection' | 'Contact';
 }
 
 type NavSubLink = {
@@ -84,6 +84,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
         { name: 'NIPT', href: '/departments/molecular/nipt' },
         { name: 'STD', href: '/std-tests' },
         { name: 'About', href: '/about' },
+        { name: 'Home Collection', href: '/home-collection' },
     ];
 
     // Helper to check if link is active

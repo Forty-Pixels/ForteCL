@@ -30,7 +30,8 @@ interface PackageDetailViewProps {
     };
 }
 
-export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
+export default function PackageDetailView({ pkg, variant = 'standard' }: PackageDetailViewProps & { variant?: 'standard' | 'home' }) {
+    const isHome = pkg.homeServiceIncluded === true;
 
 
     const { cleanTitle, price } = getPackagePricing(pkg.title, pkg.amount);
@@ -39,7 +40,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
 
     return (
         <div className="min-h-screen bg-[#fafafa] selection:bg-[#045d65]/30 font-sans">
-            <Navbar currentPage="Packages" />
+            <Navbar currentPage={variant === 'home' ? 'Home Collection' : 'Packages'} />
 
             {/* REFINED HERO SECTION */}
             <section className="relative pt-44 pb-16 overflow-hidden">
@@ -53,7 +54,7 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                             <Reveal>
                                 <div className="space-y-3">
                                     <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#045d65]/10 text-[#045d65] text-[9px] font-black uppercase tracking-wider">
-                                        Clinical Profile
+                                        {isHome ? 'Home Collection Package' : 'Clinical Profile'}
                                     </div>
                                     <h1 className="text-4xl md:text-5xl font-black text-[#0f172a] leading-[1.1] tracking-tight">
                                         {cleanTitle}
@@ -119,9 +120,9 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                             >
                                 <div className="flex items-center gap-2.5 mb-2">
                                     <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>
-                                    <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">Turnaround time</span>
+                                    <span className="text-[9px] font-black uppercase tracking-widest text-gray-400">{isHome ? 'Home collection' : 'Turnaround time'}</span>
                                 </div>
-                                <p className="text-[10px] font-bold text-[#0f172a] leading-tight">{turnaround ? `Results in ${turnaround}.` : 'Contact us to confirm the turnaround time.'}</p>
+                                <p className="text-[10px] font-bold text-[#0f172a] leading-tight">{isHome ? 'Home collection included across Dubai & Sharjah.' : turnaround ? `Results in ${turnaround}.` : 'Contact us to confirm the turnaround time.'}</p>
                             </motion.div>
                         </Reveal>
                     </div>
@@ -214,8 +215,10 @@ export default function PackageDetailView({ pkg }: PackageDetailViewProps) {
                                                     <span className="text-[#0f172a] text-right font-bold truncate max-w-[120px]">{cleanTitle}</span>
                                                 </div>
                                                 <div className="flex justify-between items-center text-[11px] font-medium">
-                                                    <span className="text-gray-400">Turnaround Time</span>
-                                                    <span className="text-[#0f172a] text-right font-bold">{turnaround || 'Please confirm'}</span>
+                                                    <span className="text-gray-400">{isHome ? 'Home Collection' : 'Turnaround Time'}</span>
+                                                    {isHome
+                                                        ? <span className="text-green-600 font-bold uppercase">Included</span>
+                                                        : <span className="text-[#0f172a] text-right font-bold">{turnaround || 'Please confirm'}</span>}
                                                 </div>
                                                 <div className="pt-3 border-t border-gray-50 flex justify-between items-end">
                                                     <span className="text-[10px] font-black text-gray-400 uppercase">Total Amount</span>

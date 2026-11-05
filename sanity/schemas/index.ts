@@ -9,6 +9,7 @@ import diseaseCategory from './diseaseCategory';
 import department from './department';
 import homepageTestFinder from './homepageTestFinder';
 import packagesMenu from './packagesMenu';
+import homeCollectionPage from './homeCollectionPage';
 
 export const schemaTypes = [
     labTest, 
@@ -18,5 +19,6 @@ export const schemaTypes = [
     diseaseCategory, 
     department,
     homepageTestFinder,
-    packagesMenu
+    packagesMenu,
+    homeCollectionPage
 ];

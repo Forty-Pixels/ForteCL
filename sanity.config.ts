@@ -21,12 +21,16 @@ export default defineConfig({
         .id('packages-menu')
         .title('Health Packages Menu (navbar)')
         .child(S.document().schemaType('packagesMenu').documentId('packages-menu')),
-      ...S.documentTypeListItems().filter(item => !['homepageTestFinder', 'packagesMenu'].includes(item.getId() || '')),
+      S.listItem()
+        .id('home-collection-page')
+        .title('Home Collection Page')
+        .child(S.document().schemaType('homeCollectionPage').documentId('home-collection-page')),
+      ...S.documentTypeListItems().filter(item => !['homepageTestFinder', 'packagesMenu', 'homeCollectionPage'].includes(item.getId() || '')),
     ]),
   })],
   document: {
-    newDocumentOptions: previous => previous.filter(item => !['homepageTestFinder', 'packagesMenu'].includes(item.templateId)),
-    actions: (previous, context) => ['homepageTestFinder', 'packagesMenu'].includes(context.schemaType)
+    newDocumentOptions: previous => previous.filter(item => !['homepageTestFinder', 'packagesMenu', 'homeCollectionPage'].includes(item.templateId)),
+    actions: (previous, context) => ['homepageTestFinder', 'packagesMenu', 'homeCollectionPage'].includes(context.schemaType)
       ? previous.filter(action => action.action !== 'delete' && action.action !== 'duplicate')
       : previous,
   },

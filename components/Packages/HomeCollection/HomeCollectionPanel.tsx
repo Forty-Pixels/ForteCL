@@ -35,7 +35,7 @@ export default function HomeCollectionPanel({ packages, currentSlug, allPackages
     const imageUrl = withImage?.image ? urlFor(withImage.image).width(800).url() : null;
 
     return (
-        <section aria-labelledby="home-collection-panel-title" className="mx-auto max-w-6xl px-4">
+        <section aria-labelledby="home-collection-panel-title" className="mx-auto max-w-6xl">
             <Reveal>
                 <span className="inline-block rounded-full bg-[#e3f1f0] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#045d65]">Packages at Home</span>
                 <h2 id="home-collection-panel-title" className="mt-4 text-3xl font-black tracking-tight text-[#0f172a] sm:text-4xl">
@@ -107,7 +107,7 @@ export default function HomeCollectionPanel({ packages, currentSlug, allPackages
                                     const active = pkg.slug === currentSlug;
                                     return (
                                         <li key={pkg.slug} className="border-b border-white/10 last:border-0">
-                                            <Link href={`/packages/${pkg.slug}`} aria-current={active ? 'page' : undefined} className={`group flex items-center justify-between gap-3 py-3.5 text-sm font-semibold transition-colors hover:text-[#A7DCC0] ${active ? 'text-[#A7DCC0]' : ''}`}>
+                                            <Link href={`/home-collection/${pkg.slug}`} aria-current={active ? 'page' : undefined} className={`group flex items-center justify-between gap-3 py-3.5 text-sm font-semibold transition-colors hover:text-[#A7DCC0] ${active ? 'text-[#A7DCC0]' : ''}`}>
                                                 <span>{cleanTitle}{price && <span className="ml-2 text-[11px] font-medium text-white/50">{price}</span>}</span>
                                                 <Arrow className="h-4 w-4 shrink-0 text-white/60 transition-transform group-hover:translate-x-1" />
                                             </Link>

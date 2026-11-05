@@ -113,7 +113,6 @@ export const allPackagesQuery = `*[_type == "package"] | order(_createdAt asc) {
   amount,
   homeServiceIncluded,
   turnaroundTime,
-  homeCollection,
   "id": slug.current,
   title,
   "slug": slug.current,
@@ -132,7 +131,6 @@ export const packageBySlugQuery = `*[_type == "package" && slug.current == $slug
   amount,
   homeServiceIncluded,
   turnaroundTime,
-  homeCollection,
   "id": slug.current,
   title,
   "slug": slug.current,
@@ -209,5 +207,16 @@ export const homeCollectionPackagesQuery = `*[_type == "package" && homeServiceI
   title,
   amount,
   image,
+  description,
+  testsTotal,
+  benefits,
+  "subTests": subTests[]{title},
   "slug": slug.current
+}`;
+
+/** Home collection landing page content (singleton controlled in Studio) */
+export const homeCollectionPageQuery = `*[_type == "homeCollectionPage" && _id == "home-collection-page"][0]{
+  eyebrow, headline, subheadline, directAnswer, collectionHours, coverageAreas,
+  steps, highlights, faqs, closingHeading, closingText, whatsappMessage,
+  heroImage
 }`;
