@@ -63,8 +63,9 @@ export default function InsurancePage() {
                         const whatsapp = `https://wa.me/971569925611?text=${encodeURIComponent(`Hi, I would like to confirm my ${provider.name} insurance coverage for a lab test.`)}`;
                         const isCode = provider.networks.some(n => n.name.startsWith('Network code'));
                         return (
-                            <Reveal key={provider.name} delayMs={(index % 3) * 60}>
-                                <article id={slugify(provider.name)} className="scroll-mt-28 overflow-hidden rounded-3xl border border-[#d7e5e8] bg-white shadow-sm">
+                            <div key={provider.name} id={slugify(provider.name)} className="scroll-mt-28">
+                                <Reveal delayMs={(index % 3) * 60}>
+                                <article className="overflow-hidden rounded-3xl border border-[#d7e5e8] bg-white shadow-sm">
                                     <header className="flex flex-col gap-3 border-b border-[#d7e5e8] bg-[#f2f6f8] px-6 py-5 sm:flex-row sm:items-start sm:justify-between">
                                         <div className="flex max-w-2xl items-start gap-4">
                                             <ProviderLogo name={provider.name} logo={provider.logo} className="h-16 w-28" />
@@ -102,7 +103,8 @@ export default function InsurancePage() {
                                         <p className="px-6 py-6 text-xs text-slate-600">Network details for {provider.name} are confirmed by our team. Message us with your policy details.</p>
                                     )}
                                 </article>
-                            </Reveal>
+                                </Reveal>
+                            </div>
                         );
                     })}
 
