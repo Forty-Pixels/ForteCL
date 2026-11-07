@@ -12,7 +12,6 @@ export type PackagesMenuItem = {
 
 export type PackagesMenu = {
     enabled?: boolean | null;
-    heading?: string | null;
     viewAllLabel?: string | null;
     items?: PackagesMenuItem[] | null;
 } | null;

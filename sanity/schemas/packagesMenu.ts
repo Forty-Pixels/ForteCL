@@ -14,12 +14,6 @@ export default defineType({
             initialValue: true,
         }),
         defineField({
-            name: 'heading',
-            title: 'Dropdown heading',
-            type: 'string',
-            initialValue: 'Ongoing Campaigns',
-        }),
-        defineField({
             name: 'items',
             title: 'Campaigns / packages',
             type: 'array',

@@ -191,7 +191,6 @@ export const distinctResourceCategoriesQuery = `*[_type == "resourceCategory"] |
 /** Navbar "Health Packages" dropdown (singleton controlled in Studio) */
 export const packagesMenuQuery = `*[_type == "packagesMenu" && _id == "packages-menu"][0]{
   enabled,
-  heading,
   viewAllLabel,
   "items": items[defined(package)]{
     label,
