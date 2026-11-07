@@ -17,6 +17,9 @@ export interface InsuranceProvider {
     networks: InsuranceNetwork[];
 }
 
+export const insuranceProviderSlug = (name: string) =>
+    name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 export const APPROVAL_INFO: Record<ApprovalKind, { label: string; detail: string }> = {
     direct: { label: 'Direct claim', detail: 'No approval needed from us. Claims can be submitted directly.' },
     eligibility: { label: 'Eligibility check', detail: 'No approval needed. Share the patient’s eligibility screenshot so we can confirm the network is accepted.' },

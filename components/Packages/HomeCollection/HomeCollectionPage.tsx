@@ -116,14 +116,14 @@ export default function HomeCollectionPage({ content, packages }: { content: Hom
     const subheadline = hc.subheadline || 'Choose a health package and a licensed professional collects your sample at home, in the office or at your hotel. Results are shared digitally.';
     const directAnswer = hc.directAnswer || 'Forte Clinical Laboratory offers home sample collection for selected health packages across Dubai. Our DHA-approved laboratory processes your sample in-house, and our team confirms the package, preparation, price and report time before the visit.';
     const heroSource = hc.heroImage ?? packages.find(p => p.image)?.image;
-    const heroImage = heroSource ? urlFor(heroSource).width(1200).url() : null;
+    const heroImage = heroSource ? urlFor(heroSource).width(1200).url() : '/home-collection/home-blood-test-woman.png';
     const stepIcons = [P.phone, P.clipboard, P.home];
     const highlightIcons = [P.shield, P.users, P.clock, P.doc, P.card, P.pin];
     const stats = [
         { value: 'Home', caption: 'Collection' },
         { value: '24/7', caption: 'Booking enquiries' },
         { value: 'DHA', caption: 'Licensed laboratory' },
-        { value: String(packages.length), caption: packages.length === 1 ? 'Home package' : 'Home packages' },
+        { value: 'JCI', caption: 'Certified' },
     ];
 
     return (
@@ -172,7 +172,7 @@ export default function HomeCollectionPage({ content, packages }: { content: Hom
                     <Reveal delayMs={160}>
                         <div className="relative">
                             <div className="relative aspect-[4/4.4] overflow-hidden rounded-3xl bg-white shadow-xl">
-                                {heroImage ? <Image src={heroImage} alt="Home blood test collection" fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" /> : <div className="h-full w-full bg-gradient-to-br from-[#045d65] to-[#023f45]" />}
+                                <Image src={heroImage} alt="Healthcare professional preparing a home blood test collection" fill priority sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
                             </div>
                             <span className="absolute right-4 top-4 rounded-full bg-white px-3 py-1.5 text-[10px] font-bold text-[#045d65] shadow-md">Care at Home</span>
                             <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl">
@@ -281,7 +281,7 @@ export default function HomeCollectionPage({ content, packages }: { content: Hom
                     <div className="grid items-center gap-10 lg:grid-cols-2">
                         <Reveal>
                             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#e9f3f2]">
-                                {heroImage && <Image src={heroImage} alt="Home collection with Forte Clinical Laboratory" fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />}
+                                <Image src="/home-collection/care-at-home-solo.png" alt="Healthcare professional preparing sample tubes during a home visit" fill sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
                                 <div className="absolute bottom-4 left-4 flex items-center gap-2.5 rounded-xl bg-white px-3.5 py-2.5 shadow-lg">
                                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#045d65] text-white"><Icon d={P.shield} className="h-4 w-4" /></span>
                                     <div>

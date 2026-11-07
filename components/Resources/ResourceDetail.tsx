@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Landing-page/Footer/Footer';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import BookActionButton from '@/components/Booking/BookActionButton';
+import type { ComponentProps } from 'react';
 
 interface ResourcePost {
     slug: string;
@@ -14,7 +15,7 @@ interface ResourcePost {
     publishedAt: string;
     excerpt: string;
     image: string;
-    body?: any;
+    body?: ComponentProps<typeof PortableText>['value'];
 }
 
 interface ResourceDetailProps {
@@ -159,8 +160,8 @@ export default function ResourceDetail({ post, relatedPosts }: ResourceDetailPro
                                     
                                     <div className="pt-2">
                                         <BookActionButton
-                                            label="Book a Test"
-                                            whatsappText={`Hi, I would like to book a test after reading \"${post.title}\".`}
+                                            label="Book an Appointment"
+                                            whatsappText={`Hi, I would like to book an appointment after reading \"${post.title}\".`}
                                             className="block w-full text-center bg-[#045d65] hover:bg-[#034b52] text-white rounded-xl py-4 font-bold text-sm transition-all shadow-md active:scale-95"
                                         />
                                     </div>

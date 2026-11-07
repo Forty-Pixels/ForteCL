@@ -9,7 +9,7 @@ export default function LabTestsHero() {
             {/* Background */}
             <Image
                 src="/Landing-page/tests/test-8.png"
-                alt="Lab Tests"
+                alt="Medical Tests in Dubai"
                 fill
                 className="object-cover"
                 priority
@@ -25,7 +25,7 @@ export default function LabTestsHero() {
                 </Reveal>
                 <Reveal delayMs={140}>
                     <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight">
-                        Lab Tests
+                        Medical Tests in Dubai
                     </h1>
                 </Reveal>
                 <Reveal delayMs={210}>

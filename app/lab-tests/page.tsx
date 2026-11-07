@@ -9,7 +9,7 @@ import {
 import { DEPARTMENT_TITLES } from '@/constants/department-categories';
 
 export const metadata = {
-    title: 'Lab Tests | Forte Clinical Laboratory',
+    title: 'Medical Tests in Dubai | Forte Clinical Laboratory',
     description: 'Browse our extensive list of diagnostic tests. From routine blood work to advanced diagnostics — accurate, reliable and timely results.',
 };
 

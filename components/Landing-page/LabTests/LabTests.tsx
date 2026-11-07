@@ -3,23 +3,18 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Animation/Reveal';
-import { urlFor } from '@/lib/sanity';
 import { getTestLink, getTestImage } from '@/lib/department-utils';
 
-const PLACEHOLDER_IMAGES = [
-    '/Landing-page/tests/test-5.png',
-    '/Landing-page/tests/test-8.png',
-    '/Landing-page/tests/test-1.png',
-    '/Landing-page/tests/test-2.png',
-    '/Landing-page/tests/test-3.png',
-    '/Landing-page/tests/test-4.png',
-    '/Landing-page/tests/test-6.png',
-    '/Landing-page/tests/test-9.png',
-    '/Landing-page/tests/test-10.png',
-];
-
 interface LabTestsProps {
-    tests?: any[];
+    tests?: {
+        slug: string;
+        name: string;
+        imageUrl?: string;
+        image?: string;
+        department?: string;
+        departmentTitle?: string;
+        departmentSlug?: string;
+    }[];
 }
 
 export default function LabTests({ tests = [] }: LabTestsProps) {
@@ -69,13 +64,13 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
     }, [displayTests]);
 
     return (
-        <section className="relative w-full overflow-hidden bg-white py-8 lg:py-10">
-            <div className="flex flex-col lg:flex-row items-stretch lg:h-[500px] lg:gap-4">
+        <section className="relative w-full overflow-hidden bg-white py-10 lg:py-16">
+            <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-8 px-5 sm:px-8 lg:min-h-[500px] lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-10 lg:px-12">
                 
                 {/* Left Column (50%) - Image + Content */}
-                <div className="w-full lg:w-[49%] relative flex flex-col justify-center py-12 lg:py-0 px-8 sm:px-14 lg:pl-20 xl:pl-[calc((100vw-1280px)/2+3rem)] lg:pr-10 min-h-[400px] lg:min-h-0">
+                <div className="relative flex min-h-[440px] w-full flex-col justify-center px-8 py-12 sm:px-12 lg:h-[500px] lg:px-14">
                     {/* Shaped background image container */}
-                    <div className="absolute inset-y-4 inset-x-4 sm:inset-x-6 overflow-hidden rounded-[40px_110px_40px_110px] lg:left-12 lg:right-10 lg:rounded-[30px_82px_26px_90px]">
+                    <div className="absolute inset-y-4 inset-x-4 overflow-hidden rounded-[40px_110px_40px_110px] sm:inset-x-6 lg:rounded-[30px_82px_26px_90px]">
                         <Image
                             src="/lab-tests/left-image.png"
                             alt="Lab Excellence"
@@ -88,7 +83,7 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
 
                     <div className="relative z-10 flex flex-col items-start max-w-[34rem]">
                         <Reveal delayMs={70}>
-                            <span className="text-[#045d65] font-black text-[10px] tracking-[0.3em] mb-4 uppercase block">
+                            <span className="text-[#a7dcc0] font-black text-[10px] tracking-[0.3em] mb-4 uppercase block">
                                 Lab Tests
                             </span>
                         </Reveal>
@@ -112,9 +107,9 @@ export default function LabTests({ tests = [] }: LabTestsProps) {
                 </div>
 
                 {/* Right Column (50%) - Subtle Teal Tint + Carousel */}
-                <div className="w-full lg:w-[49%] flex flex-col justify-center py-12 lg:py-0 px-6 sm:px-8 lg:pl-2 lg:pr-8 relative border-t lg:border-t-0 lg:border-l border-gray-100/50">
-                    <Reveal delayMs={180} className="w-full relative flex justify-start">
-                        <div className="w-full max-w-[560px] relative">
+                <div className="relative flex min-w-0 w-full flex-col justify-center border-t border-gray-100 py-8 lg:border-t-0 lg:py-0">
+                    <Reveal delayMs={180} className="relative w-full">
+                        <div className="relative w-full">
                         <div
                             ref={scrollRef}
                             className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-3 pb-1 w-full h-[320px] sm:h-[340px] md:h-[360px] lg:h-[320px]"

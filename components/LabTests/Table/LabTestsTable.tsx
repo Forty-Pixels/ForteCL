@@ -1,32 +1,18 @@
 'use client';
 import { useState, useMemo, Fragment } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Listbox, Transition } from '@headlessui/react';
-import { ChevronDownIcon, CheckIcon, MagnifyingGlassIcon, ClockIcon, BeakerIcon, BuildingOfficeIcon } from '@heroicons/react/20/solid';
+import { ChevronDownIcon, MagnifyingGlassIcon, ClockIcon, BeakerIcon } from '@heroicons/react/20/solid';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { urlFor } from '@/lib/sanity';
 import BookActionButton from '@/components/Booking/BookActionButton';
-import { getTestLink, getTestImage, getDepartmentTitle } from '@/lib/department-utils';
+import { getTestLink, getDepartmentTitle } from '@/lib/department-utils';
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-const ITEMS_PER_PAGE = 40; // 10 rows of 4
-
-const PLACEHOLDER_IMAGES = [
-    '/lab-tests/lab-1.png',
-    '/lab-tests/lab-2.png',
-    '/lab-tests/lab-3.png',
-    '/lab-tests/lab-4.png',
-    '/lab-tests/lab-5.png',
-    '/lab-tests/lab-6.png',
-    '/lab-tests/lab-7.png',
-    '/lab-tests/lab-8.png',
-    '/lab-tests/lab-9.png',
-];
+const ITEMS_PER_PAGE = 20;
 
 interface LabTestsTableProps {
     tests: {
@@ -167,58 +153,28 @@ export default function LabTestsTable({ tests, diseaseFilters, departments, init
                     </div>
                 </div>
 
-                {/* Dense Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-12">
-                    {paginated.map((test, i) => (
-                        <div key={test.slug} className="group bg-white rounded-[1.8rem] border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_45px_rgba(248,140,41,0.1)] transition-all duration-300 flex overflow-hidden min-h-[180px] max-h-[220px]">
-                            {/* Horizontal Image Section */}
-                            <Link href={getTestLink(test)} className="relative w-40 flex-shrink-0 overflow-hidden border-r border-gray-100 block">
-                                <Image
-                                    src={getTestImage(test)}
-                                    alt={test.name}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10" />
-                            </Link>
-
-                            {/* Horizontal Content Area */}
-                            <div className="p-4 flex flex-col justify-between flex-grow overflow-hidden">
-                                <div className="overflow-hidden">
-                                    <div className="flex items-center justify-between mb-1.5 min-h-[1.2rem]">
-                                        <span className="text-[9px] font-bold text-[#307984] uppercase tracking-wider bg-[#307984]/5 px-2 py-0.5 rounded-full truncate max-w-[120px]">
-                                            {test.diseaseFilter || 'General'}
-                                        </span>
-                                    </div>
-                                    <Link href={getTestLink(test)}>
-                                        <h3 className="text-[14px] font-bold text-gray-900 group-hover:text-[#045d65] transition-colors leading-tight line-clamp-2 mb-2">
-                                            {test.name}
-                                        </h3>
-                                    </Link>
-                                    
-                                    <div className="grid grid-cols-1 gap-1">
-                                        <div className="flex items-center gap-2 text-gray-500">
-                                            <ClockIcon className="w-3.5 h-3.5 text-[#045d65]/40" />
-                                            <span className="text-[10px] font-medium truncate">{test.tat || 'Contact Lab'}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2 text-gray-500">
-                                            <BeakerIcon className="w-3.5 h-3.5 text-[#045d65]/40" />
-                                            <span className="text-[10px] font-medium truncate">
-                                                {test.sampleType && test.sampleType.length > 0 ? test.sampleType.join(', ') : 'Check Sample'}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Compact Actions */}
-                                <div className="flex items-center gap-2 mt-3 pt-3 border-t border-gray-50">
-                                    <BookActionButton
-                                        label="Book Now"
-                                        whatsappText={`Hi, I would like to book the ${test.name} test.`}
-                                        className="flex-1 py-2 bg-[#045d65] hover:bg-[#034b52] text-white text-[11px] font-bold rounded-lg text-center transition-all shadow-md"
-                                    />
-                                </div>
+                {/* Text-only test directory */}
+                <div className="mb-12 overflow-hidden rounded-2xl border border-gray-200 bg-white divide-y divide-gray-100">
+                    {paginated.map((test) => (
+                        <div key={test.slug} className="grid gap-4 p-5 transition-colors hover:bg-[#f5faf9] sm:p-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.4fr)_auto] lg:items-center lg:gap-8">
+                            <div className="min-w-0">
+                                <span className="mb-2 inline-block rounded-full bg-[#eaf4f4] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-[#307984]">
+                                    {test.diseaseFilter || 'General'}
+                                </span>
+                                <Link href={getTestLink(test)} className="block text-base font-bold leading-snug text-gray-900 hover:text-[#045d65] sm:text-lg">
+                                    {test.name}
+                                </Link>
+                                <p className="mt-1 text-xs text-gray-500">{getDepartmentTitle(test.department, test.departmentSlug) || 'Medical Test'}</p>
                             </div>
+                            <div className="flex min-w-0 flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600 lg:gap-x-3">
+                                <span className="inline-flex items-start gap-2"><BeakerIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#307984]" /><span>{test.sampleType?.length ? test.sampleType.join(', ') : 'Contact lab for sample'}</span></span>
+                                <span className="inline-flex items-start gap-2"><ClockIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#307984]" /><span>{test.tat || 'Contact lab for results'}</span></span>
+                            </div>
+                            <BookActionButton
+                                label="Book Now"
+                                whatsappText={`Hi, I would like to book the ${test.name} test.`}
+                                className="w-full rounded-lg bg-[#045d65] px-5 py-2.5 text-center text-sm font-bold text-white transition-colors hover:bg-[#034b52] sm:w-fit lg:justify-self-end"
+                            />
                         </div>
                     ))}
                     

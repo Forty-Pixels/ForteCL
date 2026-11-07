@@ -43,8 +43,8 @@ export default function Hero() {
                 <Reveal delayMs={280}>
                     <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 w-full sm:w-auto px-4">
                         <BookActionButton
-                            label="Book a Test"
-                            whatsappText="Hi, I would like to book a test from the home page."
+                            label="Book an Appointment"
+                            whatsappText="Hi, I would like to book an appointment from the home page."
                             className="bg-[#045d65] hover:bg-[#08717a] text-white rounded-md px-5 sm:px-6 py-2.5 sm:py-2.5 text-sm font-medium transition-all w-full sm:w-auto text-center shadow-lg"
                         />
                         <Link

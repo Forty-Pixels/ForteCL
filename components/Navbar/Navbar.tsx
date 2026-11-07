@@ -78,10 +78,10 @@ export default function Navbar({ currentPage }: NavbarProps) {
     const navLinks: NavLink[] = [
         { name: 'Home', href: '/' },
         buildPackagesLink(packagesMenu),
+        { name: 'Home Collection', href: '/home-collection' },
         { name: 'NIPT', href: '/departments/molecular/nipt' },
         { name: 'STD', href: '/std-tests' },
         { name: 'About', href: '/about' },
-        { name: 'Home Collection', href: '/home-collection' },
     ];
 
     // Helper to check if link is active
