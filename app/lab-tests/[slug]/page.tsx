@@ -1,6 +1,7 @@
 import { notFound, redirect } from 'next/navigation';
 import TestDetailHero from '@/components/LabTests/TestDetail/TestDetailHero';
 import TestDetailContent from '@/components/LabTests/TestDetail/TestDetailContent';
+import OrganismsSection from '@/components/LabTests/OrganismsSection';
 import Footer from '@/components/Landing-page/Footer/Footer';
 import { client } from '@/lib/sanity';
 import { labTestBySlugQuery, allLabTestSlugsQuery, allLabTestsQuery } from '@/lib/queries';
@@ -50,6 +51,7 @@ export default async function TestDetailPage({ params }: Props) {
     return (
         <main className="min-h-screen bg-white">
             <TestDetailHero test={test} />
+            <OrganismsSection section={test.organismsSection} />
             <TestDetailContent test={test} allTests={allTests} />
             <Footer />
         </main>

@@ -23,6 +23,7 @@ export const allLabTestsQuery = `*[_type == "labTest" && slug.current != "std19"
   "departmentSlug": department->slug.current,
   "tat": coalesce(resultSection.tat, tat),
   "sampleType": coalesce(resultSection.sampleType, sampleType),
+  organismsSection,
   "overview": coalesce(introSection.overview, overview),
   "imageUrl": coalesce(heroSection.image.asset->url, image.asset->url)
 }`;
@@ -36,6 +37,7 @@ export const labTestBySlugQuery = `*[_type == "labTest" && slug.current == $slug
   "departmentSlug": department->slug.current,
   "tat": coalesce(resultSection.tat, tat),
   "sampleType": coalesce(resultSection.sampleType, sampleType),
+  organismsSection,
   "overview": coalesce(introSection.overview, overview),
   "keyServices": coalesce(heroSection.highlights, keyServices),
   "howItems": howSection.items,

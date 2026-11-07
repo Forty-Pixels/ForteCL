@@ -21,7 +21,7 @@ export const dynamic = 'force-dynamic';
 const freshClient = client.withConfig({ useCdn: false });
 
 export async function generateMetadata({ params }: TestPageProps): Promise<Metadata> {
-    const { slug, testSlug } = await params;
+    const { testSlug } = await params;
     if (testSlug === 'std19') return { title: 'Test Not Found' };
     
     // Try to find in CMS first
@@ -74,6 +74,7 @@ export default async function TestPage({ params }: TestPageProps) {
         title: testData.name,
         tat: getField('tat'),
         sampleType: getField('sampleType'),
+        organismsSection: getField('organismsSection'),
         description: getField('overview') ?? (cmsTest ? '' : department.description),
         importanceSection: cmsTest ? cmsTest.importanceSection : localTest?.importanceSection,
         image: getTestImage(testData),

@@ -3,10 +3,10 @@ import { defineField, defineType } from 'sanity';
 const heading = () => defineField({ name: 'heading', title: 'Heading', type: 'string' });
 const image = (name: string, title: string) => defineField({ name, title, type: 'image', options: { hotspot: true } });
 const copy = (name: string, title: string) => defineField({ name, title, type: 'text', rows: 5 });
-const section = (name: string, title: string, fields: any[]) => defineField({
+const section = (name: string, title: string, fields: ReturnType<typeof defineField>[]) => defineField({
     name, title, type: 'object', options: { collapsible: true, collapsed: false }, fields,
 });
-const detailItems = (name: string, title: string, fields: any[], previewTitle: string) => defineField({
+const detailItems = (name: string, title: string, fields: ReturnType<typeof defineField>[], previewTitle: string) => defineField({
     name, title, type: 'array', of: [{ type: 'object', fields, preview: { select: { title: previewTitle } } }],
 });
 
@@ -24,6 +24,15 @@ export default defineType({
         section('resultSection', '2. Result and sample details', [
             defineField({ name: 'tat', title: 'Turnaround time (TAT)', type: 'string' }),
             defineField({ name: 'sampleType', title: 'Sample type', type: 'array', of: [{ type: 'string' }] }),
+        ]),
+        section('organismsSection', 'Organisms tested', [
+            defineField({ name: 'heading', title: 'Section heading', type: 'string', description: 'Optional. Defaults to "Organisms Tested" on the website.' }),
+            defineField({
+                name: 'items', title: 'Organisms / targets', type: 'array',
+                description: 'Add only organisms or targets confirmed for this specific test or panel. Each entry appears on the website after publishing.',
+                of: [{ type: 'string', validation: Rule => Rule.required() }],
+                validation: Rule => Rule.unique(),
+            }),
         ]),
         section('introSection', '3. Introduction', [
             heading(), copy('overview', 'Content'),

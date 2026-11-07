@@ -16,6 +16,7 @@ import {
 import Navbar from '@/components/Navbar/Navbar';
 import Reveal from '@/components/Animation/Reveal';
 import BookActionButton from '@/components/Booking/BookActionButton';
+import OrganismsSection from '@/components/LabTests/OrganismsSection';
 
 const importanceComponents: PortableTextComponents = {
     block: {
@@ -82,6 +83,7 @@ interface TestDetailViewProps {
         importanceSection?: { content?: string; richContent?: PortableTextBlock[] };
         tat?: string;
         sampleType?: string[];
+        organismsSection?: { heading?: string; items?: string[] };
         image: string;
         introImage?: string;
         secondaryImage?: string;
@@ -173,6 +175,8 @@ export default function TestDetailView({ test }: TestDetailViewProps) {
                     </div>
                 </section>
             )}
+
+            <OrganismsSection section={test.organismsSection} />
 
             {/* 2. "What is" Section */}
             {test.description && (

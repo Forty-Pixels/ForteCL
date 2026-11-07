@@ -7,13 +7,14 @@ export interface LabTest {
     department: string;
     tat: string;
     sampleType: string[];
+    organismsSection?: { heading?: string; items?: string[] };
     overview?: string;
     importanceSection?: { content?: string; richContent?: PortableTextBlock[] };
     procedure?: string;
     symptoms?: string[];
     normalRanges?: string[];
     abnormalLevels?: string;
-    content?: any[]; // Sanity Portable Text
+    content?: PortableTextBlock[]; // Sanity Portable Text
     image?: string;
     imageUrl?: string;
     introImageUrl?: string;
