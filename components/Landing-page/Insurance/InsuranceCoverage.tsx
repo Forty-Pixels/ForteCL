@@ -15,10 +15,10 @@ export default function InsuranceCoverage() {
                     <Link href="/insurance" className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-[#045d65]/25 px-4 py-2 text-xs font-semibold text-[#045d65] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#045d65]">View all providers <ArrowUpRightIcon className="h-4 w-4" /></Link>
                 </div>
 
-                <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                     {INSURANCE_PROVIDERS.map(provider => (
                         <li key={provider.name}>
-                            <Link href={`/insurance/${insuranceProviderSlug(provider.name)}`} className="group flex h-full items-center justify-between gap-4 rounded-xl border border-[#d7e5e8] bg-white px-5 py-4 text-sm font-semibold text-[#103b40] shadow-sm transition-colors hover:border-[#045d65] hover:text-[#045d65] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#045d65]">
+                            <Link href={`/insurance/${insuranceProviderSlug(provider.name)}`} className="group flex h-14 items-center justify-between gap-3 rounded-xl border border-[#d7e5e8] bg-white px-4 py-2 text-sm font-semibold leading-tight text-[#103b40] shadow-sm transition-colors hover:border-[#045d65] hover:text-[#045d65] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#045d65]">
                                 <span>{provider.name}</span>
                                 <ArrowUpRightIcon aria-hidden="true" className="h-4 w-4 shrink-0 text-[#307984] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                             </Link>

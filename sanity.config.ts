@@ -1,6 +1,7 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { schemaTypes } from './sanity/schemas';
+import { DeleteWithReferencesAction } from './sanity/actions/DeleteWithReferencesAction';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
@@ -32,7 +33,7 @@ export default defineConfig({
     newDocumentOptions: previous => previous.filter(item => !['homepageTestFinder', 'packagesMenu', 'homeCollectionPage'].includes(item.templateId)),
     actions: (previous, context) => ['homepageTestFinder', 'packagesMenu', 'homeCollectionPage'].includes(context.schemaType)
       ? previous.filter(action => action.action !== 'delete' && action.action !== 'duplicate')
-      : previous,
+      : previous.map(action => action.action === 'delete' ? DeleteWithReferencesAction : action),
   },
   schema: {
     types: schemaTypes,

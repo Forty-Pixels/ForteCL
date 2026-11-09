@@ -81,7 +81,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
         { name: 'Home Collection', href: '/home-collection' },
         { name: 'NIPT', href: '/departments/molecular/nipt' },
         { name: 'STD', href: '/std-tests' },
-        { name: 'About', href: '/about' },
+        { name: 'About Us', href: '/about' },
     ];
 
     // Helper to check if link is active
