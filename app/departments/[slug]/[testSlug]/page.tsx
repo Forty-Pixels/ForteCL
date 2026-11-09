@@ -21,7 +21,7 @@ export const dynamic = 'force-dynamic';
 const freshClient = client.withConfig({ useCdn: false });
 
 export async function generateMetadata({ params }: TestPageProps): Promise<Metadata> {
-    const { testSlug } = await params;
+    const { slug, testSlug } = await params;
     if (testSlug === 'std19') return { title: 'Test Not Found' };
     
     // Try to find in CMS first
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: TestPageProps): Promise<Metad
     }
 
     // Fallback to local data
-    const localTest = labTests.find(t => t.slug === testSlug);
+    const localTest = slug === 'molecular' ? labTests.find(t => t.slug === testSlug) : undefined;
     if (localTest) {
         return {
             title: `${localTest.name} | ${localTest.department} | Forte Clinical Laboratory`,
@@ -55,7 +55,7 @@ export default async function TestPage({ params }: TestPageProps) {
     const cmsTest = await freshClient.fetch(labTestBySlugQuery, { slug: testSlug }, { cache: 'no-store' });
     
     // Find in local data as fallback
-    const localTest = labTests.find(t => t.slug === testSlug);
+    const localTest = slug === 'molecular' ? labTests.find(t => t.slug === testSlug) : undefined;
 
     if (!cmsTest && !localTest) {
         if (STD_PANELS.some(panel => panel.slug === testSlug)) {

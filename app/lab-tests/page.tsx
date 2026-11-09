@@ -13,16 +13,16 @@ export const metadata = {
     description: 'Browse our extensive list of diagnostic tests. From routine blood work to advanced diagnostics — accurate, reliable and timely results.',
 };
 
-// Revalidate every 60 seconds so CMS changes appear quickly
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+const freshClient = client.withConfig({ useCdn: false });
 
 export default async function LabTestsPage({ searchParams }: {
     searchParams: Promise<{ department?: string; search?: string }>;
 }) {
     const filters = await searchParams;
     const [tests, diseaseFilters] = await Promise.all([
-        client.fetch(allLabTestsQuery),
-        client.fetch(distinctDiseaseFiltersQuery),
+        freshClient.fetch(allLabTestsQuery, {}, { cache: 'no-store' }),
+        freshClient.fetch(distinctDiseaseFiltersQuery, {}, { cache: 'no-store' }),
     ]);
 
     return (

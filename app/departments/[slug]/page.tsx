@@ -14,7 +14,8 @@ interface DepartmentPageProps {
     }>;
 }
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+const freshClient = client.withConfig({ useCdn: false });
 
 type DepartmentTestRecord = {
     slug: string;
@@ -55,7 +56,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
         notFound();
     }
 
-    const allCmsTestsWithDepartment: DepartmentTestRecord[] = await client.fetch(allLabTestsWithDepartmentQuery);
+    const allCmsTestsWithDepartment: DepartmentTestRecord[] = await freshClient.fetch(allLabTestsWithDepartmentQuery, {}, { cache: 'no-store' });
 
     const cmsTests = allCmsTestsWithDepartment
         .filter((test) => resolveDepartmentId(test.departmentTitle, test.departmentSlug) === slug)

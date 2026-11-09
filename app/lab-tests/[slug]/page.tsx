@@ -11,8 +11,8 @@ interface Props {
     params: Promise<{ slug: string }>;
 }
 
-// Revalidate every 60 seconds
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+const freshClient = client.withConfig({ useCdn: false });
 
 export async function generateStaticParams() {
     const slugs: { slug: string }[] = await client.fetch(allLabTestSlugsQuery);
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
     const { slug } = await params;
     if (slug === 'std19') return { title: 'Test Not Found' };
-    const test = await client.fetch(labTestBySlugQuery, { slug });
+    const test = await freshClient.fetch(labTestBySlugQuery, { slug }, { cache: 'no-store' });
     if (!test) return { title: 'Test Not Found' };
     return {
         title: `${test.name} | Forte Clinical Laboratory`,
@@ -36,8 +36,8 @@ export default async function TestDetailPage({ params }: Props) {
     
     // Fetch both the current test and all tests (for the sidebar)
     const [test, allTests] = await Promise.all([
-        client.fetch(labTestBySlugQuery, { slug }),
-        client.fetch(allLabTestsQuery)
+        freshClient.fetch(labTestBySlugQuery, { slug }, { cache: 'no-store' }),
+        freshClient.fetch(allLabTestsQuery, {}, { cache: 'no-store' })
     ]);
 
     if (!test) notFound();
