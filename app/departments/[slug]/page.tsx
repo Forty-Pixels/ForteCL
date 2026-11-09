@@ -66,17 +66,11 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
             sampleType: test.sampleType,
         }));
 
-    const allCmsTests = allCmsTestsWithDepartment.map((test) => ({
-        slug: test.slug,
-        name: test.name,
-    }));
-
     return (
         <main className="min-h-screen bg-white">
             <DepartmentDetailView
                 department={department}
                 cmsTests={cmsTests}
-                allCmsTests={allCmsTests}
             />
             <Footer />
         </main>

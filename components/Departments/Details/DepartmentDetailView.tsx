@@ -19,7 +19,6 @@ interface TestRecord {
 interface DepartmentDetailViewProps {
     department: Department;
     cmsTests: TestRecord[];
-    allCmsTests: { name: string; slug: string }[];
 }
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -28,7 +27,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
-export default function DepartmentDetailView({ department, cmsTests, allCmsTests }: DepartmentDetailViewProps) {
+export default function DepartmentDetailView({ department, cmsTests }: DepartmentDetailViewProps) {
     return (
         <main className="bg-white min-h-screen">
             <div className="absolute top-0 left-0 w-full z-50">
@@ -104,7 +103,7 @@ export default function DepartmentDetailView({ department, cmsTests, allCmsTests
                             {cmsTests.map((test, index) => (
                                 <Reveal key={test.slug} delayMs={index * 50}>
                                     <Link 
-                                        href={test.slug === 'nipt' ? `/departments/molecular/nipt` : `/departments/${department.id}/${test.slug}`}
+                                        href={`/departments/${department.id}/${test.slug}`}
                                         className="group relative bg-[#045d65] rounded-[0.75rem] p-5 h-[140px] flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                                     >
                                         <div className="flex justify-between items-start">

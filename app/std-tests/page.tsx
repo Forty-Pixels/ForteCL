@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Landing-page/Footer/Footer';
-import { labTests } from '@/data/labTestsData';
 import { STD_PANELS } from '@/data/stdPanels';
 import { client } from '@/lib/sanity';
 import { allLabTestsQuery } from '@/lib/queries';
@@ -11,14 +10,15 @@ export const metadata = {
     description: 'Explore STD and STI testing panels at Forte Clinical Laboratory and contact our team for booking and test details.',
 };
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+const freshClient = client.withConfig({ useCdn: false });
 
 export default async function StdTestsPage() {
-    const cmsTests: typeof labTests = await client.fetch(allLabTestsQuery);
-    const panels = STD_PANELS.map(panel => ({
-        ...panel,
-        test: cmsTests.find(test => test.slug === panel.slug) || labTests.find(test => test.slug === panel.slug),
-    }));
+    const cmsTests: { slug: string; name: string; overview?: string; sampleType?: string[]; tat?: string; organismsSection?: { heading?: string; items?: string[] } }[] = await freshClient.fetch(allLabTestsQuery, {}, { cache: 'no-store' });
+    const panels = STD_PANELS.flatMap(panel => {
+        const test = cmsTests.find(item => item.slug === panel.slug);
+        return test ? [{ ...panel, test }] : [];
+    });
     return (
         <main className="min-h-screen bg-[#f3f8f7]">
             <Navbar />

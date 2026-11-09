@@ -5,7 +5,7 @@ import TestDetailView from '@/components/Departments/Details/TestDetailView';
 import Footer from '@/components/Landing-page/Footer/Footer';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getTestImage } from '@/lib/department-utils';
+import { getTestImage, resolveDepartmentId } from '@/lib/department-utils';
 
 interface TestPageProps {
     params: Promise<{
@@ -18,11 +18,11 @@ export const dynamic = 'force-dynamic';
 const freshClient = client.withConfig({ useCdn: false });
 
 export async function generateMetadata({ params }: TestPageProps): Promise<Metadata> {
-    const { testSlug } = await params;
+    const { slug, testSlug } = await params;
     if (testSlug === 'std19') return { title: 'Test Not Found' };
     
     const cmsTest = await freshClient.fetch(labTestBySlugQuery, { slug: testSlug }, { cache: 'no-store' });
-    if (cmsTest) {
+    if (cmsTest && resolveDepartmentId(cmsTest.department, cmsTest.departmentSlug) === slug) {
         return {
             title: `${cmsTest.name} | ${cmsTest.department} | Forte Clinical Laboratory`,
             description: cmsTest.overview || `Learn more about ${cmsTest.name} at Forte Clinical Laboratory.`,
@@ -40,7 +40,7 @@ export default async function TestPage({ params }: TestPageProps) {
     if (!department) notFound();
 
     const cmsTest = await freshClient.fetch(labTestBySlugQuery, { slug: testSlug }, { cache: 'no-store' });
-    if (!cmsTest) notFound();
+    if (!cmsTest || resolveDepartmentId(cmsTest.department, cmsTest.departmentSlug) !== slug) notFound();
 
     const subSections = cmsTest.subSections;
     const process = cmsTest.process;

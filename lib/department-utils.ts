@@ -48,8 +48,6 @@ export const getDepartmentTitle = (departmentTitle?: string, departmentSlug?: st
 };
 
 export const getTestLink = (test: { slug: string; department?: string; departmentTitle?: string; departmentSlug?: string }) => {
-    if (test.slug === 'nipt') return '/departments/molecular/nipt';
-    
     const deptId = resolveDepartmentId(test.departmentTitle || test.department, test.departmentSlug);
     if (deptId) {
         return `/departments/${deptId}/${test.slug}`;
