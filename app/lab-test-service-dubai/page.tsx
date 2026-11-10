@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CheckIcon, ShieldCheckIcon, ClockIcon, DocumentTextIcon, HomeIcon, MapPinIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { ArrowUpRightIcon, PlusIcon, CheckIcon, ShieldCheckIcon, ClockIcon, DocumentTextIcon, HomeIcon, MapPinIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Landing-page/Footer/Footer';
 import styles from './page.module.css';
@@ -43,7 +43,7 @@ const faqs = [
 
 function ContactButtons({ light = false }: { light?: boolean }) {
     return <div className="flex flex-wrap gap-3">
-        <a href={whatsapp} target="_blank" rel="noopener noreferrer" className={`${button} ${light ? 'bg-white text-[#045d65] hover:bg-[#e9f3f2]' : 'bg-[#045d65] text-white hover:bg-[#034b52]'}`}>Book on WhatsApp <span aria-hidden="true" className="ml-3">↗</span></a>
+        <a href={whatsapp} target="_blank" rel="noopener noreferrer" className={`${button} ${light ? 'bg-white text-[#045d65] hover:bg-[#e9f3f2]' : 'bg-[#045d65] text-white hover:bg-[#034b52]'}`}>Book on WhatsApp <ArrowUpRightIcon aria-hidden="true" className="ml-3 h-4 w-4 shrink-0" /></a>
         <a href={phone} className={`${button} border ${light ? 'border-white/40 text-white hover:bg-white/10' : 'border-[#045d65]/25 text-[#045d65] hover:bg-[#e9f3f2]'}`}>Call +971 56 992 5611</a>
     </div>;
 }
@@ -81,9 +81,9 @@ function CollectionProcess() {
                 { title: 'Select Test & Share Location', text: 'Send your test request or a clear photo of your referral on WhatsApp. Tell us where and when you need collection.', note: 'No app download or account needed.' },
                 { title: 'Sterile Doorstep Sample Draw', text: 'Our collection professional arrives at your address with single-use equipment and prepares your samples for safe transport.', note: 'Professional collection at your doorstep.' },
                 { title: 'In-House Processing & Digital PDF', text: 'Forte processes your samples in-house and shares your authorised report directly through WhatsApp or email.', note: 'Your results delivered digitally.' },
-            ].map((step, index) => <li key={step.title} className={styles.processCircle}><span className={styles.processNumber}>Step 0{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p><span className={styles.processNote}>✓ {step.note}</span></li>)}
+            ].map((step, index) => <li key={step.title} className={styles.processCircle}><span className={styles.processNumber}>Step 0{index + 1}</span><h3>{step.title}</h3><p>{step.text}</p><span className={styles.processNote}><CheckIcon aria-hidden="true" className="mr-1 inline-block h-3 w-3 align-middle" />{step.note}</span></li>)}
         </ol>
-        <a href={whatsapp} target="_blank" rel="noopener noreferrer" className={styles.processCta}>Book Your Collection on WhatsApp <span aria-hidden="true">↗</span></a>
+        <a href={whatsapp} target="_blank" rel="noopener noreferrer" className={styles.processCta}>Book Your Collection on WhatsApp <ArrowUpRightIcon aria-hidden="true" className="h-4 w-4 shrink-0" /></a>
     </section>;
 }
 
@@ -128,7 +128,7 @@ export default function LabTestServiceDubaiPage() {
                 <section className="py-10 sm:py-12">
                     <div className="flex flex-col justify-between gap-5 rounded-3xl border border-[#c9dfdd] p-5 sm:p-6 lg:flex-row lg:items-center">
                         <div className="max-w-xl"><h2 className="text-2xl font-bold">Not sure where to start?</h2><p className="mt-3 text-sm leading-6 text-gray-500">Send your request to our team. We can help with test availability, preparation, collection arrangements and pricing.</p></div>
-                        <a href={whatsapp} target="_blank" rel="noopener noreferrer" className={`${button} shrink-0 bg-[#045d65] text-white hover:bg-[#034b52]`}>Speak to our team ↗</a>
+                        <a href={whatsapp} target="_blank" rel="noopener noreferrer" className={`${button} shrink-0 gap-2 bg-[#045d65] text-white hover:bg-[#034b52]`}>Speak to our team <ArrowUpRightIcon aria-hidden="true" className="h-4 w-4 shrink-0" /></a>
                     </div>
                 </section>
 
@@ -145,7 +145,7 @@ export default function LabTestServiceDubaiPage() {
                 <section className={styles.coverage} aria-labelledby="coverage-heading">
                     <div className={styles.coverageHeader}><Label>Citywide mobile coverage</Label><h2 id="coverage-heading">Popular Areas We Cover Across Dubai</h2><p>From private homes to hotel suites and offices, our collection team brings laboratory services closer to you.</p></div>
                     <div className={styles.coverageGrid}>
-                        <div className={styles.coverageIntro}><MapPinIcon aria-hidden="true" /><h3>Dubai Service Coverage</h3><p>Professional sample collection at your address, with 30-minute arrival across Dubai. Share your location with our team to arrange your visit.</p><a href={whatsapp} target="_blank" rel="noopener noreferrer">Need collection in another area? ↗</a></div>
+                        <div className={styles.coverageIntro}><MapPinIcon aria-hidden="true" /><h3>Dubai Service Coverage</h3><p>Professional sample collection at your address, with 30-minute arrival across Dubai. Share your location with our team to arrange your visit.</p><a href={whatsapp} target="_blank" rel="noopener noreferrer">Need collection in another area? <ArrowUpRightIcon aria-hidden="true" className="ml-1 inline-block h-4 w-4 align-middle" /></a></div>
                         <div className={styles.areas}>
                             {['Downtown Dubai', 'Palm Jumeirah', 'Al Barsha', 'Dubai Marina', 'Arabian Ranches', 'Dubai Hills'].map(area => <a key={area} href={`https://wa.me/971569925611?text=${encodeURIComponent(`Hi Forte, I would like to book home sample collection in ${area}.`)}`} target="_blank" rel="noopener noreferrer" className={styles.area}><MapPinIcon aria-hidden="true" /><div><strong>{area}</strong><span>30-minute arrival</span></div></a>)}
                         </div>
@@ -166,7 +166,7 @@ export default function LabTestServiceDubaiPage() {
                 <section aria-labelledby="faq-heading" className="mx-auto max-w-4xl">
                     <div className="mb-7 text-center"><Label>Frequently asked questions</Label><h2 id="faq-heading" className="text-2xl font-bold tracking-tight sm:text-3xl">A little clarity <span className="text-[#045d65]">before you book.</span></h2></div>
                     {faqs.map(faq => <details key={faq.question} className="group border-b border-[#dfeae8] py-4">
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-5 rounded text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#045d65] sm:text-base">{faq.question}<span aria-hidden="true" className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e9f3f2] text-lg text-[#045d65] group-open:rotate-45">+</span></summary>
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-5 rounded text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#045d65] sm:text-base">{faq.question}<span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e9f3f2] text-[#045d65] group-open:rotate-45"><PlusIcon aria-hidden="true" className="h-4 w-4" /></span></summary>
                         <p className="mt-4 max-w-3xl text-sm leading-6 text-gray-500">{faq.answer}</p>
                     </details>)}
                 </section>
