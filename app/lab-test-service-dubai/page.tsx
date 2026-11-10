@@ -16,15 +16,15 @@ const phone = 'tel:+971569925611';
 const button = 'inline-flex min-h-10 items-center justify-center rounded-full px-5 py-2.5 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#307984]';
 
 const workflow = [
-    { icon: ClockIcon, time: '30 Mins', title: 'Team Arrival', text: 'Our collection specialist visits your home, hotel or office with sterile equipment for a comfortable sample draw.' },
+    { icon: ClockIcon, time: '1–2 Hours', title: 'Team Arrival', text: 'Our collection specialist visits your home, hotel or office with sterile equipment for a comfortable sample draw.' },
     { icon: ShieldCheckIcon, time: '45 Mins', title: 'Cold-Chain Lab Transport', text: 'Your samples travel in sealed, temperature-controlled medical containers directly to our laboratory for processing.' },
-    { icon: DocumentTextIcon, time: 'Under 2 Hours', title: 'Official PDF Report Delivered', text: 'Receive your authorised laboratory report digitally, with convenient delivery through WhatsApp or email.' },
+    { icon: DocumentTextIcon, time: '2–6 Hours', title: 'Official PDF Report Delivered', text: 'Receive your authorised laboratory report digitally, with convenient delivery through WhatsApp or email.' },
 ];
 
 const benefits = [
     { icon: ShieldCheckIcon, title: 'DHA-approved laboratory', text: 'Your samples are processed in-house at Forte Clinical Laboratory in Dubai.' },
     { icon: UserGroupIcon, title: 'Experienced collection team', text: 'Trained phlebotomists provide attentive, professional sample collection at your appointment.' },
-    { icon: ClockIcon, title: '30-minute doorstep arrival', text: 'Our collection team reaches your Dubai address in 30 minutes, so your lab appointment fits into your day.' },
+    { icon: ClockIcon, title: '1–2-hour doorstep arrival', text: 'Our collection team reaches your address in Dubai, Sharjah or Ajman in 1–2 hours, so your lab appointment fits into your day.' },
     { icon: DocumentTextIcon, title: 'Digital reports', text: 'Receive your authorised results by WhatsApp or email without another trip to the laboratory.' },
     { icon: HomeIcon, title: 'Protected sample transport', text: 'Sealed samples travel in temperature-controlled containers to preserve their condition on the way to the laboratory.' },
     { icon: CheckIcon, title: 'Clear information before booking', text: 'Know the price, preparation requirements and expected report time before confirming your visit.' },
@@ -32,8 +32,8 @@ const benefits = [
 
 const faqs = [
     { question: 'How do I book lab tests at home in Dubai?', answer: 'Call or WhatsApp Forte with your test request, location and preferred appointment time. Our team will confirm availability, the charge and any preparation before you book.' },
-    { question: 'How soon can someone visit me?', answer: 'Our team can reach your address in Dubai in 30 minutes. Send your location on WhatsApp to arrange your collection.' },
-    { question: 'When will I receive my results?', answer: 'Our rapid reporting service delivers results in under 2 hours. Our team confirms the report time for your requested tests when you book, as specialised tests may require longer.' },
+    { question: 'How soon can someone visit me?', answer: 'Our team can reach your address in Dubai, Sharjah or Ajman in 1–2 hours. Send your location on WhatsApp to arrange your collection.' },
+    { question: 'When will I receive my results?', answer: 'Our rapid reporting service delivers results in 2–6 hours. Our team confirms the report time for your requested tests when you book, as specialised tests may require longer.' },
     { question: 'Do I need to fast before sample collection?', answer: 'Preparation depends on the tests requested. Send us your test list or referral so our team can confirm the instructions that apply to your appointment.' },
     { question: 'Can I send a photo of my doctor’s referral?', answer: 'Yes. Send a clear photo of your referral through WhatsApp. Our team can review the requested tests and confirm availability, preparation and pricing.' },
     { question: 'Can I use my health insurance?', answer: 'Coverage depends on your insurer, policy and requested tests. Contact our team before booking to confirm the available payment options and documentation, and check reimbursement requirements with your insurer.' },
@@ -99,11 +99,11 @@ export default function LabTestServiceDubaiPage() {
                 <section className={styles.hero}>
                     <Image src="/home-collection/home-blood-test-woman.png" alt="" fill priority sizes="100vw" className={styles.heroBackground} />
                     <div className={styles.heroCopy}>
-                        <Label>DHA-approved laboratory · 30-minute arrival</Label>
-                        <h1>Lab Tests at Home in Dubai <span>Reports in Under 2 Hours</span></h1>
-                        <p className={styles.heroDescription}>Professional sample collection at your home, hotel or office in 30 minutes. Your samples are processed in-house at Forte Clinical Laboratory, with authorised reports delivered to your phone in under 2 hours.</p>
+                        <Label>DHA-approved laboratory · 1–2-hour arrival</Label>
+                        <h1>Lab Tests at Home in Dubai <span>Reports in 2–6 Hours</span></h1>
+                        <p className={styles.heroDescription}>Professional sample collection at your home, hotel or office in 1–2 hours. Your samples are processed in-house at Forte Clinical Laboratory, with authorised reports delivered to your phone in 2–6 hours.</p>
                         <ul className={styles.heroChecks}>
-                            {['30-minute arrival', 'Reports in under 2 hours', 'In-house laboratory', 'Sterile, single-use kits'].map(item => <li key={item}><CheckIcon aria-hidden="true" />{item}</li>)}
+                            {['1–2-hour arrival', 'Reports in 2–6 hours', 'In-house laboratory', 'Sterile, single-use kits'].map(item => <li key={item}><CheckIcon aria-hidden="true" />{item}</li>)}
                         </ul>
                         <ContactButtons />
                     </div>
@@ -143,11 +143,11 @@ export default function LabTestServiceDubaiPage() {
                 </section>
 
                 <section className={styles.coverage} aria-labelledby="coverage-heading">
-                    <div className={styles.coverageHeader}><Label>Citywide mobile coverage</Label><h2 id="coverage-heading">Popular Areas We Cover Across Dubai</h2><p>From private homes to hotel suites and offices, our collection team brings laboratory services closer to you.</p></div>
+                    <div className={styles.coverageHeader}><Label>Dubai, Sharjah & Ajman coverage</Label><h2 id="coverage-heading">Areas We Cover in Dubai, Sharjah & Ajman</h2><p>From private homes to hotel suites and offices, our collection team brings laboratory services closer to you.</p></div>
                     <div className={styles.coverageGrid}>
-                        <div className={styles.coverageIntro}><MapPinIcon aria-hidden="true" /><h3>Dubai Service Coverage</h3><p>Professional sample collection at your address, with 30-minute arrival across Dubai. Share your location with our team to arrange your visit.</p><a href={whatsapp} target="_blank" rel="noopener noreferrer">Need collection in another area? <ArrowUpRightIcon aria-hidden="true" className="ml-1 inline-block h-4 w-4 align-middle" /></a></div>
+                        <div className={styles.coverageIntro}><MapPinIcon aria-hidden="true" /><h3>Dubai, Sharjah & Ajman Coverage</h3><p>Professional sample collection at your address, with 1–2-hour arrival across Dubai, Sharjah and Ajman. Share your location with our team to arrange your visit.</p><a href={whatsapp} target="_blank" rel="noopener noreferrer">Need collection in another area? <ArrowUpRightIcon aria-hidden="true" className="ml-1 inline-block h-4 w-4 align-middle" /></a></div>
                         <div className={styles.areas}>
-                            {['Downtown Dubai', 'Palm Jumeirah', 'Al Barsha', 'Dubai Marina', 'Arabian Ranches', 'Dubai Hills'].map(area => <a key={area} href={`https://wa.me/971569925611?text=${encodeURIComponent(`Hi Forte, I would like to book home sample collection in ${area}.`)}`} target="_blank" rel="noopener noreferrer" className={styles.area}><MapPinIcon aria-hidden="true" /><div><strong>{area}</strong><span>30-minute arrival</span></div></a>)}
+                            {['Downtown Dubai', 'Palm Jumeirah', 'Al Barsha', 'Dubai Marina', 'Arabian Ranches', 'Dubai Hills', 'Sharjah', 'Ajman'].map(area => <a key={area} href={`https://wa.me/971569925611?text=${encodeURIComponent(`Hi Forte, I would like to book home sample collection in ${area}.`)}`} target="_blank" rel="noopener noreferrer" className={styles.area}><MapPinIcon aria-hidden="true" /><div><strong>{area}</strong><span>1–2-hour arrival</span></div></a>)}
                         </div>
                     </div>
                 </section>
@@ -174,7 +174,7 @@ export default function LabTestServiceDubaiPage() {
                 <section className="mt-10 rounded-[2rem] bg-[#045d65] px-6 py-8 text-white sm:mt-12 sm:p-8">
                     <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">Let’s arrange your collection</p>
                     <h2 className="max-w-2xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl">Your next health check starts with a conversation.</h2>
-                    <p className="mb-7 mt-4 max-w-xl text-sm leading-6 text-white/80">Tell us what you need and where you are in Dubai. We will help you confirm your appointment, preparation and report timing.</p>
+                    <p className="mb-7 mt-4 max-w-xl text-sm leading-6 text-white/80">Tell us what you need and where you are in Dubai, Sharjah or Ajman. We will help you confirm your appointment, preparation and report timing.</p>
                     <ContactButtons light />
                 </section>
             </main>
