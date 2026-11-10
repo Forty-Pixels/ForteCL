@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 const freshClient = client.withConfig({ useCdn: false });
 
 export default async function StdTestsPage() {
-    const cmsTests: { slug: string; name: string; overview?: string; sampleType?: string[]; tat?: string; organismsSection?: { heading?: string; items?: string[] } }[] = await freshClient.fetch(allLabTestsQuery, {}, { cache: 'no-store' });
+    const cmsTests: { slug: string; name: string; overview?: string; sampleType?: string[]; tat?: string }[] = await freshClient.fetch(allLabTestsQuery, {}, { cache: 'no-store' });
     const panels = STD_PANELS.flatMap(panel => {
         const test = cmsTests.find(item => item.slug === panel.slug);
         return test ? [{ ...panel, test }] : [];
@@ -43,17 +43,6 @@ export default async function StdTestsPage() {
                                     <div className="flex gap-2"><dt className="font-semibold text-[#103b40]">Sample:</dt><dd>{test.sampleType?.join(', ') || 'Confirm with our team'}</dd></div>
                                     <div className="flex gap-2"><dt className="font-semibold text-[#103b40]">Results in:</dt><dd>{test.tat || 'Confirm with our team'}</dd></div>
                                 </dl>
-                            )}
-                            {!!test?.organismsSection?.items?.length && (
-                                <div className="mt-4 border-t border-[#d7e5e8] pt-4">
-                                    <h3 className="text-xs font-bold text-[#103b40]">{test.organismsSection.heading || 'Organisms Tested'}</h3>
-                                    <ul className="mt-2 flex flex-wrap gap-2">
-                                        {test.organismsSection.items.slice(0, 5).map((organism, index) => (
-                                            <li key={`${organism}-${index}`} className="rounded-full bg-[#eaf4f4] px-2.5 py-1 text-xs text-[#045d65]">{organism}</li>
-                                        ))}
-                                        {test.organismsSection.items.length > 5 && <li className="rounded-full bg-[#eaf4f4] px-2.5 py-1 text-xs text-[#045d65]">+{test.organismsSection.items.length - 5} more</li>}
-                                    </ul>
-                                </div>
                             )}
                             <div className="mt-6 flex flex-wrap gap-3">
                                 {test && <Link href={`/departments/molecular/${slug}`} className="inline-flex items-center rounded-full bg-[#045d65] px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-[#08717a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#045d65]">View test</Link>}
