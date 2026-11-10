@@ -143,9 +143,9 @@ export default function LabTestServiceDubaiPage() {
                 </section>
 
                 <section className={styles.coverage} aria-labelledby="coverage-heading">
-                    <div className={styles.coverageHeader}><Label>Dubai, Sharjah & Ajman coverage</Label><h2 id="coverage-heading">Areas We Cover in Dubai, Sharjah & Ajman</h2><p>From private homes to hotel suites and offices, our collection team brings laboratory services closer to you.</p></div>
+                    <div className={styles.coverageHeader}><Label>UAE coverage</Label><h2 id="coverage-heading">Areas We Cover Across the UAE</h2><p>From private homes to hotel suites and offices, our collection team brings laboratory services closer to you.</p></div>
                     <div className={styles.coverageGrid}>
-                        <div className={styles.coverageIntro}><MapPinIcon aria-hidden="true" /><h3>Dubai, Sharjah & Ajman Coverage</h3><p>Professional sample collection at your address, with 1–2-hour arrival across Dubai, Sharjah and Ajman. Share your location with our team to arrange your visit.</p><a href={whatsapp} target="_blank" rel="noopener noreferrer">Need collection in another area? <ArrowUpRightIcon aria-hidden="true" className="ml-1 inline-block h-4 w-4 align-middle" /></a></div>
+                        <div className={styles.coverageIntro}><MapPinIcon aria-hidden="true" /><h3>UAE Coverage</h3><p>Professional sample collection at your address, with 1–2-hour arrival across Dubai, Sharjah and Ajman. Share your location with our team to arrange your visit.</p><a href={whatsapp} target="_blank" rel="noopener noreferrer">Need collection in another area? <ArrowUpRightIcon aria-hidden="true" className="ml-1 inline-block h-4 w-4 align-middle" /></a></div>
                         <div className={styles.areas}>
                             {['Downtown Dubai', 'Palm Jumeirah', 'Al Barsha', 'Dubai Marina', 'Arabian Ranches', 'Dubai Hills', 'Sharjah', 'Ajman'].map(area => <a key={area} href={`https://wa.me/971569925611?text=${encodeURIComponent(`Hi Forte, I would like to book home sample collection in ${area}.`)}`} target="_blank" rel="noopener noreferrer" className={styles.area}><MapPinIcon aria-hidden="true" /><div><strong>{area}</strong><span>1–2-hour arrival</span></div></a>)}
                         </div>
