@@ -45,12 +45,15 @@ export default function ContactContent() {
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M14.05 2A9 9 0 0122 9.95M14.05 6a5 5 0 014 4" />
                                         </svg>
                                     </div>
-                                    <a 
-                                        href="tel:+971569925611"
-                                        className="text-gray-700 font-medium text-sm hover:text-[#045d65] transition-colors"
-                                    >
-                                        +971 56 992 5611
-                                    </a>
+                                    <div className="flex flex-wrap items-center gap-x-1 text-gray-700 font-medium text-sm">
+                                        <a href="tel:+97142718226" className="whitespace-nowrap hover:text-[#045d65] transition-colors">
+                                            +971 4 271 8226
+                                        </a>
+                                        <span>/</span>
+                                        <a href="tel:+971569925611" className="whitespace-nowrap hover:text-[#045d65] transition-colors">
+                                            +971 56 992 5611
+                                        </a>
+                                    </div>
                                 </li>
 
                                 {/* WhatsApp */}
